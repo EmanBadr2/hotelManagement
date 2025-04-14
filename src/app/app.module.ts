@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,7 @@ import { AuthInputsComponent } from './shared/components/auth-inputs/auth-inputs
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent],
