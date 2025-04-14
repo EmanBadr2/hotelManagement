@@ -21,7 +21,11 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserAnimationsModule,
     SharedModule,
     RouterModule,
-    ToastrModule
+    ToastrModule.forRoot({
+      timeOut: 5000,
+      positionClass: 'toast-top-right',
+      progressBar: true,
+    }),
   ],
   providers: [
     {
