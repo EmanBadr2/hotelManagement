@@ -37,7 +37,14 @@ export class LoginComponent {
         localStorage.setItem('token', res.token);
         localStorage.setItem('roleFromRes', res.data.user.role);
 
-        this.router.navigate(['/landing']);
+        if (res.data.user.role === 'admin') {
+          this.router.navigate(['/admin']);
+        } else if (res.data.user.role === 'user') {
+          this.router.navigate(['/landing']);
+        } else {
+          this.toastr.error('Unknown role');
+        }
+
       },
       error: (err) => {
         this.toastr.error(err.error.message || 'error');
