@@ -17,6 +17,7 @@ export class AuthInputsComponent implements ControlValueAccessor {
   @Input() label: string = '';
   @Input() placeholder: string = '';
   @Input() id: string = '';
+  @Input() type:string='text';
 
   value: string = '';
   isDisabled: boolean = false;
