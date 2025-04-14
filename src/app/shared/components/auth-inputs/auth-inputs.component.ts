@@ -9,17 +9,15 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => AuthInputsComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class AuthInputsComponent implements ControlValueAccessor {
-
   @Input() label: string = '';
   @Input() type: string = 'text';
   @Input() placeholder: string = '';
   @Input() id: string = '';
-  @Input() type:string='text';
 
   value: string = '';
   isDisabled: boolean = false;
