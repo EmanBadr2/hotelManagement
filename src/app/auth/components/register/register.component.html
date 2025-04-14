@@ -21,7 +21,7 @@
             (ngSubmit)="onSubmit()"
           >
             <ngx-dropzone (change)="onSelect($event)">
-              <ngx-dropzone-label>Drop it, baby!</ngx-dropzone-label>
+              <ngx-dropzone-label>Drop Your Photo !</ngx-dropzone-label>
               <ngx-dropzone-preview
                 *ngFor="let f of files"
                 [removable]="true"
@@ -33,20 +33,22 @@
               </ngx-dropzone-preview>
             </ngx-dropzone>
             <!-- User Name -->
-            <app-auth-inputs
-              formControlName="userName"
-              label="User Name"
-              placeholder="Please type here"
-              id="userName"
-            ></app-auth-inputs>
-            <div
-              *ngIf="
-                registerForm.get('userName')?.touched &&
-                registerForm.get('userName')?.errors
-              "
-              class="text-red-500 text-sm mt-1"
-            >
-              User Name is required.
+            <div class="my-4 ">
+              <app-auth-inputs
+                formControlName="userName"
+                label="User Name"
+                placeholder="Please type here"
+                id="userName"
+              ></app-auth-inputs>
+              <div
+                *ngIf="
+                  registerForm.get('userName')?.touched &&
+                  registerForm.get('userName')?.errors
+                "
+                class="text-red-500 text-sm mt-1"
+              >
+                User Name is required.
+              </div>
             </div>
 
             <!-- Phone Number + Country -->

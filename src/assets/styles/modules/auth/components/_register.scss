@@ -7,23 +7,29 @@
     background-position: center;
     border-radius: 15px;
   }
-  &__form{
-    &__head{
-      h1{
+  &__form {
+    app-auth-inputs {
+      div {
+        width: 100%;
+        input {
+          width: 100%;
+        }
+      }
+    }
+    &__head {
+      h1 {
         font-weight: 500;
         font-size: 2rem;
       }
-      p{
+      p {
         font-weight: 400;
         font-size: 1rem;
-        span{
+        span {
           font-weight: 600;
           color: crimson;
           cursor: pointer;
         }
       }
     }
-   
   }
-
 }
