@@ -28,16 +28,28 @@ export class LoginComponent {
       this.toastr.error('Please fill in all the required fields.');
       return;
     }
-  
     this.authService.login(this.loginForm.value).subscribe({
       next: (res) => {
-        this.toastr.success('login successfully');
-        localStorage.setItem('userToken', res.token);
-        this.router.navigate(['/admin']);
+        if (res && res.success) {
+          this.toastr.success('Login successfully');
+
+          localStorage.setItem('userToken', res.data.token);
+  
+          if (res.data.user.role === 'admin') {
+            this.router.navigate(['/admin']);
+          } else if (res.data.user.role === 'user') {
+            this.router.navigate(['/landing']);
+          } else {
+            this.toastr.error('Unknown role');
+          }
+        } else {
+          this.toastr.error('Login failed. Please try again.');
+        }
       },
       error: (err) => {
-        this.toastr.error(err.error.message || 'error');
+        this.toastr.error(err.error.message || 'An error occurred during login');
       }
     });
   }
+  
 }
