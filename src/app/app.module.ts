@@ -7,6 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared/shared.module';
 import { AuthInputsComponent } from './shared/components/auth-inputs/auth-inputs.component';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from 'src/core/interceptors/auth.interceptor';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -15,7 +18,13 @@ import { AuthInputsComponent } from './shared/components/auth-inputs/auth-inputs
     BrowserAnimationsModule,
     SharedModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
