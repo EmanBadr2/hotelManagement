@@ -22,18 +22,22 @@ export class LoginComponent {
       Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&])[A-Za-z\d@$!%?&]{6,}$/)
     ]),
   });
-  
+
   onSubmit() {
     if (this.loginForm.invalid) {
       this.toastr.error('Please fill in all the required fields.');
       return;
     }
-  
+
     this.authService.login(this.loginForm.value).subscribe({
       next: (res) => {
+        console.log(res);
+
         this.toastr.success('login successfully');
-        localStorage.setItem('userToken', res.token);
-        this.router.navigate(['/admin']);
+        localStorage.setItem('token', res.token);
+        localStorage.setItem('roleFromRes', res.data.user.role);
+
+        this.router.navigate(['/landing']);
       },
       error: (err) => {
         this.toastr.error(err.error.message || 'error');
