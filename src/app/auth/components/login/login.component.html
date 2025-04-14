@@ -1,1 +1,80 @@
-<p>login works!</p>
+<div class="bg-white min-h-screen flex items-center justify-center p-2">
+    <div class="flex w-full overflow-hidden">
+      <p class="ms-3 my-3 font-medium text-[26px] leading-[100%] tracking-[0]"><span
+          class="text-primary font-medium text-[26px] leading-[100%] tracking-[0]">stay</span>cation</p>
+      <!-- Left Side (Form) -->
+  
+      <div class="w-full md:w-1/2 mt-10 pt-10">
+        <h2 class="font-medium text-[30px] leading-[100%] tracking-[0] mb-4">Sign in</h2>
+        <p class="font-normal text-base leading-relaxed tracking-[0] mb-4">
+            If you don’t have an account register <br />
+          You can <span class="text-primary font-semibold cursor-pointer"><a routerLink="/auth/register">Register here !</a></span>
+        </p>
+  
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <app-auth-inputs
+            formControlName="email"
+            type="email"
+            label="Email"
+            placeholder="Please type here ..."
+            id="Email"
+            value="">
+          </app-auth-inputs>
+        
+          <small class="text-red-600 block"
+            *ngIf="loginForm?.get('email')?.invalid && loginForm?.get('email')?.touched">
+            <span *ngIf="loginForm?.get('email')?.errors?.['required']">Email is required.</span>
+            <span *ngIf="loginForm?.get('email')?.errors?.['email']">Enter a valid email.</span>
+          </small>
+        
+          <app-auth-inputs
+            formControlName="password"
+            [type]="isPasswordHidden ? 'password' : 'text'"
+            label="Password"
+            placeholder="Please type here ..."
+            id="password"
+            value="">
+            <a (click)="isPasswordHidden = !isPasswordHidden">
+              <span
+                class="material-icons absolute right-14 top-5 px-2 -translate-y-1/2 cursor-pointer text-gray-600 hover:text-primary-500 transition">
+                {{ isPasswordHidden ? 'visibility_off' : 'visibility' }}
+              </span>
+            </a>
+          </app-auth-inputs>
+        
+          <small class="text-red-600 block" *ngIf="loginForm?.get('password')?.touched">
+            <span *ngIf="loginForm?.get('password')?.errors?.['required']; else checkMinLength">
+              Password is required.
+            </span>
+            <ng-template #checkMinLength>
+              <span *ngIf="loginForm?.get('password')?.errors?.['minlength']; else checkPattern">
+                Password must be at least 6 characters.
+              </span>
+            </ng-template>
+            <ng-template #checkPattern>
+              <span *ngIf="loginForm?.get('password')?.errors?.['pattern']">
+                The password must include at least one lowercase letter,
+                one uppercase letter, one digit, and one special character.
+              </span>
+            </ng-template>
+          </small>
+        
+          <button type="submit"
+            class="w-[75%] px-3 py-2 mt-4 rounded-md bg-primary hover:bg-primary-800 text-white">
+            Login
+          </button>
+        </form>        
+      </div>
+  
+      <!-- Right Side (Image) -->
+      <div class="hidden md:block md:w-[40%] relative">
+        <img src="../../../../assets/img/login.png" alt="Reset" class="object-cover h-full w-full" />
+        <div class="absolute bottom-6 left-6 text-white">
+          <h2 class="text-2xl font-bold">Sign in to Roamhome</h2>
+          <p class="text-sm">Homes as unique as you.</p>
+        </div>
+      </div>
+  
+  </div>
+  </div>
+  
