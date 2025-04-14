@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,22 +15,28 @@ export class ForgetPasswordComponent {
     email :new  FormControl('' , [Validators.email , Validators.required ])
   })
   constructor(private _AuthService:AuthService ,
-    private _ToastrService:ToastrService
-  ){
-    this._ToastrService.success('done')
-  }
+    private _ToastrService:ToastrService ,
+    private _Router:Router
+  ){ }
 
-  onSubmit(form:any):void{
-    console.log('done');
-    console.log(form);
-    // this._AuthService.forgetPassword(form).subscribe({
-    //   next :(res)=>{
-    //     console.log(res);
-    //    } ,
-    //    error :(err)=>{
-    //     console.log(err);
-    //    } ,
-    // })
+  sendData(form:FormGroup):void{
+
+    console.log(form.value);
+
+    this._AuthService.forgetPassword(form.value).subscribe({
+      next :(res)=>{
+        console.log(res);
+         this._ToastrService.success('check You email..')
+        this._Router.navigate(['auth/resetPassword'])
+       } ,
+       error :(err)=>{
+        this._ToastrService.error(err.error.message)
+        console.log(err);
+       } ,
+       complete :() =>{
+
+       },
+    })
   }
 
 }
