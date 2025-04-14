@@ -10,6 +10,7 @@ import { AuthInputsComponent } from './shared/components/auth-inputs/auth-inputs
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from 'src/core/interceptors/auth.interceptor';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { AuthInterceptor } from 'src/core/interceptors/auth.interceptor';
     BrowserAnimationsModule,
     SharedModule,
     RouterModule,
+    ToastrModule
   ],
   providers: [
     {
