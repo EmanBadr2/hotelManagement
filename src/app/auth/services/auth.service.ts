@@ -7,14 +7,19 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private _HttpClient: HttpClient) {}
+ 
 
+  constructor(private _HttpClient:HttpClient) { }
   register(data: FormData): Observable<any> {
     return this._HttpClient.post(
       'https://upskilling-egypt.com:3000/api/v0/portal/users',
       data
     );
   }
+  login(data: any): Observable<any> {
+    return this._HttpClient.post('https://upskilling-egypt.com:3000/api/v0/admin/users/login', data);
+  }
+
 
   resetPassword(data: FormGroup): Observable<any> {
     return this._HttpClient.post(
@@ -30,3 +35,4 @@ export class AuthService {
     );
   }
 }
+
