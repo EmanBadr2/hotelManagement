@@ -1,21 +1,4 @@
 <div class="flex flex-col gap-1 relative w-[90%]">
-<<<<<<< HEAD
-  <label *ngIf="label" [for]="id" class="font-normal text-base leading-[170%] tracking-[0]">
-    {{ label }}
-  </label>
-  <div class="relative w-[90%]">
-    <input
-    [id]="id"
-    class="w-[90%] mb-3 border border-gray-300 bg-gray-100 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-primary-500"
-    [placeholder]="placeholder"
-    [value]="value"
-    [disabled]="isDisabled"
-    (input)="handleInput($event)"
-    (blur)="onTouched()"
-    [type]="type" 
-  />
-  <ng-content></ng-content>
-=======
     <label *ngIf="label" [for]="id" class="font-normal text-base leading-[170%] tracking-[0]">
       {{ label }}
     </label>
@@ -32,7 +15,4 @@
     />
     <ng-content></ng-content>
     </div>
-   
->>>>>>> main
-  </div>
 </div>
