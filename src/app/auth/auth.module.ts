@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { NgxDropzoneModule } from 'ngx-dropzone';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -8,19 +8,13 @@ import { ForgetPasswordComponent } from './components/forget-password/forget-pas
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { SharedModule } from '../shared/shared/shared.module';
 
-
-
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
     ForgetPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
   ],
-  imports: [
-    CommonModule,
-    AuthRoutingModule ,
-    SharedModule
-  ]
+  imports: [CommonModule, AuthRoutingModule, SharedModule, NgxDropzoneModule],
 })
-export class AuthModule { }
+export class AuthModule {}
