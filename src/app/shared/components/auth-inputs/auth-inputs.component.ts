@@ -46,5 +46,5 @@ export class AuthInputsComponent implements ControlValueAccessor {
     const newValue = event.target.value;
     this.value = newValue;
     this.onChange(newValue);
-  }
+  }
 }
