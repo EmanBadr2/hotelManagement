@@ -1,8 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminComponent } from './admin.component';
+import { HomeComponent } from './components/home/home.component';
 
-const routes: Routes = [{ path: '', component: AdminComponent }];
+
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'rooms', loadChildren: () => import('./modules/rooms/rooms.module').then(m => m.RoomsModule) },
+  { path: 'facilities', loadChildren: () => import('./modules/facilities/facilities.module').then(m => m.FacilitiesModule) },
+  { path: 'Ads', loadChildren: () => import('./modules/ads/ads.module').then(m => m.AdsModule) },
+  { path: 'booking', loadChildren: () => import('./modules/booking/booking.module').then(m => m.BookingModule) }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
