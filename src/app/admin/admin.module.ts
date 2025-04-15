@@ -6,6 +6,8 @@ import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DeleteComponent } from './components/delete/delete.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SharedModule } from '../shared/shared/shared.module';
 
 
 @NgModule({
@@ -13,11 +15,13 @@ import { DeleteComponent } from './components/delete/delete.component';
     HomeComponent,
     NavbarComponent,
     SidebarComponent,
-    DeleteComponent
+    DeleteComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    SharedModule
   ]
 })
 export class AdminModule { }
