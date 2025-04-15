@@ -1,0 +1,55 @@
+<h2 class="text-lg font-bold mb-4">{{ title }}</h2>
+
+<div class="p-4">
+  <form [formGroup]="addForm">
+    <ng-container *ngFor="let field of fields">
+      <!-- Text Input -->
+      <div *ngIf="field.type === 'text'" class="mb-4">
+        <input
+          pInputText
+          [formControlName]="field.name"
+          [placeholder]="field.placeholder || ''"
+          class="w-full border border-gray-300 bg-gray-100 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <!-- Dropdown -->
+      <div *ngIf="field.type === 'select'" class="mb-4">
+        <p-dropdown
+          [formControlName]="field.name"
+          [options]="field.options"
+          [placeholder]="field.placeholder || 'Select an option'"
+          optionLabel="label"
+          optionValue="value"
+          class="w-full"
+        ></p-dropdown>
+      </div>
+
+      <!-- Textarea -->
+      <div *ngIf="field.type === 'textarea'" class="mb-4">
+        <textarea
+          pInputTextarea
+          [formControlName]="field.name"
+          [placeholder]="field.placeholder || ''"
+          rows="4"
+          class="w-full border border-gray-300 bg-gray-100 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        ></textarea>
+      </div>
+    </ng-container>
+  </form>
+</div>
+
+<div class="flex justify-end gap-4 px-4 pb-4">
+  <button
+    pButton
+    label="Close"
+    (click)="closeDialog()"
+    class="p-button-secondary"
+  ></button>
+  <button
+    pButton
+    label="Save"
+    (click)="save()"
+    class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+  ></button>
+</div>

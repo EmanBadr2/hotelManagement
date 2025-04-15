@@ -6,18 +6,21 @@ import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DeleteComponent } from './components/delete/delete.component';
-
+import { SharedModule } from '../shared/shared/shared.module';
+import { DialogViewEditComponent } from './components/shared/dialog-view-edit/dialog-view-edit.component';
+import { DialogAddComponent } from './components/shared/dialog-add-edit/dialog-add.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     NavbarComponent,
     SidebarComponent,
-    DeleteComponent
+    DeleteComponent,
+
+    DialogViewEditComponent,
+    DialogAddComponent,
   ],
-  imports: [
-    CommonModule,
-    AdminRoutingModule
-  ]
+  imports: [CommonModule, AdminRoutingModule, SharedModule],
+  exports: [DialogAddComponent],
 })
-export class AdminModule { }
+export class AdminModule {}
