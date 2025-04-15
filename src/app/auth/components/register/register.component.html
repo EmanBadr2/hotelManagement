@@ -1,1 +1,181 @@
-<p>register works!</p>
+<section class="register">
+  <div class="h-full">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 h-full p-10 mb-8">
+      <div>
+        <img
+          src="../../../../assets/img/Staycation..png"
+          alt="logo"
+          class="logo"
+        />
+        <div class="register__form my-20 px-5">
+          <div class="register__form__head">
+            <h1 class="my-4">Sign up</h1>
+            <p class="w-64">
+              If you already have an account register You can
+              <span>Login here !</span>
+            </p>
+          </div>
+          <form
+            class="my-16"
+            [formGroup]="registerForm"
+            (ngSubmit)="onSubmit()"
+          >
+            <ngx-dropzone (change)="onSelect($event)">
+              <ngx-dropzone-label>Drop Your Photo !</ngx-dropzone-label>
+              <ngx-dropzone-preview
+                *ngFor="let f of files"
+                [removable]="true"
+                (removed)="onRemove(f)"
+              >
+                <ngx-dropzone-label
+                  >{{ f.name }} ({{ f.type }})</ngx-dropzone-label
+                >
+              </ngx-dropzone-preview>
+            </ngx-dropzone>
+            <!-- User Name -->
+            <div class="my-4 ">
+              <app-auth-inputs
+                formControlName="userName"
+                label="User Name"
+                placeholder="Please type here"
+                id="userName"
+              ></app-auth-inputs>
+              <div
+                *ngIf="
+                  registerForm.get('userName')?.touched &&
+                  registerForm.get('userName')?.errors
+                "
+                class="text-red-500 text-sm mt-1"
+              >
+                User Name is required.
+              </div>
+            </div>
+
+            <!-- Phone Number + Country -->
+            <div class="grid grid-cols-2 gap-4 my-4">
+              <div>
+                <app-auth-inputs
+                  formControlName="phoneNumber"
+                  label="Phone Number"
+                  placeholder="Please type here"
+                  id="phoneNumber"
+                ></app-auth-inputs>
+                <div
+                  *ngIf="
+                    registerForm.get('phoneNumber')?.touched &&
+                    registerForm.get('phoneNumber')?.errors
+                  "
+                  class="text-red-500 text-sm mt-1"
+                >
+                  Phone Number is required.
+                </div>
+              </div>
+
+              <div>
+                <app-auth-inputs
+                  formControlName="country"
+                  label="Country"
+                  placeholder="Please type here"
+                  id="country"
+                ></app-auth-inputs>
+                <div
+                  *ngIf="
+                    registerForm.get('country')?.touched &&
+                    registerForm.get('country')?.errors
+                  "
+                  class="text-red-500 text-sm mt-1"
+                >
+                  Country is required.
+                </div>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <app-auth-inputs
+              formControlName="email"
+              label="Email Address"
+              placeholder="Please type here"
+              id="email"
+              type="email"
+            ></app-auth-inputs>
+            <div
+              *ngIf="
+                registerForm.get('email')?.touched &&
+                registerForm.get('email')?.errors
+              "
+              class="text-red-500 text-sm mt-1"
+            >
+              <div *ngIf="registerForm.get('email')?.errors?.['required']">
+                Email is required.
+              </div>
+              <div *ngIf="registerForm.get('email')?.errors?.['email']">
+                Invalid email format.
+              </div>
+            </div>
+
+            <!-- Password -->
+            <app-auth-inputs
+              formControlName="password"
+              label="Password"
+              placeholder="Please type here"
+              id="password"
+              type="password"
+            ></app-auth-inputs>
+            <div
+              *ngIf="
+                registerForm.get('password')?.touched &&
+                registerForm.get('password')?.errors
+              "
+              class="text-red-500 text-sm mt-1"
+            >
+              <div *ngIf="registerForm.get('password')?.errors?.['required']">
+                Password is required.
+              </div>
+              <div *ngIf="registerForm.get('password')?.errors?.['minlength']">
+                Password must be at least 6 characters.
+              </div>
+            </div>
+
+            <!-- Confirm Password -->
+            <app-auth-inputs
+              formControlName="confirmPassword"
+              label="Confirm Password"
+              placeholder="Please type here"
+              id="confirmPassword"
+              type="password"
+            ></app-auth-inputs>
+            <div
+              *ngIf="
+                registerForm.get('confirmPassword')?.touched &&
+                registerForm.get('confirmPassword')?.errors
+              "
+              class="text-red-500 text-sm mt-1"
+            >
+              <div
+                *ngIf="registerForm.get('confirmPassword')?.errors?.['required']"
+              >
+                Confirm Password is required.
+              </div>
+              <div
+                *ngIf="registerForm.get('confirmPassword')?.errors?.['minlength']"
+              >
+                Confirm Password must be at least 6 characters.
+              </div>
+            </div>
+
+            <div class="mt-6">
+              <button
+                pButton
+                type="submit"
+                label="Sign up"
+                class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-all"
+                [disabled]="registerForm.invalid"
+              ></button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="register__image hidden md:block"></div>
+    </div>
+  </div>
+</section>

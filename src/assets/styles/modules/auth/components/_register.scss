@@ -1,0 +1,35 @@
+.register {
+  height: 100vh;
+  &__image {
+    background-image: url("../../../../img/register.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 15px;
+  }
+  &__form {
+    app-auth-inputs {
+      div {
+        width: 100%;
+        input {
+          width: 100%;
+        }
+      }
+    }
+    &__head {
+      h1 {
+        font-weight: 500;
+        font-size: 2rem;
+      }
+      p {
+        font-weight: 400;
+        font-size: 1rem;
+        span {
+          font-weight: 600;
+          color: crimson;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
