@@ -31,10 +31,8 @@ export class LoginComponent {
 
     this.authService.login(this.loginForm.value).subscribe({
       next: (res) => {
-        console.log(res);
-
         this.toastr.success('login successfully');
-        localStorage.setItem('token', res.token);
+        localStorage.setItem('token', res.data.token);
         localStorage.setItem('roleFromRes', res.data.user.role);
 
         if (res.data.user.role === 'admin') {
