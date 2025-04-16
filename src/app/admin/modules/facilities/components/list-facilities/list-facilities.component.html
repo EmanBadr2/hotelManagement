@@ -30,15 +30,11 @@
             <tr *ngFor="let facility of facilitiesList">
                 <td>{{ facility.name }}</td>
                 <td>{{ facility.createdBy.userName }}</td>
-                <!-- <td>
-                    <p-splitButton [model]="getFacilityActions(facility)"></p-splitButton>
-                </td> -->
                 <td>
-                    <button type="button" pButton icon="pi pi-bars" (click)="menu.toggle($event)"></button>
+                    <button type="button" pButton icon="pi pi-chevron-down" (click)="menu.toggle($event)"></button>
                     <p-menu #menu [popup]="true" [model]="getFacilityActions(facility)"></p-menu>
                 </td>  
             </tr>
         </tbody>
     </table>
-    <!-- <button (click)="openDeleteDialog(facilitiesList[0])">Open Dialog Test</button> -->
 </section>

@@ -69,7 +69,6 @@ export class ListFacilitiesComponent {
           label: 'Delete',
           icon: 'pi pi-trash',
           command: () => {
-            console.log('clicked delete');
             this.openDeleteDialog(facility);
           }
         }
