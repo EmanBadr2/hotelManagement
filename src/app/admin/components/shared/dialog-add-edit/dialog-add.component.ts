@@ -52,15 +52,17 @@ export class DialogAddComponent implements OnInit {
   }
 
   save() {
-    if(this.isFacilities){
+    if (this.isFacilities) {
       this.SharedService.addFacilities(this.addForm.value).subscribe({
-        next:()=>{
-          this.toastr.success('New Facilities Added Success')
-          setTimeout(()=>{
-            this.closeDialog()
-          },3000)
+        next: () => {
+          this.toastr.success('New Facilities Added Success');
+          this.ref.close(true); // ✅ ده بيبلغ الـ parent إن الحفظ تم بنجاح
+        },
+        error: () => {
+          this.toastr.error('Failed to add facility');
         }
-      })
+      });
     }
   }
+  
 }
