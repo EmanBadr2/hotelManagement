@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RoomsService } from '../../services/rooms.service';
 import { IRooms } from '../../interfaces/IRooms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class ListRoomsComponent {
     {
       label: 'View',
       icon: 'pi pi-eye',
-      // command: () => this.viewFacility(facility.id),
+      command: () => this._Router.navigate(['/admin/rooms/add-rooms/:id']),
     },
     {
       label: 'Delete',
@@ -32,7 +33,9 @@ export class ListRoomsComponent {
     },
   ];
 
-  constructor(private _RoomsService:RoomsService){
+  constructor(private _RoomsService:RoomsService ,
+    private _Router:Router
+  ){
     this.onGettingAllRooms()
   }
 
