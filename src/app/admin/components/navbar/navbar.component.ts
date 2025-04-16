@@ -8,7 +8,6 @@ import { MenuItem } from 'primeng/api';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-
   userName: string = 'User';
   userMail: string = 'upskilling@gmail.com';
   defaultImage = '../../../../assets/img/user.png';
@@ -19,8 +18,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(private _Router: Router) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   logOut(): void {
     localStorage.clear();
