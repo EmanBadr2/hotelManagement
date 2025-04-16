@@ -1,1 +1,39 @@
-<p>navbar works!</p>
+<p-toolbar class="navbar">
+    <div class="p-toolbar-group-left logo">
+    <a routerLink="/dashboard">
+        <img src="../../../../assets/img/profile.png" alt="Upskilling" />
+    </a>
+    </div>
+
+    <div class="p-toolbar-group-right d-flex align-items-center">
+    <button
+        pButton
+        type="button"
+        icon="pi pi-bell"
+        class="p-button-rounded p-button-text notification-btn position-relative"
+        pBadge
+        value="1"
+        badgeStyleClass="p-badge-danger"
+    ></button>
+
+    <!-- <div class="user-info d-flex align-items-center mx-3">
+        <img
+        [src]="user?.imagePath || defaultImage"
+        alt="User"
+        class="avatar"
+        />
+        <div class="user-details ms-2">
+        <span class="username">{{ user?.userName || 'Upskilling' }}</span>
+        <br />
+        <span class="email">{{ user?.email || 'upskilling@gmail.com' }}</span>
+        </div>
+    </div> -->
+
+    <!-- <p-splitButton
+        [model]="userMenuItems"
+        icon="pi pi-chevron-down"
+        class="p-button-text p-button-plain"
+        styleClass="user-menu-btn"
+    ></p-splitButton> -->
+    </div>
+</p-toolbar>
