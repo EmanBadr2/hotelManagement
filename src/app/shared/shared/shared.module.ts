@@ -7,7 +7,14 @@ import { PrimeNgModule } from '../prime-ng/prime-ng.module';
 import { TooltipModule } from 'primeng/tooltip';
 import { ToolbarModule } from 'primeng/toolbar';
 import { SplitButtonModule } from 'primeng/splitbutton';
+import { MenuModule } from 'primeng/menu';
+import { ButtonModule } from 'primeng/button';
+
+
+
+
 import { AuthInputsComponent } from '../components/auth-inputs/auth-inputs.component';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 @NgModule({
   declarations: [AuthInputsComponent],
@@ -18,6 +25,10 @@ import { AuthInputsComponent } from '../components/auth-inputs/auth-inputs.compo
     ReactiveFormsModule,
     MaterialModule,
     PrimeNgModule,
+    MenuModule,
+    ButtonModule,
+    SplitButtonModule ,
+    NgxDropzoneModule ,
   ],
   exports: [
     CommonModule,
@@ -29,7 +40,11 @@ import { AuthInputsComponent } from '../components/auth-inputs/auth-inputs.compo
     PrimeNgModule,
     TooltipModule,
     ToolbarModule,
-    SplitButtonModule
+    MenuModule,
+    ButtonModule,
+    SplitButtonModule ,
+    NgxDropzoneModule ,
+
   ],
 })
 export class SharedModule {}

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RoomsService } from '../../services/rooms.service';
+import { IRooms } from '../../interfaces/IRooms';
 
 
 @Component({
@@ -10,16 +11,16 @@ import { RoomsService } from '../../services/rooms.service';
 export class ListRoomsComponent {
   page :number=1
   size:number=10
+  allRooms :IRooms[] =[]
+  totalNumOfRooms !:number
 
   constructor(private _RoomsService:RoomsService){
-    console.log(localStorage.getItem('token'));
-
     this.onGettingAllRooms()
   }
 
-
   onGettingAllRooms():void{
     const params :any = { page :this.page , size:this.size }
+<<<<<<< HEAD
     // this._RoomsService.onGettingAllRooms( params ).subscribe({
     //   next :(res) =>{
     //     console.log(res);
@@ -28,5 +29,17 @@ export class ListRoomsComponent {
     //     console.log(err);
     //   },
     // })
+=======
+    this._RoomsService.onGettingAllRooms( params ).subscribe({
+      next :(res) =>{
+        console.log(res);
+        this.allRooms=res.data.rooms
+        this.totalNumOfRooms=res.data.totalCount
+      },
+      error :(err) =>{
+        console.log(err);
+      },
+    })
+>>>>>>> main
   }
 }

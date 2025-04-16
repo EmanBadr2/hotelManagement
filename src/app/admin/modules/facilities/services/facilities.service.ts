@@ -1,9 +1,19 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { FacilitiesApiResponse } from '../interfaces2/facilities';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FacilitiesService {
+  private baseUrl = 'https://upskilling-egypt.com:3000/api/v0/';
 
-  constructor() { }
+  constructor(private _HttpClient:HttpClient) { }
+  getFacilities(): Observable<FacilitiesApiResponse> {
+    const token = localStorage.getItem('token');
+    console.log(token);
+    const headers = new HttpHeaders().set('Authorization', `${token}`);
+    return this._HttpClient.get<FacilitiesApiResponse>(`${this.baseUrl}admin/room-facilities`, { headers });
+  }
 }
