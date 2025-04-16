@@ -32,7 +32,7 @@ export class ListFacilitiesComponent {
     },
     {
       label: 'View',
-      icon: 'pi pi-eye',
+      icon: 'pi pi-eye #3252df',
       // command: () => this.viewFacility(facility.id),
     },
     {
