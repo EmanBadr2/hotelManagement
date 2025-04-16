@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
 import { PrimeNgModule } from '../prime-ng/prime-ng.module';
 import { AuthInputsComponent } from '../components/auth-inputs/auth-inputs.component';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 @NgModule({
   declarations: [AuthInputsComponent],
@@ -15,6 +16,7 @@ import { AuthInputsComponent } from '../components/auth-inputs/auth-inputs.compo
     ReactiveFormsModule,
     MaterialModule,
     PrimeNgModule,
+    NgxDropzoneModule ,
   ],
   exports: [
     CommonModule,
@@ -24,6 +26,8 @@ import { AuthInputsComponent } from '../components/auth-inputs/auth-inputs.compo
     MaterialModule,
     AuthInputsComponent,
     PrimeNgModule,
+    NgxDropzoneModule ,
+    
   ],
 })
 export class SharedModule {}
