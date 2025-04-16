@@ -18,23 +18,7 @@ export class ListFacilitiesComponent {
   isLoading: boolean = false;
   error: string = '';
   ref!: DynamicDialogRef;
-  // items = [
-  //   {
-  //     label: 'Edit',
-  //     icon: 'pi pi-pencil',
-  //     // command: () =>this.editFacility(facility.id),
-  //   },
-  //   {
-  //     label: 'View',
-  //     icon: 'pi pi-eye',
-  //     command: (event: any) => this.viewFacility(event.item.data),
-  //   },
-  //   {
-  //     label: 'Delete',
-  //     icon: 'pi pi-trash',
-  //     // command: () => this.openDeleteDialog(facility),
-  //   },
-  // ];
+
   constructor(
     private facilitiesService: FacilitiesService,
     private toastr: ToastrService,
@@ -95,7 +79,6 @@ export class ListFacilitiesComponent {
 
     this.ref.onClose.subscribe((result) => {
       if (result) {
-        // بعد الإضافة الناجحة يتم عمل refresh
         this.getAllFacilities();
       }
     });
