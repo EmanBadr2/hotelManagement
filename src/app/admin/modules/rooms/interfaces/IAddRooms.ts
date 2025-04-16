@@ -1,4 +1,4 @@
-export interface IAddRoom
+export interface IAddRoomRes
 {
   success: boolean,
   message: string,
@@ -13,6 +13,7 @@ export interface IAddRoomData{
     price: number,
     capacity: number,
     discount: number,
+
     facilities: string[] |number[],   // id arr
     createdBy:  string|number,   // admin id
     images: string[],
