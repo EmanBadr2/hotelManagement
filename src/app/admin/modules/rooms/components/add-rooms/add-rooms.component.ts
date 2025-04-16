@@ -8,7 +8,6 @@ import { ToastrService } from 'ngx-toastr';
 
 
 
-
 @Component({
   selector: 'app-add-rooms',
   templateUrl: './add-rooms.component.html',
@@ -17,13 +16,23 @@ import { ToastrService } from 'ngx-toastr';
 
 export class AddRoomsComponent implements OnInit {
 
+  activeRoomID:null|number =0 ;
+  isEditMode : boolean = false;
+  isViewMode : boolean = false ;
+  isFormDisabled: any ;
   addRoomForm !: FormGroup
   files: File[] = [];
+  private _ActivatedRoute: any;
   constructor(private _RoomsService:RoomsService ,
     private fb:FormBuilder ,
     private _Router:Router ,
     private _ToastrService:ToastrService
-  ){}
+  ) {
+    this.activeRoomID =Number(this._ActivatedRoute.snapshot.paramMap.get('_id') )
+    this.isFormDisabled = this._ActivatedRoute.snapshot.paramMap.get('formDisabled')
+ }
+
+
 
   ngOnInit(): void {
     this.addRoomForm = this.fb.group({
@@ -36,6 +45,18 @@ export class AddRoomsComponent implements OnInit {
       images: [null]                   // Placeholder for image files
     })
 
+         // pass Data to Form (View & Edit)
+         if(this.activeRoomID !== null || this.activeRoomID !== undefined){
+          //call get room by id
+          // this.onGettingRecipeById(this.activeRoomID)
+        }
+        // View Mode
+        if( this.isFormDisabled == 'true' ){ this.isViewMode= true }
+        if(this.isViewMode){
+           this.addRoomForm.disable()
+           }
+        // Edit Mode
+        if(this.activeRoomID && this.isFormDisabled == null){ this.isEditMode= true }
   }
 
    // Getter for easy access

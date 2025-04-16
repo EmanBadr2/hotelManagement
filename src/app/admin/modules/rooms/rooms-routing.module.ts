@@ -8,6 +8,8 @@ const routes: Routes = [
   { path: '', redirectTo :'rooms' , pathMatch : 'full'} ,
   { path: 'rooms', component: ListRoomsComponent } ,
   { path: 'add-rooms', component: AddRoomsComponent } ,
+  { path: 'add-rooms/:id', component: AddRoomsComponent } ,
+  { path: 'add-rooms/:id/:formDisabled', component: AddRoomsComponent } ,
 
 ];
 
