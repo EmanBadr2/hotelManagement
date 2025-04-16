@@ -1,5 +1,8 @@
+import { SharedService } from './../shared.service';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 export interface FormFieldConfig {
@@ -21,10 +24,17 @@ export class DialogAddComponent implements OnInit {
   fb = inject(FormBuilder);
   config = inject(DynamicDialogConfig);
   ref = inject(DynamicDialogRef);
+  router = inject(Router);
+  SharedService=inject(SharedService);
+  toastr=inject(ToastrService)
+  isFacilities:boolean=false;
 
   ngOnInit(): void {
     this.fields = this.config.data?.fields || [];
     this.title = this.config.data?.header || '';
+    if(this.router.url.includes('facilities')){
+      this.isFacilities=true;
+    }
 
     if (this.fields.length === 0) {
       throw new Error('Fields config is required');
@@ -34,7 +44,6 @@ export class DialogAddComponent implements OnInit {
     for (const field of this.fields) {
       formGroupConfig[field.name] = [''];
     }
-    console.log(this.fields);
     this.addForm = this.fb.group(formGroupConfig);
   }
 
@@ -43,6 +52,15 @@ export class DialogAddComponent implements OnInit {
   }
 
   save() {
-    this.ref.close(this.addForm.value);
+    if(this.isFacilities){
+      this.SharedService.addFacilities(this.addForm.value).subscribe({
+        next:()=>{
+          this.toastr.success('New Facilities Added Success')
+          setTimeout(()=>{
+            this.closeDialog()
+          },3000)
+        }
+      })
+    }
   }
 }
