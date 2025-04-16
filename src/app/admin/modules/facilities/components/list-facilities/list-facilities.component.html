@@ -9,7 +9,7 @@
                         </span>
                     </p>
                     <button
-                        class="font-bold font-inter text-[16px] leading-[19.36px] tracking-[0px] text-center bg-[rgba(32,63,199,1)] rounded-[8px] text-white px-4 py-3">Add
+                        class="font-bold font-inter text-[16px] leading-[19.36px] tracking-[0px] text-center bg-primaryDark rounded-[8px] text-white px-4 py-3">Add
                         New facility</button>
                 </div>
             </div>
@@ -19,7 +19,7 @@
     <div *ngIf="facilitiesList.length === 0" class="flex items-center justify-center my-3">
         <img src="../../../../../../assets/images/no-data.png" alt="No Data Available" class=" no-data-image">
     </div>
-    <table *ngIf="facilitiesList.length > 0" class="table w-full table-striped">
+    <table *ngIf="facilitiesList.length > 0" class="custom-table">
         <thead>
             <th>Name</th>
             <th>Created by:</th>
