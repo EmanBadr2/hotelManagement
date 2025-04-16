@@ -11,8 +11,26 @@ import { IRooms } from '../../interfaces/IRooms';
 export class ListRoomsComponent {
   page :number=1
   size:number=10
-  allRooms :IRooms[] =[]
+  roomsList :IRooms[] =[]
   totalNumOfRooms !:number
+
+  items = [
+    {
+      label: 'Edit',
+      icon: 'pi pi-pencil',
+      // command: () =>this.editFacility(facility.id),
+    },
+    {
+      label: 'View',
+      icon: 'pi pi-eye',
+      // command: () => this.viewFacility(facility.id),
+    },
+    {
+      label: 'Delete',
+      icon: 'pi pi-trash',
+      // command: () => this.openDeleteDialog(facility),
+    },
+  ];
 
   constructor(private _RoomsService:RoomsService){
     this.onGettingAllRooms()
@@ -23,7 +41,7 @@ export class ListRoomsComponent {
     this._RoomsService.onGettingAllRooms( params ).subscribe({
       next :(res) =>{
         console.log(res);
-        this.allRooms=res.data.rooms
+        this.roomsList=res.data.rooms
         this.totalNumOfRooms=res.data.totalCount
       },
       error :(err) =>{

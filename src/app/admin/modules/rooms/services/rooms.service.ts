@@ -21,7 +21,8 @@ export class RoomsService {
     return this._HttpClient.post<IAddRoomRes>(`https://upskilling-egypt.com:3000/api/v0/admin/rooms` , data)
   }
 
-  viewRoom(id : number |string):Observable<IRoomsRes>{
+
+  viewRoomDetails(id : number |string):Observable<IRoomsRes>{
     return this._HttpClient.get<IRoomsRes>(`https://upskilling-egypt.com:3000/api/v0/admin/rooms${id}`)
   }
 
