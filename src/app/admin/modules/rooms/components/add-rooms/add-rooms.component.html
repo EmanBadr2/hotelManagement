@@ -6,119 +6,10 @@
 
   </div>
   <form
-    class=""
+    class="my-16"
     [formGroup]="addRoomForm"
-    (ngSubmit)="onSubmit(addRoomForm)"
+    (ngSubmit)="onSubmit()"
   >
-
-
-    <!-- Room Number -->
-    <div class="my-4 ">
-      <app-auth-inputs
-        formControlName="roomNumber"
-        placeholder="Room Number"
-        type="Number"
-        id="roomNumber"
-      ></app-auth-inputs>
-      <div
-        *ngIf="
-          addRoomForm.get('roomNumber')?.touched &&
-          addRoomForm.get('roomNumber')?.errors
-        "
-        class="text-red-500 text-sm mt-1"
-      >
-        Room Number is required.
-      </div>
-    </div>
-
-    <!-- Price   capacity -->
-    <div class="grid grid-cols-2 gap-4 my-4">
-      <div>
-        <app-auth-inputs
-          formControlName="price"
-          placeholder="Price"
-          type="Number"
-          id="price"
-        ></app-auth-inputs>
-        <div
-          *ngIf="
-            addRoomForm.get('price')?.touched &&
-            addRoomForm.get('price')?.errors
-          "
-          class="text-red-500 text-sm mt-1"
-        >
-          Price is required.
-        </div>
-      </div>
-
-      <div>
-        <app-auth-inputs
-          formControlName="capacity"
-          placeholder="capacity"
-          type="Number"
-          id="capacity"
-        ></app-auth-inputs>
-        <div
-          *ngIf="
-            addRoomForm.get('capacity')?.touched &&
-            addRoomForm.get('capacity')?.errors
-          "
-          class="text-red-500 text-sm mt-1"
-        >
-          capacity is required.
-        </div>
-      </div>
-    </div>
-
-     <!-- Discount + facilities -->
-     <div class="grid grid-cols-2 gap-4 my-4">
-      <div>
-        <app-auth-inputs
-          formControlName="discount"
-          placeholder="Discount"
-          id="discount"
-          type="Number"
-        ></app-auth-inputs>
-        <div
-          *ngIf="
-            addRoomForm.get('discount')?.touched &&
-            addRoomForm.get('discount')?.errors
-          "
-          class="text-red-500 text-sm mt-1"
-        >
-          Discount is required.
-        </div>
-      </div>
-
-      <div>
-        <!-- <app-auth-inputs
-          formControlName="facilities"
-          placeholder="facilities"
-          id="facilities"
-        ></app-auth-inputs> -->
-         <!-- FormArray -->
-  <div formArrayName="facilities">
-    <label>facilities:</label>
-    <div *ngFor="let item of facilities.controls; let i = index">
-      <input [formControlName]="i" placeholder="Item {{ i + 1 }}" />
-      <button type="button" (click)="removeFacilities(i)">Remove</button>
-    </div>
-    <button type="button" (click)="addFacilities()">Add Item</button>
-  </div>
-
-        <div
-          *ngIf="
-            addRoomForm.get('facilities')?.touched &&
-            addRoomForm.get('facilities')?.errors
-          "
-          class="text-red-500 text-sm mt-1"
-        >
-          facilities is required.
-        </div>
-      </div>
-    </div>
-
-
     <ngx-dropzone (change)="onSelect($event)">
       <ngx-dropzone-label>Drop Your Photo !</ngx-dropzone-label>
       <ngx-dropzone-preview
@@ -132,27 +23,76 @@
       </ngx-dropzone-preview>
     </ngx-dropzone>
 
-
-
-    <div class="flex justify-end w-full space-y-2 mt-2">
-      <div class="flex space-x-2  w-1/2 justify-end">
-           <button
-        pButton
-        type="submit"
-        label="Save"
-        class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-all"
-        [disabled]="addRoomForm.invalid"
-      ></button>
-
-      <button
-      pButton
-      type="button"
-      label="Cancel"
-      class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-all"
-      routerLink="/admin/rooms/rooms"
-    ></button>
+    <!-- User Name -->
+    <div class="my-4 ">
+      <app-auth-inputs
+        formControlName="roomNumber"
+        label="User Name"
+        placeholder="Please type here"
+        id="roomNumber"
+      ></app-auth-inputs>
+      <div
+        *ngIf="
+          addRoomForm.get('roomNumber')?.touched &&
+          addRoomForm.get('roomNumber')?.errors
+        "
+        class="text-red-500 text-sm mt-1"
+      >
+        Room Number is required.
       </div>
     </div>
 
+    <!-- Phone Number + Country -->
+    <div class="grid grid-cols-2 gap-4 my-4">
+      <div>
+        <app-auth-inputs
+          formControlName="price"
+          label="Phone Number"
+          placeholder="Please type here"
+          id="price"
+        ></app-auth-inputs>
+        <div
+          *ngIf="
+            addRoomForm.get('price')?.touched &&
+            addRoomForm.get('price')?.errors
+          "
+          class="text-red-500 text-sm mt-1"
+        >
+          Phone Number is required.
+        </div>
+      </div>
+
+      <div>
+        <app-auth-inputs
+          formControlName="capacity"
+          label="capacity"
+          placeholder="Please type here"
+          id="capacity"
+        ></app-auth-inputs>
+        <div
+          *ngIf="
+            addRoomForm.get('capacity')?.touched &&
+            addRoomForm.get('capacity')?.errors
+          "
+          class="text-red-500 text-sm mt-1"
+        >
+          Country is required.
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <div class="mt-6">
+      <button
+        pButton
+        type="submit"
+        label="Sign up"
+        class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-all"
+        [disabled]="addRoomForm.invalid"
+      ></button>
+    </div>
   </form>
 </div>

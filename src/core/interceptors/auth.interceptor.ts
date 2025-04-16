@@ -25,8 +25,8 @@ export class AuthInterceptor implements HttpInterceptor {
           // Authorization: `Bearer ${this.token}`   (my token already start with `Bearer` )
         }
       });
-      // console.log(myRequest.url);
-      // console.log(request.url);
+      console.log(myRequest.url);
+      console.log(request.url);
       return next.handle(myRequest);
     }
 
