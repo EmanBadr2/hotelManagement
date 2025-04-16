@@ -16,4 +16,9 @@ export class FacilitiesService {
     const headers = new HttpHeaders().set('Authorization', `${token}`);
     return this._HttpClient.get<FacilitiesApiResponse>(`${this.baseUrl}admin/room-facilities`, { headers });
   }
+
+  deleteFacility(id: string) {
+    return this._HttpClient.delete(`https://upskilling-egypt.com:3000/api/v0/admin/room-facilities/${id}`);
+  }
+  
 }

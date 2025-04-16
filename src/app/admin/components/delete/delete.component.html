@@ -1,1 +1,10 @@
-<p>delete works!</p>
+<p-dialog header="Delete Item" [(visible)]="visible" [modal]="true" [closable]="false">
+    <img src="../../../../assets/img/delete.png" alt="">
+    <p>Are you sure you want to delete <strong>{{ itemName }}</strong>?</p>
+
+    <ng-template pTemplate="footer">
+        <button pButton label="Cancel" (click)="cancelDelete()" class="p-button-text"></button>
+        <button pButton label="Delete" (click)="confirmDelete()" class="p-button-danger"></button>
+    </ng-template>
+</p-dialog>
+  

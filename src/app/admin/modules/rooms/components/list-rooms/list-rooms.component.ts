@@ -20,16 +20,6 @@ export class ListRoomsComponent {
 
   onGettingAllRooms():void{
     const params :any = { page :this.page , size:this.size }
-<<<<<<< HEAD
-    // this._RoomsService.onGettingAllRooms( params ).subscribe({
-    //   next :(res) =>{
-    //     console.log(res);
-    //   },
-    //   error :(err :any) =>{
-    //     console.log(err);
-    //   },
-    // })
-=======
     this._RoomsService.onGettingAllRooms( params ).subscribe({
       next :(res) =>{
         console.log(res);
@@ -40,6 +30,5 @@ export class ListRoomsComponent {
         console.log(err);
       },
     })
->>>>>>> main
   }
 }
