@@ -4,6 +4,13 @@ import { HttpClientModule } from  '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
 import { PrimeNgModule } from '../prime-ng/prime-ng.module';
+import { MenuModule } from 'primeng/menu';
+import { ButtonModule } from 'primeng/button'; 
+import { SplitButtonModule } from 'primeng/splitbutton';
+
+
+
+
 import { AuthInputsComponent } from '../components/auth-inputs/auth-inputs.component';
 
 @NgModule({
@@ -15,6 +22,9 @@ import { AuthInputsComponent } from '../components/auth-inputs/auth-inputs.compo
     ReactiveFormsModule,
     MaterialModule,
     PrimeNgModule,
+    MenuModule,
+    ButtonModule,
+    SplitButtonModule
   ],
   exports: [
     CommonModule,
@@ -24,6 +34,9 @@ import { AuthInputsComponent } from '../components/auth-inputs/auth-inputs.compo
     MaterialModule,
     AuthInputsComponent,
     PrimeNgModule,
+    MenuModule,
+    ButtonModule,
+    SplitButtonModule
   ],
 })
 export class SharedModule {}
