@@ -6,9 +6,8 @@ import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DeleteComponent } from './components/delete/delete.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SharedModule } from '../shared/shared/shared.module';
-
+import { DialogAddComponent } from './components/shared/dialog-add-edit/dialog-add.component';
 
 @NgModule({
   declarations: [
@@ -16,12 +15,9 @@ import { SharedModule } from '../shared/shared/shared.module';
     NavbarComponent,
     SidebarComponent,
     DeleteComponent,
-    DashboardComponent
+    DialogAddComponent,
   ],
-  imports: [
-    CommonModule,
-    AdminRoutingModule,
-    SharedModule
-  ]
+  imports: [CommonModule, AdminRoutingModule, SharedModule],
+  exports: [DialogAddComponent],
 })
-export class AdminModule { }
+export class AdminModule {}
