@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgxDropzoneModule } from 'ngx-dropzone';
+
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -15,6 +15,6 @@ import { SharedModule } from '../shared/shared/shared.module';
     ForgetPasswordComponent,
     ResetPasswordComponent,
   ],
-  imports: [CommonModule, AuthRoutingModule, SharedModule, NgxDropzoneModule],
+  imports: [CommonModule, AuthRoutingModule, SharedModule,],
 })
 export class AuthModule {}

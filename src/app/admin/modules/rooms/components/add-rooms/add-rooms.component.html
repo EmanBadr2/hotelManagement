@@ -1,1 +1,98 @@
-<p>add-rooms works!</p>
+
+
+<div class="register__form my-20 px-5">
+  <div class="register__form__head">
+    <h1 class="my-4">Add Room</h1>
+
+  </div>
+  <form
+    class="my-16"
+    [formGroup]="addRoomForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <ngx-dropzone (change)="onSelect($event)">
+      <ngx-dropzone-label>Drop Your Photo !</ngx-dropzone-label>
+      <ngx-dropzone-preview
+        *ngFor="let f of files"
+        [removable]="true"
+        (removed)="onRemove(f)"
+      >
+        <ngx-dropzone-label
+          >{{ f.name }} ({{ f.type }})</ngx-dropzone-label
+        >
+      </ngx-dropzone-preview>
+    </ngx-dropzone>
+
+    <!-- User Name -->
+    <div class="my-4 ">
+      <app-auth-inputs
+        formControlName="roomNumber"
+        label="User Name"
+        placeholder="Please type here"
+        id="roomNumber"
+      ></app-auth-inputs>
+      <div
+        *ngIf="
+          addRoomForm.get('roomNumber')?.touched &&
+          addRoomForm.get('roomNumber')?.errors
+        "
+        class="text-red-500 text-sm mt-1"
+      >
+        Room Number is required.
+      </div>
+    </div>
+
+    <!-- Phone Number + Country -->
+    <div class="grid grid-cols-2 gap-4 my-4">
+      <div>
+        <app-auth-inputs
+          formControlName="price"
+          label="Phone Number"
+          placeholder="Please type here"
+          id="price"
+        ></app-auth-inputs>
+        <div
+          *ngIf="
+            addRoomForm.get('price')?.touched &&
+            addRoomForm.get('price')?.errors
+          "
+          class="text-red-500 text-sm mt-1"
+        >
+          Phone Number is required.
+        </div>
+      </div>
+
+      <div>
+        <app-auth-inputs
+          formControlName="capacity"
+          label="capacity"
+          placeholder="Please type here"
+          id="capacity"
+        ></app-auth-inputs>
+        <div
+          *ngIf="
+            addRoomForm.get('capacity')?.touched &&
+            addRoomForm.get('capacity')?.errors
+          "
+          class="text-red-500 text-sm mt-1"
+        >
+          Country is required.
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <div class="mt-6">
+      <button
+        pButton
+        type="submit"
+        label="Sign up"
+        class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-all"
+        [disabled]="addRoomForm.invalid"
+      ></button>
+    </div>
+  </form>
+</div>
