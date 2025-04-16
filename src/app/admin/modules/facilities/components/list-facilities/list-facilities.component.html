@@ -10,7 +10,7 @@
             </span>
           </p>
           <button
-          (click)="openAddDialog()"
+            (click)="openAddDialog()"
             class="font-bold font-inter text-[16px] leading-[19.36px] tracking-[0px] text-center bg-[rgba(32,63,199,1)] rounded-[8px] text-white px-4 py-3"
           >
             Add New facility
@@ -41,7 +41,15 @@
         <td>{{ facility.name }}</td>
         <td>{{ facility.createdBy.userName }}</td>
         <td>
-          <p-splitButton [model]="items"></p-splitButton>
+          <button
+            type="button"
+            (click)="menu.toggle($event)"
+            class="text-black rounded-[8px] font-semibold px-4 py-2"
+          >
+            <i class="pi pi-ellipsis-h"></i>
+          </button>
+
+          <p-menu #menu [popup]="true" [model]="getActions(facility)"></p-menu>
         </td>
       </tr>
     </tbody>

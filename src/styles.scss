@@ -20,15 +20,17 @@ $hotelManagement-accent: mat.define-palette(
 );
 $hotelManagement-warn: mat.define-palette(mat.$red-palette);
 $hotelManagement-theme: mat.define-light-theme(
-    (
-      color: (
-        primary: $hotelManagement-primary,
-        accent: $hotelManagement-accent,
-        warn: $hotelManagement-warn,
-      ),
-    )
-  );
-  @include mat.all-component-themes($hotelManagement-theme);
+  (
+    color: (
+      primary: $hotelManagement-primary,
+      accent: $hotelManagement-accent,
+      warn: $hotelManagement-warn,
+    ),
+  )
+);
+@include mat.all-component-themes($hotelManagement-theme);
+@import "primeicons/primeicons.css";
+
 
 // =======================
 // TailwindCSS

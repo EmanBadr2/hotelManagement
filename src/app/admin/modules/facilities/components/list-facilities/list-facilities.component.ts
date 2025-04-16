@@ -18,7 +18,23 @@ export class ListFacilitiesComponent {
   isLoading: boolean = false;
   error: string = '';
   ref!: DynamicDialogRef;
-
+  // items = [
+  //   {
+  //     label: 'Edit',
+  //     icon: 'pi pi-pencil',
+  //     // command: () =>this.editFacility(facility.id),
+  //   },
+  //   {
+  //     label: 'View',
+  //     icon: 'pi pi-eye',
+  //     command: (event: any) => this.viewFacility(event.item.data),
+  //   },
+  //   {
+  //     label: 'Delete',
+  //     icon: 'pi pi-trash',
+  //     // command: () => this.openDeleteDialog(facility),
+  //   },
+  // ];
   constructor(
     private facilitiesService: FacilitiesService,
     private toastr: ToastrService,
@@ -27,23 +43,47 @@ export class ListFacilitiesComponent {
   ngOnInit(): void {
     this.getAllFacilities();
   }
-  items = [
-    {
-      label: 'Edit',
-      icon: 'pi pi-pencil',
-      // command: () =>this.editFacility(facility.id),
-    },
-    {
-      label: 'View',
-      icon: 'pi pi-eye',
-      // command: () => this.viewFacility(facility.id),
-    },
-    {
-      label: 'Delete',
-      icon: 'pi pi-trash',
-      // command: () => this.openDeleteDialog(facility),
-    },
-  ];
+  getActions(facility: Facility) {
+    return [
+      {
+        label: 'Edit',
+        icon: 'pi pi-pencil',
+        command: () => this.editFacility(facility._id), // if you implement edit
+      },
+      {
+        label: 'View',
+        icon: 'pi pi-eye',
+        command: () => this.viewFacility(facility._id),
+      },
+      {
+        label: 'Delete',
+        icon: 'pi pi-trash',
+        command: () => this.openDeleteDialog(facility), // if you implement delete
+      },
+    ];
+  }
+  editFacility(id: string) {
+    this.ref = this.dialogService.open(DialogAddComponent, {
+      header: 'View Facility',
+      width: '30vw',
+      data: {
+        id,
+        isEdit: true,
+        fields: [{ name: 'name', placeholder: 'Facility name', type: 'text' }],
+      },
+    });
+    this.ref.onClose.subscribe((result) => {
+      if (result) {
+        // بعد الإضافة الناجحة يتم عمل refresh
+        this.getAllFacilities();
+      }
+    });
+  }
+
+  openDeleteDialog(facility: Facility) {
+    console.log('Delete facility:', facility);
+  }
+
   openAddDialog(): void {
     this.ref = this.dialogService.open(DialogAddComponent, {
       header: 'Add Facility',
@@ -60,6 +100,18 @@ export class ListFacilitiesComponent {
       }
     });
   }
+  viewFacility(id: any): void {
+    this.ref = this.dialogService.open(DialogAddComponent, {
+      header: 'View Facility',
+      width: '30vw',
+      data: {
+        id,
+        isView: true,
+        fields: [{ name: 'name', placeholder: 'Facility name', type: 'text' }],
+      },
+    });
+  }
+
   getAllFacilities(): void {
     this.isLoading = true;
     this.facilitiesService.getFacilities().subscribe({
