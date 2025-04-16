@@ -19,15 +19,16 @@ $hotelManagement-accent: mat.define-palette(
   A400
 );
 $hotelManagement-warn: mat.define-palette(mat.$red-palette);
-$hotelManagement-theme: mat.define-light-theme((
-  color: (
-    primary: $hotelManagement-primary,
-    accent: $hotelManagement-accent,
-    warn: $hotelManagement-warn,
-  )
-);
-
-@include mat.all-component-themes($hotelManagement-theme);
+$hotelManagement-theme: mat.define-light-theme(
+    (
+      color: (
+        primary: $hotelManagement-primary,
+        accent: $hotelManagement-accent,
+        warn: $hotelManagement-warn,
+      ),
+    )
+  );
+  @include mat.all-component-themes($hotelManagement-theme);
 
 // =======================
 // TailwindCSS

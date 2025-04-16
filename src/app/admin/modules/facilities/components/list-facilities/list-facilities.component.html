@@ -1,39 +1,49 @@
 <section class="px-3">
-    <div class="container">
-        <div class="flex flex-row">
-            <div class="col-md-11">
-                <div class="flex items-center justify-between my-3">
-                    <p class="font-medium text-[20px] leading-[100%] tracking-[0%]">facilities Table Details <br>
-                        <span class="font-normal text-[14px] leading-[100%] tracking-[0%]">
-                            You can check all details
-                        </span>
-                    </p>
-                    <button
-                        class="font-bold font-inter text-[16px] leading-[19.36px] tracking-[0px] text-center bg-[rgba(32,63,199,1)] rounded-[8px] text-white px-4 py-3">Add
-                        New facility</button>
-                </div>
-            </div>
+  <div class="container">
+    <div class="flex flex-row">
+      <div class="col-md-11">
+        <div class="flex items-center justify-between my-3">
+          <p class="font-medium text-[20px] leading-[100%] tracking-[0%]">
+            facilities Table Details <br />
+            <span class="font-normal text-[14px] leading-[100%] tracking-[0%]">
+              You can check all details
+            </span>
+          </p>
+          <button
+          (click)="openAddDialog()"
+            class="font-bold font-inter text-[16px] leading-[19.36px] tracking-[0px] text-center bg-[rgba(32,63,199,1)] rounded-[8px] text-white px-4 py-3"
+          >
+            Add New facility
+          </button>
         </div>
+      </div>
     </div>
+  </div>
 
-    <div *ngIf="facilitiesList.length === 0" class="flex items-center justify-center my-3">
-        <img src="../../../../../../assets/images/no-data.png" alt="No Data Available" class=" no-data-image">
-    </div>
-    <table *ngIf="facilitiesList.length > 0" class="table w-full table-striped">
-        <thead>
-            <th>Name</th>
-            <th>Created by:</th>
-            <th>Actions</th>
-        </thead>
-        <tbody>
-
-            <tr *ngFor="let facility of facilitiesList">
-                <td>{{ facility.name }}</td>
-                <td>{{ facility.createdBy.userName }}</td>
-                <td>
-                    <p-splitButton [model]="items"></p-splitButton>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+  <div
+    *ngIf="facilitiesList.length === 0"
+    class="flex items-center justify-center my-3"
+  >
+    <img
+      src="../../../../../../assets/images/no-data.png"
+      alt="No Data Available"
+      class="no-data-image"
+    />
+  </div>
+  <table *ngIf="facilitiesList.length > 0" class="table w-full table-striped">
+    <thead>
+      <th>Name</th>
+      <th>Created by:</th>
+      <th>Actions</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let facility of facilitiesList">
+        <td>{{ facility.name }}</td>
+        <td>{{ facility.createdBy.userName }}</td>
+        <td>
+          <p-splitButton [model]="items"></p-splitButton>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </section>

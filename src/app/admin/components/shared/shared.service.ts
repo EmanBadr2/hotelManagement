@@ -7,10 +7,12 @@ import { IFacilities } from '../../models/facilities';
   providedIn: 'root'
 })
 export class SharedService {
+  private baseUrl = 'https://upskilling-egypt.com:3000/api/v0/';
+
 
 constructor(private _http:HttpClient) { }
 addFacilities(name:string):Observable<IFacilities>{
-  return this._http.post<IFacilities>(`api/v0/admin/room-facilities`,name);
+  return this._http.post<IFacilities>(`${this.baseUrl}admin/room-facilities`,name);
 }
 
 }
