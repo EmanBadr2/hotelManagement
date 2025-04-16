@@ -5,6 +5,8 @@ import { RoomsRoutingModule } from './rooms-routing.module';
 
 import { ListRoomsComponent } from './components/list-rooms/list-rooms.component';
 import { AddRoomsComponent } from './components/add-rooms/add-rooms.component';
+import { SharedModule } from 'src/app/shared/shared/shared.module';
+
 
 
 @NgModule({
@@ -14,7 +16,8 @@ import { AddRoomsComponent } from './components/add-rooms/add-rooms.component';
   ],
   imports: [
     CommonModule,
-    RoomsRoutingModule
+    RoomsRoutingModule ,
+    SharedModule
   ]
 })
 export class RoomsModule { }
