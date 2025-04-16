@@ -19,14 +19,11 @@ $hotelManagement-accent: mat.define-palette(
   A400
 );
 $hotelManagement-warn: mat.define-palette(mat.$red-palette);
-
-$hotelManagement-theme: mat.define-light-theme(
-  (
-    color: (
-      primary: $hotelManagement-primary,
-      accent: $hotelManagement-accent,
-      warn: $hotelManagement-warn,
-    ),
+$hotelManagement-theme: mat.define-light-theme((
+  color: (
+    primary: $hotelManagement-primary,
+    accent: $hotelManagement-accent,
+    warn: $hotelManagement-warn,
   )
 );
 

@@ -4,6 +4,7 @@ import { FacilitiesRoutingModule } from './facilities-routing.module';
 
 import { AddEditComponent } from './components/add-edit/add-edit.component';
 import { ListFacilitiesComponent } from './components/list-facilities/list-facilities.component';
+import { SharedModule } from 'src/app/shared/shared/shared.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { ListFacilitiesComponent } from './components/list-facilities/list-facil
   ],
   imports: [
     CommonModule,
-    FacilitiesRoutingModule
+    FacilitiesRoutingModule,
+    SharedModule
   ]
 })
 export class FacilitiesModule { }
