@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RoomsService } from '../../services/rooms.service';
 import { IRooms } from '../../interfaces/IRooms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,10 +12,30 @@ import { IRooms } from '../../interfaces/IRooms';
 export class ListRoomsComponent {
   page :number=1
   size:number=10
-  allRooms :IRooms[] =[]
+  roomsList :IRooms[] =[]
   totalNumOfRooms !:number
 
-  constructor(private _RoomsService:RoomsService){
+  items = [
+    {
+      label: 'Edit',
+      icon: 'pi pi-pencil',
+      // command: () =>this.editFacility(facility.id),
+    },
+    {
+      label: 'View',
+      icon: 'pi pi-eye',
+      command: () => this._Router.navigate(['/admin/rooms/add-rooms/:id']),
+    },
+    {
+      label: 'Delete',
+      icon: 'pi pi-trash',
+      // command: () => this.openDeleteDialog(facility),
+    },
+  ];
+
+  constructor(private _RoomsService:RoomsService ,
+    private _Router:Router
+  ){
     this.onGettingAllRooms()
   }
 
@@ -23,7 +44,7 @@ export class ListRoomsComponent {
     this._RoomsService.onGettingAllRooms( params ).subscribe({
       next :(res) =>{
         console.log(res);
-        this.allRooms=res.data.rooms
+        this.roomsList=res.data.rooms
         this.totalNumOfRooms=res.data.totalCount
       },
       error :(err) =>{

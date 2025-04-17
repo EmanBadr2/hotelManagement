@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FacilitiesApiResponse } from '../interfaces2/facilities';
+import { FacilitiesApiResponse } from '../interfaces/facilities';
 import { Observable } from 'rxjs';
 
 @Injectable({
