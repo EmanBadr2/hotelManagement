@@ -15,29 +15,13 @@ export class ListRoomsComponent {
   roomsList :IRooms[] =[]
   totalNumOfRooms !:number
 
-  items = [
-    {
-      label: 'Edit',
-      icon: 'pi pi-pencil',
-      // command: () =>this.editFacility(facility.id),
-    },
-    {
-      label: 'View',
-      icon: 'pi pi-eye',
-      command: () => this._Router.navigate(['/admin/rooms/add-rooms/:id']),
-    },
-    {
-      label: 'Delete',
-      icon: 'pi pi-trash',
-      // command: () => this.openDeleteDialog(facility),
-    },
-  ];
 
   constructor(private _RoomsService:RoomsService ,
     private _Router:Router
   ){
     this.onGettingAllRooms()
   }
+
 
   onGettingAllRooms():void{
     const params :any = { page :this.page , size:this.size }
@@ -52,4 +36,29 @@ export class ListRoomsComponent {
       },
     })
   }
+
+
+  getMenuItems(item: any): any[] {
+    return [
+      {
+        label: 'View',
+        icon: 'pi pi-eye',
+        command: () => {this._Router.navigate(['/admin/rooms/add-rooms/', item], {
+          queryParams: { isFormDisabled: true } })
+        },
+      },
+      {
+        label: 'Edit',
+        icon: 'pi pi-pencil',
+        command: () => this._Router.navigate(['/admin/rooms/add-rooms/', item])
+      },
+      {
+        label: 'Delete',
+        icon: 'pi pi-trash',
+        command: () => this._Router.navigate(['/view', item]),
+      },
+    ];
+  }
+
+
 }

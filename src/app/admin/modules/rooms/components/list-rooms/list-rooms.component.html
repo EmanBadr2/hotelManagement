@@ -37,10 +37,20 @@
               <td>{{ room.price}}</td>
               <td>{{ room.discount}}</td>
               <td>{{ room.createdAt}}</td>
-
               <td>
-                  <p-splitButton [model]="items"></p-splitButton>
+                <p-menu #menu [popup]="true" [model]="getMenuItems(room._id)"></p-menu>
+                <button
+                  pButton
+                  type="button"
+                  icon="pi pi-ellipsis-v"
+                  class="p-button-text"
+                  (click)="menu.toggle($event)"
+                ></button>
               </td>
+
+              <!-- <td>
+                  <p-splitButton  [model]="items"></p-splitButton>
+              </td> -->
           </tr>
       </tbody>
   </table>

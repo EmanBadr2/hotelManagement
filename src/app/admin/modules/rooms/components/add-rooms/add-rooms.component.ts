@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RoomsService } from '../../services/rooms.service';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -14,12 +14,13 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./add-rooms.component.scss']
 })
 
-export class AddRoomsComponent {
+export class AddRoomsComponent  implements OnInit{
 
-  activeRoomID:number|string =0 ;
+  activeRoomID!:any ;
   isEditMode : boolean = false;
   isViewMode : boolean = false ;
   isFormDisabled: any ;
+
   addRoomForm !: FormGroup
   files: File[] = [];
 
@@ -28,32 +29,31 @@ export class AddRoomsComponent {
     private _Router:Router ,
     private _ActivatedRoute:ActivatedRoute ,
     private _ToastrService:ToastrService
-  ) {
-    console.log(this._ActivatedRoute.snapshot.paramMap.get('_id')  );
+  ) { }
 
-    this.activeRoomID =Number(this._ActivatedRoute.snapshot.paramMap.get('_id') )
-    this.isFormDisabled = this._ActivatedRoute.snapshot.paramMap.get('formDisabled')
+ ngOnInit(): void {
+  this.activeRoomID =this._ActivatedRoute.snapshot.paramMap.get('id')
+  this.isFormDisabled = this._ActivatedRoute.snapshot.queryParamMap.get('isFormDisabled')
+  // console.log( this.activeRoomID , this.isFormDisabled);
+     if(this.activeRoomID){ //  pass Data to Form (View & Edit)
+     //  get rooms by id
+      this.isEditMode= true
+      this.isViewMode= true
+    if( this.isFormDisabled == 'true' || true){
+      // View Mode
+
+       this.isEditMode= false
+       this.addRoomForm.disable()
+      }
+
+   }
+   console.log('edit' , this.isEditMode);
+   console.log('view' , this.isViewMode);
+
+
+
  }
 
-
-
-
-  onSubmit():void{
-    console.log('ll');
-
-         // pass Data to Form (View & Edit)
-         if(this.activeRoomID !== null || this.activeRoomID !== undefined){
-          //call get room by id
-          // this.onGettingRecipeById(this.activeRoomID)
-        }
-        // View Mode
-        if( this.isFormDisabled == 'true' ){ this.isViewMode= true }
-        if(this.isViewMode){
-           this.addRoomForm.disable()
-           }
-        // Edit Mode
-        if(this.activeRoomID && this.isFormDisabled == null){ this.isEditMode= true }
-  }
 // -----------
    // Getter for easy access
    get facilities(): FormArray {
@@ -97,10 +97,11 @@ export class AddRoomsComponent {
     });
     // --------------------------
 
-
-    if(!this.activeRoomID && !this.isEditMode){
+    if(!this.activeRoomID ){
+      //call Add
       this.addRoom(formData)
     }else{
+      // call    Edit/Updata
       this.onUpdateRoom(this.activeRoomID , formData)
     }
 
@@ -175,25 +176,5 @@ export class AddRoomsComponent {
 
 
 
-
-
-
-  // addRoomForm : FormGroup = new FormGroup({
-  //   roomNumber: new FormControl('' , [Validators.required ]),
-  //   price: new FormControl('' , [Validators.required ]),
-  //   discount: new FormControl('' , [Validators.required ]),
-  //   capacity:new FormControl('' , [Validators.required ]),
-  //   facilities:new FormControl('' , [Validators.required ]),
-  // })
-
-
-  // onSelect(event: { addedFiles: any; }) {
-  //   console.log(event);
-  //   this.files.push(...event.addedFiles);
-  // }
-  // onRemove(event: File) {
-  //   console.log(event);
-  //   this.files.splice(this.files.indexOf(event), 1);
-  // }
 
 }
