@@ -7,7 +7,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DeleteComponent } from './components/delete/delete.component';
 import { SharedModule } from '../shared/shared/shared.module';
 import { DialogAddComponent } from './components/shared/dialog-add-edit/dialog-add.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+// import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -16,7 +16,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     NavbarComponent,
     SidebarComponent,
     DeleteComponent,
-    DashboardComponent,
+
     DialogAddComponent
   ],
   imports: [CommonModule, AdminRoutingModule, SharedModule],
