@@ -2,13 +2,13 @@
 
 <div class="register__form my-20 px-5">
   <div class="register__form__head">
-    <h1 class="my-4">Add Room</h1>
+    <h1 class="my-4"> {{ isViewMode ?'View' : isEditMode?'Edit' : 'Add' }} Room </h1>
 
   </div>
   <form
     class="my-16"
     [formGroup]="addRoomForm"
-    (ngSubmit)="onSubmit()"
+    (ngSubmit)="Submit(addRoomForm)"
   >
     <ngx-dropzone (change)="onSelect($event)">
       <ngx-dropzone-label>Drop Your Photo !</ngx-dropzone-label>

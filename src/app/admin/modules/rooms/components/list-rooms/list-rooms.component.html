@@ -1,4 +1,69 @@
-<p>list-rooms works!</p>
+<section class="px-3">
+  <div class="container">
+      <div class="flex flex-row">
+          <div class="col-md-11">
+              <div class="flex items-center justify-between my-3">
+                  <p class="font-medium text-[20px] leading-[100%] tracking-[0%]">Rooms Table Details <br>
+                      <span class="font-normal text-[14px] leading-[100%] tracking-[0%]">
+                          You can check all details
+                      </span>
+                  </p>
+                  <button
+                      class="font-bold font-inter
+                       text-[16px] leading-[19.36px]
+                       tracking-[0px] text-center bg-[rgba(32,63,199,1)] rounded-[8px]
+                       text-white px-4 py-3" routerLink="/admin/rooms/add-rooms" >Add New Room</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div *ngIf="roomsList.length === 0" class="flex items-center justify-center my-3">
+      <img src="../../../../../../assets/images/no-data.png" alt="No Data Available" class=" no-data-image">
+  </div>
+  <table *ngIf="roomsList.length > 0" class="table w-full table-striped">
+      <thead>
+          <th>Room Number</th>
+          <th>Price</th>
+          <th>Discount</th>
+          <th>createdAt</th>
+          <th>Action</th>
+
+      </thead>
+      <tbody>
+
+          <tr *ngFor="let room of roomsList">
+              <td>{{ room.roomNumber }}</td>
+              <td>{{ room.price}}</td>
+              <td>{{ room.discount}}</td>
+              <td>{{ room.createdAt}}</td>
+              <td>
+                <p-menu #menu [popup]="true" [model]="getMenuItems(room._id)"></p-menu>
+                <button
+                  pButton
+                  type="button"
+                  icon="pi pi-ellipsis-v"
+                  class="p-button-text"
+                  (click)="menu.toggle($event)"
+                ></button>
+              </td>
+
+              <!-- <td>
+                  <p-splitButton  [model]="items"></p-splitButton>
+              </td> -->
+          </tr>
+      </tbody>
+  </table>
+</section>
 
 
-<button routerLink="/admin/rooms/add-rooms" class="bottom-2 m-5">Add New Room</button>
+<!-- <button routerLink="/admin/rooms/add-rooms" class="bottom-2 m-5">Add New Room</button> -->
+
+
+<!--
+in dropdown    view edit delete
+
+  [routerLink]="['view-edit/' , recipe.id , true]" in view mood
+    [routerLink]="['view-edit/' , recipe.id ]" in edit
+
+-->

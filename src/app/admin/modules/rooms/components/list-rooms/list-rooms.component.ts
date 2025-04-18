@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RoomsService } from '../../services/rooms.service';
 import { IRooms } from '../../interfaces/IRooms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,19 +12,23 @@ import { IRooms } from '../../interfaces/IRooms';
 export class ListRoomsComponent {
   page :number=1
   size:number=10
-  allRooms :IRooms[] =[]
+  roomsList :IRooms[] =[]
   totalNumOfRooms !:number
 
-  constructor(private _RoomsService:RoomsService){
+
+  constructor(private _RoomsService:RoomsService ,
+    private _Router:Router
+  ){
     this.onGettingAllRooms()
   }
+
 
   onGettingAllRooms():void{
     const params :any = { page :this.page , size:this.size }
     this._RoomsService.onGettingAllRooms( params ).subscribe({
       next :(res) =>{
         console.log(res);
-        this.allRooms=res.data.rooms
+        this.roomsList=res.data.rooms
         this.totalNumOfRooms=res.data.totalCount
       },
       error :(err) =>{
@@ -31,4 +36,29 @@ export class ListRoomsComponent {
       },
     })
   }
+
+
+  getMenuItems(item: any): any[] {
+    return [
+      {
+        label: 'View',
+        icon: 'pi pi-eye',
+        command: () => {this._Router.navigate(['/admin/rooms/add-rooms/', item], {
+          queryParams: { isFormDisabled: true } })
+        },
+      },
+      {
+        label: 'Edit',
+        icon: 'pi pi-pencil',
+        command: () => this._Router.navigate(['/admin/rooms/add-rooms/', item])
+      },
+      {
+        label: 'Delete',
+        icon: 'pi pi-trash',
+        command: () => this._Router.navigate(['/view', item]),
+      },
+    ];
+  }
+
+
 }

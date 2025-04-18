@@ -2,10 +2,12 @@ import { FacilitiesService } from './../../services/facilities.service';
 import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
-import { Facility } from '../../interfaces2/facilities';
+// import { Facility } from '../../interfaces2/facilities';
+
 import { DialogAddComponent } from 'src/app/admin/components/shared/dialog-add-edit/dialog-add.component';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DeleteComponent } from 'src/app/admin/components/delete/delete.component';
+import { Facility } from '../../interfaces/facilities';
 
 @Component({
   selector: 'app-list-facilities',

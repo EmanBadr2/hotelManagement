@@ -19,6 +19,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     if (this.token) {
       let  myRequest = request.clone({
+
         setHeaders: {
            url: `${this.BaseUrl}${request.url}` ,
           Authorization: this.token
