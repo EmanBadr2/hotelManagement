@@ -1,1 +1,57 @@
-<p>list-users works!</p>
+<div class="px-3">
+    <div class="container">
+      <div class="flex flex-row">
+        <div class="col-md-11">
+          <div class="flex items-center justify-between my-3">
+            <p class="font-medium text-[20px] leading-[100%] tracking-[0%]">
+              Users Table Details <br />
+              <span class="font-normal text-[14px] leading-[100%] tracking-[0%]">
+                You can check all details
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div
+      *ngIf="userList.length === 0"
+      class="flex items-center justify-center my-3"
+    >
+      <img
+        src="../../../../../../assets/img/no-data.jfif"
+        alt="No Data Available"
+        class="no-data-image"
+      />
+    </div>
+    <table *ngIf="userList.length > 0" class="custom-table">
+        <thead>
+          <th>User Name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Country</th>
+          <th>Role</th>
+          <th>Actions</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of userList">
+            <td>{{ user.userName }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.phoneNumber }}</td>
+            <td>{{ user.country }}</td>
+            <td>{{ user.role }}</td>
+            <td>
+                <button
+                  type="button"
+                  (click)="viewUser(user._id)"
+                class="btn btn-outline-secondary btn-sm rounded-circle"
+                  title="View User"
+                >
+                  <i class="pi pi-eye"></i>
+                </button>
+              </td>
+          </tr>
+        </tbody>
+      </table>
+      
+  </div>

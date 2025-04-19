@@ -27,7 +27,7 @@ export class SidebarComponent implements OnInit {
 
   private allMenuItems: Menu[] = [
     { name: 'Home', icon: 'home', route: 'home' },
-    { name: 'Users', icon: 'group', route: 'booking' },
+    { name: 'Users', icon: 'group', route: 'users' },
     { name: 'Rooms', icon: 'grid_view', route: 'rooms' },
     { name: 'Booking', icon: 'grid_view', route: 'booking' },
     { name: 'Ads', icon: 'event_note', route: 'Ads' },
