@@ -7,16 +7,16 @@ import { StatsData, StatsResponse } from '../../models/chart';
   providedIn: 'root'
 })
 export class ChartService {
-  private baseUrl = 'https://upskilling-egypt.com:3000/api/v0/';
+ 
 
 
   constructor(private _http: HttpClient) { }
 
   chartService(): Observable<StatsResponse> {
-    return this._http.get<StatsResponse>(`${this.baseUrl}admin/dashboard`);
+    return this._http.get<StatsResponse>(`https://upskilling-egypt.com:3000/api/v0/admin/dashboard`);
   }
 
   getStats(): Observable<StatsResponse> {
-    return this._http.get<StatsResponse>(`${this.baseUrl}admin/dashboard`);
+    return this._http.get<StatsResponse>(`https://upskilling-egypt.com:3000/api/v0/admin/dashboard`);
   }
 }
