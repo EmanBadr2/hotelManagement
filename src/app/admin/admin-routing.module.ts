@@ -15,7 +15,12 @@ const routes: Routes = [
       { path: 'facilities', loadChildren: () => import('./modules/facilities/facilities.module').then(m => m.FacilitiesModule) },
       { path: 'Ads', loadChildren: () => import('./modules/ads/ads.module').then(m => m.AdsModule) },
       { path: 'booking', loadChildren: () => import('./modules/booking/booking.module').then(m => m.BookingModule) },
+
+      { path: 'changepassword', loadChildren: () => import('./modules/change-password/change-password.module').then(m => m.ChangePasswordModule) },
+
+
       { path: 'users', loadChildren: () => import('./modules/users/users.module').then(m => m.UsersModule) },
+
     ],
   },
 ];
