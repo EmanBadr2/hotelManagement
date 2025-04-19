@@ -4,6 +4,10 @@ import { IRooms } from '../../interfaces/IRooms';
 import { Router } from '@angular/router';
 
 
+import { DynamicDialogRef, DialogService } from 'primeng/dynamicdialog';
+import { DeleteComponent } from 'src/app/admin/components/delete/delete.component';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-list-rooms',
   templateUrl: './list-rooms.component.html',
@@ -14,9 +18,13 @@ export class ListRoomsComponent implements OnInit {
   size:number=10
   roomsList :IRooms[] =[]
   totalNumOfRooms !:number
+  ref!: DynamicDialogRef;
+
 
   constructor(private _RoomsService:RoomsService ,
     private _Router:Router ,
+     private dialogService: DialogService ,
+     private _ToastrService:ToastrService
   ){}
 
   ngOnInit(): void {
@@ -39,27 +47,53 @@ export class ListRoomsComponent implements OnInit {
   }
 
 
-  getActions(item: any): any[] {
+  getActions(room: IRooms): any[] {
     return [
       {
         label: 'View',
         icon: 'pi pi-eye',
-        command: () => {this._Router.navigate(['/admin/rooms/add-rooms/', item], {
+        command: () => {this._Router.navigate(['/admin/rooms/add-rooms/', room._id], {
           queryParams: { isFormDisabled: 'true' } })
         },
       },
       {
         label: 'Edit',
         icon: 'pi pi-pencil',
-        command: () => this._Router.navigate(['/admin/rooms/add-rooms/', item])
+        command: () => this._Router.navigate(['/admin/rooms/add-rooms/', room._id])
       },
       {
         label: 'Delete',
         icon: 'pi pi-trash',
-        command: () => this._Router.navigate(['/view', item]),
+        command: () => this.openDeleteDialog(room),
       },
-    ];
-  }
+    ];
+ }
+
+ openDeleteDialog(rooms:IRooms ) {
+    this.ref = this.dialogService.open(DeleteComponent, {
+      header: 'Confirm Delete',
+      width: '400px',
+      data: {
+        rooms:rooms ,
+      },
+    });
+
+    this.ref.onClose.subscribe((confirmed: boolean) => {
+      if (confirmed) {
+        this._RoomsService.deleteRoom(rooms._id).subscribe({
+          next: (res) => {
+            console.log(res);
+            this.onGettingAllRooms()
+            this._ToastrService.success('Room deleted successfully');
+          },
+          error: (err) => {
+            console.log(err);
+            this._ToastrService.error('Error in deleting Room');
+          },
+        });
+      }
+    });
+  }
 
 
 }

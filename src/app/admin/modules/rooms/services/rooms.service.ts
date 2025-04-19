@@ -30,6 +30,6 @@ export class RoomsService {
   }
 
  deleteRoom(id : number |string):Observable<any>{
-    return this._HttpClient.delete(`admin/rooms${id}`)
+    return this._HttpClient.delete(`https://upskilling-egypt.com:3000/api/v0/admin/rooms/${id}`)
   }
 }

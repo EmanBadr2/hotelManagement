@@ -39,7 +39,7 @@
             <td>{{ room.discount}}</td>
             <td>{{ room.createdAt}}</td>
             <td>
-                <p-menu #menu [popup]="true" [model]="getActions(room._id)"></p-menu>
+                <p-menu #menu [popup]="true" [model]="getActions(room)"></p-menu>
                 <button
                 pButton
                 type="button"
