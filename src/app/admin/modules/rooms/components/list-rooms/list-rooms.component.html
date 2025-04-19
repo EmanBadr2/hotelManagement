@@ -19,9 +19,10 @@
     </div>
 </div>
 
-<div *ngIf="roomsList.length === 0" class="flex items-center justify-center my-3">
+<!-- <div *ngIf="roomsList.length === 0" class="flex items-center justify-center my-3">
     <img src="../../../../../../assets/images/no-data.png" alt="No Data Available" class=" no-data-image">
-</div>
+</div> -->
+
 <table *ngIf="roomsList.length > 0" class="table w-full table-striped">
     <thead>
         <th>Room Number</th>
@@ -29,7 +30,6 @@
         <th>Discount</th>
         <th>createdAt</th>
         <th>Action</th>
-
     </thead>
     <tbody>
 
@@ -39,7 +39,7 @@
             <td>{{ room.discount}}</td>
             <td>{{ room.createdAt}}</td>
             <td>
-                <p-menu #menu [popup]="true" [model]="getMenuItems(room._id)"></p-menu>
+                <p-menu #menu [popup]="true" [model]="getActions(room._id)"></p-menu>
                 <button
                 pButton
                 type="button"
@@ -48,11 +48,10 @@
                 (click)="menu.toggle($event)"
                 ></button>
             </td>
-
-            <!-- <td>
-                <p-splitButton  [model]="items"></p-splitButton>
-            </td> -->
         </tr>
     </tbody>
 </table>
 </section>
+
+
+

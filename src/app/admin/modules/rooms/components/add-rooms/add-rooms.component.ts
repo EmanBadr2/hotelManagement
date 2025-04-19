@@ -20,7 +20,6 @@ export class AddRoomsComponent  implements OnInit{
   isEditMode : boolean = false;
   isViewMode : boolean = false ;
   isFormDisabled: any ;
-
   addRoomForm !: FormGroup
   files: File[] = [];
 
@@ -34,16 +33,18 @@ export class AddRoomsComponent  implements OnInit{
  ngOnInit(): void {
   this.activeRoomID =this._ActivatedRoute.snapshot.paramMap.get('id')
   this.isFormDisabled = this._ActivatedRoute.snapshot.queryParamMap.get('isFormDisabled')
-  // console.log( this.activeRoomID , this.isFormDisabled);
+   console.log( this.activeRoomID , this.isFormDisabled);
+
      if(this.activeRoomID){ //  pass Data to Form (View & Edit)
      //  get rooms by id
-      this.isEditMode= true
-      this.isViewMode= true
-    if( this.isFormDisabled == 'true' || true){
+     if( this.isFormDisabled == 'true' || true){
       // View Mode
-
-       this.isEditMode= false
-       this.addRoomForm.disable()
+      this.isViewMode =true
+       this.addRoomForm.disabled
+      }
+      if(this.activeRoomID && this.isFormDisabled !=='true' || true){
+       //edit
+        this.isEditMode= true
       }
 
    }
@@ -115,7 +116,6 @@ export class AddRoomsComponent  implements OnInit{
         console.log(res);
         this._ToastrService.success('Room Added successfully')
         this._Router.navigate(['/admin/rooms/rooms'])
-
       },
       error: (err) => {
         console.log(err);
@@ -170,9 +170,9 @@ export class AddRoomsComponent  implements OnInit{
       },
       complete:() =>{
         this._Router.navigate(['/admin/rooms/rooms'])
-      },
-    })
-  }
+      }
+  })
+  }
 
 
 

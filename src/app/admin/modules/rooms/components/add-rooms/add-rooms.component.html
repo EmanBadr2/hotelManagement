@@ -1,13 +1,14 @@
-<div class="register__form my-20 px-5">
-  <div class="register_form_head">
-    <h1 class="my-4"> {{ isViewMode ?'View' : isEditMode?'Edit' : 'Add' }} Room </h1>
 
+<div class=" my-20 px-5">
+  <div class="p-4">
+    <h2  class="text-xl font-bold "> {{ !activeRoomID? 'Add' : isFormDisabled?'View' : 'Edit' }} Room </h2>
   </div>
   <form
-    class="my-16"
+    class=""
     [formGroup]="addRoomForm"
     (ngSubmit)="Submit(addRoomForm)"
   >
+  <div class="col-3 m-auto p-0 my-0">
     <ngx-dropzone (change)="onSelect($event)">
       <ngx-dropzone-label>Drop Your Photo !</ngx-dropzone-label>
       <ngx-dropzone-preview
@@ -20,6 +21,7 @@
         >
       </ngx-dropzone-preview>
     </ngx-dropzone>
+  </div>
 
     <!-- User Name -->
     <div class="my-4 ">
@@ -80,10 +82,23 @@
     </div>
 
 
+    <div>
+      <button
+      class="bg-blue-500 text-white p-2 rounded"
+      >Add</button>
+
+      <button
+      class="bg-blue-500 text-white p-2 rounded"
+      >Edit</button>
+
+      <button
+      routerLink="/admin/rooms/rooms"
+      class="bg-blue-200 text-white p-2 rounded"
+      >cancel</button>
+    </div>
 
 
-
-    <div class="mt-6">
+    <!-- <div class="mt-6">
       <button
         pButton
         type="submit"
@@ -91,6 +106,6 @@
         class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-all"
         [disabled]="addRoomForm.invalid"
       ></button>
-    </div>
-  </form>
+    </div> -->
+  </form>
 </div>
