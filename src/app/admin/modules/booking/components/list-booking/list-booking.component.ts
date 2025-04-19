@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Booking, BookingApiResponse, BookingResponseData } from '../../interfaces/booking';
-import { ToastrService } from 'ngx-toastr';
 import { BookingService } from '../../services/booking.service';
 import { DialogAddComponent } from 'src/app/admin/components/shared/dialog-add-edit/dialog-add.component';
-import { IRooms } from '../../../rooms/interfaces/IRooms';
-import { RoomsService } from '../../../rooms/services/rooms.service';
 
 @Component({
   selector: 'app-list-booking',
@@ -14,15 +11,13 @@ import { RoomsService } from '../../../rooms/services/rooms.service';
 })
 export class ListBookingComponent {
   bookingList: Booking[]  = [];
-  roomsList: IRooms[] | undefined = [];
+  // roomsList: IRooms[] | undefined = [];
   totalCount: number = 0;
   isLoading: boolean = false;
   error: string = '';
   ref!: DynamicDialogRef;
     constructor(
       private bookingService: BookingService,
-      private roomService: RoomsService,
-      private toastr: ToastrService,
       private dialogService: DialogService
     ) {}
     ngOnInit(): void {

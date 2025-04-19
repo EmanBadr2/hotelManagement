@@ -31,7 +31,7 @@
       <th class="p-2">Start Date</th>
       <th class="p-2">End Date</th>
       <th class="p-2">User</th>
-        <!-- <th>Actions</th> -->
+        <th>Actions</th>
       </thead>
       <tbody>
         <tr *ngFor="let booking of bookingList">
@@ -40,7 +40,7 @@
           <td>{{ booking.startDate | date: 'mediumDate' }}</td>
           <td>{{ booking.endDate | date: 'mediumDate' }}</td>
           <td>{{ booking?.user?.userName }}</td>
-          <!-- <td>
+          <td>
             <button
               type="button"
               (click)="menu.toggle($event)"
@@ -49,8 +49,8 @@
               <i class="pi pi-ellipsis-h"></i>
             </button>
   
-            <p-menu #menu [popup]="true" [model]="getActions(Booking)"></p-menu>
-          </td> -->
+            <p-menu #menu [popup]="true" [model]="getActions(booking)"></p-menu>
+          </td>
         </tr>
       </tbody>
     </table>
