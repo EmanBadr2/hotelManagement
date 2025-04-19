@@ -12,7 +12,7 @@ import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { DialogService } from 'primeng/dynamicdialog';
-
+import { NgChartsModule } from 'ng2-charts'; 
 import { AuthInputsComponent } from '../components/auth-inputs/auth-inputs.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 
@@ -31,6 +31,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     NgxDropzoneModule ,
     DialogModule,
     DynamicDialogModule,
+    NgChartsModule
   ],
   exports: [
     CommonModule,
@@ -47,7 +48,8 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     SplitButtonModule ,
     NgxDropzoneModule ,
     DialogModule,
-    DynamicDialogModule
+    DynamicDialogModule,
+    NgChartsModule
   ],
   providers: [DialogService],
 })
