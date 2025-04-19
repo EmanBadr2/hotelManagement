@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AdsRoutingModule } from './ads-routing.module';
 import { AdsComponent } from './ads.component';
+import { SharedModule } from 'src/app/shared/shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { AdsComponent } from './ads.component';
   ],
   imports: [
     CommonModule,
-    AdsRoutingModule
+    AdsRoutingModule,
+    SharedModule
   ]
 })
 export class AdsModule { }

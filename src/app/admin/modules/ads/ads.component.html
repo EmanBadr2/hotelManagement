@@ -1,1 +1,62 @@
-<p>ads works!</p>
+<section class="px-3">
+  <div class="container">
+    <div class="flex flex-row">
+      <div class="col-md-11">
+        <div class="flex items-center justify-between my-3">
+          <p class="font-medium text-[20px] leading-[100%] tracking-[0%]">
+            ADS Table Details <br />
+            <span class="font-normal text-[14px] leading-[100%] tracking-[0%]">
+              You can check all details
+            </span>
+          </p>
+          <button
+            (click)="openAddDialog()"
+            class="font-bold font-inter text-[16px] leading-[19.36px] tracking-[0px] text-center bg-[rgba(32,63,199,1)] rounded-[8px] text-white px-4 py-3"
+          >
+            Add New Ads
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    *ngIf="adsList.length === 0"
+    class="flex items-center justify-center my-3"
+  >
+    <img
+      src="../../../../assets/img/no-data.png"
+      alt="No Data Available"
+      class="no-data-image"
+    />
+  </div>
+  <table *ngIf="adsList.length > 0" class="table w-full table-striped">
+    <thead>
+      <th>Room Name</th>
+      <th>Price</th>
+      <th>Discount</th>
+      <th>Capacity</th>
+      <th>Active</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ads of adsList">
+        <td>{{ ads.room.roomNumber }}</td>
+        <td>{{ ads.room.price }}</td>
+        <td>{{ ads.room.discount }}</td>
+        <td>{{ ads.room.capacity }}</td>
+        <td>{{ ads.isActive ? "Yes" : "No" }}</td>
+        <td>
+          <button
+            type="button"
+            (click)="menu.toggle($event)"
+            class="text-black rounded-[8px] font-semibold px-4 py-2"
+          >
+            <i class="pi pi-ellipsis-h"></i>
+          </button>
+
+          <p-menu #menu [popup]="true" [model]="getActions(ads)"></p-menu>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
