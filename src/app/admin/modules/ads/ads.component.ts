@@ -18,7 +18,6 @@ import { forkJoin } from 'rxjs';
 export class AdsComponent {
   adsList: Ad[] = [];
   roomsList: IRooms[] = [];
-
   page: number = 1;
   size: number = 10;
   totalCount: number = 0;

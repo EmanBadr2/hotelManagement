@@ -12,6 +12,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from 'src/core/interceptors/auth.interceptor';
 import { CommonModule } from '@angular/common';
+import { GlobalInterceptor } from 'src/core/interceptors/global.interceptor';
 
 
 @NgModule({
@@ -33,7 +34,7 @@ import { CommonModule } from '@angular/common';
   providers: [
    [   {
       provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
+      useClass: GlobalInterceptor,
       multi: true
     } ]
   ],
