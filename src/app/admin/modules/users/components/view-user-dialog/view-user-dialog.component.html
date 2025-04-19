@@ -1,0 +1,60 @@
+<div *ngIf="loading" class="loading-spinner">
+  <i class="pi pi-spin pi-spinner text-blue-600 text-3xl"></i>
+</div>
+
+<div *ngIf="!loading && userData" class="user-profile-box">
+  <div class="profile-image-container">
+    <div class="profile-image-wrapper">
+      <img
+        [src]="userData.profileImage"
+        alt="User"
+        class="profile-image"
+      />
+      <div class="camera-icon">
+        <i class="pi pi-camera text-white bg-[#203fc7] p-2 rounded-full shadow-md hover:bg-blue-500"></i>
+      </div>
+    </div>
+    <h2 class="user-name">{{ userData.userName }}</h2>
+    <span
+    class="text-lg text-white px-4 py-1 rounded-full mt-2"
+    [ngClass]="{
+      'bg-green-500': userData.role === 'admin',
+      'bg-gray-500': userData.role !== 'admin'
+    }"
+  >
+    {{ userData.role | titlecase }}
+  </span>
+  
+  </div>
+
+  <div class="user-data-section">
+    <div class="data-item">
+      <p>Email</p>
+      <p class="value">{{ userData.email }}</p>
+    </div>
+    <div class="data-item">
+      <p>Phone</p>
+      <p class="value">{{ userData.phoneNumber }}</p>
+    </div>
+    <div class="data-item">
+      <p>Country</p>
+      <p class="value capitalize">{{ userData.country }}</p>
+    </div>
+    <div class="data-item">
+      <p>Verified</p>
+      <span
+      [ngClass]="{
+        'text-green-600': userData.verified,
+        'text-red-600': !userData.verified
+      }"
+      class="font-semibold"
+    >
+      {{ userData.verified ? 'Yes' : 'No' }}
+    </span>
+    </div>
+    <div class="data-item created-at">
+      <p>Created At</p>
+      <p class="value">{{ userData.createdAt | date:'fullDate' }}</p>
+    </div>
+  </div>
+</div>
