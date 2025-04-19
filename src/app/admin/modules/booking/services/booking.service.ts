@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BookingApiResponse } from '../interfaces/booking';
+import { Booking, BookingApiResponse } from '../interfaces/booking';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -12,4 +12,8 @@ export class BookingService {
   getBookings(): Observable<BookingApiResponse> {
       return this._HttpClient.get<BookingApiResponse>(`admin/booking`);
     }
+
+  getBookingById(id: string): Observable<any> {
+    return this._HttpClient.get(`admin/booking/${id}`);
+  }
 }
