@@ -106,6 +106,8 @@ export class AdsComponent {
   // }
 
   openAddDialog(): void {
+    this.isLoading = true; // Start loading
+
     const params: any = { page: this.page, size: this.size };
 
     forkJoin({
@@ -113,6 +115,7 @@ export class AdsComponent {
     }).subscribe({
       next: ({ roomsResponse }) => {
         this.roomsList = roomsResponse.data.rooms;
+        this.isLoading = false; // Stop loading after dialog closed
 
         const roomOptions = this.roomsList.map((room) => ({
           label: room.roomNumber,
@@ -151,11 +154,13 @@ export class AdsComponent {
         });
       },
       error: (err) => {
+        this.isLoading = false; // Stop loading on error
         console.error('Error loading rooms:', err);
         this.toastr.error('Failed to load room data');
       },
     });
   }
+
   viewFacility(id: any): void {
     this.ref = this.dialogService.open(DialogAddComponent, {
       header: 'View ADS',
