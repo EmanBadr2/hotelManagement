@@ -16,7 +16,7 @@ import { GlobalInterceptor } from 'src/core/interceptors/global.interceptor';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent ],
   imports: [
     CommonModule,
     BrowserAnimationsModule,

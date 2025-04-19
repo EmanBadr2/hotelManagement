@@ -5,8 +5,10 @@ import { jwtDecode } from "jwt-decode";
   providedIn: 'root'
 })
 export class StorageService {
-  userRole :string | null = '' ;
+  userRole :string | null = localStorage.getItem('userRole')
   token :string | null = localStorage.getItem('token')
+  userID :string | null =  localStorage.getItem('userID')
+
   decodedToken !: any
   isAdmin !: boolean
   isUser!: boolean
@@ -18,7 +20,7 @@ export class StorageService {
     if(this.token){
       this.decodedToken= jwtDecode(this.token);
       this.userRole = this.decodedToken.role; // Extract role from token
-      localStorage.setItem('role', this.userRole || ''); // Store role in localStorage
+      localStorage.setItem('userRole', this.userRole || ''); // Store role in localStorage
     }
     if(this.userRole == 'admin'){
       this.isAdmin = true
