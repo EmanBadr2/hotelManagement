@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RoomsService } from '../../services/rooms.service';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -14,13 +14,12 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./add-rooms.component.scss']
 })
 
-export class AddRoomsComponent  implements OnInit{
+export class AddRoomsComponent  implements OnInit , OnDestroy{
 
   activeRoomID!:any ;
   isEditMode : boolean = false;
   isViewMode : boolean = false ;
   isFormDisabled: any ;
-
   addRoomForm !: FormGroup
   files: File[] = [];
 
@@ -34,28 +33,38 @@ export class AddRoomsComponent  implements OnInit{
  ngOnInit(): void {
   this.activeRoomID =this._ActivatedRoute.snapshot.paramMap.get('id')
   this.isFormDisabled = this._ActivatedRoute.snapshot.queryParamMap.get('isFormDisabled')
-  // console.log( this.activeRoomID , this.isFormDisabled);
-     if(this.activeRoomID){ //  pass Data to Form (View & Edit)
+  //  console.log( this.activeRoomID , this.isFormDisabled);
+  //form
+  this.addRoomForm = this.fb.group({
+    roomNumber: ['' , Validators.required],
+    price: ['' , Validators.required],
+    capacity: ['' , Validators.required],
+    discount: [''],
+    images: [''],
+    createdAt: [''],
+    updatedAt: [''],
+    facilities: this.fb.array([]), // Start with an empty array
+  });
+
+   if(this.activeRoomID){ //  pass Data to Form (View & Edit)
      //  get rooms by id
-      this.isEditMode= true
-      this.isViewMode= true
-    if( this.isFormDisabled == 'true' || true){
+     this.viewRoom(this.activeRoomID)
+     this.isEditMode=true
+   if( this.isFormDisabled ){
       // View Mode
-
-       this.isEditMode= false
-       this.addRoomForm.disable()
+      this.isViewMode =true
+      this.isEditMode =false
       }
-
    }
-   console.log('edit' , this.isEditMode);
-   console.log('view' , this.isViewMode);
 
+   console.log('EDit' , this.isEditMode);
+   console.log('view' , this.isViewMode);
 
 
  }
 
 // -----------
-   // Getter for easy access
+   // Getter for easy access facilities
    get facilities(): FormArray {
     return this.addRoomForm.get('facilities') as FormArray;
   }
@@ -81,8 +90,7 @@ export class AddRoomsComponent  implements OnInit{
     this.addRoomForm = form
     let formValues = form.value
     const formData = new FormData();
-
-   // --------------------------
+      // --------------------------
      // // Append all controls
      for(const key in formValues){
       if (formValues.hasOwnProperty(key)) {  formData.append(key, formValues[key]) }
@@ -100,9 +108,15 @@ export class AddRoomsComponent  implements OnInit{
     if(!this.activeRoomID ){
       //call Add
       this.addRoom(formData)
+      this._ToastrService.success('Room Added successfully')
+      this._Router.navigate(['/admin/rooms/rooms'])
+
     }else{
       // call    Edit/Updata
       this.onUpdateRoom(this.activeRoomID , formData)
+      console.log('uppdate');
+      this._Router.navigate(['/admin/rooms/rooms'])
+
     }
 
   }
@@ -131,21 +145,25 @@ export class AddRoomsComponent  implements OnInit{
   viewRoom(id:number| string):void{
     this._RoomsService.viewRoomDetails(id).subscribe({
       next: (res) => {
-        console.log('view done');
-        console.log(res);
-        //path value to my form
+        this.addRoomForm.disable()
+        const room = res.data.room;
+        // Patch basic fields
         this.addRoomForm.patchValue({
-          // roomNumber: res.data.rooms.roomNumber,
-          // price: res.,
-          // discount: res.  ,
-          // capacity:res.  ,
-          // // facilities:res.,
-          // facilities:
-          // images:
+          roomNumber: room.roomNumber,
+          price: room.price,
+          capacity: room.capacity,
+          discount: room.discount,
+          createdBy: {
+            _id: room.createdBy?._id,
+            userName: room.createdBy?.userName
+          }
+        });
 
-         }
-       );
-
+            //  // Patch images FormArray
+            //  this.images.clear();
+            //  (room.images || []).forEach(img => {
+            //    this.images.push(new FormControl(img));
+            //  });
       },
       error: (err) => {
         console.log(err);
@@ -154,12 +172,14 @@ export class AddRoomsComponent  implements OnInit{
 
     })
 
-
+    if(this.isViewMode){
+      this.addRoomForm.disabled
+    }
 
   }
 
   onUpdateRoom(id:number| string , formData : any):void{
-    this._RoomsService.editRoom(id , formData).subscribe({
+    this._RoomsService.updateRoom(id , formData).subscribe({
       next: (res) => {
         console.log(res);
         this._ToastrService.success('Room Updated Successfully ')
@@ -170,11 +190,15 @@ export class AddRoomsComponent  implements OnInit{
       },
       complete:() =>{
         this._Router.navigate(['/admin/rooms/rooms'])
-      },
-    })
-  }
+      }
+  })
+  }
 
 
+ngOnDestroy(): void {
+    this.isViewMode=false
+    this.isEditMode=false
+}
 
 
 }

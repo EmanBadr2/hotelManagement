@@ -4,11 +4,14 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DialogModule } from 'primeng/dialog';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { DropdownModule } from 'primeng/dropdown';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+
 
 
 const primeNgComponents = [
   ButtonModule,
   InputTextModule,
+  ProgressSpinnerModule,
   DialogModule,
   DynamicDialogModule,
   DropdownModule
