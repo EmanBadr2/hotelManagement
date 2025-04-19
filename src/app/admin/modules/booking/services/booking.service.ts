@@ -10,6 +10,6 @@ export class BookingService {
 
   constructor(private _HttpClient:HttpClient) { }
   getBookings(): Observable<BookingApiResponse> {
-      return this._HttpClient.get<BookingApiResponse>(`admin/room-facilities`);
+      return this._HttpClient.get<BookingApiResponse>(`admin/booking`);
     }
 }

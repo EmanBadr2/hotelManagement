@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { Booking } from '../../interfaces/booking';
+import { Booking, BookingApiResponse, BookingResponseData } from '../../interfaces/booking';
 import { ToastrService } from 'ngx-toastr';
 import { BookingService } from '../../services/booking.service';
 import { DialogAddComponent } from 'src/app/admin/components/shared/dialog-add-edit/dialog-add.component';
@@ -14,7 +14,7 @@ import { RoomsService } from '../../../rooms/services/rooms.service';
 })
 export class ListBookingComponent {
   bookingList: Booking[]  = [];
-  roomsList: IRooms[] = [];
+  roomsList: IRooms[] | undefined = [];
   totalCount: number = 0;
   isLoading: boolean = false;
   error: string = '';
@@ -53,15 +53,17 @@ export class ListBookingComponent {
     getAllBookings(): void {
       this.isLoading = true;
       this.bookingService.getBookings().subscribe({
-        next: (response) => {
-          this.bookingList = response.data.booking;
-          this.totalCount = response.data.totalCount;
-          this.isLoading = false;
+        next: (response: BookingApiResponse) => {
+                console.log('API Response:', response);
+            this.bookingList = response.data.booking;
+            this.totalCount = response.data.totalCount;
+            this.isLoading = false;
         },
         error: (err) => {
-          this.error = 'Error fetching facilities';
-          this.isLoading = false;
-        },
+          console.error(err);
+          this.bookingList = [];
+        }
       });
     }
+    
 }
