@@ -10,6 +10,7 @@ import { SharedModule } from '../shared/shared/shared.module';
 import { DialogAddComponent } from './components/shared/dialog-add-edit/dialog-add.component';
 
 
+
 @NgModule({
   declarations: [
     HomeComponent,
@@ -17,7 +18,7 @@ import { DialogAddComponent } from './components/shared/dialog-add-edit/dialog-a
     SidebarComponent,
     DeleteComponent,
     DashboardComponent,
-    DialogAddComponent
+    DialogAddComponent,
   ],
   imports: [
     CommonModule,
