@@ -32,7 +32,7 @@ export class SidebarComponent implements OnInit {
     { name: 'Booking', icon: 'grid_view', route: 'booking' },
     { name: 'Ads', icon: 'event_note', route: 'Ads' },
     { name: 'Facilities', icon: 'group', route: 'facilities' },
-    { name: 'Change password', icon: 'pi pi-key' },
+    { name: 'Change password', icon: 'pi pi-key',route:'changepassword'},
     { name: 'Logout', icon: 'pi pi-sign-out' },
   ];
 
