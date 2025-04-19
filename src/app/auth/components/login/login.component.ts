@@ -11,6 +11,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent {
   isPasswordHidden: boolean = true;
+  userID !:string | number ;
+
 
   constructor(private authService: AuthService, private toastr: ToastrService, private router: Router) { }
 
@@ -31,9 +33,11 @@ export class LoginComponent {
 
     this.authService.login(this.loginForm.value).subscribe({
       next: (res) => {
+
         this.toastr.success('login successfully');
         localStorage.setItem('token', res.data.token);
-        localStorage.setItem('roleFromRes', res.data.user.role);
+        localStorage.setItem('userRole', res.data.user.role);
+        localStorage.setItem('userID', res.data.user._id);
 
         if (res.data.user.role === 'admin') {
           this.router.navigate(['/admin']);
