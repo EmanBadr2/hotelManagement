@@ -13,11 +13,11 @@ export class RoomsService {
   constructor(private _HttpClient:HttpClient) { }
 
   onGettingAllRooms( params :any ):Observable<IRoomsRes>{
-    return this._HttpClient.get<IRoomsRes>(`https://upskilling-egypt.com:3000/api/v0/admin/rooms` , {params : params})
+    return this._HttpClient.get<IRoomsRes>(`admin/rooms` , {params : params})
   }
 
   onAddRoom(data:FormData):Observable<IRoomsRes>{
-    return this._HttpClient.post<IRoomsRes>(`https://upskilling-egypt.com:3000/api/v0/admin/rooms` , data)
+    return this._HttpClient.post<IRoomsRes>(`admin/rooms` , data)
   }
 
 

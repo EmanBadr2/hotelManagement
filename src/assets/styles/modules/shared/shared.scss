@@ -1,0 +1,44 @@
+:root {
+    --font-secondary: 'Poppins', sans-serif;
+    --bg-head: rgba(226,229,235,1);
+  }
+  @layer utilities {
+    .font-secondary {
+      font-family: var(--font-secondary);
+    }
+    .bg-head {
+      background-color: var(--bg-head);
+    }
+  }
+  
+  @layer components {
+    .table-striped {
+      tr:nth-child(odd) {
+        background-color: #f9f9f9;
+      }
+    }
+  
+    .custom-table {
+      @apply w-full table-striped;
+    }
+  
+    .custom-table thead {
+      @apply bg-head;
+    }
+  
+    .custom-table th {
+      @apply px-6 py-5 text-center font-secondary font-medium text-base leading-none tracking-normal;
+    }
+  
+    .custom-table thead th:first-child {
+      @apply rounded-tl-lg rounded-bl-lg;
+    }
+  
+    .custom-table thead th:last-child {
+      @apply rounded-tr-lg rounded-br-lg;
+    }
+  
+    .custom-table td {
+      @apply px-6 py-4 text-center font-secondary font-normal text-sm leading-[100%] tracking-[0%] text-black;
+    }
+  }

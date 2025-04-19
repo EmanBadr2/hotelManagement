@@ -1,0 +1,57 @@
+<section class="px-3">
+    <div class="container">
+      <div class="flex flex-row">
+        <div class="col-md-11">
+          <div class="flex items-center justify-between my-3">
+            <p class="font-medium text-[20px] leading-[100%] tracking-[0%]">
+              Booking Table Details <br />
+              <span class="font-normal text-[14px] leading-[100%] tracking-[0%]">
+                You can check all details
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div
+      *ngIf="bookingList.length === 0"
+      class="flex items-center justify-center my-3"
+    >
+      <img
+        src="../../../../../../assets/img/no-data.jfif"
+        alt="No Data Available"
+        class="no-data-image"
+      />
+    </div>
+    <table *ngIf="bookingList.length > 0" class="custom-table">
+      <thead>
+      <th class="p-2">Room Number</th>
+      <th class="p-2">Price</th>
+      <th class="p-2">Start Date</th>
+      <th class="p-2">End Date</th>
+      <th class="p-2">User</th>
+        <!-- <th>Actions</th> -->
+      </thead>
+      <tbody>
+        <tr *ngFor="let booking of bookingList">
+          <td>{{ booking.room.roomNumber }}</td>
+          <td>{{ booking.totalPrice }}</td>
+          <td>{{ booking.startDate | date: 'mediumDate' }}</td>
+          <td>{{ booking.endDate | date: 'mediumDate' }}</td>
+          <td>{{ booking.user.userName }}</td>
+          <!-- <td>
+            <button
+              type="button"
+              (click)="menu.toggle($event)"
+              class="text-black rounded-[8px] font-semibold px-4 py-2"
+            >
+              <i class="pi pi-ellipsis-h"></i>
+            </button>
+  
+            <p-menu #menu [popup]="true" [model]="getActions(Booking)"></p-menu>
+          </td> -->
+        </tr>
+      </tbody>
+    </table>
+  </section>

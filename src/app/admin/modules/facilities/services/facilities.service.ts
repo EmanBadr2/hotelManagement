@@ -11,17 +11,9 @@ export class FacilitiesService {
 
   constructor(private _HttpClient: HttpClient) {}
   getFacilities(): Observable<FacilitiesApiResponse> {
-    const token = localStorage.getItem('token');
-    console.log(token);
-    const headers = new HttpHeaders().set('Authorization', `${token}`);
-    return this._HttpClient.get<FacilitiesApiResponse>(
-      `${this.baseUrl}admin/room-facilities`,
-      { headers }
-    );
+    return this._HttpClient.get<FacilitiesApiResponse>(`admin/room-facilities`);
   }
   deleteFacility(id: string) {
-    return this._HttpClient.delete(
-      `https://upskilling-egypt.com:3000/api/v0/admin/room-facilities/${id}`
-    );
+    return this._HttpClient.delete(`admin/room-facilities/${id}`);
   }
 }
