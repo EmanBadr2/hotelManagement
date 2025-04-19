@@ -1,5 +1,5 @@
 
-<div class=" my-20 px-5">
+<div class=" px-5">
   <div class="p-4">
     <h2  class="text-xl font-bold "> {{ !activeRoomID? 'Add' : isFormDisabled?'View' : 'Edit' }} Room </h2>
   </div>
@@ -8,26 +8,10 @@
     [formGroup]="addRoomForm"
     (ngSubmit)="Submit(addRoomForm)"
   >
-  <div class="col-3 m-auto p-0 my-0">
-    <ngx-dropzone (change)="onSelect($event)">
-      <ngx-dropzone-label>Drop Your Photo !</ngx-dropzone-label>
-      <ngx-dropzone-preview
-        *ngFor="let f of files"
-        [removable]="true"
-        (removed)="onRemove(f)"
-      >
-        <ngx-dropzone-label
-          >{{ f.name }} ({{ f.type }})</ngx-dropzone-label
-        >
-      </ngx-dropzone-preview>
-    </ngx-dropzone>
-  </div>
-
-    <!-- User Name -->
-    <div class="my-4 ">
+    <div class=" ">
       <app-auth-inputs
         formControlName="roomNumber"
-        label="User Name"
+        label="Room Number"
         placeholder="Please type here"
         id="roomNumber"
       ></app-auth-inputs>
@@ -42,12 +26,12 @@
       </div>
     </div>
 
-    <!-- Phone Number + Country -->
-    <div class="grid grid-cols-2 gap-4 my-4">
+
+    <div class="grid grid-cols-2 gap-4 ">
       <div>
         <app-auth-inputs
           formControlName="price"
-          label="Phone Number"
+          label="Price"
           placeholder="Please type here"
           id="price"
         ></app-auth-inputs>
@@ -81,31 +65,70 @@
       </div>
     </div>
 
+    <div class="grid grid-cols-2 gap-4 ">
+      <div>
+        <app-auth-inputs
+          formControlName="discount"
+          label="discount"
+          placeholder="Please type here"
+          id="discount"
+        ></app-auth-inputs>
+        <div
+          *ngIf="
+            addRoomForm.get('discount')?.touched &&
+            addRoomForm.get('discount')?.errors
+          "
+          class="text-red-500 text-sm mt-1"
+        >
+          Phone Number is required.
+        </div>
+      </div>
+
+        <!-- Facilities (FormArray) -->
+  <div *ngIf="!isViewMode" >
+    <label class="font-semibold">Facilities</label>
+    <div *ngFor="let facility of facilities.controls; let i = index" class="flex space-x-2 my-2">
+      <!-- <input [formControl]="facility" placeholder="Facility" class="input" /> -->
+      <app-auth-inputs
+      formControlName="facilities"
+      label="facilities"
+      placeholder="Please type here"
+      id="facilities"
+    ></app-auth-inputs>
+      <button type="button" (click)="removeFacilities(i)" class="text-red-500">Remove</button>
+    </div>
+    <button type="button" (click)="addFacilities()" class="text-blue-600">+ Add Facility</button>
+  </div>
+
+
+    </div>
+
+
+    <ngx-dropzone (change)="onSelect($event)"  [disabled]="isViewMode">
+      <ngx-dropzone-label>Drop Your Photo !</ngx-dropzone-label>
+      <ngx-dropzone-preview
+        *ngFor="let f of files"
+        [removable]="true"
+        (removed)="onRemove(f)"
+      >
+        <ngx-dropzone-label
+          >{{ f.name }} ({{ f.type }})</ngx-dropzone-label
+        >
+      </ngx-dropzone-preview>
+    </ngx-dropzone>
+
+
 
     <div>
-      <button
+      <button *ngIf="!isViewMode" type="submit"
       class="bg-blue-500 text-white p-2 rounded"
-      >Add</button>
+      >{{!activeRoomID? 'Add' : 'update'}}</button>
 
-      <button
-      class="bg-blue-500 text-white p-2 rounded"
-      >Edit</button>
-
-      <button
+      <button type="button"
       routerLink="/admin/rooms/rooms"
       class="bg-blue-200 text-white p-2 rounded"
       >cancel</button>
     </div>
 
-
-    <!-- <div class="mt-6">
-      <button
-        pButton
-        type="submit"
-        label="Sign up"
-        class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-all"
-        [disabled]="addRoomForm.invalid"
-      ></button>
-    </div> -->
   </form>
 </div>

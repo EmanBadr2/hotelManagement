@@ -37,7 +37,7 @@
             <td>{{ room.roomNumber }}</td>
             <td>{{ room.price}}</td>
             <td>{{ room.discount}}</td>
-            <td>{{ room.createdAt}}</td>
+            <td>{{ room.createdAt | date:'short'}}</td>
             <td>
                 <p-menu #menu [popup]="true" [model]="getActions(room)"></p-menu>
                 <button
