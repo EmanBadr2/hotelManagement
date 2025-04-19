@@ -1,5 +1,8 @@
 <section class="px-3">
   <div class="container">
+    <div *ngIf="isLoading" class="flex justify-center items-center my-5">
+      <p-progressSpinner styleClass="custom-spinner"></p-progressSpinner>
+    </div>
     <div class="flex flex-row">
       <div class="col-md-11">
         <div class="flex items-center justify-between my-3">

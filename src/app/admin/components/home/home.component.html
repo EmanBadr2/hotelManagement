@@ -1,1 +1,53 @@
-<p>home works!</p>
+<div class="dashboard-container">
+    <div class="cards row">
+        <div class="card col-md-3 dark-card">
+            <div>
+                <p>{{ statsData?.rooms }}</p>
+                <h3>Rooms</h3>
+            </div>
+            <div class="icon-box">
+                <i class="fa-solid fa-bed"></i>
+            </div>
+        </div>
+      
+        <div class="card col-md-3 dark-card">
+            <div>
+                <p>{{ statsData?.facilities }}</p>
+                <h3>Facilities</h3>
+            </div>
+            <div class="icon-box">
+                <i class="fa-solid fa-dumbbell"></i>
+            </div>
+        </div>
+      
+        <div class="card col-md-3 dark-card">
+            <div>
+                <p>{{ statsData?.ads }}</p>
+                <h3>Ads</h3>
+            </div>
+            <div class="icon-box">
+                <i class="fa-solid fa-bullhorn"></i>
+            </div>
+        </div>
+      </div>
+      
+      <div class="charts-container">
+        <div class="chart-box">
+          <canvas *ngIf="bookingChartData" baseChart
+            [data]="bookingChartData"
+            [type]="chartType"
+            [options]="bookingChartOptions">
+          </canvas>
+        </div>
+      
+        <div class="chart-box">
+          <canvas *ngIf="userChartData" baseChart
+            [data]="userChartData"
+            [type]="userChartType"
+            [options]="userChartOptions"
+            >
+          </canvas>
+        </div>
+      </div>
+  </div>
+  

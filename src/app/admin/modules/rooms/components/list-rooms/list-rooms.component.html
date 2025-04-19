@@ -19,17 +19,17 @@
     </div>
 </div>
 
-<div *ngIf="roomsList.length === 0" class="flex items-center justify-center my-3">
-    <img src="../../../../../../assets/img/no-data.jfif" alt="No Data Available" class="no-data-image">
-</div>
-<table *ngIf="roomsList.length > 0" class="custom-table">
+<!-- <div *ngIf="roomsList.length === 0" class="flex items-center justify-center my-3">
+    <img src="../../../../../../assets/images/no-data.png" alt="No Data Available" class=" no-data-image">
+</div> -->
+
+<table *ngIf="roomsList.length > 0" class="table w-full table-striped">
     <thead>
         <th>Room Number</th>
         <th>Price</th>
         <th>Discount</th>
         <th>createdAt</th>
         <th>Action</th>
-
     </thead>
     <tbody>
 
@@ -37,9 +37,9 @@
             <td>{{ room.roomNumber }}</td>
             <td>{{ room.price}}</td>
             <td>{{ room.discount}}</td>
-            <td>{{ room.createdAt}}</td>
+            <td>{{ room.createdAt | date:'short'}}</td>
             <td>
-                <p-menu #menu [popup]="true" [model]="getMenuItems(room._id)"></p-menu>
+                <p-menu #menu [popup]="true" [model]="getActions(room)"></p-menu>
                 <button
                 pButton
                 type="button"
@@ -48,11 +48,10 @@
                 (click)="menu.toggle($event)"
                 ></button>
             </td>
-
-            <!-- <td>
-                <p-splitButton  [model]="items"></p-splitButton>
-            </td> -->
         </tr>
     </tbody>
 </table>
 </section>
+
+
+
