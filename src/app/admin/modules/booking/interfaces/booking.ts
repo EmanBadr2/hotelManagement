@@ -13,22 +13,36 @@ export interface User {
     startDate: string;
     endDate: string;
     totalPrice: number;
-    user: User;
-    room: Room;
-    status: 'pending' | 'completed' | string;
+    user: {
+      _id: string;
+      userName: string;
+    };
+    room: {
+      _id: string;
+      roomNumber: string;
+    };
+    status: string;
     createdAt: string;
     updatedAt: string;
     stripeChargeId?: string;
   }
   
   export interface BookingResponseData {
-    booking: Booking[];
-    totalCount: number;
+    success: boolean;
+    message: string;
+    data: {
+      booking: Booking[];
+      totalCount: number;
+    };
   }
+  
   
   export interface BookingApiResponse {
     success: boolean;
     message: string;
-    data: BookingResponseData;
+    data: {
+      booking: Booking[];
+      totalCount: number;
+    };
   }
   

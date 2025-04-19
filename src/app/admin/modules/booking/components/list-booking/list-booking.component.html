@@ -35,11 +35,11 @@
       </thead>
       <tbody>
         <tr *ngFor="let booking of bookingList">
-          <td>{{ booking.room.roomNumber }}</td>
+          <td>{{ booking?.room?.roomNumber }}</td>
           <td>{{ booking.totalPrice }}</td>
           <td>{{ booking.startDate | date: 'mediumDate' }}</td>
           <td>{{ booking.endDate | date: 'mediumDate' }}</td>
-          <td>{{ booking.user.userName }}</td>
+          <td>{{ booking?.user?.userName }}</td>
           <!-- <td>
             <button
               type="button"
