@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IProfileRes } from '../interfaces/profile';
 
 
 
@@ -11,8 +12,8 @@ export class ProfileService {
 
   constructor(private _HttpClient:HttpClient) { }
 
-  onGettingProfile(userId:any):Observable<any>{
-    return this._HttpClient.post(`/admin/users/`, userId)
+  onGettingProfile(userId:any , userName :any ):Observable<any>{
+    return this._HttpClient.post(`admin/users/`, {"_id": userId, "userName" : userName} )
   }
 
 }

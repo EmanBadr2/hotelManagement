@@ -18,8 +18,8 @@ import { forkJoin } from 'rxjs';
 export class AdsComponent {
   adsList: Ad[] = [];
   roomsList: IRooms[] = [];
-  page: number = 1;
-  size: number = 10;
+  rows: number = 5;
+  currentPage: number = 0;
   totalCount: number = 0;
   isLoading: boolean = false;
   error: string = '';
@@ -32,7 +32,14 @@ export class AdsComponent {
     private dialogService: DialogService
   ) {}
   ngOnInit(): void {
-    this.getAllAds();
+    this.getAllAds(this.currentPage, this.rows);
+  }
+  
+  onPageChange(event: any): void {
+    this.currentPage = event.page;
+    this.rows = event.rows;
+    console.log('Page Change Event:', event);
+    this.getAllAds(this.currentPage, this.rows);
   }
   getActions(ads: Ad) {
     return [
@@ -86,7 +93,7 @@ export class AdsComponent {
 
     this.ref.onClose.subscribe((result) => {
       if (result) {
-        this.getAllAds();
+        this.getAllAds(this.currentPage, this.rows);
       }
     });
   }
@@ -106,14 +113,12 @@ export class AdsComponent {
 
   openAddDialog(): void {
     this.isLoading = true; // Start loading
-
-    const params: any = { page: this.page, size: this.size };
-
     forkJoin({
-      roomsResponse: this.roomService.onGettingAllRooms(params),
+      roomsResponse: this.roomService.onGettingAllRooms(),
     }).subscribe({
       next: ({ roomsResponse }) => {
         this.roomsList = roomsResponse.data.rooms;
+        this.totalCount = roomsResponse.data.totalCount;
         this.isLoading = false; // Stop loading after dialog closed
 
         const roomOptions = this.roomsList.map((room) => ({
@@ -148,7 +153,7 @@ export class AdsComponent {
 
         this.ref.onClose.subscribe((result) => {
           if (result) {
-            this.getAllAds();
+            this.getAllAds(this.currentPage, this.rows);
           }
         });
       },
@@ -207,9 +212,9 @@ export class AdsComponent {
     });
   }
 
-  getAllAds(): void {
+  getAllAds(page: number, size: number): void {
     this.isLoading = true;
-    this.adsService.getAds().subscribe({
+    this.adsService.getAds(page + 1, size).subscribe({
       next: (response) => {
         this.adsList = response.data.ads;
         this.totalCount = response.data.totalCount;

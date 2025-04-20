@@ -13,10 +13,11 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from 'src/core/interceptors/auth.interceptor';
 import { CommonModule } from '@angular/common';
 import { GlobalInterceptor } from 'src/core/interceptors/global.interceptor';
+import { ProfileComponent } from './shared/components/profile/profile.component';
 
 
 @NgModule({
-  declarations: [AppComponent ],
+  declarations: [AppComponent, ProfileComponent ],
   imports: [
     CommonModule,
     BrowserAnimationsModule,

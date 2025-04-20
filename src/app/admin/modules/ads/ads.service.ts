@@ -7,21 +7,16 @@ import { AdResponse } from './Interfaces/ads';
   providedIn: 'root'
 })
 export class AdsService {
-  private baseUrl = 'https://upskilling-egypt.com:3000/api/v0/';
 
-constructor(private _HttpClient:HttpClient) { }
-  getAds(): Observable<AdResponse> {
-    const token = localStorage.getItem('token');
-    console.log(token);
-    const headers = new HttpHeaders().set('Authorization', `${token}`);
+  constructor(private _HttpClient: HttpClient) { }
+  getAds(page: number = 1, size: number = 5): Observable<AdResponse> {
     return this._HttpClient.get<AdResponse>(
-      `${this.baseUrl}admin/ads`,
-      { headers }
+      `admin/ads?page=${page}&size=${size}`,
     );
   }
   deleteAds(id: string) {
     return this._HttpClient.delete(
-      `https://upskilling-egypt.com:3000/api/v0/admin/ads/${id}`
+      `admin/ads/${id}`
     );
   }
 
