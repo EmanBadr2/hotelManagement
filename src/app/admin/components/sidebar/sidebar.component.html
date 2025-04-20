@@ -2,7 +2,7 @@
     <div class="side__bar position-relative">
       <div class="mt-5">
         <ul>
-          <li *ngFor="let item of menuList">
+          <li *ngFor="let item of menuList" (click)="onMenuClick(item)">
             <a
               *ngIf="item.route; else noRoute"
               [routerLink]="[item.route]"
