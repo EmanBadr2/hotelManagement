@@ -14,10 +14,10 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./list-rooms.component.scss']
 })
 export class ListRoomsComponent implements OnInit {
-  page :number=1
-  size:number=10
+  rows: number = 5;
+  currentPage: number = 0;
+  totalCount: number = 0;
   roomsList :IRooms[] =[]
-  totalNumOfRooms !:number
   ref!: DynamicDialogRef;
 
 
@@ -28,17 +28,22 @@ export class ListRoomsComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
-    this.onGettingAllRooms()
+    this.onGettingAllRooms(this.currentPage, this.rows)
+  }
+  onPageChange(event: any): void {
+    this.currentPage = event.page;
+    this.rows = event.rows;
+    console.log('Page Change Event:', event);
+    this.onGettingAllRooms(this.currentPage, this.rows);
   }
 
 
-  onGettingAllRooms():void{
-    const params :any = { page :this.page , size:this.size }
-    this._RoomsService.onGettingAllRooms( params ).subscribe({
+  onGettingAllRooms(page: number, size: number):void{
+    this._RoomsService.onGettingAllRooms( page + 1, size).subscribe({
       next :(res) =>{
         console.log(res);
         this.roomsList=res.data.rooms
-        this.totalNumOfRooms=res.data.totalCount
+        this.totalCount=res.data.totalCount
       },
       error :(err) =>{
         console.log(err);
@@ -83,7 +88,7 @@ export class ListRoomsComponent implements OnInit {
         this._RoomsService.deleteRoom(rooms._id).subscribe({
           next: (res) => {
             console.log(res);
-            this.onGettingAllRooms()
+            this.onGettingAllRooms(this.currentPage, this.rows)
             this._ToastrService.success('Room deleted successfully');
           },
           error: (err) => {

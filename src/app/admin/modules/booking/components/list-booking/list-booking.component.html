@@ -13,7 +13,7 @@
         </div>
       </div>
     </div>
-  
+
     <div
       *ngIf="bookingList.length === 0"
       class="flex items-center justify-center my-3"
@@ -52,4 +52,11 @@
         </tr>
       </tbody>
     </table>
-  </div>
+    <p-paginator
+  [rows]="rows"
+  [totalRecords]="totalCount"
+  [rowsPerPageOptions]="[5, 10, 20]"
+  (onPageChange)="onPageChange($event)"
+  styleClass="my-4"
+/>
+  </section>

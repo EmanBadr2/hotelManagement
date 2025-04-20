@@ -9,8 +9,8 @@ import { Observable } from 'rxjs';
 export class BookingService {
 
   constructor(private _HttpClient:HttpClient) { }
-  getBookings(): Observable<BookingApiResponse> {
-      return this._HttpClient.get<BookingApiResponse>(`admin/booking`);
+  getBookings(page: number = 1, size: number = 5): Observable<BookingApiResponse> {
+      return this._HttpClient.get<BookingApiResponse>(`admin/booking?page=${page}&size=${size}`);
     }
 
   getBookingById(id: string): Observable<any> {

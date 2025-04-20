@@ -54,4 +54,11 @@
       </tr>
     </tbody>
   </table>
-</div>
+  <p-paginator
+  [rows]="rows"
+  [totalRecords]="totalCount"
+  [rowsPerPageOptions]="[5, 10, 20]"
+  (onPageChange)="onPageChange($event)"
+  styleClass="my-4"
+/>
+</section>
