@@ -8,6 +8,7 @@ import { DeleteComponent } from './components/delete/delete.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SharedModule } from '../shared/shared/shared.module';
 import { DialogAddComponent } from './components/shared/dialog-add-edit/dialog-add.component';
+import { LogoutDialogComponent } from './components/logout-dialog/logout-dialog.component';
 
 
 
@@ -19,6 +20,7 @@ import { DialogAddComponent } from './components/shared/dialog-add-edit/dialog-a
     DeleteComponent,
     DashboardComponent,
     DialogAddComponent,
+    LogoutDialogComponent,
   ],
   imports: [
     CommonModule,
