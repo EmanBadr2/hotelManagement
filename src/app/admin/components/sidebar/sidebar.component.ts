@@ -1,4 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { LogoutDialogComponent } from '../logout-dialog/logout-dialog.component';
+import { Router } from '@angular/router';
 
 interface Menu {
   name: string;
@@ -16,6 +19,9 @@ export class SidebarComponent implements OnInit {
 
   isCollapsed = false;
   menuList: Menu[] = [];
+  ref!: DynamicDialogRef;
+  private router=inject(Router);
+  private dialogService = inject(DialogService);
 
   private iconMap: { [key: string]: string } = {
     home: 'pi-home',
@@ -32,7 +38,7 @@ export class SidebarComponent implements OnInit {
     { name: 'Booking', icon: 'grid_view', route: 'booking' },
     { name: 'Ads', icon: 'event_note', route: 'Ads' },
     { name: 'Facilities', icon: 'group', route: 'facilities' },
-    { name: 'Change password', icon: 'pi pi-key',route:'changepassword'},
+    { name: 'Change password', icon: 'pi pi-key', route: 'changepassword' },
     { name: 'Logout', icon: 'pi pi-sign-out' },
   ];
 
@@ -41,5 +47,23 @@ export class SidebarComponent implements OnInit {
       ...item,
       icon: this.iconMap[item.icon] || item.icon,
     }));
+  }
+  onMenuClick(item: Menu) {
+    if (item.name === 'Logout') {
+      this.logOut();
+    }
+  }
+  logOut() {
+    this.ref = this.dialogService.open(LogoutDialogComponent, {
+      header: 'LogOut',
+      width: '30vw',
+    });
+    this.ref.onClose.subscribe((confirmed: boolean) => {
+      if (confirmed) {
+        localStorage.clear(); // Clear localStorage
+        // Optionally redirect to login
+        this.router.navigate(['/auth/login']);
+      }
+    });
   }
 }

@@ -1,0 +1,63 @@
+<div *ngIf="loading" class="loading-text">Loading booking details...</div>
+
+<div *ngIf="!loading && bookingData" class="booking-container">
+
+  <h2 class="booking-header">Booking Details</h2>
+
+  <div class="booking-grid">
+    
+    <!-- User Info -->
+    <div>
+      <h3 class="section-title">👤 User Info</h3>
+      <p><span class="info-label">Username:</span> {{ bookingData.user?.userName }}</p>
+      <p><span class="info-label">User ID:</span> <span class="info-muted">{{ bookingData.user?._id }}</span></p>
+    </div>
+
+    <!-- Room Info -->
+    <div>
+      <h3 class="section-title">🏨 Room Info</h3>
+      <p><span class="info-label">Room Number:</span> {{ bookingData.room?.roomNumber }}</p>
+      <p><span class="info-label">Room ID:</span> <span class="info-muted">{{ bookingData.room?._id }}</span></p>
+    </div>
+
+    <!-- Booking Dates -->
+    <div>
+      <h3 class="section-title">📅 Booking Dates</h3>
+      <p><span class="info-label">Start:</span> {{ bookingData.startDate | date: 'fullDate' }}</p>
+      <p><span class="info-label">End:</span> {{ bookingData.endDate | date: 'fullDate' }}</p>
+    </div>
+
+    <!-- Status & Price -->
+    <div>
+      <h3 class="section-title">💰 Status & Price</h3>
+      <p>
+        <span class="info-label">Status:</span>
+        <span [ngClass]="{
+          'status-completed': bookingData.status === 'completed',
+          'status-pending': bookingData.status === 'pending',
+          'status-cancelled': bookingData.status === 'cancelled'
+        }">
+          {{ bookingData.status | titlecase }}
+        </span>
+      </p>
+      <p><span class="info-label">Total Price:</span> ${{ bookingData.totalPrice }}</p>
+    </div>
+
+    <!-- Created & Updated -->
+    <div>
+      <h3 class="section-title">⏱️ Timestamps</h3>
+      <p><span class="info-label">Created:</span> {{ bookingData.createdAt | date: 'short' }}</p>
+      <p><span class="info-label">Updated:</span> {{ bookingData.updatedAt | date: 'short' }}</p>
+    </div>
+
+    <!-- Payment Info -->
+    <div>
+      <h3 class="section-title">💳 Payment</h3>
+      <p>
+        <span class="info-label">Stripe ID:</span>
+        <code class="stripe-code">{{ bookingData.stripeChargeId }}</code>
+      </p>
+    </div>
+
+  </div>
+</div>

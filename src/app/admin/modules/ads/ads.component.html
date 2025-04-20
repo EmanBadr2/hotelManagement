@@ -1,4 +1,4 @@
-<section class="px-3">
+<div class="px-3">
   <div class="container">
     <div *ngIf="isLoading" class="flex justify-center items-center my-5">
       <p-progressSpinner styleClass="custom-spinner"></p-progressSpinner>
@@ -40,6 +40,7 @@
       <th>Discount</th>
       <th>Capacity</th>
       <th>Active</th>
+      <th>Actions</th>
     </thead>
     <tbody>
       <tr *ngFor="let ads of adsList">
@@ -62,4 +63,4 @@
       </tr>
     </tbody>
   </table>
-</section>
+</div>
