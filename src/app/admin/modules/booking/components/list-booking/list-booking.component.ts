@@ -11,7 +11,8 @@ import { DialogAddComponent } from 'src/app/admin/components/shared/dialog-add-e
 })
 export class ListBookingComponent {
   bookingList: Booking[]  = [];
-  // roomsList: IRooms[] | undefined = [];
+  rows: number = 5;
+  currentPage: number = 0;
   totalCount: number = 0;
   isLoading: boolean = false;
   error: string = '';
@@ -21,11 +22,17 @@ export class ListBookingComponent {
       private dialogService: DialogService
     ) {}
     ngOnInit(): void {
-      this.getAllBookings();
+      this.getAllBookings(this.currentPage, this.rows);
+    }
+    onPageChange(event: any): void {
+      this.currentPage = event.page;
+      this.rows = event.rows;
+      console.log('Page Change Event:', event);
+      this.getAllBookings(this.currentPage, this.rows);
     }
     getActions(booking: Booking) {
       return [
-      
+
         {
           label: 'View',
           icon: 'pi pi-eye',
@@ -45,9 +52,9 @@ export class ListBookingComponent {
       });
     }
   
-    getAllBookings(): void {
+    getAllBookings(page: number, size: number): void {
       this.isLoading = true;
-      this.bookingService.getBookings().subscribe({
+      this.bookingService.getBookings(page + 1, size).subscribe({
         next: (response: BookingApiResponse) => {
                 console.log('API Response:', response);
             this.bookingList = response.data.booking;

@@ -15,34 +15,25 @@ import { DeleteComponent } from 'src/app/admin/components/delete/delete.componen
 })
 export class ListFacilitiesComponent {
   facilitiesList: Facility[] = [];
+  rows: number = 5;
+  currentPage: number = 0;
   totalCount: number = 0;
   isLoading: boolean = false;
   error: string = '';
   ref!: DynamicDialogRef;
-  // items = [
-  //   {
-  //     label: 'Edit',
-  //     icon: 'pi pi-pencil',
-  //     // command: () =>this.editFacility(facility.id),
-  //   },
-  //   {
-  //     label: 'View',
-  //     icon: 'pi pi-eye',
-  //     command: (event: any) => this.viewFacility(event.item.data),
-  //   },
-  //   {
-  //     label: 'Delete',
-  //     icon: 'pi pi-trash',
-  //     // command: () => this.openDeleteDialog(facility),
-  //   },
-  // ];
   constructor(
     private facilitiesService: FacilitiesService,
     private toastr: ToastrService,
     private dialogService: DialogService
   ) {}
   ngOnInit(): void {
-    this.getAllFacilities();
+    this.getAllFacilities(this.currentPage, this.rows);
+  }
+  onPageChange(event: any): void {
+    this.currentPage = event.page;
+    this.rows = event.rows;
+    console.log('Page Change Event:', event);
+    this.getAllFacilities(this.currentPage, this.rows);
   }
   getActions(facility: Facility) {
     return [
@@ -75,8 +66,7 @@ export class ListFacilitiesComponent {
     });
     this.ref.onClose.subscribe((result) => {
       if (result) {
-        // بعد الإضافة الناجحة يتم عمل refresh
-        this.getAllFacilities();
+        this.getAllFacilities(this.currentPage, this.rows);
       }
     });
   }
@@ -92,8 +82,7 @@ export class ListFacilitiesComponent {
 
     this.ref.onClose.subscribe((result) => {
       if (result) {
-        // بعد الإضافة الناجحة يتم عمل refresh
-        this.getAllFacilities();
+        this.getAllFacilities(this.currentPage, this.rows);
       }
     });
   }
@@ -134,9 +123,9 @@ export class ListFacilitiesComponent {
     });
   }
 
-  getAllFacilities(): void {
+  getAllFacilities(page: number, size: number): void {
     this.isLoading = true;
-    this.facilitiesService.getFacilities().subscribe({
+    this.facilitiesService.getFacilities(page + 1, size).subscribe({
       next: (response) => {
         this.facilitiesList = response.data.facilities;
         this.totalCount = response.data.totalCount;

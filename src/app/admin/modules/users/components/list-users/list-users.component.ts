@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { DialogAddComponent } from 'src/app/admin/components/shared/dialog-add-edit/dialog-add.component';
 import { DynamicDialogRef, DialogService } from 'primeng/dynamicdialog';
-// import { IRooms } from '../../../rooms/interfaces/IRooms';
 import { UsersService } from '../../services/users.service';
 import { ViewUserDialogComponent } from '../view-user-dialog/view-user-dialog.component';
 
@@ -12,7 +11,8 @@ import { ViewUserDialogComponent } from '../view-user-dialog/view-user-dialog.co
 })
 export class ListUsersComponent {
   userList: any[] = [];
-  // roomsList: IRooms[] | undefined = [];
+  rows: number = 5;
+  currentPage: number = 0;
   totalCount: number = 0;
   isLoading: boolean = false;
   error: string = '';
@@ -22,7 +22,13 @@ export class ListUsersComponent {
       private dialogService: DialogService
     ) {}
     ngOnInit(): void {
-      this.getAllUsers();
+      this.getAllUsers(this.currentPage, this.rows);
+    }
+    onPageChange(event: any): void {
+      this.currentPage = event.page;
+      this.rows = event.rows;
+      console.log('Page Change Event:', event);
+      this.getAllUsers(this.currentPage, this.rows);
     }
     getActions(user: any) {
       return [
@@ -42,12 +48,12 @@ export class ListUsersComponent {
       });
     }
   
-    getAllUsers(): void {
+    getAllUsers(page: number, size: number): void {
       this.isLoading = true;
-      this._UsersService.getUsres().subscribe({
+      this._UsersService.getUsers(page + 1, size).subscribe({
         next: (response: any) => {
           this.userList = response.data.users;
-          this.totalCount = response.data.users.length;
+          this.totalCount = response.data.totalCount;
           this.isLoading = false;
         },
         error: (err) => {

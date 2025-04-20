@@ -15,6 +15,8 @@ import { DialogService } from 'primeng/dynamicdialog';
 import { NgChartsModule } from 'ng2-charts'; 
 import { AuthInputsComponent } from '../components/auth-inputs/auth-inputs.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { PaginatorModule } from 'primeng/paginator';
+
 
 @NgModule({
   declarations: [AuthInputsComponent],
@@ -31,7 +33,8 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     NgxDropzoneModule ,
     DialogModule,
     DynamicDialogModule,
-    NgChartsModule
+    NgChartsModule,
+    PaginatorModule
   ],
   exports: [
     CommonModule,
@@ -49,7 +52,8 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     NgxDropzoneModule ,
     DialogModule,
     DynamicDialogModule,
-    NgChartsModule
+    NgChartsModule,
+    PaginatorModule
   ],
   providers: [DialogService],
 })
