@@ -1,0 +1,33 @@
+.auth-container{
+    @apply bg-white min-h-screen flex items-center justify-center p-2;
+}
+.auth-container .auth-box{
+    @apply flex w-full overflow-hidden;
+}
+.auth-title{
+    @apply font-medium text-[30px] mb-4;
+}
+.auth-text{
+    @apply font-normal text-base mb-4;
+}
+.auth-text span{
+    @apply text-primary font-semibold cursor-pointer;
+}
+.auth-logo{
+    @apply ms-3 my-3 font-medium text-[26px] leading-[100%] tracking-[0];
+}
+.auth-logo span{
+    @apply text-primary font-medium;
+}
+.auth-form-container{
+    @apply w-full md:w-1/2 mt-10 pt-10;
+}
+.warning-text{
+    @apply text-red-600 block
+}
+.auth-image-container{
+    @apply hidden md:block md:w-[40%] relative;
+}
+.auth-image{
+    @apply object-cover h-full w-full;
+}
