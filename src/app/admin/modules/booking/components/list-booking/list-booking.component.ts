@@ -3,6 +3,7 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Booking, BookingApiResponse, BookingResponseData } from '../../interfaces/booking';
 import { BookingService } from '../../services/booking.service';
 import { DialogAddComponent } from 'src/app/admin/components/shared/dialog-add-edit/dialog-add.component';
+import { ViewBookingComponent } from '../view-booking/view-booking.component';
 
 @Component({
   selector: 'app-list-booking',
@@ -25,7 +26,6 @@ export class ListBookingComponent {
     }
     getActions(booking: Booking) {
       return [
-      
         {
           label: 'View',
           icon: 'pi pi-eye',
@@ -34,13 +34,11 @@ export class ListBookingComponent {
       ];
     }
     viewBooking(id: any): void {
-      this.ref = this.dialogService.open(DialogAddComponent, {
+      this.ref = this.dialogService.open(ViewBookingComponent, {
         header: 'View Booking',
-        width: '30vw',
+        width: '60vw',
         data: {
-          id,
-          isView: true,
-          fields: [{ name: 'name', placeholder: 'Booking name', type: 'text' }],
+          id
         },
       });
     }

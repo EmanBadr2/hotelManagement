@@ -5,12 +5,14 @@ import { BookingRoutingModule } from './booking-routing.module';
 import { BookingComponent } from './booking.component';
 import { ListBookingComponent } from './components/list-booking/list-booking.component';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
+import { ViewBookingComponent } from './components/view-booking/view-booking.component';
 
 
 @NgModule({
   declarations: [
     BookingComponent,
-    ListBookingComponent
+    ListBookingComponent,
+    ViewBookingComponent
   ],
   imports: [
     CommonModule,

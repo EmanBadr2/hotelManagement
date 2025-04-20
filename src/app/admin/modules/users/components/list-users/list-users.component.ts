@@ -28,7 +28,6 @@ export class ListUsersComponent {
       return [
         {
           label: 'View',
-          icon: 'pi pi-eye',
           command: () => this.viewUser(user._id),
         }
       ];

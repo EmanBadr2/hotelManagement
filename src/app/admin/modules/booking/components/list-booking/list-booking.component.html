@@ -1,4 +1,4 @@
-<section class="px-3">
+<div class="px-3">
     <div class="container">
       <div class="flex flex-row">
         <div class="col-md-11">
@@ -26,11 +26,11 @@
     </div>
     <table *ngIf="bookingList.length > 0" class="custom-table">
       <thead>
-      <th class="p-2">Room Number</th>
-      <th class="p-2">Price</th>
-      <th class="p-2">Start Date</th>
-      <th class="p-2">End Date</th>
-      <th class="p-2">User</th>
+      <th>Room Number</th>
+      <th>Price</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>User</th>
         <th>Actions</th>
       </thead>
       <tbody>
@@ -43,15 +43,13 @@
           <td>
             <button
               type="button"
-              (click)="menu.toggle($event)"
-              class="text-black rounded-[8px] font-semibold px-4 py-2"
+              (click)="viewBooking(booking._id)"
+              class="btn btn-outline-secondary btn-sm rounded-circle"
             >
-              <i class="pi pi-ellipsis-h"></i>
+              <i class="pi pi-eye"></i>
             </button>
-  
-            <p-menu #menu [popup]="true" [model]="getActions(booking)"></p-menu>
           </td>
         </tr>
       </tbody>
     </table>
-  </section>
+  </div>
