@@ -8,7 +8,7 @@ export class StorageService {
   userRole :string | null = localStorage.getItem('userRole')
   token :string | null = localStorage.getItem('token')
   userID :string | null =  localStorage.getItem('userID')
-
+  userName :string| null =  localStorage.getItem('userName')
   decodedToken !: any
   isAdmin !: boolean
   isUser!: boolean

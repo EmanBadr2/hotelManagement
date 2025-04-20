@@ -1,9 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
-import { ProfileService } from 'src/app/shared/services/profile.service';
-import { StorageService } from 'src/core/services/storage.service';
-
+import { ProfileComponent } from '../../../shared/components/profile/profile.component';
 
 
 @Component({
@@ -15,15 +13,14 @@ export class NavbarComponent implements OnInit {
   userName: string = 'User';
   userMail: string = 'upskilling@gmail.com';
   defaultImage = '../../../../assets/img/user.png';
-  userID :string| null = this._StorageService.userID
+
 
   @Output() toggleSidebar = new EventEmitter<void>();
 
   userMenuItems: MenuItem[] = [];
 
   constructor(private _Router: Router ,
-    private _ProfileService  :ProfileService  ,
-     private _StorageService : StorageService ,
+
   ) {}
 
   ngOnInit(): void {}
@@ -48,15 +45,7 @@ export class NavbarComponent implements OnInit {
     ];
   }
 
+ 
 
-  getProfile():void{
-    this._ProfileService.onGettingProfile(this.userID).subscribe({
-      next(res) {
-        console.log(res);
-      },
-      error(err) {
-        console.log(err);
-      },
-    })
-  }
+
 }
