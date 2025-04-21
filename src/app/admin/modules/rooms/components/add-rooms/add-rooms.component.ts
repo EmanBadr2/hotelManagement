@@ -28,7 +28,8 @@ export class AddRoomsComponent  implements OnInit , OnDestroy{
   // files: File[] = [];
   files: FileWithPreview[] = [];
   facilities: Facility[] = [];
-  selectedFacilityIds: any[] = [];
+  // selectedFacilityIds: any[] = [];
+  viewImg!:string[]
 
   constructor(private _RoomsService:RoomsService ,
     private fb:FormBuilder ,
@@ -81,8 +82,8 @@ export class AddRoomsComponent  implements OnInit , OnDestroy{
       };
       reader.readAsDataURL(file);
     }
-    this.files.push(...event.addedFiles);
-    this.addRoomForm.patchValue({ images: this.files });
+    // this.files.push(...event.addedFiles);
+    // this.addRoomForm.patchValue({ images: this.files });
   }
   onRemove(event: File) {
     console.log(event);
@@ -95,7 +96,7 @@ export class AddRoomsComponent  implements OnInit , OnDestroy{
     const formData = this.addRoomForm.value;
     const payload = {
       ...formData,
-      facilities: formData.facilities.map((f: any) => f.id),
+      facilities: formData.facilities.map((f: any) => f._id),
       // images: this.files.map((img: File) => img.name)
     };
     console.log('Sending to API:', payload);  // Send `payload` to your API
@@ -104,7 +105,7 @@ export class AddRoomsComponent  implements OnInit , OnDestroy{
     if(!this.activeRoomID ){
       //call Add
       this.addRoom(payload)
-      this._ToastrService.success('Room Added successfully')
+      // this._ToastrService.success('Room Added successfully')
       this._Router.navigate(['/admin/rooms/rooms'])
     }else{
       // call    Edit/Updata
@@ -153,6 +154,7 @@ export class AddRoomsComponent  implements OnInit , OnDestroy{
             userName: room.createdBy?.userName
           }
         });
+        this.viewImg =  res.data.room.images;
 
             //  // Patch images FormArray
             //  this.images.clear();
