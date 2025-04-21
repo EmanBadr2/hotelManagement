@@ -84,34 +84,38 @@
         </div>
       </div>
 
-        <!-- Facilities (FormArray) -->
-  <div *ngIf="!isViewMode" >
-    <label class="font-semibold">Facilities</label>
-    <div *ngFor="let facility of facilities.controls; let i = index" class="flex space-x-2 my-2">
-      <!-- <input [formControl]="facility" placeholder="Facility" class="input" /> -->
-      <app-auth-inputs
+
+
+
+     <!-- Facilities Dropdown -->
+
+  <div>
+    <!-- <label class="block text-sm font-medium">Facilities</label> -->
+
+    <p-multiSelect
+      [options]="facilities"
+      optionLabel="name"
       formControlName="facilities"
-      label="facilities"
-      placeholder="Please type here"
-      id="facilities"
-    ></app-auth-inputs>
-      <button type="button" (click)="removeFacilities(i)" class="text-red-500">Remove</button>
-    </div>
-    <button type="button" (click)="addFacilities()" class="text-blue-600">+ Add Facility</button>
+      display="chip"
+      class="w-full mt-1"
+      placeholder="Select facilities">
+    </p-multiSelect>
   </div>
 
 
     </div>
 
 
-    <ngx-dropzone (change)="onSelect($event)"  [disabled]="isViewMode">
+    <ngx-dropzone
+    class="bg-green-200"
+     (change)="onSelect($event)"  [disabled]="isViewMode">
       <ngx-dropzone-label>Drop Your Photo !</ngx-dropzone-label>
       <ngx-dropzone-preview
         *ngFor="let f of files"
         [removable]="true"
         (removed)="onRemove(f)"
       >
-        <ngx-dropzone-label
+        <ngx-dropzone-label 
           >{{ f.name }} ({{ f.type }})</ngx-dropzone-label
         >
       </ngx-dropzone-preview>
@@ -119,16 +123,21 @@
 
 
 
-    <div>
+    <div class="flex justify-end space-x-4">
       <button *ngIf="!isViewMode" type="submit"
-      class="bg-blue-500 text-white p-2 rounded"
+      class="px-6 py-2 bg-blue-600
+       text-white rounded-lg hover:bg-blue-700 transition"
       >{{!activeRoomID? 'Add' : 'update'}}</button>
 
       <button type="button"
       routerLink="/admin/rooms/rooms"
-      class="bg-blue-200 text-white p-2 rounded"
+      class="px-6 py-2 border border-blue-500
+       text-blue-500 rounded-lg hover:bg-blue-50 transition"
       >cancel</button>
     </div>
 
   </form>
 </div>
+
+
+

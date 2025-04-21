@@ -5,8 +5,7 @@ import { DialogModule } from 'primeng/dialog';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-
-
+import { MultiSelectModule } from 'primeng/multiselect';
 
 const primeNgComponents = [
   ButtonModule,
@@ -14,7 +13,8 @@ const primeNgComponents = [
   ProgressSpinnerModule,
   DialogModule,
   DynamicDialogModule,
-  DropdownModule
+  DropdownModule ,
+  MultiSelectModule
 ];
 
 @NgModule({
