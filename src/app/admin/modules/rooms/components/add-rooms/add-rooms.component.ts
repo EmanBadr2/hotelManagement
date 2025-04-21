@@ -87,8 +87,6 @@ export class AddRoomsComponent  implements OnInit , OnDestroy{
   onRemove(event: File) {
     console.log(event);
     this.files.splice(this.files.indexOf(event), 1);
-    this.addRoomForm.patchValue({ images: this.files });
-
   }
 // ------------
 
