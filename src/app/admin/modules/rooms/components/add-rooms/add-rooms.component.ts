@@ -5,8 +5,12 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { FacilitiesService } from '../../../facilities/services/facilities.service';
+import { FacilitiesResponseData, Facility ,FacilitiesApiResponse } from '../../../facilities/interfaces2/facilities';
 
-
+interface FileWithPreview extends File {
+  preview?: string;
+}
 
 @Component({
   selector: 'app-add-rooms',
@@ -21,16 +25,22 @@ export class AddRoomsComponent  implements OnInit , OnDestroy{
   isViewMode : boolean = false ;
   isFormDisabled: any ;
   addRoomForm !: FormGroup
-  files: File[] = [];
+  // files: File[] = [];
+  files: FileWithPreview[] = [];
+  facilities: Facility[] = [];
+  // selectedFacilityIds: any[] = [];
+  viewImg!:string[]
 
   constructor(private _RoomsService:RoomsService ,
     private fb:FormBuilder ,
     private _Router:Router ,
     private _ActivatedRoute:ActivatedRoute ,
-    private _ToastrService:ToastrService
+    private _ToastrService:ToastrService ,
+    private _FacilitiesService:FacilitiesService
   ) { }
 
  ngOnInit(): void {
+  this.getAllFacilities()
   this.activeRoomID =this._ActivatedRoute.snapshot.paramMap.get('id')
   this.isFormDisabled = this._ActivatedRoute.snapshot.queryParamMap.get('isFormDisabled')
   //  console.log( this.activeRoomID , this.isFormDisabled);
@@ -40,10 +50,10 @@ export class AddRoomsComponent  implements OnInit , OnDestroy{
     price: ['' , Validators.required],
     capacity: ['' , Validators.required],
     discount: [''],
-    images: [''],
+    images: [[]],
     createdAt: [''],
     updatedAt: [''],
-    facilities: this.fb.array([]), // Start with an empty array
+    facilities: [[]],
   });
 
    if(this.activeRoomID){ //  pass Data to Form (View & Edit)
@@ -56,28 +66,24 @@ export class AddRoomsComponent  implements OnInit , OnDestroy{
       this.isEditMode =false
       }
    }
-
-   console.log('EDit' , this.isEditMode);
-   console.log('view' , this.isViewMode);
-
-
+  //  console.log('EDit' , this.isEditMode);
+  //  console.log('view' , this.isViewMode);
  }
 
-// -----------
-   // Getter for easy access facilities
-   get facilities(): FormArray {
-    return this.addRoomForm.get('facilities') as FormArray;
-  }
-  addFacilities() {
-    this.facilities.push(this.fb.control(''));
-  }
-  removeFacilities(index: number) {
-    this.facilities.removeAt(index);
-  }
-// ---------
   // Dropzone file event
   onSelect(event: any) {
-    this.files.push(...event.addedFiles);
+    const selectedFiles = event.addedFiles;
+    for (let file of selectedFiles) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        (file as any).preview = e.target.result;
+        this.files.push(file);
+        this.addRoomForm.patchValue({ images: this.files });
+      };
+      reader.readAsDataURL(file);
+    }
+    // this.files.push(...event.addedFiles);
+    // this.addRoomForm.patchValue({ images: this.files });
   }
   onRemove(event: File) {
     console.log(event);
@@ -86,34 +92,24 @@ export class AddRoomsComponent  implements OnInit , OnDestroy{
 // ------------
 
   Submit(form:FormGroup):void{
-    console.log(form.value);
-    this.addRoomForm = form
-    let formValues = form.value
-    const formData = new FormData();
-      // --------------------------
-     // // Append all controls
-     for(const key in formValues){
-      if (formValues.hasOwnProperty(key)) {  formData.append(key, formValues[key]) }
-    }
-    // Append array of inputs
-    this.facilities.controls.forEach((control, index) => {
-      formData.append(`facilities[${index}]`, control.value);
-    });
-    // Append files
-    this.files.forEach((file, index) => {
-      formData.append(`images`, file, file.name);
-    });
-    // --------------------------
+
+    const formData = this.addRoomForm.value;
+    const payload = {
+      ...formData,
+      facilities: formData.facilities.map((f: any) => f._id),
+      // images: this.files.map((img: File) => img.name)
+    };
+    console.log('Sending to API:', payload);  // Send `payload` to your API
+
 
     if(!this.activeRoomID ){
       //call Add
-      this.addRoom(formData)
-      this._ToastrService.success('Room Added successfully')
+      this.addRoom(payload)
+      // this._ToastrService.success('Room Added successfully')
       this._Router.navigate(['/admin/rooms/rooms'])
-
     }else{
       // call    Edit/Updata
-      this.onUpdateRoom(this.activeRoomID , formData)
+      this.onUpdateRoom(this.activeRoomID , payload)
       console.log('uppdate');
       this._Router.navigate(['/admin/rooms/rooms'])
 
@@ -158,6 +154,7 @@ export class AddRoomsComponent  implements OnInit , OnDestroy{
             userName: room.createdBy?.userName
           }
         });
+        this.viewImg =  res.data.room.images;
 
             //  // Patch images FormArray
             //  this.images.clear();
@@ -194,6 +191,39 @@ export class AddRoomsComponent  implements OnInit , OnDestroy{
   })
   }
 
+//  getAllFacilities():void{
+//    let  listFacilities ;
+//   this._FacilitiesService.getFacilities(1,10).subscribe({
+//     next(res) {
+//       // console.log(res.data.facilities      );
+//       // this.listFacilities = res.data.facilities
+//       // listFacilities = res.data.facilities
+
+//     },
+//     error(err) {
+//       console.log(err);
+//     },
+//   })
+//   //  this.listFacilities=listFacilities
+//   console.log(listFacilities);
+
+
+//  }
+
+ getAllFacilities(): void {
+  this._FacilitiesService.getFacilities(1,10).subscribe({
+    next: (response) => {
+      console.log(response.data.facilities);
+
+      this.facilities = response.data.facilities;
+      //  console.log(this.facilities);
+    },
+    error: (err) => {
+      console.log(err);
+    },
+  });
+}
+
 
 ngOnDestroy(): void {
     this.isViewMode=false
@@ -202,3 +232,20 @@ ngOnDestroy(): void {
 
 
 }
+
+    // let formValues = form.value
+    // const formData = new FormData();
+      // --------------------------
+     // // Append all controls
+    //  for(const key in formValues){
+    //   if (formValues.hasOwnProperty(key)) {  formData.append(key, formValues[key]) }
+    // }
+    // // Append array of inputs
+    // this.facilities.controls.forEach((control, index) => {
+    //   formData.append(`facilities[${index}]`, control.value);
+    // });
+    // // Append files
+    // this.files.forEach((file, index) => {
+    //   formData.append(`images`, file, file.name);
+    // });
+    // --------------------------
