@@ -18,17 +18,15 @@ interface FileWithPreview extends File {
   styleUrls: ['./add-rooms.component.scss']
 })
 
-export class AddRoomsComponent  implements OnInit , OnDestroy{
+export class AddRoomsComponent  implements OnInit , OnDestroy {
 
   activeRoomID!:any ;
   isEditMode : boolean = false;
   isViewMode : boolean = false ;
   isFormDisabled: any ;
   addRoomForm !: FormGroup
-  // files: File[] = [];
-  files: FileWithPreview[] = [];
+  files: any[] = [];
   facilities: Facility[] = [];
-  // selectedFacilityIds: any[] = [];
   viewImg!:string[]
 
   constructor(private _RoomsService:RoomsService ,
@@ -55,8 +53,8 @@ export class AddRoomsComponent  implements OnInit , OnDestroy{
     updatedAt: [''],
     facilities: [[]],
   });
-
-   if(this.activeRoomID){ //  pass Data to Form (View & Edit)
+  //  pass Data to Form (View & Edit)
+   if(this.activeRoomID){
      //  get rooms by id
      this.viewRoom(this.activeRoomID)
      this.isEditMode=true
@@ -66,75 +64,60 @@ export class AddRoomsComponent  implements OnInit , OnDestroy{
       this.isEditMode =false
       }
    }
-  //  console.log('EDit' , this.isEditMode);
-  //  console.log('view' , this.isViewMode);
- }
 
-  // Dropzone file event
-  onSelect(event: any) {
-    const selectedFiles = event.addedFiles;
-    for (let file of selectedFiles) {
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        (file as any).preview = e.target.result;
-        this.files.push(file);
-        this.addRoomForm.patchValue({ images: this.files });
-      };
-      reader.readAsDataURL(file);
-    }
-    // this.files.push(...event.addedFiles);
-    // this.addRoomForm.patchValue({ images: this.files });
-  }
-  onRemove(event: File) {
-    console.log(event);
-    this.files.splice(this.files.indexOf(event), 1);
-  }
-// ------------
+ }
 
   Submit(form:FormGroup):void{
 
-    const formData = this.addRoomForm.value;
-    const payload = {
-      ...formData,
-      facilities: formData.facilities.map((f: any) => f._id),
-      // images: this.files.map((img: File) => img.name)
-    };
-    console.log('Sending to API:', payload);  // Send `payload` to your API
-
+    let formValues = form.value
+    const formData = new FormData();
+    for(const key in formValues){
+      if (formValues.hasOwnProperty(key)) {  formData.append(key, formValues[key]) }
+    }
+      // facilities
+      if (formValues.key === 'facilities' && Array.isArray(formValues.value)) {
+        formValues.value.forEach((facility:any) => {
+          formData.append('facilities', facility._id);
+        });
+      }
+      // img
+    if(this.files.length>0){
+      this.files.forEach(file => {
+        formData.append('images', file);
+      });
+    }
 
     if(!this.activeRoomID ){
       //call Add
-      this.addRoom(payload)
-      // this._ToastrService.success('Room Added successfully')
-      this._Router.navigate(['/admin/rooms/rooms'])
+      this.addRoom(formData)
     }else{
-      // call    Edit/Updata
-      this.onUpdateRoom(this.activeRoomID , payload)
-      console.log('uppdate');
-      this._Router.navigate(['/admin/rooms/rooms'])
-
+      // call Edit
+      this.updateRoom(this.activeRoomID , formData)
     }
 
   }
 
 
   addRoom(formData :any):void{
-    this._RoomsService.onAddRoom(formData).subscribe({
-      next: (res) => {
-        console.log('done');
-        console.log(res);
-        this._ToastrService.success('Room Added successfully')
-        this._Router.navigate(['/admin/rooms/rooms'])
 
-      },
-      error: (err) => {
-        console.log(err);
-        this._ToastrService.error(' error in Adding Room')
-      },
-      // complete:() =>{
-      //   this._Router.navigate(['/admin/rooms/rooms'])
-      // },
-    })
+    this._RoomsService.addRoom(formData).subscribe({
+        next: (res) => {
+          console.log('done');
+          console.log(res);
+          this._ToastrService.success('Room Added successfully')
+          this._Router.navigate(['/admin/rooms/rooms'])
+
+        },
+        error: (err) => {
+          console.log(err);
+          this._ToastrService.error(' error in Adding Room')
+        },
+        // complete:() =>{
+        //   this._ToastrService.success('Room Added successfully')
+        //   this._Router.navigate(['/admin/rooms/rooms'])
+        // },
+      })
+
 
   }
 
@@ -143,7 +126,6 @@ export class AddRoomsComponent  implements OnInit , OnDestroy{
       next: (res) => {
         this.addRoomForm.disable()
         const room = res.data.room;
-        // Patch basic fields
         this.addRoomForm.patchValue({
           roomNumber: room.roomNumber,
           price: room.price,
@@ -155,12 +137,6 @@ export class AddRoomsComponent  implements OnInit , OnDestroy{
           }
         });
         this.viewImg =  res.data.room.images;
-
-            //  // Patch images FormArray
-            //  this.images.clear();
-            //  (room.images || []).forEach(img => {
-            //    this.images.push(new FormControl(img));
-            //  });
       },
       error: (err) => {
         console.log(err);
@@ -175,7 +151,7 @@ export class AddRoomsComponent  implements OnInit , OnDestroy{
 
   }
 
-  onUpdateRoom(id:number| string , formData : any):void{
+  updateRoom(id:number| string , formData : any):void{
     this._RoomsService.updateRoom(id , formData).subscribe({
       next: (res) => {
         console.log(res);
@@ -191,32 +167,11 @@ export class AddRoomsComponent  implements OnInit , OnDestroy{
   })
   }
 
-//  getAllFacilities():void{
-//    let  listFacilities ;
-//   this._FacilitiesService.getFacilities(1,10).subscribe({
-//     next(res) {
-//       // console.log(res.data.facilities      );
-//       // this.listFacilities = res.data.facilities
-//       // listFacilities = res.data.facilities
-
-//     },
-//     error(err) {
-//       console.log(err);
-//     },
-//   })
-//   //  this.listFacilities=listFacilities
-//   console.log(listFacilities);
-
-
-//  }
-
  getAllFacilities(): void {
   this._FacilitiesService.getFacilities(1,10).subscribe({
     next: (response) => {
-      console.log(response.data.facilities);
-
+      // console.log(response.data.facilities);
       this.facilities = response.data.facilities;
-      //  console.log(this.facilities);
     },
     error: (err) => {
       console.log(err);
@@ -224,11 +179,30 @@ export class AddRoomsComponent  implements OnInit , OnDestroy{
   });
 }
 
-
+  // Dropzone file event
+  onSelect(event: any) {
+    const selectedFiles = event.addedFiles;
+    for (let file of selectedFiles) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        (file as any).preview = e.target.result;
+        this.files.push(file);
+        this.addRoomForm.patchValue({ images: this.files });
+      };
+      reader.readAsDataURL(file);
+    }
+    // this.files.push(...event.addedFiles);
+  }
+  onRemove(event: File) {
+    console.log(event);
+    this.files.splice(this.files.indexOf(event), 1);
+  }
+// ------------
 ngOnDestroy(): void {
     this.isViewMode=false
     this.isEditMode=false
 }
+
 
 
 }
@@ -249,3 +223,43 @@ ngOnDestroy(): void {
     //   formData.append(`images`, file, file.name);
     // });
     // --------------------------
+  //  formData = this.addRoomForm.value;
+    // const payload = {
+    //   ...formData,
+    //   // facilities: formData.facilities.map((f: any) => f._id),
+    //   // images: this.files.map((img: File) => img.name)
+    // };
+    // console.log('Sending to API:', payload);  // Send `payload` to your API
+// ---------------------------
+//     const formData = new FormData();
+//     Object.keys(form.controls).forEach((key) => {
+//       const value = form.get(key)?.value;
+//       if (key === 'facilities' && Array.isArray(value)) {
+//         value.forEach((facility) => {
+//           formData.append('facilities', facility._id);
+//         });
+//       } else {
+//         formData.append(key, value);
+//       }
+//     });
+// ---------------------------
+   // const formData = new FormData();
+    // Object.keys(form.controls).forEach((key) => {
+    //   const value = form.get(key)?.value;
+    //   //facilities
+    //   if (key === 'facilities' && Array.isArray(value)) {
+    //     value.forEach((facility) => {
+    //       formData.append('facilities', facility._id);
+    //     });
+    //   }
+      // // img
+      // if(this.files.length>0){
+      //   this.files.forEach(file => {
+      //     formData.append('images', file);
+      //   });
+      //  }
+      // //all controls
+      // else {
+      //   formData.append(key, value);
+      // }
+    // })

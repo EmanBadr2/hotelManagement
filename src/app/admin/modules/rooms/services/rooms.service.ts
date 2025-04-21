@@ -16,7 +16,7 @@ export class RoomsService {
     return this._HttpClient.get<IRoomsRes>(`admin/rooms?page=${page}&size=${size}`)
   }
 
-  onAddRoom(data:FormData):Observable<IRoomsRes>{
+  addRoom(data:FormData):Observable<IRoomsRes>{
     return this._HttpClient.post<IRoomsRes>(`admin/rooms`, data)
   }
 
