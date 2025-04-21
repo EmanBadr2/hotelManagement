@@ -12,8 +12,8 @@ export class RoomsService {
 
   constructor(private _HttpClient:HttpClient) { }
 
-  onGettingAllRooms( params :any ):Observable<IRoomsRes>{
-    return this._HttpClient.get<IRoomsRes>(`admin/rooms` , {params : params})
+  onGettingAllRooms( page: number = 1, size: number = 5 ):Observable<IRoomsRes>{
+    return this._HttpClient.get<IRoomsRes>(`admin/rooms?page=${page}&size=${size}`)
   }
 
   onAddRoom(data:FormData):Observable<IRoomsRes>{
