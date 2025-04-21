@@ -33,10 +33,6 @@ export class ListBookingComponent {
     }
     getActions(booking: Booking) {
       return [
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/hm-pagination
         {
           label: 'View',
           icon: 'pi pi-eye',
@@ -53,7 +49,7 @@ export class ListBookingComponent {
         },
       });
     }
-  
+
     getAllBookings(page: number, size: number): void {
       this.isLoading = true;
       this.bookingService.getBookings(page + 1, size).subscribe({
@@ -69,5 +65,5 @@ export class ListBookingComponent {
         }
       });
     }
-    
+
 }
