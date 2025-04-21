@@ -49,7 +49,7 @@ export class ListBookingComponent {
         },
       });
     }
-  
+
     getAllBookings(page: number, size: number): void {
       this.isLoading = true;
       this.bookingService.getBookings(page + 1, size).subscribe({
@@ -65,5 +65,5 @@ export class ListBookingComponent {
         }
       });
     }
-    
+
 }
