@@ -8,7 +8,9 @@ import { ToastrService } from 'ngx-toastr';
 import { FacilitiesService } from '../../../facilities/services/facilities.service';
 import { FacilitiesResponseData, Facility ,FacilitiesApiResponse } from '../../../facilities/interfaces2/facilities';
 
-
+interface FileWithPreview extends File {
+  preview?: string;
+}
 
 @Component({
   selector: 'app-add-rooms',
@@ -23,7 +25,8 @@ export class AddRoomsComponent  implements OnInit , OnDestroy{
   isViewMode : boolean = false ;
   isFormDisabled: any ;
   addRoomForm !: FormGroup
-  files: File[] = [];
+  // files: File[] = [];
+  files: FileWithPreview[] = [];
   facilities: Facility[] = [];
   selectedFacilityIds: any[] = [];
 
@@ -69,6 +72,12 @@ export class AddRoomsComponent  implements OnInit , OnDestroy{
 
   // Dropzone file event
   onSelect(event: any) {
+    console.log(event);
+
+    for (let file of event.addedFiles) {
+      file.preview = URL.createObjectURL(file);  // Create image URL
+
+    }
     this.files.push(...event.addedFiles);
     this.addRoomForm.patchValue({ images: this.files });
   }

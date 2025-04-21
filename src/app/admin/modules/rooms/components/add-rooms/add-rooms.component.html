@@ -65,7 +65,7 @@
       </div>
     </div>
 
-    <div class="grid grid-cols-2 gap-4 ">
+    <div class="grid grid-cols-2 gap-4 items-center">
       <div>
         <app-auth-inputs
           formControlName="discount"
@@ -84,15 +84,12 @@
         </div>
       </div>
 
-
-
-
      <!-- Facilities Dropdown -->
-
-  <div>
-    <!-- <label class="block text-sm font-medium">Facilities</label> -->
-
+  <div class="flex flex-col gap-1 relative w-[90%]">
+    <label  class="font-normal text-base leading-[170%] tracking-[0]">Facilities</label>
     <p-multiSelect
+    class="w-[90%] mb-3 border border-gray-300 bg-gray-100 rounded-md
+    px-3  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-primary-500"
       [options]="facilities"
       optionLabel="name"
       formControlName="facilities"
@@ -106,18 +103,25 @@
     </div>
 
 
-    <ngx-dropzone
-    class="bg-green-200"
+    <ngx-dropzone class="bg-green-200 "
+
      (change)="onSelect($event)"  [disabled]="isViewMode">
-      <ngx-dropzone-label>Drop Your Photo !</ngx-dropzone-label>
+      <ngx-dropzone-label>
+
+       <div> <i class="pi pi-cloud-upload text-lg"></i> </div>
+        <p>Drag & Drop or <span class="text-green-600">  Choose a Room Images</span>  to Upload</p>
+      </ngx-dropzone-label>
       <ngx-dropzone-preview
         *ngFor="let f of files"
         [removable]="true"
         (removed)="onRemove(f)"
       >
-        <ngx-dropzone-label 
-          >{{ f.name }} ({{ f.type }})</ngx-dropzone-label
-        >
+      <img
+      *ngIf="f.preview"
+      [src]="f.preview"
+      alt="{{ f.name }}"
+      style="width: 100px; height: auto; object-fit: cover; display: block;"
+    />
       </ngx-dropzone-preview>
     </ngx-dropzone>
 
