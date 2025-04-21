@@ -1,8 +1,8 @@
 
-<div class=" px-5">
-  <div class="p-4">
+<div class=" p-5">
+  <!-- <div class="">
     <h2  class="text-xl font-bold "> {{ !activeRoomID? 'Add' : isFormDisabled?'View' : 'Edit' }} Room </h2>
-  </div>
+  </div> -->
   <form
     class=""
     [formGroup]="addRoomForm"
@@ -65,7 +65,7 @@
       </div>
     </div>
 
-    <div class="grid grid-cols-2 gap-4 ">
+    <div class="grid grid-cols-2 gap-4 items-center">
       <div>
         <app-auth-inputs
           formControlName="discount"
@@ -84,51 +84,68 @@
         </div>
       </div>
 
-        <!-- Facilities (FormArray) -->
-  <div *ngIf="!isViewMode" >
-    <label class="font-semibold">Facilities</label>
-    <div *ngFor="let facility of facilities.controls; let i = index" class="flex space-x-2 my-2">
-      <!-- <input [formControl]="facility" placeholder="Facility" class="input" /> -->
-      <app-auth-inputs
+     <!-- Facilities Dropdown -->
+  <div class="flex flex-col gap-1 relative w-[90%]">
+
+    <!-- <label  class="font-normal text-base leading-[170%] tracking-[0]">Facilities</label> -->
+    <p-multiSelect
+    class="w-[90%] mb-3 border border-gray-300 bg-gray-100 rounded-md
+    px-3  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-primary-500"
+      [options]="facilities"
+      optionLabel="name"
       formControlName="facilities"
-      label="facilities"
-      placeholder="Please type here"
-      id="facilities"
-    ></app-auth-inputs>
-      <button type="button" (click)="removeFacilities(i)" class="text-red-500">Remove</button>
-    </div>
-    <button type="button" (click)="addFacilities()" class="text-blue-600">+ Add Facility</button>
+      display="chip"
+      class="w-full mt-1"
+      placeholder=" facilities">
+    </p-multiSelect>
   </div>
 
 
     </div>
 
+    <!-- Existing Images Preview -->
+<div class="grid grid-cols-3 gap-4 mb-4  viewImg" *ngIf="isViewMode">
+  <div *ngFor="let img of viewImg">
+    <img [src]="img" alt="Existing image" class="w-full h-24 object-cover rounded" />
+  </div>
+  <p *ngIf="viewImg.length==0 " class=" m-auto text-center p-9"> can not found any images </p>
+</div>
 
-    <ngx-dropzone (change)="onSelect($event)"  [disabled]="isViewMode">
-      <ngx-dropzone-label>Drop Your Photo !</ngx-dropzone-label>
-      <ngx-dropzone-preview
-        *ngFor="let f of files"
-        [removable]="true"
-        (removed)="onRemove(f)"
-      >
-        <ngx-dropzone-label
-          >{{ f.name }} ({{ f.type }})</ngx-dropzone-label
-        >
-      </ngx-dropzone-preview>
+
+    <ngx-dropzone class="bg-green-200 "
+
+     (change)="onSelect($event)"  *ngIf="!isViewMode">
+      <ngx-dropzone-label>
+       <div> <i class="pi pi-cloud-upload text-lg"></i> </div>
+        <p>Drag & Drop or <span class="text-green-600">  Choose a Room Images</span> to Upload</p>
+      </ngx-dropzone-label>
+      <ngx-dropzone-image-preview
+      *ngFor="let f of files"
+      [file]="f"
+      [removable]="true"
+      (removed)="onRemove(f)"
+    >
+    </ngx-dropzone-image-preview>
     </ngx-dropzone>
 
 
 
-    <div>
+
+    <div class="flex justify-end space-x-4">
       <button *ngIf="!isViewMode" type="submit"
-      class="bg-blue-500 text-white p-2 rounded"
+      class="px-6 py-2 bg-blue-600
+       text-white rounded-lg hover:bg-blue-700 transition"
       >{{!activeRoomID? 'Add' : 'update'}}</button>
 
       <button type="button"
       routerLink="/admin/rooms/rooms"
-      class="bg-blue-200 text-white p-2 rounded"
+      class="px-6 py-2 border border-blue-500
+       text-blue-500 rounded-lg hover:bg-blue-50 transition"
       >cancel</button>
     </div>
 
   </form>
 </div>
+
+
+
