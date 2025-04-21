@@ -68,22 +68,11 @@ export class AddRoomsComponent  implements OnInit , OnDestroy{
 
   // Dropzone file event
   onSelect(event: any) {
-    const selectedFiles = event.addedFiles;
-    for (let file of selectedFiles) {
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        (file as any).preview = e.target.result;
-        this.files.push(file);
-        this.addRoomForm.patchValue({ images: this.files });
-      };
-      reader.readAsDataURL(file);
-    }
+    this.files.push(...event.addedFiles);
   }
   onRemove(event: File) {
     console.log(event);
     this.files.splice(this.files.indexOf(event), 1);
-    this.addRoomForm.patchValue({ images: this.files });
-
   }
 // ------------
 
