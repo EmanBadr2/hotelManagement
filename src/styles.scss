@@ -43,6 +43,7 @@ $hotelManagement-theme: mat.define-light-theme(
 // =======================
 // Global Styles
 // =======================
+@import './assets/styles/modules/shared/auth-layout.scss';
 html,
 body {
   height: 100%;

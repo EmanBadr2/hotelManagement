@@ -1,19 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
 })
 export class RegisterComponent implements OnInit {
+  isPasswordHidden: boolean = true;
+  isConfirmPasswordHidden: boolean = true;
+  
   registerForm!: FormGroup;
   files: File[] = [];
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -23,8 +28,14 @@ export class RegisterComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
-    });
-  }
+    } , { validators: RegisterComponent.passwordMatchValidator }
+  );
+  } 
+    static passwordMatchValidator(form: AbstractControl) {
+      const password = form.get('password')?.value;
+      const confirmPassword = form.get('confirmPassword')?.value;
+      return password === confirmPassword ? null : { mismatch: true };
+    }
   onSelect(event:any) {
     console.log(event);
     this.files.push(...event.addedFiles);
@@ -51,11 +62,11 @@ export class RegisterComponent implements OnInit {
   
       this.authService.register(formData).subscribe({
         next: (res) => {
-          console.log('Registration successful:', res);
+          this.toastr.success('Registration successful:', res);
           this.router.navigate(['/auth/login']);
         },
         error: (err) => {
-          console.error('Registration error:', err);
+          this.toastr.error('Registration error:');
         },
       });
     } else {

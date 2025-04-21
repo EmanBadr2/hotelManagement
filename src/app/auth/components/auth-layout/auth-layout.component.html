@@ -1,0 +1,25 @@
+<div class="auth-container">
+    <div class="auth-box">
+      <!-- Logo -->
+      <p class="auth-logo">
+        <span>stay</span>cation
+      </p>
+  
+      <!-- Left Side -->
+      <div class="auth-form-container">
+        <router-outlet></router-outlet>
+      </div>
+  
+      <!-- Right Side -->
+      <div class="auth-image-container relative">
+        <img [src]="imageUrl" alt="auth" class="auth-image" />
+        <div *ngIf="isLoginPage" class="absolute bottom-6 left-6 text-white z-10">
+          <h2 class="text-2xl font-bold">Sign in to Roam home</h2>
+          <p class="text-sm">Homes as unique as you.</p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  
