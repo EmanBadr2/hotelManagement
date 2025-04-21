@@ -69,14 +69,17 @@ export class AddRoomsComponent  implements OnInit , OnDestroy{
   //  console.log('view' , this.isViewMode);
  }
 
-
   // Dropzone file event
   onSelect(event: any) {
-    console.log(event);
-
-    for (let file of event.addedFiles) {
-      file.preview = URL.createObjectURL(file);  // Create image URL
-
+    const selectedFiles = event.addedFiles;
+    for (let file of selectedFiles) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        (file as any).preview = e.target.result;
+        this.files.push(file);
+        this.addRoomForm.patchValue({ images: this.files });
+      };
+      reader.readAsDataURL(file);
     }
     this.files.push(...event.addedFiles);
     this.addRoomForm.patchValue({ images: this.files });

@@ -113,15 +113,16 @@
       </ngx-dropzone-label>
       <ngx-dropzone-preview
         *ngFor="let f of files"
+        [file]="f"
         [removable]="true"
         (removed)="onRemove(f)"
       >
-      <img
+      <!-- <img
       *ngIf="f.preview"
       [src]="f.preview"
       alt="{{ f.name }}"
       style="width: 100px; height: auto; object-fit: cover; display: block;"
-    />
+    /> -->
       </ngx-dropzone-preview>
     </ngx-dropzone>
 
