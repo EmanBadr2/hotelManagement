@@ -33,10 +33,6 @@ export class ListBookingComponent {
     }
     getActions(booking: Booking) {
       return [
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/hm-pagination
         {
           label: 'View',
           icon: 'pi pi-eye',
