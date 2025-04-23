@@ -1,4 +1,4 @@
-<h2 class="auth-title">Sign up</h2>
+<h2 class="auth-title mb-2 mt-0">Sign up</h2>
 <p class="auth-text">
   If you already have an account register <br />
   You can
@@ -6,79 +6,96 @@
     <a routerLink="/auth/login">login here !</a>
   </span>
 </p>
+
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-  <ngx-dropzone class="w-[70%] my-3" (change)="onSelect($event)">
+  <ngx-dropzone class="ml-48 mb-2 rounded-circle w-[27%] my-0" (change)="onSelect($event)">
     <ngx-dropzone-label>Drop Your Photo !</ngx-dropzone-label>
     <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
       <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
     </ngx-dropzone-preview>
   </ngx-dropzone>
-  <!-- User Name -->
 
-    <app-auth-inputs formControlName="userName" label="User Name" placeholder="Please type here"
-      id="userName">
+
+ <!-- User Name + Email -->
+  <div class="flex gap-0">
+    <div class="w-[45%]">
+  <app-auth-inputs formControlName="userName" label="User Name" placeholder="Please type here"
+  id="userName">
+</app-auth-inputs>
+
+<small class="warning-text" *ngIf="registerForm?.get('userName')?.invalid && registerForm?.get('userName')?.touched">
+<span *ngIf="registerForm?.get('userName')?.errors?.['required']">userName is required.</span>
+</small>
+    </div>
+    <div class="w-[45%]">
+      <app-auth-inputs formControlName="email" label="Email Address" placeholder="Please type here" id="email"
+      type="email">
     </app-auth-inputs>
-    
-  <small class="warning-text" *ngIf="registerForm?.get('userName')?.invalid && registerForm?.get('userName')?.touched">
-    <span *ngIf="registerForm?.get('userName')?.errors?.['required']">userName is required.</span>
-  </small>
+      <small class="warning-text" *ngIf="registerForm?.get('email')?.invalid && registerForm?.get('email')?.touched">
+        <span *ngIf="registerForm?.get('email')?.errors?.['required']">Email is required.</span>
+        <span *ngIf="registerForm?.get('email')?.errors?.['email']">Enter a valid email.</span>
+      </small>
+
+    </div>
+
+  </div>
     
   <!-- Phone Number + Country -->
-      <app-auth-inputs formControlName="phoneNumber" label="Phone Number" placeholder="Please type here"
+     <div class="flex gap-0">
+      <div class="w-[45%]">
+        <app-auth-inputs formControlName="phoneNumber" label="Phone Number" placeholder="Please type here"
         id="phoneNumber">
       </app-auth-inputs>
       <small class="warning-text" *ngIf="registerForm?.get('phoneNumber')?.invalid && registerForm?.get('phoneNumber')?.touched">
         <span *ngIf="registerForm?.get('phoneNumber')?.errors?.['required']">phoneNumber is required.</span>
       </small>
-      <app-auth-inputs formControlName="country" label="Country" placeholder="Please type here"
-        id="country"></app-auth-inputs>
+      </div>
+      <div class="w-[45%]">
+        <app-auth-inputs formControlName="country" label="Country" placeholder="Please type here"
+        id="country">
+      </app-auth-inputs>
         <small class="warning-text" *ngIf="registerForm?.get('country')?.invalid && registerForm?.get('country')?.touched">
           <span *ngIf="registerForm?.get('country')?.errors?.['required']">country is required.</span>
         </small>
-  
+      </div>
+     </div>
 
-  <!-- Email -->
-  <app-auth-inputs formControlName="email" label="Email Address" placeholder="Please type here" id="email"
-    type="email"></app-auth-inputs>
-    <small class="warning-text" *ngIf="registerForm?.get('email')?.invalid && registerForm?.get('email')?.touched">
-      <span *ngIf="registerForm?.get('email')?.errors?.['required']">Email is required.</span>
-      <span *ngIf="registerForm?.get('email')?.errors?.['email']">Enter a valid email.</span>
-    </small>
-
-  <!-- Password -->
-  <app-auth-inputs formControlName="password" label="Password" placeholder="Please type here" id="password"
-  [type]="isPasswordHidden ? 'password' : 'text'">
-    <a (click)="isPasswordHidden = !isPasswordHidden">
-      <span
-        class="material-icons absolute right-14 top-5 px-2 -translate-y-1/2 cursor-pointer text-gray-600 hover:text-primary-500 transition">
-        {{ isPasswordHidden ? 'visibility_off' : 'visibility' }}
-      </span>
-    </a>
-  </app-auth-inputs>
-  <small class="warning-text" *ngIf="registerForm?.get('password')?.touched">
-    <span *ngIf="registerForm?.get('password')?.errors?.['required']; else checkMinLength">
-      Password is required.
-    </span>
-    <ng-template #checkMinLength>
-      <span *ngIf="registerForm?.get('password')?.errors?.['minlength']; else checkPattern">
-        Password must be at least 6 characters.
-      </span>
-    </ng-template>
-    <ng-template #checkPattern>
-      <span *ngIf="registerForm?.get('password')?.errors?.['pattern']">
-        The password must include at least one lowercase letter,
-        one uppercase letter, one digit, and one special
-        character.
-      </span>
-    </ng-template>
-  </small>
-
-  <!-- Confirm Password -->
+  <!-- Password + Confirm Password -->
+   <div class="flex gap-0">
+    <div class="w-[45%]">
+      <app-auth-inputs formControlName="password" label="Password" placeholder="Please type here" id="password"
+      [type]="isPasswordHidden ? 'password' : 'text'">
+        <a (click)="isPasswordHidden = !isPasswordHidden">
+          <span
+            class="material-icons eye-icon">
+            {{ isPasswordHidden ? 'visibility_off' : 'visibility' }}
+          </span>
+        </a>
+      </app-auth-inputs>
+      <small class="warning-text" *ngIf="registerForm?.get('password')?.touched">
+        <span *ngIf="registerForm?.get('password')?.errors?.['required']; else checkMinLength">
+          Password is required.
+        </span>
+        <ng-template #checkMinLength>
+          <span *ngIf="registerForm?.get('password')?.errors?.['minlength']; else checkPattern">
+            Password must be at least 6 characters.
+          </span>
+        </ng-template>
+        <ng-template #checkPattern>
+          <span *ngIf="registerForm?.get('password')?.errors?.['pattern']">
+            The password must include at least one lowercase letter,
+            one uppercase letter, one digit, and one special
+            character.
+          </span>
+        </ng-template>
+      </small>
+    </div>
+    <div class="w-[45%]">
   <app-auth-inputs formControlName="confirmPassword" label="Confirm Password" placeholder="Please type here"
     id="confirmPassword" [type]="isConfirmPasswordHidden ? 'password' : 'text'">
     <a (click)="isConfirmPasswordHidden = !isConfirmPasswordHidden">
       <span
-        class="material-icons absolute right-14 top-5 px-2 -translate-y-1/2 cursor-pointer text-gray-600 hover:text-primary-500 transition">
+        class="material-icons eye-icon">
         {{ isConfirmPasswordHidden ? 'visibility_off' : 'visibility' }}
       </span>
     </a>
@@ -93,9 +110,10 @@
       </span>
     </ng-template>
   </small>
-
-  <button pButton type="submit" label="Register" [disabled]="registerForm.invalid"
+    </div>
+   </div>
+  <button pButton type="submit" label="Sign up" [disabled]="registerForm.invalid"
     [ngStyle]="{'pointer-events': registerForm.invalid ? 'none' : 'auto' }"
-    class="w-[75%] px-3 py-2 mt-4 rounded-md bg-primary hover:bg-primary-800 text-white">
+    class="form-button hover:[box-shadow:0px_8px_15px_0px_rgba(50,82,223,0.3)]">
   </button>
 </form>
