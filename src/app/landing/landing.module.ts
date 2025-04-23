@@ -8,6 +8,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { UserComponent } from './components/user/user.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
+import { CurdsComponent } from './components/curds/curds.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { DatePickerComponent } from './components/date-picker/date-picker.compon
     FooterComponent,
     NavbarComponent,
     UserComponent,
-    DatePickerComponent
+    DatePickerComponent,
+    CurdsComponent
   ],
   imports: [
     CommonModule,
