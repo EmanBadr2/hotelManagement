@@ -4,7 +4,7 @@
 @use "assets/styles/modules/auth/authModule.scss";
 @use "assets/styles/modules/admin/admin.scss";
 @use "assets/styles/modules/shared/shared.scss";
-
+@use "assets/styles/modules/landing/landingModule.scss";
 // =======================
 // Angular Material Theming
 // =======================
@@ -32,7 +32,6 @@ $hotelManagement-theme: mat.define-light-theme(
 @include mat.all-component-themes($hotelManagement-theme);
 @import "primeicons/primeicons.css";
 
-
 // =======================
 // TailwindCSS
 // =======================
@@ -43,7 +42,7 @@ $hotelManagement-theme: mat.define-light-theme(
 // =======================
 // Global Styles
 // =======================
-@import './assets/styles/modules/shared/auth-layout.scss';
+@import "./assets/styles/modules/shared/auth-layout.scss";
 html,
 body {
   height: 100%;

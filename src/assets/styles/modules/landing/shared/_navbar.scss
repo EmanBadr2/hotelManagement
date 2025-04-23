@@ -1,0 +1,47 @@
+.landing_navbar {
+  background-color: white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 3rem;
+  min-height: 5vh;
+  max-height: 10vh;
+
+  &__list {
+    &__list-item {
+      margin-right: 1rem;
+      font-weight: 400;
+      font-size: 0.8rem;
+      &.active {
+        color: rgba(50, 82, 223, 1);
+        font-weight: 600;
+        border-bottom: 2px solid rgba(50, 82, 223, 1);
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      img {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+      }
+
+      .nav_btn {
+        padding: 0.5rem 1.5rem;
+        border-radius: 0.2rem;
+        background-color: rgba(50, 82, 223, 1);
+        color: white;
+        font-size: 1rem;
+        font-weight: 400;
+        text-decoration: none;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 5px 5px rgba(50, 82, 223, 0.3);
+
+        &:hover {
+          background-color: rgb(30, 48, 129);
+        }
+      }
+    }
+  }
+}
