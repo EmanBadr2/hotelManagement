@@ -36,26 +36,60 @@
 
   <!-- Template for List Items (Shared by Desktop and Mobile) -->
   <ng-template #menuItems>
-    <li class="landing_navbar__list__list-item"><a href="#home">Home</a></li>
-    <li class="landing_navbar__list__list-item">
-      <a href="#about">Explore</a>
+    <li
+      class="landing_navbar__list__list-item"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <a routerLink="/">Home</a>
     </li>
-    <li class="landing_navbar__list__list-item">
-      <a href="#services">Reviews</a>
+
+    <li class="landing_navbar__list__list-item" routerLinkActive="active">
+      <a routerLink="/explore">Explore</a>
     </li>
-    <li class="landing_navbar__list__list-item">
-      <a href="#contact">Favorites</a>
+
+    <li
+      class="landing_navbar__list__list-item"
+      *ngIf="isUserLoggedIn"
+      routerLinkActive="active"
+    >
+      <a routerLink="/booking">Reviews</a>
     </li>
-    <li class="landing_navbar__list__list-item"><a href="#blog">Blog</a></li>
-    <li class="landing_navbar__list__list-item flex gap-2 items-center">
+
+    <li
+      class="landing_navbar__list__list-item"
+      *ngIf="isUserLoggedIn"
+      routerLinkActive="active"
+    >
+      <a routerLink="/fav-items">Favorites</a>
+    </li>
+
+    <li
+      class="landing_navbar__list__list-item flex gap-2 items-center"
+      *ngIf="isUserLoggedIn"
+    >
       <img src="../../../../assets/img/profile.png" alt="Upskilling" />
-      <h5>Upskilling</h5>
+      <h5>{{ userName }}</h5>
     </li>
-    <li class="landing_navbar__list__list-item w-full md:w-auto">
-      <button class="nav_btn w-full">Register</button>
+
+    <li
+      class="landing_navbar__list__list-item w-full md:w-auto"
+      *ngIf="!isUserLoggedIn"
+      routerLinkActive="active"
+    >
+      <a routerLink="/auth/register"
+        ><button class="nav_btn w-full">Register</button></a
+      >
     </li>
-    <li class="landing_navbar__list__list-item w-full md:w-auto">
-      <button class="nav_btn w-full">Login Now</button>
+
+    <li
+      class="landing_navbar__list__list-item w-full md:w-auto"
+      *ngIf="!isUserLoggedIn"
+      routerLinkActive="active"
+    >
+      <a routerLink="/auth"
+        ><button class="nav_btn w-full">Login Now</button></a
+      >
     </li>
   </ng-template>
 </section>
