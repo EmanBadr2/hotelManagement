@@ -8,6 +8,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { UserComponent } from './components/user/user.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
+import { SharedModule } from '../shared/shared/shared.module';
+
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { DatePickerComponent } from './components/date-picker/date-picker.compon
   ],
   imports: [
     CommonModule,
-    LandingRoutingModule
+    LandingRoutingModule ,
+    SharedModule
   ]
 })
 export class LandingModule { }
