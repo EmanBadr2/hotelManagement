@@ -8,7 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./date-picker.component.scss']
 })
 export class DatePickerComponent {
-  date: Date | undefined;
+  // date: Date | undefined;
+  date: Date = new Date();
+  minDate: Date = new Date();  // Today's date
   capacity :number =0
   constructor( private _Router:Router){}
 
