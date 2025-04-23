@@ -6,8 +6,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#3252df',
+        primary: 'rgb(50, 82, 223)',
         primaryDark : 'rgba(32, 63, 199, 1)',
+        secondary : 'rgba(21, 44, 91, 1)',
+        myDark: 'rgba(0, 0, 0, 1)',
+        myGray: 'rgba(245, 246, 248, 1)',
+        darkGray: 'rgba(211, 214, 220, 1)',
+        iconGray: 'rgba(171, 171, 171, 1)',
+        buttonColor: 'rgba(50, 82, 223, 1)',
+        myWhite: 'rgba(255, 255, 255, 1)',
+        boxShadow: {
+          'custom-hover': '0px 8px 15px 0px rgba(50, 82, 223, 0.3)',
+        },
+        
+        
       },
       fontFamily: {
         inter: ['Inter', 'sans-serif'],

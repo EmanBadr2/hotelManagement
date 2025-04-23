@@ -47,6 +47,8 @@ export class RegisterComponent implements OnInit {
   }
   onSubmit(): void {
     if (this.registerForm.valid && this.files.length > 0) {
+    // if (this.registerForm.valid) {
+
       const formData = new FormData();
   
       // Add form fields
@@ -62,14 +64,16 @@ export class RegisterComponent implements OnInit {
   
       this.authService.register(formData).subscribe({
         next: (res) => {
-          this.toastr.success('Registration successful:', res);
+          this.toastr.success('Registration successful');
           this.router.navigate(['/auth/login']);
         },
         error: (err) => {
-          this.toastr.error('Registration error:');
+          this.toastr.error(err.error.message || 'Registration failed.');
+          // console.log(err);
         },
       });
-    } else {
+    }
+     else {
       this.registerForm.markAllAsTouched();
       if (this.files.length === 0) {
         alert('Please upload a profile image');

@@ -1,15 +1,14 @@
 <h2 class="auth-title">Sign in</h2>
-<p class="auth-text">
+<p class="auth-text ">
   If you don’t have an account register <br />
-  You can <span>
+  You can <span class="text-secondary">
     <a routerLink="/auth/register">Register here !</a></span>
 </p>
 
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <app-auth-inputs formControlName="email" type="email" label="Email" placeholder="Please type here ..." id="Email"
+  <app-auth-inputs formControlName="email" type="email" label="Email address" placeholder="Please type here ..." id="Email"
     value="">
   </app-auth-inputs>
-
   <small class="warning-text" *ngIf="loginForm?.get('email')?.invalid && loginForm?.get('email')?.touched">
     <span *ngIf="loginForm?.get('email')?.errors?.['required']">Email is required.</span>
     <span *ngIf="loginForm?.get('email')?.errors?.['email']">Enter a valid email.</span>
@@ -19,7 +18,7 @@
     placeholder="Please type here ..." id="password" value="">
     <a (click)="isPasswordHidden = !isPasswordHidden">
       <span
-        class="material-icons absolute right-14 top-5 px-2 -translate-y-1/2 cursor-pointer text-gray-600 hover:text-primary-500 transition">
+        class="eye-icon material-icons">
         {{ isPasswordHidden ? 'visibility_off' : 'visibility' }}
       </span>
     </a>
@@ -42,7 +41,8 @@
     </ng-template>
   </small>
 
-  <button type="submit" class="w-[75%] px-3 py-2 mt-4 rounded-md bg-primary hover:bg-primary-800 text-white">
-    Login
+  <button pButton type="submit" label="login" [disabled]="loginForm.invalid"
+  [ngStyle]="{'pointer-events': loginForm.invalid ? 'none' : 'auto' }" 
+  class="form-button hover:[box-shadow:0px_8px_15px_0px_rgba(50,82,223,0.3)]">
   </button>
 </form>
