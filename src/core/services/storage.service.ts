@@ -32,7 +32,7 @@ export class StorageService {
 
   isLoggedIn(): void {
     // call to check is loggedIn
-    if (this.token) {
+    if (this.isUser) {
       this.isLogged = true;
     }
   }
