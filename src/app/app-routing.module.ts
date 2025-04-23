@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProfileComponent } from './shared/components/profile/profile.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'landing', pathMatch: 'full' },
+  // { path: '', redirectTo: 'landing', pathMatch: 'full' },
   { path: 'profile', component:ProfileComponent },
 
 
