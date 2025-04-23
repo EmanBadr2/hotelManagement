@@ -22,7 +22,7 @@ export class DatePickerComponent {
     console.log(this.date);
     console.log(this.capacity);
     // navigate to explore M with this ( date & capacity)
-    this._Router.navigate(['explore'])
+    this._Router.navigate(['landing/explore'])
   }
 
 
