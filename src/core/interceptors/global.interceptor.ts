@@ -3,7 +3,7 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -13,16 +13,21 @@ export class GlobalInterceptor implements HttpInterceptor {
 
   constructor() {}
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(
+    req: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
     const token = localStorage.getItem('token');
 
     const updatedReq = req.url.startsWith('http')
       ? req.clone({
-          setHeaders: token ? { Authorization: `${token}` } : {}
+          setHeaders: token ? { Authorization: `${token}` } : {},
         })
       : req.clone({
-          url: `${this.baseUrl}${req.url}`,
-          setHeaders: token ? { Authorization: `${token}` } : {}
+          url: req.url.includes('assets')
+            ? `${req.url}`
+            : `${this.baseUrl}${req.url}`,
+          setHeaders: token ? { Authorization: `${token}` } : {},
         });
 
     return next.handle(updatedReq);
