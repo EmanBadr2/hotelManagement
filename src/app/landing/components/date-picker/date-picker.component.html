@@ -1,6 +1,5 @@
-
-<section class="container p-3 h-[25vh] ">
-  <div class=" grid sm:grid-cols-2  justify-center items-center ">
+<section class="  ">
+  <div class=" grid sm:grid-cols-2 justify-center items-center ">
 
     <div class="rigt-side">
       <h2 class="h2-content ">Forget Busy Work, Start Next Vacation</h2>
@@ -14,10 +13,13 @@
          <!-- date picker -->
         <div class="mt-3 w-full">
               <span for="icondisplay" class="span-content block mb-2">Pick a Date </span>
+              <!-- [minDate]="minDate" [disabled]="date < minDate"-->
               <p-calendar class=" "
                   [(ngModel)]="date"
                   [showIcon]="true"
                   [icon]="'pi pi-calendar-minus'"
+                  [minDate]="minDate"
+                  dateFormat="dd/mm/yy"
                   inputId="icondisplay" />
        </div>
          <!-- capacity -->
@@ -29,7 +31,8 @@
              <i class="pi pi-minus font-bold text-lg"></i>
             </button>
            <span class="span-content ">{{capacity}} Person </span>
-            <button class="bg-[#1ABC9C] main-btn capacity-btn" (click)="addCapacity()">
+            <button class="bg-[#1ABC9C] main-btn capacity-btn"  [disabled]="capacity >= 8"
+            (click)="addCapacity()">
               <i class="pi pi-plus font-bold text-lg"></i>
             </button>
           </div>
@@ -48,8 +51,8 @@
     </div>
 
     <div class="left-side p-2">
-      <!--  class="h-full w-auto object-contain" -->
-      <img src="../assets/img/banner.png" alt="" class="w-full  object-cover">
+      <!--  class="h-full w-auto object-contain"   "w-full  object-cover" min-w-min -->
+      <img src="../assets/img/banner.png" alt="" class="w-full ">
     </div>
 
   </div>
