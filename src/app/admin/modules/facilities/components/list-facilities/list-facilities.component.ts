@@ -18,7 +18,7 @@ export class ListFacilitiesComponent {
   rows: number = 5;
   currentPage: number = 0;
   totalCount: number = 0;
-  isLoading: boolean = false;
+  loading: boolean = false;
   error: string = '';
   ref!: DynamicDialogRef;
   constructor(
@@ -124,16 +124,16 @@ export class ListFacilitiesComponent {
   }
 
   getAllFacilities(page: number, size: number): void {
-    this.isLoading = true;
+    this.loading = true;
     this.facilitiesService.getFacilities(page + 1, size).subscribe({
       next: (response) => {
         this.facilitiesList = response.data.facilities;
         this.totalCount = response.data.totalCount;
-        this.isLoading = false;
+        this.loading = false;
       },
       error: (err) => {
         this.error = 'Error fetching facilities';
-        this.isLoading = false;
+        this.loading = false;
       },
     });
   }

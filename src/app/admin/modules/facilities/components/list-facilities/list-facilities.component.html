@@ -19,7 +19,9 @@
       </div>
     </div>
   </div>
-
+  <div *ngIf="loading" class="loading-spinner">
+    <i class="pi pi-spin pi-spinner text-blue-600 text-3xl"></i>
+  </div>
   <div
     *ngIf="facilitiesList.length === 0"
     class="flex items-center justify-center my-3"
@@ -30,7 +32,7 @@
       class="no-data-image"
     />
   </div>
-  <table *ngIf="facilitiesList.length > 0" class="custom-table">
+  <table *ngIf="!loading && facilitiesList.length > 0" class="custom-table">
     <thead>
       <th>Name</th>
       <th>Created by:</th>
@@ -61,4 +63,3 @@
   (onPageChange)="onPageChange($event)"
   styleClass="my-4"
 />
-<!-- </section> -->
