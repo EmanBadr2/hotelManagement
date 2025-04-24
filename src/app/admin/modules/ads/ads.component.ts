@@ -21,7 +21,7 @@ export class AdsComponent {
   rows: number = 5;
   currentPage: number = 0;
   totalCount: number = 0;
-  isLoading: boolean = false;
+  loading: boolean = false;
   error: string = '';
   ref!: DynamicDialogRef;
 
@@ -112,14 +112,14 @@ export class AdsComponent {
   // }
 
   openAddDialog(): void {
-    this.isLoading = true; // Start loading
+    this.loading = true; // Start loading
     forkJoin({
       roomsResponse: this.roomService.onGettingAllRooms(),
     }).subscribe({
       next: ({ roomsResponse }) => {
         this.roomsList = roomsResponse.data.rooms;
         this.totalCount = roomsResponse.data.totalCount;
-        this.isLoading = false; // Stop loading after dialog closed
+        this.loading = false; // Stop loading after dialog closed
 
         const roomOptions = this.roomsList.map((room) => ({
           label: room.roomNumber,
@@ -158,7 +158,7 @@ export class AdsComponent {
         });
       },
       error: (err) => {
-        this.isLoading = false; // Stop loading on error
+        this.loading = false; // Stop loading on error
         console.error('Error loading rooms:', err);
         this.toastr.error('Failed to load room data');
       },
@@ -213,16 +213,16 @@ export class AdsComponent {
   }
 
   getAllAds(page: number, size: number): void {
-    this.isLoading = true;
+    this.loading = true;
     this.adsService.getAds(page + 1, size).subscribe({
       next: (response) => {
         this.adsList = response.data.ads;
         this.totalCount = response.data.totalCount;
-        this.isLoading = false;
+        this.loading = false;
       },
       error: (err) => {
         this.error = 'Error fetching facilities';
-        this.isLoading = false;
+        this.loading = false;
       },
     });
   }

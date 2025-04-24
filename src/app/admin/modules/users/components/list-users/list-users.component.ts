@@ -15,6 +15,7 @@ export class ListUsersComponent {
   currentPage: number = 0;
   totalCount: number = 0;
   isLoading: boolean = false;
+  loading: boolean = true;
   error: string = '';
   ref!: DynamicDialogRef;
     constructor(
@@ -54,10 +55,12 @@ export class ListUsersComponent {
           this.userList = response.data.users;
           this.totalCount = response.data.totalCount;
           this.isLoading = false;
+          this.loading =  false;
         },
         error: (err) => {
           this.userList = [];
           this.isLoading = false;
+          this.loading =  false;
         }
       });
     }

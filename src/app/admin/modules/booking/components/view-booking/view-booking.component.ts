@@ -9,7 +9,7 @@ import { BookingService } from '../../services/booking.service';
 })
 export class ViewBookingComponent implements OnInit {
   bookingData: any;
-  loading: boolean = true;
+
 
   constructor(
     public config: DynamicDialogConfig,
@@ -22,11 +22,11 @@ export class ViewBookingComponent implements OnInit {
     this._BookingService.getBookingById(bookingId).subscribe({
       next: (res) => {
         this.bookingData = res.data.booking;
-        this.loading = false;
+
       },
       error: (err) => {
         console.error('Error fetching booking:', err);
-        this.loading = false;
+
       },
     });
   }

@@ -18,6 +18,7 @@ export class ListRoomsComponent implements OnInit {
   currentPage: number = 0;
   totalCount: number = 0;
   roomsList :IRooms[] =[]
+  loading: boolean = true
   ref!: DynamicDialogRef;
 
 
@@ -44,9 +45,11 @@ export class ListRoomsComponent implements OnInit {
         console.log(res);
         this.roomsList=res.data.rooms
         this.totalCount=res.data.totalCount
+        this.loading = false
       },
       error :(err) =>{
         console.log(err);
+        this.loading = false
       },
     })
   }

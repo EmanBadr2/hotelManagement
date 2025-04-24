@@ -1,8 +1,5 @@
 <section class="px-3">
   <div class="container">
-    <div *ngIf="isLoading" class="flex justify-center items-center my-5">
-      <p-progressSpinner styleClass="custom-spinner"></p-progressSpinner>
-    </div>
     <div class="flex flex-row">
       <div class="col-md-11">
         <div class="flex items-center justify-between my-3">
@@ -22,13 +19,15 @@
       </div>
     </div>
   </div>
-
+  <div *ngIf="loading" class="loading-spinner">
+    <i class="pi pi-spin pi-spinner text-blue-600 text-3xl"></i>
+  </div>
   <div
     *ngIf="adsList.length === 0"
     class="flex items-center justify-center my-3"
   >
     <img
-      src="../../../../assets/img/no-data.png"
+      src="../../../../../../assets/img/no-data.jfif"
       alt="No Data Available"
       class="no-data-image"
     />

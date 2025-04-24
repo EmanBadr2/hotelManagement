@@ -13,7 +13,9 @@
         </div>
       </div>
     </div>
-
+    <div *ngIf="loading" class="loading-spinner">
+      <i class="pi pi-spin pi-spinner text-blue-600 text-3xl"></i>
+    </div>
     <div
       *ngIf="bookingList.length === 0"
       class="flex items-center justify-center my-3"
@@ -24,7 +26,7 @@
         class="no-data-image"
       />
     </div>
-    <table *ngIf="bookingList.length > 0" class="custom-table">
+    <table *ngIf="!loading && bookingList.length > 0" class="custom-table">
       <thead>
       <th>Room Number</th>
       <th>Price</th>
