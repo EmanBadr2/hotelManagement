@@ -11,6 +11,7 @@ import { DatePickerComponent } from './components/date-picker/date-picker.compon
 import { SharedModule } from '../shared/shared/shared.module';
 import { CurdsComponent } from './components/curds/curds.component';
 import { AdsCurdComponent } from './components/ads-curd/ads-curd.component';
+import { HappyComponent } from './components/happy/happy.component';
 
 
 
@@ -22,7 +23,8 @@ import { AdsCurdComponent } from './components/ads-curd/ads-curd.component';
     UserComponent,
     DatePickerComponent,
     CurdsComponent,
-    AdsCurdComponent
+    AdsCurdComponent,
+    HappyComponent
   ],
   imports: [
     CommonModule,
