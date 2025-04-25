@@ -1,1 +1,96 @@
-<p>footer works!</p>
+<footer
+  class="site-footer mt-[5rem]"
+  role="contentinfo"
+  itemscope
+  itemtype="https://schema.org/Organization"
+>
+  <div class="footer-container">
+    <!-- Brand section -->
+    <div class="footer-brand">
+      <h1 class="footer-logo" itemprop="name">
+        <img src="../../../../assets/img/Staycation..png" alt="logo" />
+      </h1>
+      <p class="footer-tagline" itemprop="description">
+        {{ "footer.title" | translate }}
+      </p>
+    </div>
+
+    <!-- Navigation sections -->
+    <div class="footer-nav flex flex-wrap gap-[4rem]">
+      <!-- For Beginners section -->
+      <nav class="footer-section" aria-label="For Beginners">
+        <h2 class="footer-heading">{{ "footer.beginner" | translate }}</h2>
+        <ul class="footer-links">
+          <li>
+            <a href="/new-account" itemprop="url">{{
+              "footer.newAccount" | translate
+            }}</a>
+          </li>
+          <li>
+            <a href="/booking" itemprop="url">{{
+              "footer.booking" | translate
+            }}</a>
+          </li>
+          <li>
+            <a href="/payments" itemprop="url">{{
+              "footer.payment" | translate
+            }}</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Explore Us section -->
+      <nav class="footer-section" aria-label="Explore Us">
+        <h2 class="footer-heading">{{ "footer.exploreUs" | translate }}</h2>
+        <ul class="footer-links">
+          <li>
+            <a href="/careers" itemprop="url">{{
+              "footer.careers" | translate
+            }}</a>
+          </li>
+          <li>
+            <a href="/privacy" itemprop="url">{{
+              "footer.Privacy" | translate
+            }}</a>
+          </li>
+          <li>
+            <a href="/terms" itemprop="url">{{
+              "footer.termsAndConditions" | translate
+            }}</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Contact section -->
+    <div
+      class="footer-contact"
+      itemprop="address"
+      itemscope
+      itemtype="https://schema.org/PostalAddress"
+    >
+      <h2 class="footer-heading">{{
+        "footer.connectUs" | translate
+      }}</h2>
+      <ul class="footer-links">
+        <li>
+          <a href="mailto:support@staycation.id" itemprop="email"
+            >support@staycation.id</a
+          >
+        </li>
+        <li>
+          <a href="tel:+622122081996" itemprop="telephone">021 - 2208 - 1996</a>
+        </li>
+        <li itemprop="streetAddress">Staycation, Kennang, Jakarta</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Copyright -->
+  <div class="footer-copyright">
+    <p>
+      Copyright <span itemprop="copyrightYear">2019</span> - All rights reserved
+      - <span itemprop="name">Staycation</span>
+    </p>
+  </div>
+</footer>
