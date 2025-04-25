@@ -67,8 +67,14 @@ h1{
   border-end-start-radius: 20px;
   text-align: center;
 }
-
-.card-footer {
+.card-footer-in{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: white;
+  padding: 10px;
+}
+.card-footer-in {
   h2{
     color: #152C5B !important;
   }

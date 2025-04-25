@@ -7,6 +7,10 @@ export interface Curd {
     images: string[];
     facilities: string[];
     isBooked: boolean;
+    createdBy: {
+      _id: string;
+      userName: string;
+    };
   }
 export interface Ads {
   room: {
