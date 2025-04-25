@@ -1,30 +1,42 @@
 export interface Curd {
-    _id: string;
-    roomNumber: string;
-    price: number;
-    capacity: number;
-    discount: number;
-    images: string[];
-    facilities: string[];
-    isBooked: boolean;
-    createdBy: {
-      _id: string;
-      userName: string;
-    };
-  }
+  _id: string;
+  roomNumber: string;
+  price: number;
+  capacity: number;
+  discount: number;
+  facilities: Facility[];
+  createdBy: string;
+  images: string[];
+  createdAt: string;
+  updatedAt: string;
+  isBooked: boolean;
+}
+export interface Facility {
+  _id: string;
+  name: string;
+}
 export interface Ads {
-  room: {
-    _id: string;
-    roomNumber: string;
-    price: number;
-    capacity: number;
-    discount: number;
-    images: string[];
-    facilities: string[];
-  }
+  _id: string;
   isActive: boolean;
-  createdBy: {
-    _id: string;
-    userName: string;
-  };
+  room: Room;
+  createdBy: User;
+  createdAt: string;
+  updatedAt: string;
+}
+export interface Room {
+  _id: string;
+  roomNumber: string;
+  price: number;
+  capacity: number;
+  discount: number;
+  facilities: string[];
+  createdBy: string;
+  images: string[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface User {
+  _id: string;
+  userName: string;
 }
