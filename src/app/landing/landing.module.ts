@@ -13,6 +13,7 @@ import { CurdsComponent } from './components/curds/curds.component';
 import { AdsCurdComponent } from './components/ads-curd/ads-curd.component';
 
 
+
 @NgModule({
   declarations: [
     LandingComponent,
