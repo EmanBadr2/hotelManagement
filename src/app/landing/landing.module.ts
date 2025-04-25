@@ -10,6 +10,7 @@ import { LandingComponent } from './components/landing/landing.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
 import { SharedModule } from '../shared/shared/shared.module';
 import { CurdsComponent } from './components/curds/curds.component';
+import { AdsCurdComponent } from './components/ads-curd/ads-curd.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { CurdsComponent } from './components/curds/curds.component';
     NavbarComponent,
     UserComponent,
     DatePickerComponent,
-    CurdsComponent
+    CurdsComponent,
+    AdsCurdComponent
   ],
   imports: [
     CommonModule,
