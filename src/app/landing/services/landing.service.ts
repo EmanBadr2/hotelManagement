@@ -16,6 +16,10 @@ export class LandingService {
     return this._HttpClient.get<any>('portal/rooms/available?page=1&size=13')
     .pipe(map((res) => res.data.rooms));
   }
+  getExploreRooms(): Observable<Curd[]> {
+    return this._HttpClient.get<any>('portal/rooms/available?page=1&size=27')
+    .pipe(map((res) => res.data.rooms));
+  }
 
   getAdsAll(): Observable<Ads[]> {
     return this._HttpClient.get<any>('portal/ads?page=1&size=4')
