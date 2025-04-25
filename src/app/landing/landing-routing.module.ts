@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingComponent } from './components/landing/landing.component';
-import { CurdsComponent } from './components/curds/curds.component';
+import { AdsCurdComponent } from './components/ads-curd/ads-curd.component';
 
 const routes: Routes = [
-  { path: '', component: LandingComponent },
+  { path: '', component: AdsCurdComponent },
   { path: 'explore', loadChildren: () => import('./modules/explore/explore.module').then(m => m.ExploreModule) },
   { path: 'booking', loadChildren: () => import('./modules/booking/booking.module').then(m => m.BookingModule) },
   { path: 'fav-items', loadChildren: () => import('./modules/fav-items/fav-items.module').then(m => m.FavItemsModule) },
