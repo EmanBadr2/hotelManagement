@@ -12,7 +12,7 @@ export class RoomsService {
 
   constructor(private _HttpClient:HttpClient) { }
 
-  onGettingAllRooms( page: number = 1, size: number = 5 ):Observable<IRoomsRes>{
+  onGettingAllRooms( page: number = 1, size: number = 10 ):Observable<IRoomsRes>{
     return this._HttpClient.get<IRoomsRes>(`admin/rooms?page=${page}&size=${size}`)
   }
 
