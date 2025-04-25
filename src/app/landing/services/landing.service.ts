@@ -18,7 +18,7 @@ export class LandingService {
   }
 
   getAdsAll(): Observable<Ads[]> {
-    return this._HttpClient.get<any>('portal/ads?page=1&size=3')
+    return this._HttpClient.get<any>('portal/ads?page=1&size=4')
     .pipe(map((res) => res.data.ads));
   }
 }
