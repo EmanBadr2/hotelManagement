@@ -1,1 +1,142 @@
-<p>details-page works!</p>
+<section class=" ">
+
+  <!-- title -->
+  <div class=" w-2/3 pt-3 pb-5 flex items-center justify-between  ">
+    <div class="flex items-center justify-center ">
+      <a routerLink="landing" routerLinkActive="span-content" class="p-content">Home</a>
+      <p class="mx-7  p-content"> / </p>
+      <a routerLink="landing/pageDetails" routerLinkActive="span-content" class="span-content">Room Details</a>
+      </div>
+
+      <div class="text-center">
+        <h2 class="text-landingContent-h2 h2-content">Village Angga</h2>
+        <p class="text-landingContent-p p-content"> Bogor, Indonesia</p>
+      </div>
+
+    </div>
+  <!-- img -->
+   <div class="show-images gap-2
+   grid  sm:grid-cols-1  md:grid-cols-2 ">
+    <div class="img-container ">
+      <img src="../../../../assets/img/pageD1.png" class="h-full w-full object-cover rounded" alt="">
+    </div>
+    <div class="img-container grid grid-rows-2 gap-2">
+      <div class=""><img src="../../../../assets/img/pageD2.png" class="h-full w-full object-cover"  alt=""> </div>
+     <div> <img src="../../../../assets/img/pageD3.png" class="h-full w-full object-cover" alt=""> </div>
+    </div>
+  </div>
+  <!-- --------------------------------------------------------- -->
+  <!-- content -->
+   <div class=" grid sm:grid-cols-1  md:grid-cols-2 gap-3 py-5 justify-center items-center " >
+    <!-- left side -->
+   <div class="page-content ">
+    <div class="description">
+    <p class="p-content" >Minimal techno is a minimalist subgenre of techno music.
+       It is characterized by a stripped-down aesthetic that
+       exploits the use of repetition and understated development. Minimal techno
+        is thought to have been originally developed
+       in the early 1990s by Detroit-based producers Robert Hood and Daniel Bell.
+      </p>
+       <p class="p-content" >Such trends saw the demise of the soul-infused techno that typified the original Detroit
+         sound. Robert Hood has noted that he and Daniel Bell both realized
+        something was missing from techno in the post-rave era.
+      </p>
+     <p class="p-content" >Design is a plan or specification for the construction of
+           an object or system or for the implementation of an activity or process, or the
+           result of that plan or specification in the form of a prototype, product or process.
+           The national agency for design:
+          enabling Singapore to use design for economic growth and to make lives better.
+      </p>
+    </div>
+    <!--items-center justify-center flex-wrap  -->
+    <div class="icons flex  pt-3">
+      <div class="item" >
+        <i class="block ml-1 pi pi-home"></i>
+
+        <p class="p-content"> <span class="span-content"> 5</span> bedroom</p>
+      </div>
+
+    </div>
+   </div>
+   <!-- Right side -->
+   <div class=" m-auto border rounded p-10 shadow-sm ">
+    <div class="">
+     <h6 class="text-landingContent-h2 text-xl font-medium py-3">Start Booking</h6>
+     <p class="py-2">
+      <span class="text-[#1ABC9C] text-4xl font-normal">$280 </span>
+       <span class="text-landingContent-p text-3xl font-light">per night </span>
+     </p>
+    <p class="font-normal text-base  text-[#FF1612] ">Discount 20% Off</p>
+    </div>
+
+   <div class="pt-5 m-auto">
+    <!-- <span for="icondisplay" class="span-content block mb-2">Pick a Date </span> -->
+     <!-- <p-calendar class="mb-2 "
+        [(ngModel)]="date"
+        [showIcon]="true"
+        [icon]="'pi pi-calendar-minus'"
+        inputId="icondisplay" /> -->
+          <!-- date picker -->
+          <div class="w-full">
+            <span for="icondisplay" class="span-content block mb-2">Pick a Date </span>
+            <!-- [minDate]="minDate" [disabled]="date < minDate"-->
+            <!-- <p-calendar class=" "
+                [(ngModel)]="date"
+                [showIcon]="true"
+                [icon]="'pi pi-calendar-minus'"
+                [minDate]="minDate"
+                dateFormat="dd/mm/yy"
+                inputId="icondisplay" /> -->
+     </div>
+
+        <p class=" p-content py-2 ">
+          You will pay <span class="span-content">$480 USD </span> per
+          <span class="span-content"> 2 Person </span>
+        </p>
+
+          <button
+           class="w-3/4 m-auto bg-[#3252DF] main-btn mt-2 py-2 span-content text-white "
+          (click)="explore()"
+           [disabled]=" date == undefined"
+           >continue Booking</button>
+        </div>
+
+
+   </div>
+   </div>
+
+   <!-- --------------------------------------------------- -->
+    <!-- rate  && comment  -->
+     <div class="w-full  grid sm:grid-cols-1  md:grid-cols-2 p-5 border rounded   " >
+     <div class="m-auto rate relative w-full p-3">
+      <p class=" span-content"> Rate </p>
+      <div>
+        <i  class=" pi pi-star-fill text-[#DFCB1D] mr-1"></i>
+        <i  class=" pi pi-star-fill text-[#DFCB1D] mr-1"></i>
+        <i  class=" pi pi-star-fill text-[#DFCB1D] mr-1"></i>
+        <i  class=" pi pi-star-fill text-[#DFCB1D] mr-1"></i>
+        <i  class=" pi pi-star-fill text-[#DFCB1D] mr-1"></i>
+      </div>
+      <p class=" span-content pt-3 pb-1"> Message </p>
+      <textarea class=" block rounded p-4 "></textarea>
+       <div class="  w-3/4" >
+        <button class="w-2/4 m-auto bg-[#3252DF] main-btn mt-2 py-2 span-content shadow-sm text-white " >Rate</button>
+       </div>
+     </div>
+     <!-- <div class="bg-[#203FC7] h-full opacity-5 w-0.5 rounded "> </div> -->
+
+     <div  class="w-full h-full p-3 ">
+      <p class=" span-content mb-6"> Add Your Comment </p>
+      <p class=" span-content pt-3 pb-1"> Message </p>
+      <textarea class=" block rounded p-4 "></textarea>
+       <div class="  w-3/4" >
+        <button class="w-1/2 m-auto bg-[#3252DF] main-btn mt-2 py-2 span-content shadow-sm text-white " >Send</button>
+       </div>
+     </div>
+
+
+     </div>
+
+
+
+</section>

@@ -12,6 +12,8 @@ import { SharedModule } from '../shared/shared/shared.module';
 import { CurdsComponent } from './components/curds/curds.component';
 import { AdsCurdComponent } from './components/ads-curd/ads-curd.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { HappyComponent } from './components/happy/happy.component';
+
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { TranslateModule } from '@ngx-translate/core';
     UserComponent,
     DatePickerComponent,
     CurdsComponent,
-    AdsCurdComponent
+    AdsCurdComponent,
+    HappyComponent
   ],
   imports: [
     CommonModule,
