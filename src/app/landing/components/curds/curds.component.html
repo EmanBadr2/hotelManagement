@@ -12,8 +12,8 @@
         <div class="card-body">
           <p class="font-semibold">${{ rooms[0].price }} per night</p>
         </div>
-        <div class="card-footer">
-          <h2 class="text-xl font-bold">Stark House</h2>
+        <div class="card-footer-in">
+          <h3 class="text-xl font-bold">Stark House</h3>
           <p class="text-sm">Malang, Indonesia</p>
         </div>
         <div class="overlay">
@@ -33,8 +33,8 @@
           <div class="card-body">
             <p class="font-semibold">${{ room.price }} per night</p>
           </div>
-          <div class="">
-            <h2 class="text-lg font-bold">Stark House</h2>
+          <div class="card-footer-in">
+            <h3 class="text-xl font-bold">Stark House</h3>
             <p class="text-sm">Malang, Indonesia</p>
           </div>
           <div class="overlay">
@@ -49,8 +49,8 @@
 </div>
 <section>
   <div class="pt-5">
-    <h1 class="text-3xl font-bold mb-6">Ads</h1>
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 auto-rows-[250px]">
+    <h1 class="text-3xl font-bold mb-6">Houses with beauty backyard</h1>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[250px]">
           <ng-container *ngFor="let room of rooms.slice(5,9)">
             <div class="flex flex-col overflow-hidden">
               <div class="card-wrapper">
@@ -67,33 +67,19 @@
                       <i class="fas fa-heart"></i>
                       <i class="fas fa-eye"></i>
                     </div>
-                    <div class="absolute bottom-2 right-2 flex flex-wrap gap-1">
-                      <ng-container *ngFor="let fId of room.facilities">
-                        <ng-container *ngIf="facilityMap[fId] as fac">
-                          <span
-                            class="flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[10px] font-medium shadow-sm"
-                            [ngClass]="[fac.bg, fac.text]"
-                            style="line-height: 1;"
-                          >
-                            <i [class]="fac.icon" class="text-[12px]"></i>
-                            {{ fac.name }}
-                          </span>
-                        </ng-container>
-                      </ng-container>
-                    </div>
                 </div>
               </div>
               <div class="card-footer px-2 py-2 text-start">
                 <h2 class="text-xl">{{ room.roomNumber }}</h2>
-                <!-- <p class="text-sm text-gray-500">Posted by:{{ facilities.name }}</p> -->
+                <p class="text-sm text-gray-500">Bandung, Indonesia</p>
               </div>
             </div>
           </ng-container>
     </div>
 </div>
   <div class="pt-5">
-    <h1 class="text-3xl font-bold mb-6">Ads</h1>
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 auto-rows-[250px]">
+    <h1 class="text-3xl font-bold mb-6">Hotels with large living room</h1>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[250px]">
           <ng-container *ngFor="let room of rooms.slice(9,13)">
             <div class="flex flex-col overflow-hidden">
               <div class="card-wrapper">
@@ -110,25 +96,11 @@
                       <i class="fas fa-heart"></i>
                       <i class="fas fa-eye"></i>
                     </div>
-                    <div class="absolute bottom-2 right-2 flex flex-wrap gap-1">
-                      <ng-container *ngFor="let fId of room.facilities">
-                        <ng-container *ngIf="facilityMap[fId] as fac">
-                          <span
-                            class="flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[10px] font-medium shadow-sm"
-                            [ngClass]="[fac.bg, fac.text]"
-                            style="line-height: 1;"
-                          >
-                            <i [class]="fac.icon" class="text-[12px]"></i>
-                            {{ fac.name }}
-                          </span>
-                        </ng-container>
-                      </ng-container>
-                    </div>
                 </div>
               </div>
               <div class="card-footer px-2 py-2 text-start">
                 <h2 class="text-xl">{{ room.roomNumber }}</h2>
-                <!-- <p class="text-sm text-gray-500">Posted by: {{ room.createdBy.userName }}</p> -->
+                <p class="text-sm text-gray-500">Bandung, Indonesia</p>
               </div>
             </div>
           </ng-container>
