@@ -7,6 +7,7 @@
     "axe/name-role-value": "off",
     "no-inline-styles": "off",
     "axe/text-alternatives": "off",
-    "compat-api/css": "off"
+    "compat-api/css": "off",
+    "button-type": "off"
   }
 }
