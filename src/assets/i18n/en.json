@@ -1,6 +1,18 @@
 {
-    "homePage": {
-        "title": "Home Page",
-        "description": "Description "
-    }
+  "homePage": {
+    "title": "Home Page",
+    "description": "Description "
+  },
+  "footer": {
+    "title": "We kaboom your beauty holiday instantly and memorable.",
+    "beginner": "For Beginners",
+    "newAccount": "New Account",
+    "booking": "Start Booking a Room",
+    "payment": "Use Payments",
+    "exploreUs": " Explore Us",
+    "careers": "Our Careers",
+    "Privacy": "Privacy",
+    "termsAndConditions": "Terms & Conditions",
+    "connectUs": "Connect Us"
+  }
 }

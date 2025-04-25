@@ -11,6 +11,7 @@ import { DatePickerComponent } from './components/date-picker/date-picker.compon
 import { SharedModule } from '../shared/shared/shared.module';
 import { CurdsComponent } from './components/curds/curds.component';
 import { AdsCurdComponent } from './components/ads-curd/ads-curd.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { AdsCurdComponent } from './components/ads-curd/ads-curd.component';
   imports: [
     CommonModule,
     LandingRoutingModule ,
-    SharedModule
+    SharedModule,
+    TranslateModule
   ]
 })
 export class LandingModule { }
