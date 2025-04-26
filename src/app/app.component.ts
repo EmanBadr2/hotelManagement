@@ -11,8 +11,10 @@ export class AppComponent {
   title = 'hotelManagement';
   value: string | undefined;
   usernameValue:string|undefined;
-  constructor(private translate: TranslateService){
-    this.translate.setDefaultLang('en');
-    this.translate.use('en');
-  }
+  
+  // constructor(private translate: TranslateService) {
+  //   const lang = localStorage.getItem('lang') || 'en';
+  //   this.translate.setDefaultLang(lang);
+  //   this.translate.use(lang);
+  // }
 }

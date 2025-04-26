@@ -16,6 +16,9 @@ import { NgChartsModule } from 'ng2-charts';
 import { AuthInputsComponent } from '../components/auth-inputs/auth-inputs.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { PaginatorModule } from 'primeng/paginator';
+import { DropdownModule } from 'primeng/dropdown';
+import { TranslateModule } from '@ngx-translate/core';
+
 
 
 @NgModule({
@@ -34,7 +37,10 @@ import { PaginatorModule } from 'primeng/paginator';
     DialogModule,
     DynamicDialogModule,
     NgChartsModule,
-    PaginatorModule
+    PaginatorModule,
+    DropdownModule,
+    TranslateModule
+
   ],
   exports: [
     CommonModule,
@@ -53,7 +59,10 @@ import { PaginatorModule } from 'primeng/paginator';
     DialogModule,
     DynamicDialogModule,
     NgChartsModule,
-    PaginatorModule
+    PaginatorModule,
+    DropdownModule,
+    TranslateModule
+
   ],
   providers: [DialogService],
 })
