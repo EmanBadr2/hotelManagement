@@ -10,13 +10,12 @@ import { StorageService } from 'src/core/services/storage.service';
 export class NavbarComponent implements OnInit {
   selectedLang = 'en';
 
-constructor(private translate: TranslateService) 
-  {
-    const lang = localStorage.getItem('lang') || 'en'; 
+  constructor(private translate: TranslateService) {
+    const lang = localStorage.getItem('lang') || 'en';
     this.selectedLang = lang;
     this.translate.setDefaultLang(lang);
     this.translate.use(lang);
-  
+
     // document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
   }
 
@@ -27,14 +26,15 @@ constructor(private translate: TranslateService)
     this.translate.setDefaultLang(lang);
     this.translate.use(lang);
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-
   }
   menuOpen = false;
   userName = '';
   isUserLoggedIn: boolean = false; // Replace with actual user check
   serviceStorge = inject(StorageService);
   ngOnInit() {
-    this.isUserLoggedIn = this.serviceStorge.isLogged; 
+    this.isUserLoggedIn =
+      this.serviceStorge.isLogged ||
+      localStorage.getItem('userRole') === 'user'; // Check if the user is logged in
     this.userName = this.serviceStorge.userName || ''; // Get the user name from the service
   }
   toggleMenu() {
