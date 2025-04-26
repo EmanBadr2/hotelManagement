@@ -1,5 +1,5 @@
 <div class=" pt-5">
-  <h1 class="text-3xl font-bold mb-6">{{ 'mostPopular' | translate }}</h1>
+  <h1 class="text-3xl font-bold mb-6">{{ 'Cards.mostPopular' | translate }}</h1>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 auto-rows-[250px]">
 
@@ -10,7 +10,7 @@
           class="card-img"
         />
         <div class="card-body">
-          <p class="font-semibold">${{ rooms[0].price }} {{ 'perNight' | translate }}</p>
+          <p class="font-semibold">${{ rooms[0].price }} {{ 'Cards.perNight' | translate }}</p>
         </div>
         <div class="card-footer-in">
           <h3 class="text-xl font-bold">Stark House</h3>
@@ -31,7 +31,7 @@
             class="card-img"
           />
           <div class="card-body">
-            <p class="font-semibold">${{ room.price }} per night</p>
+            <p class="font-semibold">${{ room.price }} {{ 'Cards.perNight' | translate }}</p>
           </div>
           <div class="card-footer-in">
             <h3 class="text-xl font-bold">Stark House</h3>
@@ -49,7 +49,7 @@
 </div>
 <section>
     <div class="pt-5">
-      <h1 class="text-3xl font-bold mb-6">{{ 'Houses with beautyBackyard' | translate }}</h1>
+      <h1 class="text-3xl font-bold mb-6">{{ 'Cards.beautyBackyard' | translate }}</h1>
 
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 auto-rows-[200px]">
 
@@ -61,7 +61,7 @@
                 class="card-img"
               />
               <div class="card-body">
-                <p class="font-semibold">${{ room.price }} {{ 'perNight' | translate }}</p>
+                <p class="font-semibold">${{ room.price }} {{ 'Cards.perNight' | translate }}</p>
               </div>
               <div class="overlay">
                 <div class="icon-container">
@@ -97,7 +97,7 @@
     </div>
     <div>
         <div class="pt-5">
-          <h1 class="text-3xl font-bold mb-6">{{ 'Hotels with largeLivingRoom' | translate }}</h1>
+          <h1 class="text-3xl font-bold mb-6">{{ 'Cards.largeLivingRoom' | translate }}</h1>
 
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 auto-rows-[200px]">
 
@@ -109,7 +109,7 @@
                     class="card-img"
                   />
                   <div class="card-body">
-                    <p class="font-semibold">${{ room.price }} per night</p>
+                    <p class="font-semibold">${{ room.price }} {{ 'Cards.perNight' | translate }}</p>
                   </div>
                 <div class="overlay">
                     <div class="icon-container">
@@ -122,8 +122,7 @@
                 <h2 class="text-xl">{{ room.roomNumber }}</h2>
                 <p class="text-sm text-gray-500">Bandung, Indonesia</p>
               </div>
-            </div>
+            
           </ng-container>
     </div>
 </div>
-</section>

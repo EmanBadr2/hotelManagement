@@ -1,5 +1,5 @@
 <div class="pt-5">
-    <h1 class="text-3xl font-bold mb-6">Ads</h1>
+    <h1 class="text-3xl font-bold mb-6"> {{ 'adsSection.title' | translate }}</h1>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[250px]">
           <ng-container *ngFor="let ad of ads">
             <div class="flex flex-col overflow-hidden">
@@ -10,7 +10,7 @@
                   class="card-img"
                 />
                 <div class="card-body">
-                    <p class="font-semibold">{{ ad.room.discount }}% Off</p>
+                    <p class="font-semibold">{{ ad.room.discount }}% {{ 'adsSection.off' | translate }}</p>
                   </div>
                 <div class="overlay">
                     <div class="icon-container">
@@ -37,7 +37,7 @@
               </div>
               <div class="card-footer px-2 py-2 text-start">
                 <h2 class="text-xl">{{ ad.room.roomNumber }}</h2>
-                <p class="text-sm text-gray-500">Posted by: {{ ad.createdBy.userName }}</p>
+                <p class="text-sm text-gray-500"> {{ 'adsSection.postedBy' | translate }} {{ ad.createdBy.userName }}</p>
               </div>
             </div>
           </ng-container>
