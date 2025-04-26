@@ -1,14 +1,17 @@
+<div class="p-5">
+  <!-- عنوان الفورم حسب الحالة -->
+  <div class="mb-4">
+    <h2 class="text-xl font-bold">
+      {{ !activeRoomID ? 'Add' : isFormDisabled ? 'View' : 'Edit' }} Room
+    </h2>
+  </div>
 
-<div class=" p-5">
-  <!-- <div class="">
-    <h2  class="text-xl font-bold "> {{ !activeRoomID? 'Add' : isFormDisabled?'View' : 'Edit' }} Room </h2>
-  </div> -->
   <form 
-    class=""
     [formGroup]="addRoomForm"
-    (ngSubmit)="Submit(addRoomForm)"
+    (ngSubmit)="submit()"
   >
-    <div class=" ">
+    <!-- Room Number -->
+    <div class="mb-4">
       <app-auth-inputs
         formControlName="roomNumber"
         label="Room Number"
@@ -16,18 +19,15 @@
         id="roomNumber"
       ></app-auth-inputs>
       <div
-        *ngIf="
-          addRoomForm.get('roomNumber')?.touched &&
-          addRoomForm.get('roomNumber')?.errors
-        "
+        *ngIf="addRoomForm.get('roomNumber')?.touched && addRoomForm.get('roomNumber')?.errors"
         class="text-red-500 text-sm mt-1"
       >
         Room Number is required.
       </div>
     </div>
 
-
-    <div class="grid grid-cols-2 gap-4 ">
+    <!-- Price and Capacity -->
+    <div class="grid grid-cols-2 gap-4 mb-4">
       <div>
         <app-auth-inputs
           formControlName="price"
@@ -36,116 +36,101 @@
           id="price"
         ></app-auth-inputs>
         <div
-          *ngIf="
-            addRoomForm.get('price')?.touched &&
-            addRoomForm.get('price')?.errors
-          "
+          *ngIf="addRoomForm.get('price')?.touched && addRoomForm.get('price')?.errors"
           class="text-red-500 text-sm mt-1"
         >
-          Phone Number is required.
+          Price is required.
         </div>
       </div>
 
       <div>
         <app-auth-inputs
           formControlName="capacity"
-          label="capacity"
+          label="Capacity"
           placeholder="Please type here"
           id="capacity"
         ></app-auth-inputs>
         <div
-          *ngIf="
-            addRoomForm.get('capacity')?.touched &&
-            addRoomForm.get('capacity')?.errors
-          "
+          *ngIf="addRoomForm.get('capacity')?.touched && addRoomForm.get('capacity')?.errors"
           class="text-red-500 text-sm mt-1"
         >
-          Country is required.
+          Capacity is required.
         </div>
       </div>
     </div>
 
-    <div class="grid grid-cols-2 gap-4 items-center">
+    <!-- Discount and Facilities -->
+    <div class="grid grid-cols-2 gap-4 items-center mb-4 w-full">
       <div>
         <app-auth-inputs
           formControlName="discount"
-          label="discount"
+          label="Discount"
           placeholder="Please type here"
           id="discount"
         ></app-auth-inputs>
         <div
-          *ngIf="
-            addRoomForm.get('discount')?.touched &&
-            addRoomForm.get('discount')?.errors
-          "
+          *ngIf="addRoomForm.get('discount')?.touched && addRoomForm.get('discount')?.errors"
           class="text-red-500 text-sm mt-1"
         >
-          Phone Number is required.
+          Discount is required.
         </div>
       </div>
+    
+      <div class="flex flex-col gap-1 relative w-full">
+        <p-multiSelect
+          [options]="facilities"
+          optionLabel="name"
+          formControlName="facilities"
+          display="chip"
+          styleClass="w-75 bg-gray-100"
+          placeholder="Select Facilities">
+        </p-multiSelect>
+      </div>
+      
+    </div>
+    
+    
 
-     <!-- Facilities Dropdown -->
-  <div class="flex flex-col gap-1 relative w-[90%]">
-
-    <!-- <label  class="font-normal text-base leading-[170%] tracking-[0]">Facilities</label> -->
-    <p-multiSelect
-    class="w-[90%] mb-3 border border-gray-300 bg-gray-100 rounded-md
-    px-3  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-primary-500"
-      [options]="facilities"
-      optionLabel="name"
-      formControlName="facilities"
-      display="chip"
-      class="w-full mt-1"
-      placeholder=" facilities">
-    </p-multiSelect>
-  </div>
-
-
+    <!-- Existing Images if View Mode -->
+    <div *ngIf="isViewMode" class="grid grid-cols-3 gap-4 mb-4 viewImg">
+      <div *ngFor="let img of viewImg">
+        <img [src]="img" alt="Existing image" class="w-full h-24 object-cover rounded" />
+      </div>
+      <p *ngIf="viewImg.length == 0" class="col-span-3 text-center text-gray-500 p-4">
+        Cannot find any images
+      </p>
     </div>
 
-    <!-- Existing Images Preview -->
-<div class="grid grid-cols-3 gap-4 mb-4  viewImg" *ngIf="isViewMode">
-  <div *ngFor="let img of viewImg">
-    <img [src]="img" alt="Existing image" class="w-full h-24 object-cover rounded" />
-  </div>
-  <p *ngIf="viewImg.length==0 " class=" m-auto text-center p-9"> can not found any images </p>
-</div>
-
-
-    <ngx-dropzone class="bg-green-200 "
-
-     (change)="onSelect($event)"  *ngIf="!isViewMode">
+    <!-- Upload Images if not View Mode -->
+    <ngx-dropzone *ngIf="!isViewMode" class="bg-green-200 mb-4" (change)="onSelect($event)">
       <ngx-dropzone-label>
-       <div> <i class="pi pi-cloud-upload text-lg"></i> </div>
-        <p>Drag & Drop or <span class="text-green-600">  Choose a Room Images</span> to Upload</p>
+        <div><i class="pi pi-cloud-upload text-lg"></i></div>
+        <p>Drag & Drop or <span class="text-green-600">Choose Room Images</span> to upload</p>
       </ngx-dropzone-label>
       <ngx-dropzone-image-preview
-      *ngFor="let f of files"
-      [file]="f"
-      [removable]="true"
-      (removed)="onRemove(f)"
-    >
-    </ngx-dropzone-image-preview>
+        *ngFor="let f of files"
+        [file]="f"
+        [removable]="true"
+        (removed)="onRemove(f)">
+      </ngx-dropzone-image-preview>
     </ngx-dropzone>
 
-
-
-
+    <!-- Buttons -->
     <div class="flex justify-end space-x-4">
-      <button *ngIf="!isViewMode" type="submit"
-      class="px-6 py-2 bg-blue-600
-       text-white rounded-lg hover:bg-blue-700 transition"
-      >{{!activeRoomID? 'Add' : 'update'}}</button>
+      <button 
+        *ngIf="!isViewMode"
+        type="submit"
+        class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+        {{ !activeRoomID ? 'Add' : 'Update' }}
+      </button>
 
-      <button type="button"
-      routerLink="/admin/rooms/rooms"
-      class="px-6 py-2 border border-blue-500
-       text-blue-500 rounded-lg hover:bg-blue-50 transition"
-      >cancel</button>
+      <button 
+        type="button"
+        routerLink="/admin/rooms/rooms"
+        class="px-6 py-2 border border-blue-500 text-blue-500 rounded-lg hover:bg-blue-50 transition">
+        Cancel
+      </button>
     </div>
 
   </form>
 </div>
-
-
-
