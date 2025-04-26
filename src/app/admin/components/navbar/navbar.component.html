@@ -16,6 +16,19 @@
         badgeStyleClass="p-badge-danger"
     ></button>
 
+    <p-dropdown
+    [options]="languages"
+    [(ngModel)]="selectedLanguage"
+    [optionLabel]="'label'"
+    [optionValue]="'value'"
+    (onChange)="changeLanguage($event.value)"
+    placeholder="Select Language"
+    class="lang-dropdown">
+  </p-dropdown>
+  
+  
+
+
     <!-- <div class="user-info d-flex align-items-center mx-3">
         <img
         [src]="user?.imagePath || defaultImage"

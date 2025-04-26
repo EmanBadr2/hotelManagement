@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { ProfileComponent } from '../../../shared/components/profile/profile.component';
 
 
@@ -13,17 +14,25 @@ export class NavbarComponent implements OnInit {
   userName: string = 'User';
   userMail: string = 'upskilling@gmail.com';
   defaultImage = '../../../../assets/img/user.png';
-
-
   @Output() toggleSidebar = new EventEmitter<void>();
 
   userMenuItems: MenuItem[] = [];
 
   constructor(private _Router: Router ,
+    private translate: TranslateService
+  ) {
+    const lang = localStorage.getItem('lang') || 'en'; 
+    this.selectedLanguage = lang;
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang);
+  
+    // document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  }
 
-  ) {}
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.initMenu();
+  }
+  
 
   logOut(): void {
     localStorage.clear();
@@ -45,7 +54,21 @@ export class NavbarComponent implements OnInit {
     ];
   }
 
- 
+  languages = [
+    { label: 'English', value: 'en' },
+    { label: 'العربية', value: 'ar' }
+  ];
+
+  selectedLanguage: string = 'en';
+
+  changeLanguage(lang: string) {
+    console.log('Selected lang:', lang);
+
+    this.selectedLanguage = lang;
+    localStorage.setItem('lang', lang);
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang);
+  }
 
 
 }
