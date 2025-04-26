@@ -1,20 +1,20 @@
 <div class=" pt-5">
-  <h1 class="text-3xl font-bold mb-6">{{ 'Cards.mostPopular' | translate }}</h1>
+<h1 class="text-3xl font-bold mb-6">{{ 'Cards.mostPopular' | translate }}</h1>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 auto-rows-[250px]">
 
-      <div *ngIf="rooms.length > 0" class="card-wrapper row-span-2">
+    <div *ngIf="rooms.length > 0" class="card-wrapper row-span-2">
         <img
-          [src]="rooms[0].images[0] || '/assets/img/Rectangle 3.png'"
-          alt="Room Image"
-          class="card-img"
+        [src]="rooms[0].images[0] || '/assets/img/Rectangle 3.png'"
+        alt="Room Image"
+        class="card-img"
         />
         <div class="card-body">
-          <p class="font-semibold">${{ rooms[0].price }} {{ 'Cards.perNight' | translate }}</p>
+        <p class="font-semibold">${{ rooms[0].price }} {{ 'Cards.perNight' | translate }}</p>
         </div>
         <div class="card-footer-in">
-          <h3 class="text-xl font-bold">Stark House</h3>
-          <p class="text-sm">Malang, Indonesia</p>
+        <h3 class="text-xl font-bold">Stark House</h3>
+        <p class="text-sm">Malang, Indonesia</p>
         </div>
         <div class="overlay">
             <div class="icon-container">
@@ -22,57 +22,57 @@
                 <i class="fas fa-eye"></i>
             </div>
         </div>
-      </div>
-      <ng-container *ngFor="let room of rooms.slice(1, 5)">
+    </div>
+    <ng-container *ngFor="let room of rooms.slice(1, 5)">
         <div class="card-wrapper">
-          <img
+        <img
             [src]="room.images[0] || '/assets/img/Rectangle 3.png'"
             alt="Room Image"
             class="card-img"
-          />
-          <div class="card-body">
+        />
+        <div class="card-body">
             <p class="font-semibold">${{ room.price }} {{ 'Cards.perNight' | translate }}</p>
-          </div>
-          <div class="card-footer-in">
+        </div>
+        <div class="card-footer-in">
             <h3 class="text-xl font-bold">Stark House</h3>
             <p class="text-sm">Malang, Indonesia</p>
-          </div>
-          <div class="overlay">
+        </div>
+        <div class="overlay">
             <div class="icon-container">
                 <i class="fas fa-heart"></i>
                 <i class="fas fa-eye"></i>
             </div>
-          </div>
         </div>
-      </ng-container>
+        </div>
+    </ng-container>
     </div>
 </div>
 <section>
 <div class="pt-5">
-  <h1 class="text-3xl font-bold mb-6">{{ 'Cards.beautyBackyard' | translate }}</h1>
+<h1 class="text-3xl font-bold mb-6">{{ 'Cards.beautyBackyard' | translate }}</h1>
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 auto-rows-[200px]">
-      <ng-container *ngFor="let room of rooms.slice(5, 9)">
+    <ng-container *ngFor="let room of rooms.slice(5, 9)">
         <div class="card-wrapper">
-          <img
+        <img
             [src]="room.images[0] || '/assets/img/Rectangle 3.png'"
             alt="Room Image"
             class="card-img"
-          />
-          <div class="card-body">
+        />
+        <div class="card-body">
             <p class="font-semibold">${{ room.price }} {{ 'Cards.perNight' | translate }}</p>
-          </div>
-          <div class="card-footer-in">
+        </div>
+        <div class="card-footer-in">
             <h3 class="text-xl font-bold">Stark House</h3>
             <p class="text-sm">Malang, Indonesia</p>
-          </div>
-          <div class="overlay">
+        </div>
+        <div class="overlay">
             <div class="icon-container">
                 <i class="fas fa-heart"></i>
                 <i class="fas fa-eye"></i>
             </div>
-          </div>
         </div>
-      </ng-container>
+        </div>
+    </ng-container>
     </div>
 </div>
 
@@ -82,27 +82,27 @@
     <h1 class="text-3xl font-bold mb-6">{{ 'Cards.largeLivingRoom' | translate }}</h1>
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 auto-rows-[200px]">
         <ng-container *ngFor="let room of rooms.slice(6, 10)">
-          <div class="card-wrapper">
+        <div class="card-wrapper">
             <img
-              [src]="room.images[0] || '/assets/img/Rectangle 3.png'"
-              alt="Room Image"
-              class="card-img"
+            [src]="room.images[0] || '/assets/img/Rectangle 3.png'"
+            alt="Room Image"
+            class="card-img"
             />
             <div class="card-body">
-              <p class="font-semibold">${{ room.price }} {{ 'Cards.perNight' | translate }}</p>
+            <p class="font-semibold">${{ room.price }} {{ 'Cards.perNight' | translate }}</p>
             </div>
             <div class="card-footer-in">
-              <h3 class="text-xl font-bold">Stark House</h3>
-              <p class="text-sm">Malang, Indonesia</p>
+            <h3 class="text-xl font-bold">Stark House</h3>
+            <p class="text-sm">Malang, Indonesia</p>
             </div>
             <div class="overlay">
-              <div class="icon-container">
-                  <i class="fas fa-heart"></i>
-                  <i class="fas fa-eye"></i>
-              </div>
+            <div class="icon-container">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-eye"></i>
+            </div>
             </div>
         </div>
-      </ng-container>
-  </div>
+    </ng-container>
+</div>
 </div>
 </section>

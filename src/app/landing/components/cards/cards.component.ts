@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { Card } from '../../interface/card';
 import { LandingService } from '../../services/landing.service';
-import { Curd } from '../../interface/curd';
 
 @Component({
-  selector: 'app-curds',
-  templateUrl: './curds.component.html',
-  styleUrls: ['./curds.component.scss']
+  selector: 'app-cards',
+  templateUrl: './cards.component.html',
+  styleUrls: ['./cards.component.scss']
 })
-export class CurdsComponent implements OnInit {
-  rooms: Curd[] = [];
+export class CardsComponent implements OnInit {
+  rooms: Card[] = [];
 constructor(private _LandingService:LandingService) { }
 
 ngOnInit() {

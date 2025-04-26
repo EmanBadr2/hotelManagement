@@ -1,4 +1,4 @@
-import {  User } from "./curd";
+import {  User } from "./card";
 
 export interface pageDetailsRes {
   success : boolean ,

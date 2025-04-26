@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Ads } from '../../interface/curd';
+import { Ads } from '../../interface/card';
 import { LandingService } from '../../services/landing.service';
-import { FACILITY_MAP } from '../../interface/facility-map';
 
 @Component({
   selector: 'app-ads-curd',
@@ -10,7 +9,6 @@ import { FACILITY_MAP } from '../../interface/facility-map';
 })
 export class AdsCurdComponent implements OnInit {
   ads: Ads[] = [];
-  facilityMap = FACILITY_MAP;
 constructor (
   private _LandingService:LandingService,
 ) { }
