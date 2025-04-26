@@ -4,14 +4,17 @@
     </div>
     <div class="flex flex-col justify-center gap-2 p-6">
         <div>
-          <h2 class="text-xl font-semibold mb-2" style="color: #152C5B;">Happy Family</h2>
+          <h2 class="text-xl font-semibold mb-2" style="color: #152C5B;">
+            {{ 'testimonial.title' | translate }}
+          </h2>
           <div class="text-yellow-400 fs-4 mb-3">
             <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
           </div>
           <p class="text-lg font-medium mb-4" style="color: #152C5B;">
-            What a great trip with my family and I should try again next time soon ...
+            {{ 'testimonial.description' | translate }}
+
+          <p class="text-gray-400 text-sm">{{ 'testimonial.nameAndTitle' | translate }}
           </p>
-          <p class="text-gray-400 text-sm">Angga, Product Designer</p>
         </div>
         <div class="flex gap-2 mt-4">
           <button class="w-10 h-10 flex items-center justify-center border-2 border-blue-600 text-blue-600 rounded-full hover:bg-blue-600 hover:text-white transition">

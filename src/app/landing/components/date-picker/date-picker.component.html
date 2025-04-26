@@ -2,17 +2,17 @@
   <div class=" grid sm:grid-cols-2 justify-center items-center ">
 
     <div class="rigt-side">
-      <h2 class="h2-content ">Forget Busy Work, Start Next Vacation</h2>
-      <p class="p-content ">We provide what you need to enjoy your holiday with family.
-         Time to make another memorable moments.
+      <h2 class="h2-content ">{{ 'homeSection.title' | translate }}</h2>
+      <p class="p-content ">
+        {{ 'homeSection.description' | translate }}
        </p>
 
        <div class="start-booking">
-        <h6 class="text-landingContent-h2 text-xl font-medium">Start Booking</h6>
+        <h6 class="text-landingContent-h2 text-xl font-medium">{{ 'homeSection.bookingTitle' | translate }}</h6>
              <!--    [iconDisplay]="'input'" -->
          <!-- date picker -->
         <div class="mt-3 w-full">
-              <span for="icondisplay" class="span-content block mb-2">Pick a Date </span>
+              <span for="icondisplay" class="span-content block mb-2"> {{ 'homeSection.pickDate' | translate }} </span>
               <!-- [minDate]="minDate" [disabled]="date < minDate"-->
               <p-calendar class=" "
                   [(ngModel)]="date"
@@ -24,13 +24,14 @@
        </div>
          <!-- capacity -->
          <div class="my-3 ">
-          <span class="span-content block mb-1">Capacity </span>
+          <span class="span-content block mb-1">{{ 'homeSection.capacity' | translate }} </span>
           <div class="capacity">
            <button class="bg-[#E74C3C] main-btn capacity-btn" [disabled]="capacity == 0"
            (click)="removeCapacity()">
              <i class="pi pi-minus font-bold text-lg"></i>
             </button>
-           <span class="span-content ">{{capacity}} Person </span>
+           <span class="span-content ">  {{ capacity }} {{ 'homeSection.person' | translate }}
+          </span>
             <button class="bg-[#1ABC9C] main-btn capacity-btn"  [disabled]="capacity >= 8"
             (click)="addCapacity()">
               <i class="pi pi-plus font-bold text-lg"></i>
@@ -44,7 +45,7 @@
            class="w-full bg-[#3252DF] main-btn py-2 px-4 span-content text-white "
           (click)="explore()"
            [disabled]="capacity==0 || date == undefined"
-           >Explore</button>
+           >{{ 'homeSection.exploreBtn' | translate }}</button>
         </div>
 
        </div>

@@ -19,6 +19,10 @@ export class GlobalInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     const token = localStorage.getItem('token');
 
+    // if (req.url.includes('/assets/i18n/')) {
+    //   return next.handle(req);
+    // }
+
     const updatedReq = req.url.startsWith('http')
       ? req.clone({
           setHeaders: token ? { Authorization: `${token}` } : {},

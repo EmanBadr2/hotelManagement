@@ -10,15 +10,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
 import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
-import { AuthInterceptor } from 'src/core/interceptors/auth.interceptor';
 import { CommonModule } from '@angular/common';
 import { GlobalInterceptor } from 'src/core/interceptors/global.interceptor';
 import { ProfileComponent } from './shared/components/profile/profile.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
-const httpLoaderFactory: (http: HttpClient) => TranslateHttpLoader =
-  (http: HttpClient) => new TranslateHttpLoader(http, '../assets/i18n/', '.json');
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 @NgModule({
   declarations: [AppComponent, ProfileComponent ],
   imports: [
@@ -32,9 +31,10 @@ const httpLoaderFactory: (http: HttpClient) => TranslateHttpLoader =
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: httpLoaderFactory,
+        useFactory: createTranslateLoader,
         deps: [HttpClient],
       },
+      defaultLanguage: 'en',
     }),
     ToastrModule.forRoot({
       timeOut: 5000,
@@ -43,12 +43,12 @@ const httpLoaderFactory: (http: HttpClient) => TranslateHttpLoader =
     }),
   ],
   providers: [
-   [   {
+    {
       provide: HTTP_INTERCEPTORS,
       useClass: GlobalInterceptor,
       multi: true
-    } ]
-  ],
+    }
+  ],  
   bootstrap: [AppComponent],
 })
 export class AppModule {}

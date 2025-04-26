@@ -1,5 +1,5 @@
 <div class=" pt-5">
-    <h1 class="text-3xl font-bold mb-6">Most popular ads</h1>
+  <h1 class="text-3xl font-bold mb-6">{{ 'Cards.mostPopular' | translate }}</h1>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 auto-rows-[250px]">
 
@@ -10,7 +10,7 @@
           class="card-img"
         />
         <div class="card-body">
-          <p class="font-semibold">${{ rooms[0].price }} per night</p>
+          <p class="font-semibold">${{ rooms[0].price }} {{ 'Cards.perNight' | translate }}</p>
         </div>
         <div class="card-footer-in">
           <h3 class="text-xl font-bold">Stark House</h3>
@@ -31,7 +31,7 @@
             class="card-img"
           />
           <div class="card-body">
-            <p class="font-semibold">${{ room.price }} per night</p>
+            <p class="font-semibold">${{ room.price }} {{ 'Cards.perNight' | translate }}</p>
           </div>
           <div class="card-footer-in">
             <h3 class="text-xl font-bold">Stark House</h3>
@@ -48,6 +48,25 @@
     </div>
 </div>
 <section>
+    <div class="pt-5">
+      <h1 class="text-3xl font-bold mb-6">{{ 'Cards.beautyBackyard' | translate }}</h1>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 auto-rows-[200px]">
+
+          <ng-container *ngFor="let room of rooms.slice(5, 9)">
+            <div class="card-wrapper">
+              <img
+                [src]="room.images[0] || '/assets/img/Rectangle 3.png'"
+                alt="Room Image"
+                class="card-img"
+              />
+              <div class="card-body">
+                <p class="font-semibold">${{ room.price }} {{ 'Cards.perNight' | translate }}</p>
+              </div>
+              <div class="overlay">
+                <div class="icon-container">
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-eye"></i>
   <div class="pt-5">
     <h1 class="text-3xl font-bold mb-6">Houses with beauty backyard</h1>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[250px]">
@@ -76,20 +95,21 @@
             </div>
           </ng-container>
     </div>
-</div>
-  <div class="pt-5">
-    <h1 class="text-3xl font-bold mb-6">Hotels with large living room</h1>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[250px]">
-          <ng-container *ngFor="let room of rooms.slice(9,13)">
-            <div class="flex flex-col overflow-hidden">
-              <div class="card-wrapper">
-                <img
-                  [src]="room.images[0] || '/assets/img/Rectangle 3.png'"
-                  alt="ads Image"
-                  class="card-img"
-                />
-                <div class="card-body">
-                    <p class="font-semibold">{{ room.discount }}% Off</p>
+    <div>
+        <div class="pt-5">
+          <h1 class="text-3xl font-bold mb-6">{{ 'Cards.largeLivingRoom' | translate }}</h1>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 auto-rows-[200px]">
+
+              <ng-container *ngFor="let room of rooms.slice(9, 13)">
+                <div class="card-wrapper">
+                  <img
+                    [src]="room.images[0] || '/assets/img/Rectangle 3.png'"
+                    alt="Room Image"
+                    class="card-img"
+                  />
+                  <div class="card-body">
+                    <p class="font-semibold">${{ room.price }} {{ 'Cards.perNight' | translate }}</p>
                   </div>
                 <div class="overlay">
                     <div class="icon-container">
@@ -102,8 +122,7 @@
                 <h2 class="text-xl">{{ room.roomNumber }}</h2>
                 <p class="text-sm text-gray-500">Bandung, Indonesia</p>
               </div>
-            </div>
+            
           </ng-container>
     </div>
 </div>
-</section>
