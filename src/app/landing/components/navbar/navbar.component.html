@@ -41,11 +41,11 @@
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
     >
-      <a routerLink="/">Home</a>
-    </li>
+    <a routerLink="/">{{ 'navbar.home' | translate }}</a>
+  </li>
 
     <li class="landing_navbar__list__list-item" routerLinkActive="active">
-      <a routerLink="/explore">Explore</a>
+      <a routerLink="/explore">{{ 'navbar.explore' | translate }}</a>
     </li>
 
     <li
@@ -53,16 +53,16 @@
       *ngIf="isUserLoggedIn"
       routerLinkActive="active"
     >
-      <a routerLink="/booking">Reviews</a>
-    </li>
+    <a routerLink="/booking">{{ 'navbar.reviews' | translate }}</a>
+  </li>
 
     <li
       class="landing_navbar__list__list-item"
       *ngIf="isUserLoggedIn"
       routerLinkActive="active"
     >
-      <a routerLink="/fav-items">Favorites</a>
-    </li>
+    <a routerLink="/fav-items">{{ 'navbar.favorites' | translate }}</a>
+  </li>
 
     <li
       class="landing_navbar__list__list-item flex gap-2 items-center"
@@ -72,14 +72,25 @@
       <h5>{{ userName }}</h5>
     </li>
 
+    <li class="landing_navbar__list__list-item">
+      <select
+      [(ngModel)]="selectedLang"
+      (change)="changeLanguage(selectedLang)"
+      class="border rounded p-1">
+        <option value="en">English</option>
+        <option value="ar">العربية</option>
+      </select>
+    </li>
+    
+
     <li
       class="landing_navbar__list__list-item w-full md:w-auto"
       *ngIf="!isUserLoggedIn"
       routerLinkActive="active"
     >
-      <a routerLink="/auth/register"
-        ><button class="nav_btn w-full">Register</button></a
-      >
+      <a routerLink="/auth/register">
+        <button class="nav_btn w-full">{{ 'navbar.register' | translate }}</button>
+        </a>
     </li>
 
     <li
@@ -87,9 +98,9 @@
       *ngIf="!isUserLoggedIn"
       routerLinkActive="active"
     >
-      <a routerLink="/auth"
-        ><button class="nav_btn w-full">Login Now</button></a
-      >
+      <a routerLink="/auth">
+        <button class="nav_btn w-full">{{ 'navbar.login' | translate }}</button>
+      </a>
     </li>
   </ng-template>
 </section>

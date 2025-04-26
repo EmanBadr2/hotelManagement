@@ -12,9 +12,9 @@ export class AppComponent {
   value: string | undefined;
   usernameValue:string|undefined;
   
-  constructor(private translate: TranslateService) {
-    const lang = localStorage.getItem('lang') || 'en';
-    this.translate.setDefaultLang(lang);
-    this.translate.use(lang);
-  }
+  // constructor(private translate: TranslateService) {
+  //   const lang = localStorage.getItem('lang') || 'en';
+  //   this.translate.setDefaultLang(lang);
+  //   this.translate.use(lang);
+  // }
 }

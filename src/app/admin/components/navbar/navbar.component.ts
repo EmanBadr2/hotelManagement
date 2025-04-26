@@ -19,15 +19,16 @@ export class NavbarComponent implements OnInit {
   userMenuItems: MenuItem[] = [];
 
   constructor(private _Router: Router ,
-    private translate: TranslateService
-  ) {
-    const lang = localStorage.getItem('lang') || 'en'; 
-    this.selectedLanguage = lang;
-    this.translate.setDefaultLang(lang);
-    this.translate.use(lang);
+    // private translate: TranslateService
+  ) {}
+  //  {
+  //   const lang = localStorage.getItem('lang') || 'en'; 
+  //   this.selectedLanguage = lang;
+  //   this.translate.setDefaultLang(lang);
+  //   this.translate.use(lang);
   
-    // document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-  }
+  //   // document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  // }
 
   ngOnInit(): void {
     this.initMenu();
@@ -54,21 +55,20 @@ export class NavbarComponent implements OnInit {
     ];
   }
 
-  languages = [
-    { label: 'English', value: 'en' },
-    { label: 'العربية', value: 'ar' }
-  ];
+  // languages = [
+  //   { label: 'English', value: 'en' },
+  //   { label: 'العربية', value: 'ar' }
+  // ];
 
-  selectedLanguage: string = 'en';
+  // selectedLanguage: string = 'en';
 
-  changeLanguage(lang: string) {
-    console.log('Selected lang:', lang);
-
-    this.selectedLanguage = lang;
-    localStorage.setItem('lang', lang);
-    this.translate.setDefaultLang(lang);
-    this.translate.use(lang);
-  }
+  // changeLanguage(lang: string) {
+  //   console.log('Selected lang:', lang);
+  //   this.selectedLanguage = lang;
+  //   localStorage.setItem('lang', lang);
+  //   this.translate.setDefaultLang(lang);
+  //   this.translate.use(lang);
+  // }
 
 
 }

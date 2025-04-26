@@ -1,6 +1,15 @@
 {
-    "homePage": {
-        "title": "الصفحة الرئيسية",
-        "description": "مرحبًا بك في صفحتنا الرئيسية!"
+    "navbar": {
+      "home": "الرئيسية",
+      "explore": "استكشف",
+      "reviews": "التقييمات",
+      "favorites": "المفضلة",
+      "register": "تسجيل",
+      "login": "تسجيل الدخول",
+      "mostPopular": "أكثر الإعلانات شهرة",
+      "beautyBackyard": "منازل بحدائق جميلة",
+      "largeLivingRoom": "فنادق بغرف معيشة واسعة",
+      "perNight": "لكل ليلة"
     }
-}
+  }
+  

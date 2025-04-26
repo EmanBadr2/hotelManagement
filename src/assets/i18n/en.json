@@ -1,6 +1,17 @@
+
 {
-    "homePage": {
-        "title": "Home Page",
-        "description": "Description "
-    }
+    "navbar": {
+      "home": "Home",
+      "explore": "Explore",
+      "reviews": "Reviews",
+      "favorites": "Favorites",
+      "register": "Register",
+      "login": "Login",
+ 
+    "mostPopular": "Most popular ads",
+    "beautyBackyard": "Houses with beauty backyard",
+    "largeLivingRoom": "Hotels with large living room",
+    "perNight": "per night"
+
+}
 }

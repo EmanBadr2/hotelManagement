@@ -1,5 +1,5 @@
 <div class=" pt-5">
-    <h1 class="text-3xl font-bold mb-6">Most popular ads</h1>
+  <h1 class="text-3xl font-bold mb-6">{{ 'mostPopular' | translate }}</h1>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 auto-rows-[250px]">
 
@@ -10,7 +10,7 @@
           class="card-img"
         />
         <div class="card-body">
-          <p class="font-semibold">${{ rooms[0].price }} per night</p>
+          <p class="font-semibold">${{ rooms[0].price }} {{ 'perNight' | translate }}</p>
         </div>
         <div class="card-footer">
           <h2 class="text-xl font-bold">Stark House</h2>
@@ -49,7 +49,7 @@
 </div>
 <section>
     <div class="pt-5">
-        <h1 class="text-3xl font-bold mb-6">Houses with beauty backyard</h1>
+      <h1 class="text-3xl font-bold mb-6">{{ 'Houses with beautyBackyard' | translate }}</h1>
 
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 auto-rows-[200px]">
 
@@ -61,7 +61,7 @@
                 class="card-img"
               />
               <div class="card-body">
-                <p class="font-semibold">${{ room.price }} per night</p>
+                <p class="font-semibold">${{ room.price }} {{ 'perNight' | translate }}</p>
               </div>
               <div class="overlay">
                 <div class="icon-container">
@@ -79,7 +79,7 @@
     </div>
     <div>
         <div class="pt-5">
-            <h1 class="text-3xl font-bold mb-6">Hotels with large living room</h1>
+          <h1 class="text-3xl font-bold mb-6">{{ 'Hotels with largeLivingRoom' | translate }}</h1>
 
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 auto-rows-[200px]">
 
