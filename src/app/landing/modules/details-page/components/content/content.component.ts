@@ -12,7 +12,7 @@ import { Room } from 'src/app/landing/interface/pageDetals';
 export class ContentComponent implements OnInit {
    // date: Date | undefined;
     date: Date = new Date();
-    roomId :string ='676785afc01e18566189c9d4'
+    roomId :string ='6808fd4a662a988e021fb99a'
     roomNumber !: String | number
     price !: number
     capacity :number =0

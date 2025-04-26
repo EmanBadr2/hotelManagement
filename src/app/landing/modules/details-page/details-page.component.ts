@@ -11,7 +11,7 @@ import { RoomDetailsService } from './services/room-details.service';
 export class DetailsPageComponent implements OnInit {
   // date: Date | undefined;
   images :string[] =[]
-  roomId :string ='676785afc01e18566189c9d4'
+  roomId :string ='6808fd4a662a988e021fb99a'
   date: Date = new Date();
   minDate: Date = new Date();  // Today's date
   capacity :number =0
