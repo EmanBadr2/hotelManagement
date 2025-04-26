@@ -2,9 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingComponent } from './components/landing/landing.component';
 import { HappyComponent } from './components/happy/happy.component';
+import { DetailsPageComponent } from './modules/details-page/details-page.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
+  { path: 'pageDetails', component: DetailsPageComponent },
+
   { path: 'explore', loadChildren: () => import('./modules/explore/explore.module').then(m => m.ExploreModule) },
   { path: 'booking', loadChildren: () => import('./modules/booking/booking.module').then(m => m.BookingModule) },
   { path: 'fav-items', loadChildren: () => import('./modules/fav-items/fav-items.module').then(m => m.FavItemsModule) },
