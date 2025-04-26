@@ -32,6 +32,11 @@ import { HappyComponent } from './components/happy/happy.component';
     LandingRoutingModule ,
     SharedModule,
     TranslateModule
+  ] ,
+  exports :[
+    FooterComponent,
+    NavbarComponent,
+
   ]
 })
 export class LandingModule { }

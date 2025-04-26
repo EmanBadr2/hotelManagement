@@ -5,7 +5,8 @@ import { HappyComponent } from './components/happy/happy.component';
 import { DetailsPageComponent } from './modules/details-page/details-page.component';
 
 const routes: Routes = [
-  { path: '', component: LandingComponent },
+  { path: '', redirectTo:'landing'  , pathMatch:'full'},
+  { path: 'landing', component: LandingComponent },
   { path: 'pageDetails', component: DetailsPageComponent },
 
   { path: 'explore', loadChildren: () => import('./modules/explore/explore.module').then(m => m.ExploreModule) },
