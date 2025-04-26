@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="exploreNav mt-5">
+        <h1 class="text-3xl text-center font-bold mb-6">Explore ALL Rooms </h1>
+    </div>
+    <div class="pt-5 pb-5">
+        <h1 class="text-xl font-bold mb-6">All Rooms</h1>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-[250px]">
+            <ng-container *ngFor="let room of rooms">
+                <div class="card-wrapper">
+                  <img
+                    [src]="room.images[0] || '/assets/img/Rectangle 3.png'"
+                    alt="Room Image"
+                    class="card-img"
+                  />
+                  <div class="card-body">
+                    <p class="font-semibold">${{ room.price }} per night</p>
+                  </div>
+                  <div class="card-footer-in">
+                    <h3 class="text-xl font-bold">Stark House</h3>
+                    <p class="text-sm">Malang, Indonesia</p>
+                  </div>
+                  <div class="overlay">
+                    <div class="icon-container">
+                        <i class="fas fa-heart"></i>
+                        <i class="fas fa-eye"></i>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+        </div>
+    </div>
+</div>

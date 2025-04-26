@@ -1,0 +1,45 @@
+<div class="pt-5">
+    <h1 class="text-3xl font-bold mb-6">Ads</h1>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[250px]">
+          <ng-container *ngFor="let ad of ads">
+            <div class="flex flex-col overflow-hidden">
+              <div class="card-wrapper">
+                <img
+                  [src]="ad.room.images[0] || '/assets/img/Rectangle 3.png'"
+                  alt="ads Image"
+                  class="card-img"
+                />
+                <div class="card-body">
+                    <p class="font-semibold">{{ ad.room.discount }}% Off</p>
+                  </div>
+                <div class="overlay">
+                    <div class="icon-container">
+                      <i class="fas fa-heart"></i>
+                      <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="absolute bottom-2 left-1 w-full px-2">
+                      <div class="flex gap-1 overflow-x-auto whitespace-nowrap scroll-smooth scrollbar-hide">
+                        <ng-container *ngFor="let fId of ad.room.facilities">
+                          <ng-container *ngIf="facilityMap[fId] as fac">
+                            <span
+                              class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[10px] font-medium shadow-sm mr-1"
+                              [ngClass]="[fac.bg, fac.text]"
+                              style="line-height: 1;"
+                            >
+                              <i [class]="fac.icon" class="text-[12px]"></i>
+                              {{ fac.name }}
+                            </span>
+                          </ng-container>
+                        </ng-container>
+                      </div>
+                    </div>                                       
+                </div>
+              </div>
+              <div class="card-footer px-2 py-2 text-start">
+                <h2 class="text-xl">{{ ad.room.roomNumber }}</h2>
+                <p class="text-sm text-gray-500">Posted by: {{ ad.createdBy.userName }}</p>
+              </div>
+            </div>
+          </ng-container>
+    </div>
+</div>

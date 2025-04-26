@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingComponent } from './components/landing/landing.component';
-import { CurdsComponent } from './components/curds/curds.component';
+import { HappyComponent } from './components/happy/happy.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },

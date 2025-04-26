@@ -52,8 +52,14 @@ h1{
     transform: scale(1.2);
     color: #FF498B;
 }
-  
 
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 
 
 .card-body{
@@ -62,16 +68,21 @@ h1{
   right: 0;
   color: white;
   background: #FF498B;
-  width: 50%;
+  width: 40%;
   padding: 10px;
   border-end-start-radius: 20px;
+  text-align: center;
 }
-
-.card-footer{
+.card-footer-in{
   position: absolute;
   bottom: 0;
   left: 10px;
   font-size: 18px;
   color: white;
   padding: 8px;
+}
+.card-footer-in {
+  h2{
+    color: #152C5B !important;
+  }
 }

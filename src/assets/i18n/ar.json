@@ -5,11 +5,25 @@
       "reviews": "التقييمات",
       "favorites": "المفضلة",
       "register": "تسجيل",
-      "login": "تسجيل الدخول",
-      "mostPopular": "أكثر الإعلانات شهرة",
-      "beautyBackyard": "منازل بحدائق جميلة",
-      "largeLivingRoom": "فنادق بغرف معيشة واسعة",
-      "perNight": "لكل ليلة"
-    }
+      "login": "تسجيل الدخول"
+    },
+    "Cards":
+    {
+        "mostPopular": "أكثر الإعلانات شهرة",
+        "beautyBackyard": "منازل بحدائق جميلة",
+        "largeLivingRoom": "فنادق بغرف معيشة واسعة",
+        "perNight": "لكل ليلة"
+      },
+  "footer": {
+    "title": "نحن نجعل عطلتك الجمالية لا تُنسى وفورية.",
+    "beginner": "للمبتدئين",
+    "newAccount": "حساب جديد",
+    "booking": "ابدأ بحجز غرفة",
+    "payment": "استخدم وسائل الدفع",
+    "exploreUs": "اكتشف المزيد عنا",
+    "careers": "وظائفنا",
+    "Privacy": "الخصوصية",
+    "termsAndConditions": "الشروط والأحكام",
+    "connectUs": "تواصل معنا"
   }
-  
+}
