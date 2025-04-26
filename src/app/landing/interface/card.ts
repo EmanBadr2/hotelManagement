@@ -1,4 +1,4 @@
-export interface Curd {
+export interface Card {
   _id: string;
   roomNumber: string;
   price: number;

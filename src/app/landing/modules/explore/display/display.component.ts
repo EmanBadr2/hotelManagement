@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { LandingService } from 'src/app/landing/services/landing.service';
-import { Curd } from './../../../interface/curd';
+import { Card } from '../../../interface/card';
 
 @Component({
-  selector: 'app-desplay',
-  templateUrl: './desplay.component.html',
-  styleUrls: ['./desplay.component.scss']
+  selector: 'app-display',
+  templateUrl: './display.component.html',
+  styleUrls: ['./display.component.scss']
 })
-export class DesplayComponent implements OnInit {
-    rooms: Curd[] = [];
+export class DisplayComponent implements OnInit {
+    rooms: Card[] = [];
 constructor (
   private _LandingService:LandingService
 ){}

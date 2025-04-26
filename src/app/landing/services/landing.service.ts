@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { Ads, Curd } from '../interface/curd';
+import { Ads, Card } from '../interface/card';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -12,11 +12,11 @@ export class LandingService {
 
 
 
-  getAvailableRooms(): Observable<Curd[]> {
+  getAvailableRooms(): Observable<Card[]> {
     return this._HttpClient.get<any>('portal/rooms/available?page=1&size=13')
     .pipe(map((res) => res.data.rooms));
   }
-  getExploreRooms(): Observable<Curd[]> {
+  getExploreRooms(): Observable<Card[]> {
     return this._HttpClient.get<any>('portal/rooms/available?page=1&size=27')
     .pipe(map((res) => res.data.rooms));
   }

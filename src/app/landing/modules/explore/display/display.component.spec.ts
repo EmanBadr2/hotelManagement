@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DesplayComponent } from './desplay.component';
+import { DesplayComponent } from './display.component';
 
 describe('DesplayComponent', () => {
   let component: DesplayComponent;

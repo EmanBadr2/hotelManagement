@@ -9,10 +9,10 @@ import { UserComponent } from './components/user/user.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
 import { SharedModule } from '../shared/shared/shared.module';
-import { CurdsComponent } from './components/curds/curds.component';
 import { AdsCurdComponent } from './components/ads-curd/ads-curd.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { HappyComponent } from './components/happy/happy.component';
+import { CardsComponent } from './components/cards/cards.component';
 
 
 
@@ -23,9 +23,9 @@ import { HappyComponent } from './components/happy/happy.component';
     NavbarComponent,
     UserComponent,
     DatePickerComponent,
-    CurdsComponent,
     AdsCurdComponent,
-    HappyComponent
+    HappyComponent,
+    CardsComponent
   ],
   imports: [
     CommonModule,
