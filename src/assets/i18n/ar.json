@@ -1,20 +1,19 @@
 {
-    "navbar": {
-      "home": "الرئيسية",
-      "explore": "استكشف",
-      "reviews": "التقييمات",
-      "favorites": "المفضلة",
-      "register": "تسجيل",
-      "login": "تسجيل الدخول"
-    },
-    "Cards":
-    {
-        "mostPopular": "أكثر الإعلانات شهرة",
-        "beautyBackyard": "منازل بحدائق جميلة",
-        "largeLivingRoom": "فنادق بغرف معيشة واسعة",
-        "perNight": "لكل ليلة"
-      },
-      "homeSection": {
+  "navbar": {
+    "home": "الرئيسية",
+    "explore": "استكشف",
+    "reviews": "التقييمات",
+    "favorites": "المفضلة",
+    "register": "تسجيل",
+    "login": "تسجيل الدخول"
+  },
+  "Cards": {
+    "mostPopular": "أكثر الإعلانات شهرة",
+    "beautyBackyard": "منازل بحدائق جميلة",
+    "largeLivingRoom": "فنادق بغرف معيشة واسعة",
+    "perNight": "لكل ليلة"
+  },
+  "homeSection": {
     "title": "انسى الأعمال المرهقة، وابدأ عطلتك القادمة",
     "description": "نحن نوفر لك كل ما تحتاجه للاستمتاع بإجازتك مع العائلة. حان الوقت لصنع لحظات لا تُنسى من جديد.",
     "bookingTitle": "ابدأ الحجز",
@@ -44,5 +43,10 @@
     "Privacy": "الخصوصية",
     "termsAndConditions": "الشروط والأحكام",
     "connectUs": "تواصل معنا"
+  },
+  "authDialog": {
+    "title": "من فضلك سجّل الدخول للمتابعة!",
+    "login": "تسجيل الدخول",
+    "register": "إنشاء حساب"
   }
 }
