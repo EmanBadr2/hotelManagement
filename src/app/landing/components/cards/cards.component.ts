@@ -51,6 +51,7 @@ goToDetails(id: string) {
   checkAuth(roomId : string) {
     if (this.StorageService.isLogged === true) {
       this.addToFav(roomId);
+      return;
     } else {
       this.dialogService.open(AuthDialogComponent, {
         header: '',

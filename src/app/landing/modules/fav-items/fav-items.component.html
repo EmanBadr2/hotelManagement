@@ -3,8 +3,13 @@
 </div>
 <div class="p-5">
     <h1 class="font-poppins text-3xl font-bold mb-6 text-center">Your Favorites</h1>
-    <p class="font-poppins mb-5 ml-3 text-[rgba(176,176,176,1)] font-light text-[18px] leading-[1] tracking-normal">Home     /    Favorites</p>
-
+    <div class=" w-2/3 pt-3 pb-5 flex items-center justify-between  ">
+      <div class="flex items-center justify-center ">
+        <a routerLink="/landing"  class="p-content">Home</a>
+        <p class="mx-7  p-content"> / </p>
+        <a routerLink="landing/fav-items" routerLinkActive="span-content" class="span-content">Favorite</a>
+        </div>
+      </div>
     <h1 class="font-poppins mb-3 font-medium text-2xl leading-none tracking-tight">Your rooms</h1>
     
     <div *ngIf="!isLoading">

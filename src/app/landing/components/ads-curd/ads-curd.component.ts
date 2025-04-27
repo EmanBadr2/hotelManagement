@@ -46,11 +46,10 @@ addToFav(roomId: string) {
 goToDetails(id: string) {
   this._Router.navigate(['/landing/content', id]);
 }
-
-
 checkAuth(roomId : string) {
   if (this.StorageService.isLogged === true) {
-    this.addToFav(roomId); 
+    this.addToFav(roomId);
+    return;
   } else {
     this.dialogService.open(AuthDialogComponent, {
       header: '',
