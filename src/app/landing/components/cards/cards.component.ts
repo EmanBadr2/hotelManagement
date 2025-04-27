@@ -23,7 +23,7 @@ export class CardsComponent implements OnInit {
 
 
 goToDetails(id: string) {
-  this._Router.navigate(['/landing/content', id]);  // تأكد من المسار الي عامله
+  this._Router.navigate(['/landing/content', id]);
 }
   ngOnInit() {
     this._LandingService.getAvailableRooms().subscribe((res) => {
