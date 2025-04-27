@@ -13,10 +13,10 @@
                     <p class="font-semibold">{{ ad.room.discount }}% {{ 'adsSection.off' | translate }}</p>
                 </div>
                 <div class="overlay">
-                    <div class="icon-container">
-                      <i class="fas fa-heart"></i>
-                      <i class="fas fa-eye"></i>
-                    </div>                                   
+                  <div class="icon-container">
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-eye cursor-pointer" (click)="goToDetails(ad.room._id)"></i>
+                </div>                                  
                 </div>
               </div>
               <div class="card-footer px-2 py-2 text-start">
