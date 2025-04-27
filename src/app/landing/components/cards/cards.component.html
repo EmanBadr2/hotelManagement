@@ -18,8 +18,8 @@
         </div>
         <div class="overlay">
             <div class="icon-container">
-                <i class="fas fa-heart" (click)="addToFav(rooms[0]._id)"></i>
-                <i class="fas fa-eye"></i>
+                <i class="fas fa-heart" (click)="checkAuth(rooms[0]._id)"></i>
+                <i class="fas fa-eye cursor-pointer" (click)="goToDetails(rooms[0]._id)"></i>
             </div>
         </div>
     </div>
@@ -39,8 +39,8 @@
         </div>
         <div class="overlay">
             <div class="icon-container">
-                <i class="fas fa-heart" (click)="addToFav(room._id)"></i>
-                <i class="fas fa-eye"></i>
+                <i class="fas fa-heart" (click)="checkAuth(rooms[0]._id)"></i>
+                <i class="fas fa-eye cursor-pointer" (click)="goToDetails(room._id)"></i>
             </div>
         </div>
         </div>
@@ -67,8 +67,8 @@
         </div>
         <div class="overlay">
             <div class="icon-container">
-                <i class="fas fa-heart" (click)="addToFav(room._id)"></i>
-                <i class="fas fa-eye"></i>
+                <i class="fas fa-heart" (click)="checkAuth(rooms[0]._id)"></i>
+                <i class="fas fa-eye cursor-pointer" (click)="goToDetails(room._id)"></i>
             </div>
         </div>
         </div>
@@ -81,7 +81,7 @@
 <div class="pt-5">
     <h1 class="text-3xl font-bold mb-6">{{ 'Cards.largeLivingRoom' | translate }}</h1>
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 auto-rows-[200px]">
-        <ng-container *ngFor="let room of rooms.slice(6, 10)">
+        <ng-container *ngFor="let room of rooms.slice(9, 13)">
         <div class="card-wrapper">
             <img
             [src]="room.images[0] || '/assets/img/Rectangle 3.png'"
@@ -96,10 +96,10 @@
             <p class="text-sm">Malang, Indonesia</p>
             </div>
             <div class="overlay">
-            <div class="icon-container">
-                <i class="fas fa-heart" (click)="addToFav(room._id)"></i>
-                <i class="fas fa-eye"></i>
-            </div>
+                <div class="icon-container">
+                    <i class="fas fa-heart" (click)="checkAuth(rooms[0]._id)"></i>
+                    <i class="fas fa-eye cursor-pointer" (click)="goToDetails(room._id)"></i>
+                </div>
             </div>
         </div>
     </ng-container>
