@@ -1,14 +1,5 @@
 <!-- content -->
 <div class="container">
-  <div class="images mt-5 flex gap-4">
-    <div class="flex gap-4 w-full">
-      <div class="w-2/3">
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img [src]="images[0]" alt="Large Room Image" class="w-full h-full object-cover">
-        </div>
-      </div>
-    </div>
-  </div>
   <div class=" grid sm:grid-cols-1 mx-auto  md:grid-cols-2 gap-3 py-5 " >
   <!-- left side -->
     <div class="page-content ">
@@ -91,9 +82,9 @@
         dateFormat="dd/mm/yy"
         inputId="icondisplay" />
         </div>
-        <p class=" p-content py-2 ">
-        You will pay <span class="span-content">$480 USD </span> per
-        <span class="span-content"> 2 Person </span>
+        <p class="p-content py-2">
+          You will pay <span class="span-content">${{ price }} USD</span> per
+          <span class="span-content">{{ this.capacity || '2' }} Person</span>
         </p>
 
         <!-- (click)="booking()" -->

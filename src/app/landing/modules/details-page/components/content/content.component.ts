@@ -23,9 +23,8 @@ export class ContentComponent implements OnInit {
 
   constructor ( private _Router:Router ,private _ActivatedRoute: ActivatedRoute, private _RoomDetailsService:RoomDetailsService){}
   ngOnInit(): void {
-    const id = this._ActivatedRoute.snapshot.paramMap.get('id');  // اقرأ الـ id من الـ URL
+    const id = this._ActivatedRoute.snapshot.paramMap.get('id');
     console.log('room id from URL:', id);
-  
     if (id) {
       this.getRoomDetails(id);
     }
