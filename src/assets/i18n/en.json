@@ -47,5 +47,11 @@
     "Privacy": "Privacy",
     "termsAndConditions": "Terms & Conditions",
     "connectUs": "Connect Us"
+  },
+  "authDialog":{
+    "title":"Please sign in to continue your journey!",
+    "login":"Login",
+    "register":"Register"
   }
+  
 }

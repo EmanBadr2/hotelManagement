@@ -13,6 +13,7 @@ import { AdsCurdComponent } from './components/ads-curd/ads-curd.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { HappyComponent } from './components/happy/happy.component';
 import { CardsComponent } from './components/cards/cards.component';
+import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.component';
 
 
 
@@ -25,7 +26,8 @@ import { CardsComponent } from './components/cards/cards.component';
     DatePickerComponent,
     AdsCurdComponent,
     HappyComponent,
-    CardsComponent
+    CardsComponent,
+    AuthDialogComponent
   ],
   imports: [
     CommonModule,

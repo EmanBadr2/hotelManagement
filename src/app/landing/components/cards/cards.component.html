@@ -20,6 +20,8 @@
             <div class="icon-container">
                 <i class="fas fa-heart"></i>
                 <i class="fas fa-eye cursor-pointer" (click)="goToDetails(rooms[0]._id)"></i>
+                <i class="fas fa-heart" (click)="checkAuth()"></i>
+                <i class="fas fa-eye"></i>
             </div>
         </div>
     </div>
@@ -39,8 +41,8 @@
         </div>
         <div class="overlay">
             <div class="icon-container">
-                <i class="fas fa-heart"></i>
                 <i class="fas fa-eye cursor-pointer" (click)="goToDetails(room._id)"></i>
+                <i class="fas fa-heart" (click)="checkAuth()"></i>
             </div>
         </div>
         </div>
@@ -67,8 +69,8 @@
         </div>
         <div class="overlay">
             <div class="icon-container">
-                <i class="fas fa-heart"></i>
                 <i class="fas fa-eye cursor-pointer" (click)="goToDetails(room._id)"></i>
+                <i class="fas fa-heart" (click)="checkAuth()"></i>
             </div>
         </div>
         </div>
@@ -96,10 +98,10 @@
             <p class="text-sm">Malang, Indonesia</p>
             </div>
             <div class="overlay">
-                <div class="icon-container">
-                    <i class="fas fa-heart"></i>
-                    <i class="fas fa-eye cursor-pointer" (click)="goToDetails(room._id)"></i>
-                </div>
+            <div class="icon-container">
+                <i class="fas fa-heart" (click)="checkAuth()"></i>
+                <i class="fas fa-eye cursor-pointer"  (click)="goToDetails(room._id)"></i>
+            </div>
             </div>
         </div>
     </ng-container>
