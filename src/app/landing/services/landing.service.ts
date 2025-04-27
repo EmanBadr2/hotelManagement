@@ -16,8 +16,8 @@ export class LandingService {
     return this._HttpClient.get<any>('portal/rooms/available?page=1&size=13')
     .pipe(map((res) => res.data.rooms));
   }
-  getExploreRooms(): Observable<Card[]> {
-    return this._HttpClient.get<any>('portal/rooms/available?page=1&size=27')
+  getExploreRooms(page: number, size: number): Observable<Card[]> {
+    return this._HttpClient.get<any>('portal/rooms/available?page=1&size=27', {params: {page: page, size: size}})
     .pipe(map((res) => res.data.rooms));
   }
 

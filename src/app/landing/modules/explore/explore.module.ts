@@ -5,6 +5,7 @@ import { ExploreRoutingModule } from './explore-routing.module';
 import { ExploreComponent } from './explore.component';
 import { LandingModule } from '../../landing.module';
 import { DisplayComponent } from './display/display.component';
+import { SharedModule } from 'src/app/shared/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { DisplayComponent } from './display/display.component';
   imports: [
     CommonModule,
     ExploreRoutingModule ,
-    LandingModule
+    LandingModule,
+    SharedModule
   ]
 })
 export class ExploreModule { }

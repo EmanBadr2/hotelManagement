@@ -1,64 +1,62 @@
-<section class="px-3">
-    <div class="container">
-      <div class="flex flex-row">
-        <div class="col-md-11">
-          <div class="flex items-center justify-between my-3">
-            <p class="font-medium text-[20px] leading-[100%] tracking-[0%]">
-              Booking Table Details <br />
-              <span class="font-normal text-[14px] leading-[100%] tracking-[0%]">
-                You can check all details
-              </span>
-            </p>
-          </div>
-        </div>
+<div class="container">
+  <div class="flex flex-row">
+    <div class="col-md-11">
+      <div class="flex items-center justify-between my-3">
+        <p class="font-medium text-[20px] leading-[100%] tracking-[0%]">
+          Booking Table Details <br />
+          <span class="font-normal text-[14px] leading-[100%] tracking-[0%]">
+            You can check all details
+          </span>
+        </p>
       </div>
     </div>
-    <div *ngIf="loading" class="loading-spinner">
-      <i class="pi pi-spin pi-spinner text-blue-600 text-3xl"></i>
-    </div>
-    <div
-      *ngIf="bookingList.length === 0"
-      class="flex items-center justify-center my-3"
-    >
-      <img
-        src="../../../../../../assets/img/no-data.jfif"
-        alt="No Data Available"
-        class="no-data-image"
-      />
-    </div>
-    <table *ngIf="!loading && bookingList.length > 0" class="custom-table">
-      <thead>
-      <th>Room Number</th>
-      <th>Price</th>
-      <th>Start Date</th>
-      <th>End Date</th>
-      <th>User</th>
-        <th>Actions</th>
-      </thead>
-      <tbody>
-        <tr *ngFor="let booking of bookingList">
-          <td>{{ booking?.room?.roomNumber }}</td>
-          <td>{{ booking.totalPrice }}</td>
-          <td>{{ booking.startDate | date: 'mediumDate' }}</td>
-          <td>{{ booking.endDate | date: 'mediumDate' }}</td>
-          <td>{{ booking?.user?.userName }}</td>
-          <td>
-            <button
-              type="button"
-              (click)="viewBooking(booking._id)"
-              class="btn btn-outline-secondary btn-sm rounded-circle"
-            >
-              <i class="pi pi-eye"></i>
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <p-paginator
+  </div>
+</div>
+<div *ngIf="loading" class="loading-spinner">
+  <i class="pi pi-spin pi-spinner text-blue-600 text-3xl"></i>
+</div>
+<div
+  *ngIf="bookingList.length === 0"
+  class="flex items-center justify-center my-3"
+>
+  <img
+    src="../../../../../../assets/img/no-data.jfif"
+    alt="No Data Available"
+    class="no-data-image"
+  />
+</div>
+<table *ngIf="!loading && bookingList.length > 0" class="custom-table">
+  <thead>
+  <th>Room Number</th>
+  <th>Price</th>
+  <th>Start Date</th>
+  <th>End Date</th>
+  <th>User</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let booking of bookingList">
+      <td>{{ booking?.room?.roomNumber }}</td>
+      <td>{{ booking.totalPrice }}</td>
+      <td>{{ booking.startDate | date: 'mediumDate' }}</td>
+      <td>{{ booking.endDate | date: 'mediumDate' }}</td>
+      <td>{{ booking?.user?.userName }}</td>
+      <td>
+        <button
+          type="button"
+          (click)="viewBooking(booking._id)"
+          class="btn btn-outline-secondary btn-sm rounded-circle"
+        >
+          <i class="pi pi-eye"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+  <p-paginator
   [rows]="rows"
   [totalRecords]="totalCount"
   [rowsPerPageOptions]="[5, 10, 20]"
   (onPageChange)="onPageChange($event)"
   styleClass="my-4"
 />
-  <!-- </section> -->
