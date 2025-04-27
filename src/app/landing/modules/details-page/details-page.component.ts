@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLinkActive } from '@angular/router';
 import { RoomDetailsService } from './services/room-details.service';
+
 
 
 @Component({
@@ -18,8 +19,10 @@ export class DetailsPageComponent implements OnInit {
   stars = Array(5).fill(0);
 
   constructor( private _Router:Router ,
+     private _RouterLinkActive:RouterLinkActive ,
     private _RoomDetailsService:RoomDetailsService
   ){}
+
   ngOnInit(): void {
     this._RoomDetailsService.roomDetails(this.roomId).subscribe({
       next: (res: any) => {

@@ -1,14 +1,15 @@
 <app-landing-navbar></app-landing-navbar>
-<section class="container mx-auto w-4/5 mb-2 ">
 
+<section class="container mx-auto w-4/5 mb-2 ">
   <!-- title -->
   <div class=" w-2/3 pt-3 pb-5 flex items-center justify-between  ">
+    <!-- left side -->
     <div class="flex items-center justify-center ">
       <a routerLink="/landing"  class="p-content">Home</a>
       <p class="mx-7  p-content"> / </p>
       <a routerLink="landing/pageDetails" routerLinkActive="span-content" class="span-content">Room Details</a>
       </div>
-
+      <!-- main title -->
       <div class="text-center">
         <h2 class="text-landingContent-h2 h2-content">Village Angga</h2>
         <p class="text-landingContent-p p-content"> Bogor, Indonesia</p>
@@ -16,8 +17,7 @@
 
     </div>
   <!-- img -->
-   <div class="show-images gap-2
-   grid  sm:grid-cols-1  md:grid-cols-2 ">
+   <div class="show-images gap-2 grid  sm:grid-cols-1  md:grid-cols-2 ">
     <div class="img-container ">
       <img src="../../../../assets/img/pageD1.png" class="h-full w-full object-cover rounded" alt="">
     </div>
@@ -36,42 +36,9 @@
   <!-- --------------------------------------------------------- -->
      <!-- content -->
    <app-content></app-content>
-
    <!-- --------------------------------------------------- -->
-
     <!-- rate  && comment  -->
-     <div class="w-full mx-auto grid sm:grid-cols-1  md:grid-cols-2 gap-8 p-5 border rounded   " >
-     <div class=" rate relative w-full p-3">
-      <p class=" span-content"> Rate </p>
-      <div>
-        <i  class=" pi pi-star-fill text-[#DFCB1D] mr-1"></i>
-        <i  class=" pi pi-star-fill text-[#DFCB1D] mr-1"></i>
-        <i  class=" pi pi-star-fill text-[#DFCB1D] mr-1"></i>
-        <i  class=" pi pi-star-fill text-[#DFCB1D] mr-1"></i>
-        <i  class=" pi pi-star-fill text-[#DFCB1D] mr-1"></i>
-      </div>
-      <!-- <div class="flex" *ngFor="let star of stars">
-        <i class=" pi pi-star-fill text-[#DFCB1D] mr-1"></i>
-      </div> -->
-
-      <div>
-        <p class=" span-content pt-3 pb-1"> Message </p>
-        <textarea class="text-area-style" rows="4" placeholder="Write your message..."></textarea>
-      </div>
-      <button class="pageDetails-btn ">Rate</button>
-     </div>
-
-     <div  class="flex flex-col space-y-4">
-      <p class=" span-content mb-6"> Add Your Comment </p>
-      <div>
-        <p class=" span-content pt-3 pb-1"> Message </p>
-        <textarea class="text-area-style" rows="4" placeholder="Write your message..."></textarea>
-      </div>
-      <button class="pageDetails-btn ">Send</button>
-     </div>
-
-
-     </div>
+    <app-rate-comment></app-rate-comment>
 
 </section>
 

@@ -68,9 +68,7 @@
    </p>
   <p class="font-normal text-base  text-[#FF1612] ">Discount {{discount}}% Off</p>
   </div>
-
- <div class="pt-5 m-auto">
-
+   <div class="pt-5 m-auto">
         <!-- date picker -->
         <div class="w-full">
           <span for="icondisplay" class="span-content block mb-2">Pick a Date </span>
@@ -81,21 +79,20 @@
               [minDate]="minDate"
               dateFormat="dd/mm/yy"
               inputId="icondisplay" />
-   </div>
-
+         </div>
       <p class=" p-content py-2 ">
         You will pay <span class="span-content">$480 USD </span> per
         <span class="span-content"> 2 Person </span>
       </p>
-
         <button
          class="w-3/4 m-auto bg-blue-600 hover:bg-blue-700  main-btn mt-2 py-2 span-content text-white "
         (click)="booking()"
          [disabled]=" date == undefined"
-         >continue Booking</button>
-      </div>
-
-
+         >continue Booking
+        </button>
+  </div>
  </div>
+
+
  </div>
 
