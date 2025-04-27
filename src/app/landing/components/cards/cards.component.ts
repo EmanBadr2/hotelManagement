@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Card } from '../../interface/card';
 import { LandingService } from '../../services/landing.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cards',
@@ -9,7 +10,10 @@ import { LandingService } from '../../services/landing.service';
 })
 export class CardsComponent implements OnInit {
   rooms: Card[] = [];
-constructor(private _LandingService:LandingService) { }
+constructor(
+  private _LandingService:LandingService,
+  private _Router:Router
+) { }
 
 ngOnInit() {
   this._LandingService.getAvailableRooms().subscribe((res) => {
@@ -17,4 +21,8 @@ ngOnInit() {
   });
 }
 
+
+goToDetails(id: string) {
+  this._Router.navigate(['/landing/content', id]);  // تأكد من المسار الي عامله
+}
 }
