@@ -47,11 +47,24 @@ h1{
     transition: transform 0.2s ease;
     cursor: pointer;
   }
-  
+  .not-fav-icon{
+    color: white;
+    font-size: 1.8rem;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+  }
   .icon-container i:hover {
     transform: scale(1.2);
     color: #FF498B;
 }
+.fav-icon{
+  transform: scale(1.2);
+    color: #FF498B !important;
+    font-size: 1.8rem;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+  }
+
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
