@@ -12,13 +12,14 @@
             <div class="icon-container">
               <i class="fas fa-heart"(click)="checkAuth(ad.room._id)"></i>
               <i class="fas fa-eye"></i>
+            </div>
+          </div>
         </div>
         <div class="card-footer px-2 py-2 text-start">
           <h2 class="text-xl">{{ ad.room.roomNumber }}</h2>
           <p class="text-sm text-gray-500"> {{ 'adsSection.postedBy' | translate }} {{ ad.createdBy.userName }}</p>
         </div>
       </div>
-    </div>
+    </ng-container>
   </div>
-</ng-container>
 </div>
