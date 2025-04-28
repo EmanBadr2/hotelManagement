@@ -3,7 +3,9 @@ import { RoomDetailsService } from '../../services/room-details.service';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CommentRateService } from '../../services/comment-rate.service';
-
+import { roomComments } from '../../interfaces/comment';
+import { StorageService } from 'src/core/services/storage.service';
+import { roomReviews } from '../../interfaces/review';
 
 
 @Component({
@@ -13,17 +15,19 @@ import { CommentRateService } from '../../services/comment-rate.service';
 })
 export class RateCommentComponent implements OnInit {
 
-
   @Input() roomID :any
-  commentID !:string
+ userID : string| null=''
+  userName : string| null=''
   comment :string=''
   review :string=''
   rating :number =0
-
-
+  roomComments:roomComments[]=[]
+  roomReviews:roomReviews[] =[]
+  showAllCommentReview : boolean =false
 
   constructor( private _CommentRateService:CommentRateService ,
     private _ActivatedRoute:ActivatedRoute ,
+    private _StorageService:StorageService ,
     private _ToastrService:ToastrService
   ){
     // this.roomID = this._ActivatedRoute.snapshot.paramMap.get('id');
@@ -33,13 +37,16 @@ export class RateCommentComponent implements OnInit {
        this.allRoomComments()
        this.allRoomReviews()
     }
+    this.userID=this._StorageService.userID
+    this.userName=this._StorageService.userName
 
   }
 
   allRoomComments(){
     this._CommentRateService.allRoomComments(this.roomID).subscribe({
-      next(res) {
+      next:(res)=> {
         console.log(res);
+        this.roomComments= res.data.roomComments
       },
       error(err) {
         console.log(err);
@@ -49,47 +56,55 @@ export class RateCommentComponent implements OnInit {
 
   createComment(){
     console.log(this.comment);
-
     let data ={ roomId: this.roomID, comment: this.comment }
     this._CommentRateService.createComment(data).subscribe({
       next:(res)=> {
         console.log(res);
         this._ToastrService.success(res.message)
+        this.allRoomComments()
       },
       error :(err) =>{
         console.log(err);
         this._ToastrService.error('Error ')
       },
     })
+
   }
 
-  deleteComment(){
-    this._CommentRateService.deleteComment( this.commentID ,this.roomID ).subscribe({
-      next(res) {
+  deleteComment(commentID:string){
+    this._CommentRateService.deleteComment( commentID ,this.roomID ).subscribe({
+      next:(res)=> {
         console.log(res);
+        this._ToastrService.success(res.message)
+        this.allRoomComments()
       },
-      error(err) {
+      error:(err) =>{
         console.log(err);
+        this._ToastrService.error(' Error ')
       },
     })
+
   }
-  updateComment(){
+  updateComment(commentID:string){
     let data = {comment: this.comment}
-    this._CommentRateService.updateComment( this.commentID , data).subscribe({
-      next(res) {
+    this._CommentRateService.updateComment( commentID , data).subscribe({
+      next:(res)=> {
         console.log(res);
+        this._ToastrService.success(res.message)
       },
-      error(err) {
+      error:(err) =>{
         console.log(err);
+        this._ToastrService.error(' Error ')
       },
     })
-
+    this.allRoomComments()
   }
   // --------------------
   allRoomReviews(){
     this._CommentRateService.allRoomReviews(this.roomID).subscribe({
-      next(res) {
+      next:(res)=> {
         console.log(res);
+        this.roomReviews = res.data.roomReviews
       },
       error(err) {
         console.log(err);
@@ -103,6 +118,7 @@ export class RateCommentComponent implements OnInit {
     next:(res)=> {
       console.log(res);
       this._ToastrService.success(res.message)
+      this.allRoomReviews()
     },
     error :(err) =>{
       console.log(err);

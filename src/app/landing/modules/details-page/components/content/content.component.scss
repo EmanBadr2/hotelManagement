@@ -8,7 +8,10 @@
   }
 }
 .capacity-btn{
-  @apply w-10 h-10 flex items-center justify-center  ;
+  @apply w-10 h-10 flex items-center justify-center ;
+  &:hover {
+    @apply  cursor-pointer transition  disabled:cursor-not-allowed;
+  }
 }
 // ---------------------
 .h2-content {
@@ -29,7 +32,10 @@
   @apply w-full border border-blue-400 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500
 }
 .pageDetails-btn {
-  @apply bg-blue-600 text-white py-2 px-8 rounded-md hover:bg-blue-700 shadow-md w-fit self-end
+  @apply bg-blue-600 text-white py-2 px-8 rounded-md hover:bg-blue-700 shadow-md w-fit self-end ;
+  &:hover {
+    @apply  cursor-pointer transition  disabled:cursor-not-allowed;
+  }
 }
 // ------------------------
 // date picker
