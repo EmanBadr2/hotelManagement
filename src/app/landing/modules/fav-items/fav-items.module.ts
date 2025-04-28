@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { FavItemsRoutingModule } from './fav-items-routing.module';
 import { FavItemsComponent } from './fav-items.component';
+import { LandingModule } from "../../landing.module";
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { FavItemsComponent } from './fav-items.component';
   ],
   imports: [
     CommonModule,
-    FavItemsRoutingModule
-  ]
+    FavItemsRoutingModule,
+    LandingModule
+]
 })
 export class FavItemsModule { }
