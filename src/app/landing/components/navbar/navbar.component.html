@@ -45,28 +45,28 @@
   </li>
 
     <li class="landing_navbar__list__list-item" routerLinkActive="active">
-      <a routerLink="/explore">{{ 'navbar.explore' | translate }}</a>
+      <a routerLink="/landing/explore">{{ 'navbar.explore' | translate }}</a>
     </li>
 
     <li
       class="landing_navbar__list__list-item"
-      *ngIf="isUserLoggedIn"
+      *ngIf="isUser"
       routerLinkActive="active"
     >
-    <a routerLink="/booking">{{ 'navbar.reviews' | translate }}</a>
+    <a routerLink="/landing/booking">{{ 'navbar.reviews' | translate }}</a>
   </li>
 
-    <li
+    <li  routerLink="/landing/fav-items"
       class="landing_navbar__list__list-item"
-      *ngIf="isUserLoggedIn"
+      *ngIf="isUser"
       routerLinkActive="active"
     >
-    <a routerLink="/fav-items">{{ 'navbar.favorites' | translate }}</a>
+    <a routerLink="/landing/fav-items">{{ 'navbar.favorites' | translate }}</a>
   </li>
 
     <li
       class="landing_navbar__list__list-item flex gap-2 items-center"
-      *ngIf="isUserLoggedIn"
+      *ngIf="isUser"
     >
       <img src="../../../../assets/img/profile.png" alt="Upskilling" />
       <h5>{{ userName }}</h5>
@@ -81,11 +81,11 @@
         <option value="ar">العربية</option>
       </select>
     </li>
-    
+
 
     <li
       class="landing_navbar__list__list-item w-full md:w-auto"
-      *ngIf="!isUserLoggedIn"
+      *ngIf="!isUser"
       routerLinkActive="active"
     >
       <a routerLink="/auth/register">
@@ -95,12 +95,14 @@
 
     <li
       class="landing_navbar__list__list-item w-full md:w-auto"
-      *ngIf="!isUserLoggedIn"
+      *ngIf="!isUser"
       routerLinkActive="active"
     >
       <a routerLink="/auth">
         <button class="nav_btn w-full">{{ 'navbar.login' | translate }}</button>
       </a>
     </li>
+    <li   *ngIf="isUser"  (click)="logout()"
+    > <i class=" pi pi-sign-out text-red-800"> </i></li>
   </ng-template>
 </section>

@@ -26,6 +26,8 @@ constructor (
 ) { }
 
 ngOnInit(): void {
+  console.log(this.StorageService.userRole);
+
 this._LandingService.getAdsAll().subscribe((res) => {
   this.ads = res
 })
@@ -38,7 +40,7 @@ addToFav(roomId: string) {
         console.log(res);
       },
       error: (err) => {
-        this.toastr.error(err.error.message);
+        this.toastr.error('Already Added');
       }
     });
   }
@@ -47,9 +49,11 @@ goToDetails(id: string) {
   this._Router.navigate(['/landing/content', id]);
 }
 checkAuth(roomId : string) {
-  if (this.StorageService.isLogged === true) {
+  console.log('done');
+  if (this.StorageService.userRole=='user') {
     this.addToFav(roomId);
-    return;
+    // this._Router.navigate(['/landing/fav-items'])
+    // return;
   } else {
     this.dialogService.open(AuthDialogComponent, {
       header: '',
@@ -57,4 +61,8 @@ checkAuth(roomId : string) {
     });
   }
 }
+
+
+
+
 }

@@ -29,6 +29,7 @@ export class NavbarComponent implements OnInit {
   }
   menuOpen = false;
   userName = '';
+  isUser:boolean =false
   isUserLoggedIn: boolean = false; // Replace with actual user check
   serviceStorge = inject(StorageService);
   ngOnInit() {
@@ -36,8 +37,20 @@ export class NavbarComponent implements OnInit {
       this.serviceStorge.isLogged ||
       localStorage.getItem('userRole') === 'user'; // Check if the user is logged in
     this.userName = this.serviceStorge.userName || ''; // Get the user name from the service
+    if( this.serviceStorge.userRole == 'user'){
+      this.isUser =true
+    }
   }
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
   }
+  logout(){
+    // this.isUser =false
+    // localStorage.clear()
+  }
+
 }
+
+
+
+
