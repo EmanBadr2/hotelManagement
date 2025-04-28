@@ -7,6 +7,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { CalendarModule } from 'primeng/calendar';
+import { RatingModule } from 'primeng/rating';
 
 
 const primeNgComponents = [
@@ -17,7 +18,8 @@ const primeNgComponents = [
   DynamicDialogModule,
   DropdownModule ,
   MultiSelectModule ,
-  CalendarModule
+  CalendarModule ,
+  RatingModule ,
 ];
 
 @NgModule({

@@ -1,0 +1,27 @@
+<div class="w-full mx-auto grid sm:grid-cols-1  md:grid-cols-2 gap-8 p-5 border rounded   " >
+  <div class=" rate relative w-full p-3">
+   <p class=" span-content"> Rate </p>
+   <p-rating [cancel]="false" [(ngModel)]="rating" />
+
+   <div>
+     <p class=" span-content pt-3 pb-1"> Message </p>
+     <textarea  [(ngModel)]="review"
+     class="text-area-style" rows="4" placeholder="Write your message..."></textarea>
+   </div>
+   <button (click)="createReview()" [disabled]="!rating && !review"
+   class="pageDetails-btn ">Rate</button>
+  </div>
+
+  <div  class="flex flex-col space-y-4">
+   <p class=" span-content mb-6"> Add Your Comment </p>
+   <div>
+     <p class=" span-content pt-3 pb-1"> Message </p>
+     <textarea   [(ngModel)]="comment"
+      class="text-area-style" rows="4" placeholder="Write your message..."></textarea>
+   </div>
+   <button (click)="createComment()" [disabled]="!comment"
+    class="pageDetails-btn ">Send</button>
+  </div>
+
+
+  </div>

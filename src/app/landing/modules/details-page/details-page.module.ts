@@ -6,13 +6,15 @@ import { DetailsPageComponent } from './details-page.component';
 import { LandingModule } from '../../landing.module';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { ContentComponent } from './components/content/content.component';
+import { RateCommentComponent } from './components/rate-comment/rate-comment.component';
 
 
 
 @NgModule({
   declarations: [
     DetailsPageComponent,
-    ContentComponent
+    ContentComponent,
+    RateCommentComponent
   ],
   imports: [
     CommonModule,

@@ -9,7 +9,13 @@ import { pageDetailsRes } from 'src/app/landing/interface/pageDetals';
 export class RoomDetailsService {
 
   constructor( private _HttpClient:HttpClient) { }
+
   roomDetails(id:string):Observable<any>{
     return this._HttpClient.get(`portal/rooms/${id}`)
   }
+
+
 }
+
+
+

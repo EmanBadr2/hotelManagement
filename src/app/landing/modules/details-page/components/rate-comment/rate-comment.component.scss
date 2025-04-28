@@ -80,3 +80,9 @@ textarea {
   opacity: .3;
   border-radius: .5rem;
 }
+// -------v
+
+:host ::ng-deep
+    .p-rating-icon:not(.p-rating-cancel){
+    color: #DFCB1D !important;
+}

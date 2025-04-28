@@ -1,63 +1,81 @@
+  <!-- img -->
+  <div class="show-images gap-2 grid  sm:grid-cols-1  md:grid-cols-2 ">
+    <div class="img-container ">
+      <img src="../../../../assets/img/pageD1.png" class="h-full w-full object-cover rounded" alt="">
+    </div>
+    <!-- static img -->
+    <div class="img-container grid grid-rows-2 gap-2" *ngIf=" images.length  <= 0">
+      <div class=""><img src="../../../../assets/img/pageD2.png" class="h-full w-full object-cover"  alt=""> </div>
+     <div> <img src="../../../../assets/img/pageD3.png" class="h-full w-full object-cover" alt=""> </div>
+    </div>
+    <!-- img from api -->
+    <div class="img-container grid grid-rows-2 gap-2" *ngIf="images.length > 0" >
+      <div class="" *ngFor="let img of images">
+        <img [src]="img" class="h-full w-full object-cover"  alt="">
+      </div>
+    </div>
+  </div>
+
 <!-- content -->
 <div class="container">
   <div class=" grid sm:grid-cols-1 mx-auto  md:grid-cols-2 gap-3 py-5 " >
   <!-- left side -->
-    <div class="page-content ">
-      <div class="description">
-        <p class="p-content" >Minimal techno is a minimalist subgenre of techno music.
-        It is characterized by a stripped-down aesthetic that
-        exploits the use of repetition and understated development. Minimal techno
-        is thought to have been originally developed
-        in the early 1990s by Detroit-based producers Robert Hood and Daniel Bell.
-        </p>
-        <p class="p-content" >Such trends saw the demise of the soul-infused techno that typified the original Detroit
-          sound. Robert Hood has noted that he and Daniel Bell both realized
-        something was missing from techno in the post-rave era.
-        </p>
-        <p class="p-content" >Design is a plan or specification for the construction of
-            an object or system or for the implementation of an activity or process, or the
-            result of that plan or specification in the form of a prototype, product or process.
-            The national agency for design:
-          enabling Singapore to use design for economic growth and to make lives better.
-        </p>
-      </div>
-
-      <div class="icons grid grid-cols-4 gap-0.5 gap-y-1 pt-3 w-3/4">
-        <div class="item" >
-          <img src="../../../../assets/img/ic_bedroom1.png" alt="">
-          <p class="p-content"> <span class="span-content"> 5</span> bedroom</p>
-        </div>
-        <div class="item" >
-          <img src="../../../../assets/img/ic_livingroom2.png" alt="">
-          <p class="p-content"> <span class="span-content"> 1</span> living room</p>
-        </div>
-        <div class="item" >
-          <img src="../../../../assets/img/ic_bedroom3.png" alt="">
-          <p class="p-content"> <span class="span-content"> 3</span>  bathroom</p>
-        </div>
-        <div class="item" >
-          <img src="../../../../assets/img/ic_diningroom 1.png" alt="">
-          <p class="p-content"> <span class="span-content"> 1</span> dining room</p>
-        </div>
-        <div class="item" >
-          <img src="../../../../assets/img/ic_wifi5.png" alt="">
-          <p class="p-content"> <span class="span-content"> 10</span> mbp/s</p>
-        </div>
-        <div class="item" >
-          <img src="../../../../assets/img/ic_ac6.png" alt="">
-          <p class="p-content"> <span class="span-content"> 7</span> unit ready</p>
-        </div>
-        <div class="item" >
-          <img src="../../../../assets/img/ic_kulkas7.png" alt="">
-          <p class="p-content"> <span class="span-content"> 2</span>  refigrator</p>
-        </div>
-        <div class="item" >
-          <img src="../../../../assets/img/ic_tv8.png" alt="">
-          <p class="p-content"> <span class="span-content"> 3</span> television </p>
-        </div>
-
-      </div>
+ <div class="page-content ">
+  <div class="description">
+  <p class="p-content" >Minimal techno is a minimalist subgenre of techno music.
+     It is characterized by a stripped-down aesthetic that
+     exploits the use of repetition and understated development. Minimal techno
+      is thought to have been originally developed
+     in the early 1990s by Detroit-based producers Robert Hood and Daniel Bell.
+    </p>
+     <p class="p-content" >Such trends saw the demise of the soul-infused techno that typified the original Detroit
+       sound. Robert Hood has noted that he and Daniel Bell both realized
+      something was missing from techno in the post-rave era.
+    </p>
+   <p class="p-content" >Design is a plan or specification for the construction of
+         an object or system or for the implementation of an activity or process, or the
+         result of that plan or specification in the form of a prototype, product or process.
+         The national agency for design:
+        enabling Singapore to use design for economic growth and to make lives better.
+    </p>
+  </div>
+  <div class="icons grid grid-cols-4 gap-0.5 gap-y-1 pt-3 w-3/4">
+    <div class="item" >
+      <img src="../../../../assets/img/ic_bedroom1.png" alt="">
+      <p class="p-content"> <span class="span-content"> 5</span> bedroom</p>
     </div>
+    <div class="item" >
+      <img src="../../../../assets/img/ic_livingroom2.png" alt="">
+      <p class="p-content"> <span class="span-content"> 1</span> living room</p>
+    </div>
+    <div class="item" >
+      <img src="../../../../assets/img/ic_bedroom3.png" alt="">
+      <p class="p-content"> <span class="span-content"> 3</span>  bathroom</p>
+    </div>
+    <div class="item" >
+      <img src="../../../../assets/img/ic_diningroom 1.png" alt="">
+      <p class="p-content"> <span class="span-content"> 1</span> dining room</p>
+    </div>
+    <div class="item" >
+      <img src="../../../../assets/img/ic_wifi5.png" alt="">
+      <p class="p-content"> <span class="span-content"> 10</span> mbp/s</p>
+    </div>
+    <div class="item" >
+      <img src="../../../../assets/img/ic_ac6.png" alt="">
+      <p class="p-content"> <span class="span-content"> 7</span> unit ready</p>
+    </div>
+    <div class="item" >
+      <img src="../../../../assets/img/ic_kulkas7.png" alt="">
+      <p class="p-content"> <span class="span-content"> 2</span>  refigrator</p>
+    </div>
+    <div class="item" >
+      <img src="../../../../assets/img/ic_tv8.png" alt="">
+      <p class="p-content"> <span class="span-content"> 3</span> television </p>
+    </div>
+
+  </div>
+ </div>
+
 
  <!-- Right side -->
     <div class=" m-auto border rounded p-10 shadow-sm ">
@@ -82,6 +100,7 @@
         dateFormat="dd/mm/yy"
         inputId="icondisplay" />
         </div>
+
         <p class="p-content py-2">
           You will pay <span class="span-content">${{ price }} USD</span> per
           <span class="span-content">{{ this.capacity || '2' }} Person</span>
