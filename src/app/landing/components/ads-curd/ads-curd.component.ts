@@ -52,7 +52,7 @@ checkAuth(roomId : string) {
   console.log('done');
   if (this.StorageService.userRole=='user') {
     this.addToFav(roomId);
-    this._Router.navigate(['/landing/fav-items'])
+    // this._Router.navigate(['/landing/fav-items'])
     // return;
   } else {
     this.dialogService.open(AuthDialogComponent, {
