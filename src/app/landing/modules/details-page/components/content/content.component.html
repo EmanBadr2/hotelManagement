@@ -1,23 +1,26 @@
-  <!-- img -->
-  <div class="show-images gap-2 grid  sm:grid-cols-1  md:grid-cols-2 ">
+  <!-- static img -->
+  <div class="show-images gap-2 grid  sm:grid-cols-1  md:grid-cols-2 "   *ngIf=" images.length  <= 0" >
     <div class="img-container ">
       <img src="../../../../assets/img/pageD1.png" class="h-full w-full object-cover rounded" alt="">
     </div>
-    <!-- static img -->
-    <div class="img-container grid grid-rows-2 gap-2" *ngIf=" images.length  <= 0">
+
+     <div class="img-container grid grid-rows-2 gap-2" *ngIf=" images.length  <= 0" >
       <div class=""><img src="../../../../assets/img/pageD2.png" class="h-full w-full object-cover"  alt=""> </div>
      <div> <img src="../../../../assets/img/pageD3.png" class="h-full w-full object-cover" alt=""> </div>
     </div>
-    <!-- img from api -->
-    <div class="img-container grid grid-rows-2 gap-2" *ngIf="images.length > 0" >
-      <div class="" *ngFor="let img of images">
+
+  </div>
+  <!-- img from api -->
+  <div class="show-images w-full block " >
+    <div class="img-container gap-2 flex wrap p-1 " *ngIf="images.length > 0" >
+      <div class=" rounded-sm " *ngFor="let img of images">
         <img [src]="img" class="h-full w-full object-cover"  alt="">
       </div>
     </div>
   </div>
 
 <!-- content -->
-<div class="container">
+<div class="container my-2">
   <div class=" grid sm:grid-cols-1 mx-auto  md:grid-cols-2 gap-3 py-5 " >
   <!-- left side -->
  <div class="page-content ">
@@ -106,7 +109,7 @@
           <span class="span-content">{{ this.capacity || '2' }} Person</span>
         </p>
 
-        
+
         <button
         [disabled]=" rangeDates == undefined"
         (click)="booking()"
