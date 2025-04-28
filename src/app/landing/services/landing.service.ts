@@ -17,10 +17,14 @@ export class LandingService {
     return this._HttpClient.get<any>('portal/rooms/available?page=1&size=13')
     .pipe(map((res) => res.data.rooms));
   }
-  getExploreRooms(page: number, size: number): Observable<Card[]> {
-    return this._HttpClient.get<any>('portal/rooms/available?page=1&size=27', {params: {page: page, size: size}})
-    .pipe(map((res) => res.data.rooms));
+  getExploreRooms(page: number, size: number, start: any, end: any): Observable<Card[]> {
+    return this._HttpClient.get<any>('portal/rooms/available', 
+      {params: {page: page,size: size,startDate: start,endDate: end}
+    }).pipe(
+      map((res) => res.data.rooms)
+    );
   }
+  
 
   getAdsAll(): Observable<Ads[]> {
     return this._HttpClient.get<any>('portal/ads?page=1&size=4')

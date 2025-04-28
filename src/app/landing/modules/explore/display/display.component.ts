@@ -16,17 +16,31 @@ export class DisplayComponent implements OnInit {
   rows: number = 10;
   currentPage: number = 0;
   totalCount: number = 0;
+  startDate: any;
+  endDate: any;
+  rangeDates: any[] = [];
+  capacity: number = 0;
 constructor (
-  private _LandingService:LandingService,
+  private _LandingService: LandingService,
   private dialogService: DialogService,
-  private StorageService: StorageService ,
-  private _Router:Router
-){}
+  private StorageService: StorageService,
+  private _Router: Router
+){
+  const navigation = this._Router.getCurrentNavigation();
+  const state = navigation?.extras.state as { startDate: string, endDate: string, capacity: number };
+  if (state) {
+    this.startDate = state.startDate;
+    this.endDate = state.endDate;
+    this.capacity = state.capacity;
+    this.rangeDates = [this.startDate, this.endDate];
+  }
+}
 ngOnInit(): void {
   this.getAllrooms(this.currentPage, this.rows);
 }
+
 getAllrooms(page: number, size: number): void {
-  this._LandingService.getExploreRooms(page + 1, size).subscribe({
+  this._LandingService.getExploreRooms(page,size,this.rangeDates[0],this.rangeDates[1]).subscribe({
     next: (response) => {
       this.rooms = response;
       this.totalCount = response.length;
@@ -36,6 +50,8 @@ getAllrooms(page: number, size: number): void {
     }
   });
 }
+
+
 goToDetails(id: string) {
   this._Router.navigate(['/landing/content', id]);
 }
