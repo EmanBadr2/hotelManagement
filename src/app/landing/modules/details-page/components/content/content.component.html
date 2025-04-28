@@ -93,7 +93,7 @@
         <div class="w-full">
         <span for="icondisplay" class="span-content block mb-2">Pick a Date </span>
         <p-calendar class=" "
-        [(ngModel)]="date"
+        [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true"
         [showIcon]="true"
         [icon]="'pi pi-calendar-minus'"
         [minDate]="minDate"
@@ -106,12 +106,15 @@
           <span class="span-content">{{ this.capacity || '2' }} Person</span>
         </p>
 
-        <!-- (click)="booking()" -->
+        
         <button
-        class="w-3/4 m-auto bg-blue-600 hover:bg-blue-700  main-btn mt-2 py-2 span-content text-white "
-        [disabled]=" date == undefined"
+        [disabled]=" rangeDates == undefined"
+        (click)="booking()"
+        class="w-3/4 m-auto bg-blue-600 hover:bg-blue-700
+        main-btn mt-2 py-2 span-content text-white "
         >continue Booking
         </button>
+
       </div>
     </div>
   </div>

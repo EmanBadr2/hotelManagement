@@ -9,9 +9,11 @@ import { Router } from '@angular/router';
 })
 export class DatePickerComponent {
   // date: Date | undefined;
-  date: Date = new Date();
+  rangeDates: Date[] |any;
   minDate: Date = new Date();  // Today's date
   capacity :number =0
+  startDate :string = '';
+  endDate :string = '';
   constructor( private _Router:Router){}
 
   addCapacity(){
@@ -21,12 +23,26 @@ export class DatePickerComponent {
     this.capacity--
   }
   explore(){
-    console.log(this.date);
     console.log(this.capacity);
+    console.log(this.rangeDates);
+    if (this.rangeDates && this.rangeDates.length === 2) {
+      this.startDate = this.formatDate(this.rangeDates[0])
+      this.endDate = this.formatDate(this.rangeDates[1])
+      console.log( this.startDate , this.endDate);
+    }
     // navigate to explore M with this ( date & capacity)
-    this._Router.navigate(['landing/explore'])
+    this._Router.navigate(['landing/explore'],
+      { state: { startDate : this.startDate , endDate: this.endDate, capacity: this.capacity  } });
   }
 
+
+// Format Date function: yyyy-mm-dd
+ formatDate(date: Date): string {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
 
 
 
