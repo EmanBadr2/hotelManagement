@@ -28,6 +28,11 @@ export class StorageService {
     } else {
       this.isUser = true;
     }
+    // if (this.userRole === 'admin') {
+    //   this.isAdmin = true;
+    // } else if (this.userRole === 'user') {
+    //   this.isUser = true;
+    // }
   }
 
   isLoggedIn(): void {
@@ -35,5 +40,10 @@ export class StorageService {
     if (this.isUser) {
       this.isLogged = true;
     }
+    // if (this.isUser || this.isAdmin) {
+    //   this.isLogged = true;
+    // }
+    
   }
+  
 }

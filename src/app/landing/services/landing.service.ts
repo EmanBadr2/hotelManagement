@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Ads, Card } from '../interface/card';
 import { HttpClient } from '@angular/common/http';
+import { FavoriteRoom, FavoriteRoomResponse } from '../interface/fav';
 
 @Injectable({
   providedIn: 'root'
@@ -25,4 +26,18 @@ export class LandingService {
     return this._HttpClient.get<any>('portal/ads?page=1&size=4')
     .pipe(map((res) => res.data.ads));
   }
+
+  getAllFavRooms(): Observable<FavoriteRoomResponse> {
+    return this._HttpClient.get<FavoriteRoomResponse>('portal/favorite-rooms');
+  }
+  addToFav(roomId: string): Observable<FavoriteRoom> {
+    return this._HttpClient.post<FavoriteRoom>('portal/favorite-rooms', { roomId });
+  }
+  removeFromFav(roomId: string, favoriteRoomId: string): Observable<FavoriteRoomResponse> {
+    return this._HttpClient.delete<FavoriteRoomResponse>(`portal/favorite-rooms/${ roomId}`,
+      { body: { roomId: favoriteRoomId }
+  });
+  }
+  
+  
 }
