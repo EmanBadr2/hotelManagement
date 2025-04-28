@@ -39,11 +39,13 @@ export class StorageService {
     // call to check is loggedIn
     if (this.isUser) {
       this.isLogged = true;
+    }else{
+      this.isLogged = false
     }
     // if (this.isUser || this.isAdmin) {
     //   this.isLogged = true;
     // }
-    
+
   }
-  
+
 }
