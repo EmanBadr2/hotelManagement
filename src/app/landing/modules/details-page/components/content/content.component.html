@@ -1,3 +1,21 @@
+  <!-- img -->
+  <div class="show-images gap-2 grid  sm:grid-cols-1  md:grid-cols-2 ">
+    <div class="img-container ">
+      <img src="../../../../assets/img/pageD1.png" class="h-full w-full object-cover rounded" alt="">
+    </div>
+    <!-- static img -->
+    <div class="img-container grid grid-rows-2 gap-2" *ngIf=" images.length  <= 0">
+      <div class=""><img src="../../../../assets/img/pageD2.png" class="h-full w-full object-cover"  alt=""> </div>
+     <div> <img src="../../../../assets/img/pageD3.png" class="h-full w-full object-cover" alt=""> </div>
+    </div>
+    <!-- img from api -->
+    <div class="img-container grid grid-rows-2 gap-2" *ngIf="images.length > 0" >
+      <div class="" *ngFor="let img of images">
+        <img [src]="img" class="h-full w-full object-cover"  alt="">
+      </div>
+    </div>
+  </div>
+
 <!-- content -->
 <div class="container">
   <div class=" grid sm:grid-cols-1 mx-auto  md:grid-cols-2 gap-3 py-5 " >
@@ -21,7 +39,6 @@
         enabling Singapore to use design for economic growth and to make lives better.
     </p>
   </div>
-
   <div class="icons grid grid-cols-4 gap-0.5 gap-y-1 pt-3 w-3/4">
     <div class="item" >
       <img src="../../../../assets/img/ic_bedroom1.png" alt="">
@@ -59,76 +76,6 @@
   </div>
  </div>
 
- <!-- Right side -->
- <div class=" m-auto border rounded p-10 shadow-sm ">
-  <div class="">
-   <h6 class="text-landingContent-h2 text-xl font-medium py-3">Start Booking</h6>
-   <p class="py-2">
-    <span class="text-[#1ABC9C] text-4xl font-normal">$ {{price}} </span>
-     <span class="text-landingContent-p text-3xl font-light">per night </span>
-   </p>
-  <p class="font-normal text-base  text-[#FF1612] ">Discount {{discount}}% Off</p>
-  </div>
-   <div class="pt-5 m-auto">
-        <!-- date picker -->
-        <div class="w-full">
-          <span for="icondisplay" class="span-content block mb-2">Pick a Date </span>
-          <p-calendar class=" "
-              [(ngModel)]="date"
-              [showIcon]="true"
-              [icon]="'pi pi-calendar-minus'"
-              [minDate]="minDate"
-              dateFormat="dd/mm/yy"
-              inputId="icondisplay" />
-         </div>
-      <p class=" p-content py-2 ">
-        You will pay <span class="span-content">$480 USD </span> per
-        <span class="span-content"> 2 Person </span>
-      </p>
-        <button
-         class="w-3/4 m-auto bg-blue-600 hover:bg-blue-700  main-btn mt-2 py-2 span-content text-white "
-        (click)="booking()"
-         [disabled]=" date == undefined"
-         >continue Booking
-        </button>
-  </div>
- </div>
-
-      <div class="icons grid grid-cols-4 gap-0.5 gap-y-1 pt-3 w-3/4">
-        <div class="item" >
-          <img src="../../../../assets/img/ic_bedroom1.png" alt="">
-          <p class="p-content"> <span class="span-content"> 5</span> bedroom</p>
-        </div>
-        <div class="item" >
-          <img src="../../../../assets/img/ic_livingroom2.png" alt="">
-          <p class="p-content"> <span class="span-content"> 1</span> living room</p>
-        </div>
-        <div class="item" >
-          <img src="../../../../assets/img/ic_bedroom3.png" alt="">
-          <p class="p-content"> <span class="span-content"> 3</span>  bathroom</p>
-        </div>
-        <div class="item" >
-          <img src="../../../../assets/img/ic_diningroom 1.png" alt="">
-          <p class="p-content"> <span class="span-content"> 1</span> dining room</p>
-        </div>
-        <div class="item" >
-          <img src="../../../../assets/img/ic_wifi5.png" alt="">
-          <p class="p-content"> <span class="span-content"> 10</span> mbp/s</p>
-        </div>
-        <div class="item" >
-          <img src="../../../../assets/img/ic_ac6.png" alt="">
-          <p class="p-content"> <span class="span-content"> 7</span> unit ready</p>
-        </div>
-        <div class="item" >
-          <img src="../../../../assets/img/ic_kulkas7.png" alt="">
-          <p class="p-content"> <span class="span-content"> 2</span>  refigrator</p>
-        </div>
-        <div class="item" >
-          <img src="../../../../assets/img/ic_tv8.png" alt="">
-          <p class="p-content"> <span class="span-content"> 3</span> television </p>
-        </div>
-
- </div>
 
  <!-- Right side -->
     <div class=" m-auto border rounded p-10 shadow-sm ">
@@ -153,6 +100,7 @@
         dateFormat="dd/mm/yy"
         inputId="icondisplay" />
         </div>
+
         <p class="p-content py-2">
           You will pay <span class="span-content">${{ price }} USD</span> per
           <span class="span-content">{{ this.capacity || '2' }} Person</span>

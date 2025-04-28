@@ -14,16 +14,8 @@ export class RoomDetailsService {
     return this._HttpClient.get(`portal/rooms/${id}`)
   }
 
-  allRoomComments(roomID:string):Observable<any>{
-    return this._HttpClient.get(`portal/room-comments/${roomID}`)
-  }
-  createComment(data:any):Observable<any>{
-    return this._HttpClient.get(`portal/room-comments` , data)
-  }
-  deleteComment(commentID:string ,roomID:string ):Observable<any>{
-    return this._HttpClient.get(`portal/room-comments/${commentID}` ,{params : {"roomId": roomID}})
-  }
 
 }
+
 
 

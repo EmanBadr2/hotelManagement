@@ -1,0 +1,88 @@
+// / ------------------------------------
+// this will delete (shared)
+
+.main-btn {
+  @apply text-white text-center rounded-md transition disabled:opacity-80 ;
+  &:hover {
+    @apply  cursor-pointer transition  disabled:cursor-not-allowed;
+  }
+}
+.capacity-btn{
+  @apply w-10 h-10 flex items-center justify-center  ;
+}
+// ---------------------
+.h2-content {
+  @apply font-bold text-4xl p-2 text-landingContent-h2;
+}
+
+.p-content {
+  @apply  font-light text-base p-1 text-landingContent-p ;
+}
+.span-content {
+  @apply text-base font-medium text-landingContent-h2 ;
+}
+// ---------------------------
+.capacity{
+  @apply w-3/4 flex  bg-[#F5F6F8]  rounded-md  items-center justify-between ;
+}
+.text-area-style {
+  @apply w-full border border-blue-400 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500
+}
+.pageDetails-btn {
+  @apply bg-blue-600 text-white py-2 px-8 rounded-md hover:bg-blue-700 shadow-md w-fit self-end
+}
+// ------------------------
+// date picker
+::ng-deep .p-calendar .p-inputtext {
+  background-color: #F5F6F8 !important;
+  padding: .2rem .4rem !important;
+  border: 1px solid #D1D5DB !important;
+}
+::ng-deep  .p-calendar.p-calendar-w-btn{
+  width: 75% !important;
+  border-radius: .5rem;
+  // padding: .2rem .4rem !important;
+}
+::ng-deep .p-calendar-w-btn .p-datepicker-trigger{
+  background-color:#152C5B !important;
+  border-bottom-right-radius:.5rem;
+  border-top-right-radius:.5rem;
+  color: white;
+}
+// ---------------------
+
+
+
+// -------------------------------------------------
+.img-container img {
+  // width: 100%;
+  // height: 100%;
+  // object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.img-container img:hover  {
+  transform: scale(1.02);
+}
+
+textarea {
+  border: 1px solid #203FC7 !important;
+}
+
+.rate::after{
+  content: '';
+  position: absolute;
+  right: 0rem;
+  top: .5rem;
+  width: 2px;
+  height: 100%;
+  background-color: #203FC7;
+  opacity: .3;
+  border-radius: .5rem;
+}
+// -------v
+
+:host ::ng-deep
+    .p-rating-icon:not(.p-rating-cancel){
+    color: #DFCB1D !important;
+}

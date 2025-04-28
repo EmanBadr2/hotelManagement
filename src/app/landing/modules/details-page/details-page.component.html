@@ -15,30 +15,13 @@
         <p class="text-landingContent-p p-content"> Bogor, Indonesia</p>
       </div>
 
-    </div>
-  <!-- img -->
-   <div class="show-images gap-2 grid  sm:grid-cols-1  md:grid-cols-2 ">
-    <div class="img-container ">
-      <img src="../../../../assets/img/pageD1.png" class="h-full w-full object-cover rounded" alt="">
-    </div>
-    <!-- static img -->
-    <div class="img-container grid grid-rows-2 gap-2" *ngIf="images.length  <= 0">
-      <div class=""><img src="../../../../assets/img/pageD2.png" class="h-full w-full object-cover"  alt=""> </div>
-     <div> <img src="../../../../assets/img/pageD3.png" class="h-full w-full object-cover" alt=""> </div>
-    </div>
-    <!-- img from api -->
-    <div class="img-container grid grid-rows-2 gap-2" *ngIf="images.length > 0" >
-      <div class="" *ngFor="let img of images">
-        <img [src]="img" class="h-full w-full object-cover"  alt="">
-      </div>
-    </div>
   </div>
   <!-- --------------------------------------------------------- -->
-     <!-- content -->
-   <app-content></app-content>
+     <!--img && content -->
+   <app-content [roomID]="roomID"  ></app-content>
    <!-- --------------------------------------------------- -->
     <!-- rate  && comment  -->
-    <app-rate-comment></app-rate-comment>
+    <app-rate-comment [roomID]="roomID"  ></app-rate-comment>
 
 </section>
 
