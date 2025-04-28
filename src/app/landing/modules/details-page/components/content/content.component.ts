@@ -10,23 +10,27 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./content.component.scss']
 })
 export class ContentComponent implements OnInit {
-   // date: Date | undefined;
-    date: Date = new Date();
+
+   minDate: Date = new Date();  // Today's date
+   rangeDates: Date[] | undefined;
+    startDate :string = '';
+    endDate :string = '';
+    numberOfDays :number = 0
+    totalPrice :number =0
     roomNumber !: String | number
-    price !: number
+    price : number=0
     capacity :number =0
-    discount!: number
+    discount: number=0
     images  :string[]=[]
     roomDetails:any | Room
-    minDate: Date = new Date();  // Today's date
    @Input() roomID !: string
 
  constructor ( private _Router:Router , private _RoomDetailsService:RoomDetailsService){}
-ngOnInit(): void {
+  ngOnInit(): void {
     if(this.roomID){
       this.getRoomDetails()
     }
-}
+  }
 
   getRoomDetails(){
     this._RoomDetailsService.roomDetails(this.roomID).subscribe({
@@ -41,15 +45,42 @@ ngOnInit(): void {
       },
       error: err => console.error(err),
     });
-
   }
 
   booking() {
-    console.log(this.date);
-    console.log(this.capacity);
-
+    this.handleDate()
+    console.log( this.startDate ,  this.endDate,this.totalPrice,this.roomID );
     this._Router.navigate(['landing/booking'],
-   { state: { date: this.date, capacity: this.capacity, roomNumber: this.roomNumber } });
+   { state: {startDate : this.startDate , endDate: this.endDate,
+    totalPrice: this.totalPrice, room: this.roomID } });
   }
+ handleDate(){       // calc number of days && total price
+  // handle formate Date to start & end
+  if (this.rangeDates && this.rangeDates.length === 2) {
+    this.startDate = this.formatDate(this.rangeDates[0])
+    this.endDate = this.formatDate(this.rangeDates[1])
+  }
+  // num of days
+  if (this.rangeDates) {
+    const timeDiff = this.rangeDates[1].getTime() - this.rangeDates[0].getTime(); // difference in milliseconds
+    this.numberOfDays = timeDiff / (1000 * 60 * 60 * 24) + 1; // convert to days ( + 1 if  include both the start and end dates)
+  }
+  // total price
+  if(this.capacity>0 && this.price >0 && this.numberOfDays>0 &&this.discount>0){
+    Number(this.totalPrice =
+       Number(this.capacity)  * Number(this.discount )
+      * Number(this.price ) *Number(this.numberOfDays) )
+ }
+ console.log(this.numberOfDays , this.totalPrice);
+ }
+
+ formatDate(date: Date): string {  // Format Date function: yyyy-mm-dd
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
+
+
 
 }
