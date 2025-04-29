@@ -12,4 +12,5 @@ export class AuthDialogComponent {
     public ref: DynamicDialogRef,
     public config: DynamicDialogConfig
   ) {}
+  
 }
