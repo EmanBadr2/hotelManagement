@@ -15,6 +15,8 @@ export class NavbarComponent implements OnInit {
     this.selectedLang = lang;
     this.translate.setDefaultLang(lang);
     this.translate.use(lang);
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
 
     // document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
   }
@@ -32,6 +34,7 @@ export class NavbarComponent implements OnInit {
   isUser:boolean =false
   isUserLoggedIn: boolean = false; // Replace with actual user check
   serviceStorge = inject(StorageService);
+  userId = localStorage.getItem('userID') || ''; // Get the user ID from local storage
   ngOnInit() {
     this.isUserLoggedIn =
       this.serviceStorge.isLogged ||
