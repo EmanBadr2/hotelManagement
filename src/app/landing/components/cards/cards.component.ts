@@ -36,7 +36,8 @@ addToFav(roomId: string) {
         console.log(res);
       },
       error: (err) => {
-        this.toastr.error('Already Added');
+        this.toastr.error(err.error.message)
+        // this.toastr.error('Already Added');
       }
     });
   }
@@ -49,7 +50,7 @@ goToDetails(id: string) {
 }
 
   checkAuth(roomId : string) {
-    if (this.StorageService.userRole=='user'){
+    if (this.StorageService.isUser){
       this.addToFav(roomId);
       // this._Router.navigate(['/landing/fav-items'])
       return;

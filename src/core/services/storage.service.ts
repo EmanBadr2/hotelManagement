@@ -5,47 +5,53 @@ import { jwtDecode } from 'jwt-decode';
   providedIn: 'root',
 })
 export class StorageService {
-  userRole: string | null = localStorage.getItem('userRole');
-  token: string | null = localStorage.getItem('token');
-  userID: string | null = localStorage.getItem('userID');
-  userName: string | null = localStorage.getItem('userName');
-  decodedToken!: any;
-  isAdmin!: boolean;
-  isUser!: boolean;
-  isLogged!: boolean;
+  userRole: any
+  token: any
+  userID: any
+  userName: any
+  
+  isAdmin: boolean = false;
+  isUser: boolean = false;
 
-  constructor() {}
-
-  loadUserRole(): void {
-    //call to check role user or admin
-    if (this.token) {
-      this.decodedToken = jwtDecode(this.token);
-      this.userRole = this.decodedToken.role; // Extract role from token
-      localStorage.setItem('userRole', this.userRole || ''); // Store role in localStorage
-    }
-    if (this.userRole == 'admin') {
-      this.isAdmin = true;
-    } else {
-      this.isUser = true;
-    }
-    // if (this.userRole === 'admin') {
-    //   this.isAdmin = true;
-    // } else if (this.userRole === 'user') {
-    //   this.isUser = true;
-    // }
+  constructor() {
+    this.userOrAdmin()
+    this.localStorageValues()
   }
 
-  isLoggedIn(): void {
-    // call to check is loggedIn
-    if (this.isUser) {
-      this.isLogged = true;
-    }else{
-      this.isLogged = false
-    }
-    // if (this.isUser || this.isAdmin) {
-    //   this.isLogged = true;
-    // }
-
+  localStorageValues(){
+    this.userRole = localStorage.getItem('userRole');
+    this.token = localStorage.getItem('token');
+    this.userID = localStorage.getItem('userID');
+    this.userName = localStorage.getItem('userName');
   }
 
+  userOrAdmin(){
+    if (this.userRole === 'admin') {
+          this.isAdmin = true;
+        } else if (this.userRole === 'user') {
+          this.isUser = true;
+        }
+  }
+
+ // decodedToken: any = null;
+
+  // loadUserRole(): void {
+  //   //call to check role user or admin
+  //   if (this.token) {
+  //     this.decodedToken = jwtDecode(this.token);
+  //     this.userRole = this.decodedToken.role; // Extract role from token
+  //     localStorage.setItem('userRole', this.userRole || ''); // Store role in localStorage
+  //   }
+  //   if (this.userRole === 'admin') {
+  //     this.isAdmin = true;
+  //   } else if (this.userRole === 'user') {
+  //     this.isUser = true;
+  //   }
+
+  // }
+
+
+
+
+ 
 }

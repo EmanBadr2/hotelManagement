@@ -11,6 +11,9 @@ export class NavbarComponent implements OnInit {
   selectedLang = 'en';
 
   constructor(private translate: TranslateService) {
+    const testUser = localStorage.getItem('userRole')
+    console.log(testUser);
+
     const lang = localStorage.getItem('lang') || 'en';
     this.selectedLang = lang;
     this.translate.setDefaultLang(lang);
@@ -30,14 +33,11 @@ export class NavbarComponent implements OnInit {
   menuOpen = false;
   userName = '';
   isUser:boolean =false
-  isUserLoggedIn: boolean = false; // Replace with actual user check
-  serviceStorge = inject(StorageService);
+
+  serviceStorage = inject(StorageService);
   ngOnInit() {
-    this.isUserLoggedIn =
-      this.serviceStorge.isLogged ||
-      localStorage.getItem('userRole') === 'user'; // Check if the user is logged in
-    this.userName = this.serviceStorge.userName || ''; // Get the user name from the service
-    if( this.serviceStorge.userRole == 'user'){
+    this.userName = this.serviceStorage.userName || ''; // Get the user name from the service
+    if( this.serviceStorage.isUser){
       this.isUser =true
     }
   }
@@ -45,8 +45,10 @@ export class NavbarComponent implements OnInit {
     this.menuOpen = !this.menuOpen;
   }
   logout(){
-    // this.isUser =false
-    // localStorage.clear()
+    this.isUser =false
+    localStorage.clear()
+
+
   }
 
 }

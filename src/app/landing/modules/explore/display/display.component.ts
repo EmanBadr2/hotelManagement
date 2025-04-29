@@ -56,7 +56,7 @@ goToDetails(id: string) {
   this._Router.navigate(['/landing/content', id]);
 }
 checkAuth() {
-  if (this.StorageService.isLogged === true) {
+  if (this.StorageService.isUser === true) {
     //write fav api
     return ;
   } else {

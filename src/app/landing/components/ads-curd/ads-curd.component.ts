@@ -26,7 +26,7 @@ constructor (
 ) { }
 
 ngOnInit(): void {
-  console.log(this.StorageService.userRole);
+  // console.log(this.StorageService.userRole);
 
 this._LandingService.getAdsAll().subscribe((res) => {
   this.ads = res
@@ -50,7 +50,7 @@ goToDetails(id: string) {
 }
 checkAuth(roomId : string) {
   console.log('done');
-  if (this.StorageService.userRole=='user') {
+  if (this.StorageService.isUser) {
     this.addToFav(roomId);
     // this._Router.navigate(['/landing/fav-items'])
     // return;
