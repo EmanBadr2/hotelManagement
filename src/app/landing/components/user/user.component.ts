@@ -47,6 +47,7 @@ export class UserComponent implements OnInit {
       },
     });
   }
+
   toggleEdit() {
     this.isEdit = !this.isEdit;
     if (this.isEdit) {

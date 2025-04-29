@@ -4,12 +4,7 @@
     <div class="container">
       <div class="flex justify-between content-center">
         <h1>{{ resourcePath + "title" | translate }}</h1>
-        <button
-          pButton
-          (click)="toggleEdit()"
-          [label]="resourcePath + 'edit' | translate"
-          class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-        ></button>
+      
       </div>
       <form [formGroup]="userProfile">
         <div class="grid grid-cols-2 gap-4">
@@ -67,31 +62,10 @@
                 formControlName="country"
               />
             </div>
-            <div class="flex flex-col mb-2 gap-2" *ngIf="isEdit">
-              <label for="username">{{ resourcePath + "confirmPassword" | translate }}</label>
-              <input
-                pInputText
-                id="confirmPassword"
-                class="border border-blue-300 rounded p-2"
-                type="password"
-                aria-describedby="confirmPassword-help"
-                formControlName="confirmPassword"
-              />
-              <small id="confirmPassword-help">
-                {{ resourcePath + "confirmPasswordDesc" | translate }}
-              </small>
-            </div>
+         
           </div>
         </div>
-        <div class="flex justify-end mt-4" *ngIf="isEdit">
-          <button
-            pButton
-            
-            [label]="resourcePath + 'save' | translate"
-            class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-            *ngIf="isEdit"
-          ></button>
-          </div>
+       
 
       </form>
     </div>
