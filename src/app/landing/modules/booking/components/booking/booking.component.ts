@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { BookingService } from '../../services/booking.service';
-
+import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-booking',
@@ -10,26 +9,33 @@ import { BookingService } from '../../services/booking.service';
 })
 export class BookingComponent {
   bookingData: any;
-  bookingID : string =''
-  constructor(private _Router: Router , private _BookingService:BookingService){
-    const nav = this._Router.getCurrentNavigation();
-    this.bookingData = nav?.extras?.state;
-    console.log(this.bookingData);
+  bookingID: string = '';
+  loading = false;
+
+  constructor(
+    private _BookingService: BookingService,
+    public ref: DynamicDialogRef,
+    public config: DynamicDialogConfig
+  ) {
+    this.bookingData = this.config.data?.bookingData;
+    console.log('Booking Data:', this.bookingData);
   }
 
-  createBooking(){
+  createBooking() {
+    this.loading = true;
+  
     this._BookingService.createBooking(this.bookingData).subscribe({
-      next:(res)=> {
-        console.log(res);
-        this.bookingID =res.data.booking._id
-        this._Router.navigate(['landing/booking/payment'],{ state: {bookingID : this.bookingID } });
+      next: (res) => {
+        this.bookingID = res.data.booking._id;
+        this.loading = false;
+        this.ref.close({ bookingID: this.bookingID });
       },
-      error:(err)=> {
+      error: (err) => {
         console.log(err);
+        this.loading = false;
       },
-    })
+    });
   }
-
 }
 
 

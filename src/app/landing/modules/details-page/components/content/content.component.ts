@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { RoomDetailsService } from '../../services/room-details.service';
 import { Room } from 'src/app/landing/interface/pageDetals';
 import { ActivatedRoute } from '@angular/router';
+import { DialogService } from 'primeng/dynamicdialog';
+import { BookingComponent } from './../../../booking/components/booking/booking.component';
 
 @Component({
   selector: 'app-content',
@@ -25,7 +27,7 @@ export class ContentComponent implements OnInit {
     roomDetails:any | Room
    @Input() roomID !: string
 
- constructor ( private _Router:Router , private _RoomDetailsService:RoomDetailsService){}
+ constructor ( private _Router:Router , private _RoomDetailsService:RoomDetailsService, private _DialogService:DialogService){}
   ngOnInit(): void {
     if(this.roomID){
       this.getRoomDetails()
@@ -47,12 +49,28 @@ export class ContentComponent implements OnInit {
     });
   }
 
+
   booking() {
-    this.handleDate()
-    console.log( this.startDate ,  this.endDate,this.totalPrice,this.roomID );
-    this._Router.navigate(['landing/booking'],
-   { state: {startDate : this.startDate , endDate: this.endDate,
-    totalPrice: this.totalPrice, room: this.roomID } });
+    this.handleDate();
+    const ref = this._DialogService.open(BookingComponent, {
+      width: '50%',
+      data: {
+        bookingData: {
+          startDate: this.startDate,
+          endDate: this.endDate,
+          totalPrice: this.totalPrice,
+          room: this.roomID
+        }
+      }
+    });
+  
+    ref.onClose.subscribe((result) => {
+      if (result?.bookingID) {
+        this._Router.navigate(['landing/booking/payment'], {
+          state: { bookingID: result.bookingID }
+        });
+      }
+    });
   }
  handleDate(){       // calc number of days && total price
   // handle formate Date to start & end
