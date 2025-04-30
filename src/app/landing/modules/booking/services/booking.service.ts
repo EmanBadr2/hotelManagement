@@ -31,7 +31,7 @@ export class BookingService {
   // ---------
   //   data----> { "token": token }
   payBooking( bookingID :string , data : any  ):Observable<any>{
-    return this._HttpClient.get(`portal/booking/${bookingID}/pay` , data )
+    return this._HttpClient.post(`portal/booking/${bookingID}/pay` , data )
   }
 
 
