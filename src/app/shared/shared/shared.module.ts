@@ -18,8 +18,8 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { PaginatorModule } from 'primeng/paginator';
 import { DropdownModule } from 'primeng/dropdown';
 import { TranslateModule } from '@ngx-translate/core';
-
-
+import { StepsModule } from 'primeng/steps';
+import { CardModule } from 'primeng/card';
 
 @NgModule({
   declarations: [AuthInputsComponent],
@@ -39,7 +39,9 @@ import { TranslateModule } from '@ngx-translate/core';
     NgChartsModule,
     PaginatorModule,
     DropdownModule,
-    TranslateModule
+    TranslateModule,
+    StepsModule,
+    CardModule,
 
   ],
   exports: [
@@ -61,7 +63,9 @@ import { TranslateModule } from '@ngx-translate/core';
     NgChartsModule,
     PaginatorModule,
     DropdownModule,
-    TranslateModule
+    TranslateModule,
+    StepsModule,
+    CardModule,
 
   ],
   providers: [DialogService],

@@ -1,5 +1,5 @@
 
-import { Component, inject, ViewChild } from '@angular/core';
+import { Component, EventEmitter, inject, Output, ViewChild } from '@angular/core';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
 
 import { MatInputModule } from '@angular/material/input';
@@ -25,7 +25,10 @@ import { BookingService } from '../../services/booking.service';
 })
 export class PaymentComponent {
  stripToken:string = ''
-
+ bookingID : any
+ token!:string
+ stepForward!: () => void;
+ @Output() nextStep = new EventEmitter<void>();
   @ViewChild(StripeCardComponent) cardElement!: StripeCardComponent;
 
   constructor(private _BookingService:BookingService){}
@@ -59,26 +62,58 @@ export class PaymentComponent {
   // Replace with your own public key
   stripe = injectStripe( this.stripPublicKey);
 
+
+
+
+  setParentStepper(fn: () => void) {
+    this.stepForward = fn;
+  }
+
   createToken() {
-    const name = 'test'
-    this.stripe
-      .createToken(this.cardElement.element, { name })
+    const name = 'test';
+    this.stripe.createToken(this.cardElement.element, { name })
       .subscribe((result) => {
         if (result.token) {
-          // Use the token
-          this.stripToken = result.token.id
-          if(this.stripToken){
-            this.sendToken()
+          this.stripToken = result.token.id;
+          if (this.stripToken) {
+            this.sendToken();
             console.log(this.stripToken);
+            if (this.stepForward) this.stepForward(); // ✅ هنا بنعدي للخطوة الجاية
           }
-
         } else if (result.error) {
-          // Error creating the token
           console.log(result.error.message);
         }
       });
   }
+  
+  
 
+  payBooking(){
+    this.receiveToken()
+    console.log(this.token);
+    console.log(this.bookingID);
+
+    let data = {"token": this.token}
+    this._BookingService.payBooking( this.bookingID ,data).subscribe({
+      next:(res)=> {
+        console.log(res);
+        if (this.stripToken) {
+          this.sendToken();
+          console.log(this.stripToken);
+          if (this.stepForward) this.stepForward(); // ✅ هنا بنعدي للخطوة الجاية
+        }
+      },
+      error:(err)=> {
+        console.log(err);
+      },
+    })
+  }
+
+  receiveToken() {
+    this._BookingService.stripToken.subscribe(data => {
+      this.token = data;
+    });
+  }
 
   sendToken(){
     if(this.stripToken){ this._BookingService.tokenFromStripe(this.stripToken); }

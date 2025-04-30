@@ -1,16 +1,104 @@
+<div class="h-screen flex flex-col items-center px-4 py-4 overflow-hidden">
+  <!-- Step Indicator -->
+  <p-steps
+    [model]="steps"
+    [(activeIndex)]="activeIndex"
+    [readonly]="true"
+    class="mb-6"
+  ></p-steps>
+  <div *ngIf="activeIndex === 0" class="w-full max-w-6xl flex flex-col flex-grow overflow-hidden">
+    <!-- Header -->
+    <div class="text-center mb-4">
+      <h2 class="text-3xl font-bold text-gray-800 mb-1">Payment</h2>
+      <p class="text-gray-600">Kindly follow the instructions below</p>
+    </div>
+    <!-- Main Flex Layout -->
+    <div class="flex-grow flex gap-6 overflow-hidden">
+      <!-- Left Side -->
+      <div class="w-1/2 flex flex-col justify-between text-sm text-gray-700 p-4 overflow-auto">
+        <h2 class="text-lg font-semibold text-gray-800">Transfer Pembayaran:</h2>
+        <div>
+          <p><strong>Tax:</strong> 10%</p>
+          <p><strong>Subtotal:</strong> $480 USD</p>
+          <p><strong>Total:</strong> $580 USD</p>
+        </div>
+        <div class="space-y-4">
+          <div class="flex items-start space-x-4">
+            <img src="/assets/img/bca.png" class="w-20" alt="BCA" />
+            <div>
+              <p class="font-semibold">Bank Central Asia</p>
+              <p>2208 1996</p>
+              <p>BuildWith Angga</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-4">
+            <img src="/assets/img/mandiri.png" class="w-20" alt="Mandiri" />
+            <div>
+              <p class="font-semibold">Bank Mandiri</p>
+              <p>2208 1996</p>
+              <p>BuildWith Angga</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Divider -->
+      <div class="w-px bg-gray-300"></div>
+
+      <!-- Right Side -->
+      <div class="w-50">
+        <app-payment></app-payment>
+      </div>
+    </div>
+    <!-- Navigation Buttons -->
+    <div class="flex justify-between mt-4">
+      <button
+        (click)="goBack()"
+        class="px-5 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-100"
+      >
+        ⬅ Back
+      </button>
+
+      <button
+        (click)="goNext()"
+        class="px-5 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
+      >
+        Next ➡
+      </button>
+    </div>
+  </div>
+</div>
 
 
 
-<div class=" flex m-5 p-5 gap-5">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class=" flex m-5 p-5 gap-5">
   <div>
-    <!-- style -->
+    style
     <p>main-payment  works!</p>
   </div>
   <div>
-    <!-- stripe  -->
+    stripe 
     <app-payment ></app-payment> </div>
 </div>
 
-<!-- click in stripe to get token then click in in payBooking() -->
-<button class=" p-3 m-3 bg-blue-600"  (click)="payBooking()" >pay</button>
-
+click in stripe to get token then click in in payBooking() -->
