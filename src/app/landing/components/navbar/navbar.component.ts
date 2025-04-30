@@ -44,7 +44,9 @@ export class NavbarComponent implements OnInit {
     this.serviceStorage.logout()
     this.isUser = false;
     // localStorage.clear();
-    this.route.navigate(['/auth/login']);
+    // this.route.navigate(['/auth/login']);
+    this.route.navigate(['/landing']);
+
   }
   changeLanguage(lang: string) {
     console.log('Selected lang:', lang);
