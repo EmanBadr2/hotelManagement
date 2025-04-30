@@ -1,34 +1,31 @@
-<div class="h-screen flex flex-col items-center px-4 py-4 overflow-hidden">
+<div class="min-h-screen flex flex-col items-center px-4 py-4">
   <!-- Step Indicator -->
-
   <p-steps
     [model]="steps"
     [(activeIndex)]="activeIndex"
     [readonly]="true"
     class="mb-6"
   ></p-steps>
+
   <div
     *ngIf="activeIndex === 0 || activeIndex === 1"
-    class="w-full max-w-6xl flex flex-col flex-grow overflow-hidden"
+    class="w-full max-w-6xl flex flex-col flex-grow"
   >
     <!-- Header -->
     <div class="text-center mb-4">
-      <h2 class="text-3xl font-bold text-gray-800 mb-1">Payment</h2>
-      <p class="text-gray-600">Kindly follow the instructions below</p>
+      <h2 class="text-3xl font-bold mb-1" style="color: #152C5B;">Payment</h2>
+      <p style="color: #B0B0B0;">Kindly follow the instructions below</p>
     </div>
-    <!-- Main Flex Layout -->
-    <div class="flex-grow flex gap-6 overflow-hidden">
+
+    <!-- Main Layout (Responsive) -->
+    <div class="flex flex-col lg:flex-row gap-4">
       <!-- Left Side -->
-      <div
-        class="w-1/2 flex flex-col justify-between text-sm text-gray-700 p-4 overflow-auto"
-      >
-        <h2 class="text-lg font-semibold text-gray-800">
-          Transfer Pembayaran:
-        </h2>
+      <div class="w-full lg:w-1/2 flex flex-col justify-evenly text-sm text-gray-700 p-4">
+        <h2 class="text-lg font-semibold text-gray-800">Transfer Pembayaran:</h2>
         <div>
-          <p><strong>Tax:</strong> 10%</p>
-          <p><strong>Subtotal:</strong> $480 USD</p>
-          <p><strong>Total:</strong> $580 USD</p>
+          <p class="mb-2"><strong>Tax:</strong> 10%</p>
+          <p class="mb-2"><strong>Subtotal:</strong> $480 USD</p>
+          <p class="mb-2"><strong>Total:</strong> $580 USD</p>
         </div>
         <div class="space-y-4">
           <div class="flex items-start space-x-4">
@@ -49,15 +46,17 @@
           </div>
         </div>
       </div>
-      <!-- Divider -->
-      <div class="w-px bg-gray-300"></div>
+
+      <!-- line -->
+      <div class="hidden lg:block w-px bg-gray-300"></div>
+
       <!-- Right Side -->
-      <div class="w-50">
-        <app-payment
-          (nextStep)="goNext()"
-        ></app-payment>
+      <div class="w-full lg:w-1/2">
+        <app-payment (nextStep)="goNext()"></app-payment>
       </div>
     </div>
+
+    <!-- Button -->
     <div class="flex justify-center pt-4">
       <button
         pButton
@@ -68,6 +67,7 @@
       ></button>
     </div>
   </div>
+
   <div *ngIf="activeIndex === 2">
     <app-completed></app-completed>
   </div>
