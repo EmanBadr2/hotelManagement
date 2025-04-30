@@ -43,14 +43,22 @@
       </div>
       <!-- Divider -->
       <div class="w-px bg-gray-300"></div>
-
       <!-- Right Side -->
       <div class="w-50">
         <app-payment></app-payment>
       </div>
+
+    </div>
+    <div class="flex justify-center pt-4">
+      <button
+        pButton
+        label="Continue to Book"
+        class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+        (click)="payBooking()"
+      ></button>
     </div>
     <!-- Navigation Buttons -->
-    <div class="flex justify-between mt-4">
+    <!-- <div class="flex justify-between mt-4">
       <button
         (click)="goBack()"
         class="px-5 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-100"
@@ -64,7 +72,7 @@
       >
         Next ➡
       </button>
-    </div>
+    </div> -->
   </div>
 </div>
 

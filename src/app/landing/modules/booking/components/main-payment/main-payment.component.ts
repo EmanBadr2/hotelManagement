@@ -38,6 +38,7 @@ export class MainPaymentComponent implements OnInit {
       this.activeIndex--;
     }
   }
+  
   payBooking(){
     this.receiveToken()
     console.log(this.token);

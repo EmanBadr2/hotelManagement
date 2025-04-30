@@ -27,7 +27,6 @@ export class PaymentComponent {
  stripToken:string = ''
  bookingID : any
  token!:string
- stepForward!: () => void;
  @Output() nextStep = new EventEmitter<void>();
   @ViewChild(StripeCardComponent) cardElement!: StripeCardComponent;
 
@@ -62,30 +61,25 @@ export class PaymentComponent {
   // Replace with your own public key
   stripe = injectStripe( this.stripPublicKey);
 
-
-
-
-  setParentStepper(fn: () => void) {
-    this.stepForward = fn;
-  }
-
+  
   createToken() {
     const name = 'test';
     this.stripe.createToken(this.cardElement.element, { name })
       .subscribe((result) => {
         if (result.token) {
+          // Use the token
           this.stripToken = result.token.id;
           if (this.stripToken) {
             this.sendToken();
             console.log(this.stripToken);
-            if (this.stepForward) this.stepForward(); // ✅ هنا بنعدي للخطوة الجاية
+            this.nextStep.emit();
           }
         } else if (result.error) {
+          // Error creating the token
           console.log(result.error.message);
         }
       });
   }
-  
   
 
   payBooking(){
@@ -97,16 +91,13 @@ export class PaymentComponent {
     this._BookingService.payBooking( this.bookingID ,data).subscribe({
       next:(res)=> {
         console.log(res);
-        if (this.stripToken) {
-          this.sendToken();
-          console.log(this.stripToken);
-          if (this.stepForward) this.stepForward(); // ✅ هنا بنعدي للخطوة الجاية
-        }
+        this.nextStep.emit();
       },
       error:(err)=> {
         console.log(err);
       },
     })
+
   }
 
   receiveToken() {
