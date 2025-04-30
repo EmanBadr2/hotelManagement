@@ -1,40 +1,38 @@
-
 {
-    "navbar": {
-      "home": "Home",
-      "explore": "Explore",
-      "reviews": "Reviews",
-      "favorites": "Favorites",
-      "register": "Register",
-      "login": "Login"
-},
-    "Cards":
-    {
-        "mostPopular": "Most Popular",
-        "beautyBackyard": "Beauty Backyard",
-        "largeLivingRoom": "Large Living Room",
-        "perNight": "Per Night"
-      },
-      
-        "homeSection": {
-          "title": "Forget Busy Work, Start Next Vacation",
-          "description": "We provide what you need to enjoy your holiday with family. Time to make another memorable moments.",
-          "bookingTitle": "Start Booking",
-          "pickDate": "Pick a Date",
-          "capacity": "Capacity",
-          "person": "Person",
-          "exploreBtn": "Explore"
-        },
-        "adsSection": {
+  "navbar": {
+    "home": "Home",
+    "explore": "Explore",
+    "reviews": "Reviews",
+    "favorites": "Favorites",
+    "register": "Register",
+    "login": "Login"
+  },
+  "Cards": {
+    "mostPopular": "Most Popular",
+    "beautyBackyard": "Beauty Backyard",
+    "largeLivingRoom": "Large Living Room",
+    "perNight": "Per Night"
+  },
+
+  "homeSection": {
+    "title": "Forget Busy Work, Start Next Vacation",
+    "description": "We provide what you need to enjoy your holiday with family. Time to make another memorable moments.",
+    "bookingTitle": "Start Booking",
+    "pickDate": "Pick a Date",
+    "capacity": "Capacity",
+    "person": "Person",
+    "exploreBtn": "Explore"
+  },
+  "adsSection": {
     "title": "Ads",
     "off": "Off",
     "postedBy": "Posted by:"
-  },   
+  },
   "testimonial": {
     "title": "Happy Family",
     "description": "What a great trip with my family and I should try again next time soon ...",
     "nameAndTitle": "Angga, Product Designer"
-  },   
+  },
 
   "footer": {
     "title": "We kaboom your beauty holiday instantly and memorable.",
@@ -48,10 +46,20 @@
     "termsAndConditions": "Terms & Conditions",
     "connectUs": "Connect Us"
   },
-  "authDialog":{
-    "title":"Please sign in to continue your journey!",
-    "login":"Login",
-    "register":"Register"
+  "authDialog": {
+    "title": "Please sign in to continue your journey!",
+    "login": "Login",
+    "register": "Register"
+  },
+  "userProfile": {
+    "title": "User Profile",
+    "edit": "Edit Profile",
+    "userName": "User Name",
+    "email": "Email",
+    "phoneNumber": "Phone Number",
+    "country": "Country",
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordDesc":"Confirm your password to save changes",
+    "save": "Save"
   }
-  
 }

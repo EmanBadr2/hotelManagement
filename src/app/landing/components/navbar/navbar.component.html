@@ -41,11 +41,11 @@
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
     >
-    <a routerLink="/">{{ 'navbar.home' | translate }}</a>
-  </li>
+      <a routerLink="/">{{ "navbar.home" | translate }}</a>
+    </li>
 
     <li class="landing_navbar__list__list-item" routerLinkActive="active">
-      <a routerLink="/landing/explore">{{ 'navbar.explore' | translate }}</a>
+      <a routerLink="/landing/explore">{{ "navbar.explore" | translate }}</a>
     </li>
 
     <li
@@ -53,20 +53,24 @@
       *ngIf="isUser"
       routerLinkActive="active"
     >
-    <a routerLink="/landing/booking">{{ 'navbar.reviews' | translate }}</a>
-  </li>
+      <a routerLink="/landing/booking">{{ "navbar.reviews" | translate }}</a>
+    </li>
 
-    <li 
+    <li
+      routerLink="/landing/fav-items"
       class="landing_navbar__list__list-item"
       *ngIf="isUser"
       routerLinkActive="active"
     >
-    <a routerLink="/landing/fav-items">{{ 'navbar.favorites' | translate }}</a>
-  </li>
+      <a routerLink="/landing/fav-items">{{
+        "navbar.favorites" | translate
+      }}</a>
+    </li>
 
     <li
-      class="landing_navbar__list__list-item flex gap-2 items-center"
+      class="landing_navbar__list__list-item flex gap-2 items-center cursor-pointer"
       *ngIf="isUser"
+      [routerLink]="['/landing/userDetails', userId]"
     >
       <img src="../../../../assets/img/profile.png" alt="Upskilling" />
       <h5>{{ userName }}</h5>
@@ -74,14 +78,14 @@
 
     <li class="landing_navbar__list__list-item">
       <select
-      [(ngModel)]="selectedLang"
-      (change)="changeLanguage(selectedLang)"
-      class="border rounded p-3">
+        [(ngModel)]="selectedLang"
+        (change)="changeLanguage(selectedLang)"
+        class="border rounded p-3"
+      >
         <option value="en">English</option>
         <option value="ar">العربية</option>
       </select>
     </li>
-
 
     <li
       class="landing_navbar__list__list-item w-full md:w-auto"
@@ -89,8 +93,10 @@
       routerLinkActive="active"
     >
       <a routerLink="/auth/register">
-        <button class="nav_btn w-full">{{ 'navbar.register' | translate }}</button>
-        </a>
+        <button class="nav_btn w-full">
+          {{ "navbar.register" | translate }}
+        </button>
+      </a>
     </li>
 
     <li
@@ -99,10 +105,11 @@
       routerLinkActive="active"
     >
       <a routerLink="/auth">
-        <button class="nav_btn w-full">{{ 'navbar.login' | translate }}</button>
+        <button class="nav_btn w-full">{{ "navbar.login" | translate }}</button>
       </a>
     </li>
-    <li   *ngIf="isUser"  (click)="logout()"
-    > <i class=" pi pi-sign-out text-red-800"> </i></li>
+    <li *ngIf="isUser" (click)="logout()">
+      <i class="pi pi-sign-out text-red-800"> </i>
+    </li>
   </ng-template>
 </section>

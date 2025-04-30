@@ -18,6 +18,8 @@ export class NavbarComponent implements OnInit {
     this.selectedLang = lang;
     this.translate.setDefaultLang(lang);
     this.translate.use(lang);
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
 
     // document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
   }
@@ -33,8 +35,9 @@ export class NavbarComponent implements OnInit {
   menuOpen = false;
   userName = '';
   isUser:boolean =false
-
+  isUserLoggedIn: boolean = false; // Replace with actual user check
   serviceStorage = inject(StorageService);
+  userId = localStorage.getItem('userID') || ''; // Get the user ID from local storage
   ngOnInit() {
     this.userName = this.serviceStorage.userName || ''; // Get the user name from the service
     if( this.serviceStorage.isUser){
