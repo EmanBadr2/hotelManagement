@@ -43,10 +43,11 @@ export class MainPaymentComponent implements OnInit {
     this.receiveToken()
     console.log(this.token);
     console.log(this.bookingID);
-
+    this.goNext();
     let data = {"token": this.token}
     this._BookingService.payBooking( this.bookingID ,data).subscribe({
       next:(res)=> {
+        this.goNext();
         console.log(res);
       },
       error:(err)=> {
