@@ -9,12 +9,10 @@ export class StorageService {
   token: any
   userID: any
   userName: any
-  
-  isAdmin: boolean = false;
-  isUser: boolean = false;
+  isAdmin: any
+  isUser: any
 
   constructor() {
-    this.userOrAdmin()
     this.localStorageValues()
   }
 
@@ -23,35 +21,10 @@ export class StorageService {
     this.token = localStorage.getItem('token');
     this.userID = localStorage.getItem('userID');
     this.userName = localStorage.getItem('userName');
+    this.isUser = localStorage.getItem('isUser');
+    this.isAdmin = localStorage.getItem('isAdmin');
   }
 
-  userOrAdmin(){
-    if (this.userRole === 'admin') {
-          this.isAdmin = true;
-        } else if (this.userRole === 'user') {
-          this.isUser = true;
-        }
-  }
-
- // decodedToken: any = null;
-
-  // loadUserRole(): void {
-  //   //call to check role user or admin
-  //   if (this.token) {
-  //     this.decodedToken = jwtDecode(this.token);
-  //     this.userRole = this.decodedToken.role; // Extract role from token
-  //     localStorage.setItem('userRole', this.userRole || ''); // Store role in localStorage
-  //   }
-  //   if (this.userRole === 'admin') {
-  //     this.isAdmin = true;
-  //   } else if (this.userRole === 'user') {
-  //     this.isUser = true;
-  //   }
-
-  // }
 
 
-
-
- 
 }
