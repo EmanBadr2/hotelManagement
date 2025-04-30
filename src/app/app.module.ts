@@ -20,6 +20,8 @@ import { NgxStripeModule } from 'ngx-stripe';
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
+
+const publicKey = 'pk_test_51OTjURBQWp069pqTmqhKZHNNd3kMf9TTynJtLJQIJDOSYcGM7xz3DabzCzE7bTxvuYMY0IX96OHBjsysHEKIrwCK006Mu7mKw8'
 @NgModule({
   declarations: [AppComponent, ProfileComponent ],
   imports: [
@@ -28,9 +30,7 @@ export function createTranslateLoader(http: HttpClient) {
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-
-    NgxStripeModule.forRoot('pk_test_51OTjURBQWp069pqTmqhKZHNNd3kMf9TTynJtLJQIJDOSYcGM7xz3DabzCzE7bTxvuYMY0IX96OHBjsysHEKIrwCK006Mu7mKw8'),
-
+    
     SharedModule,
     RouterModule,
     TranslateModule.forRoot({
@@ -46,6 +46,8 @@ export function createTranslateLoader(http: HttpClient) {
       positionClass: 'toast-top-right',
       progressBar: true,
     }),
+
+    NgxStripeModule.forRoot(publicKey),
 
   ],
   providers: [

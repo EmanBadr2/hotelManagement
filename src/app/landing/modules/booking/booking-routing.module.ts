@@ -1,10 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BookingComponent } from './booking.component';
-import { PaymentComponent } from './components/payment/payment.component';
+import { BookingComponent } from './components/booking/booking.component';
+import { PaymentComponent } from './components/stripe-payment/stripe-payment.component';
+import { MainPaymentComponent } from './components/main-payment/main-payment.component';
 
-const routes: Routes = [{ path: '', component: BookingComponent },
-  {path :'payment' , component:PaymentComponent }
+
+const routes: Routes = [
+  { path: '', redirectTo: 'booking' , pathMatch:'full' },
+  { path: 'booking', component: BookingComponent },
+  {path :'stripe' , component:PaymentComponent } ,
+  {path :'payment' , component:MainPaymentComponent }
 ];
 
 @NgModule({

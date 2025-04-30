@@ -16,4 +16,6 @@ export class BookingService {
   getBookingById(id: string): Observable<any> {
     return this._HttpClient.get(`admin/booking/${id}`);
   }
+
+  
 }

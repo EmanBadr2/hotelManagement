@@ -50,7 +50,7 @@ export class ContentComponent implements OnInit {
   booking() {
     this.handleDate()
     console.log( this.startDate ,  this.endDate,this.totalPrice,this.roomID );
-    this._Router.navigate(['landing/booking/payment'],
+    this._Router.navigate(['landing/booking'],
    { state: {startDate : this.startDate , endDate: this.endDate,
     totalPrice: this.totalPrice, room: this.roomID } });
   }

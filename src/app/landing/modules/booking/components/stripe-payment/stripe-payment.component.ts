@@ -14,16 +14,21 @@ import {
 } from '@stripe/stripe-js';
 
 
+import { BookingService } from '../../services/booking.service';
+
 
 
 @Component({
   selector: 'app-payment',
-  templateUrl: './payment.component.html',
-  styleUrls: ['./payment.component.scss']
+  templateUrl: './stripe-payment.component.html',
+  styleUrls: ['./stripe-payment.component.scss']
 })
 export class PaymentComponent {
+ stripToken:string = ''
+
   @ViewChild(StripeCardComponent) cardElement!: StripeCardComponent;
 
+  constructor(private _BookingService:BookingService){}
   private readonly fb = inject(UntypedFormBuilder);
 
   cardOptions: StripeCardElementOptions = {
@@ -54,9 +59,6 @@ export class PaymentComponent {
   // Replace with your own public key
   stripe = injectStripe( this.stripPublicKey);
 
-
-
-
   createToken() {
     const name = 'test'
     this.stripe
@@ -64,7 +66,12 @@ export class PaymentComponent {
       .subscribe((result) => {
         if (result.token) {
           // Use the token
-          console.log(result.token.id);
+          this.stripToken = result.token.id
+          if(this.stripToken){
+            this.sendToken()
+            console.log(this.stripToken);
+          }
+
         } else if (result.error) {
           // Error creating the token
           console.log(result.error.message);
@@ -72,5 +79,9 @@ export class PaymentComponent {
       });
   }
 
+
+  sendToken(){
+    if(this.stripToken){ this._BookingService.tokenFromStripe(this.stripToken); }
+  }
 
 }
