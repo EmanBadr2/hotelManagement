@@ -3,6 +3,7 @@ import { map, Observable } from 'rxjs';
 import { Ads, Card } from '../interface/card';
 import { HttpClient } from '@angular/common/http';
 import { FavoriteRoom, FavoriteRoomResponse } from '../interface/fav';
+import { IProfileRes, IUser } from 'src/app/shared/interfaces/profile';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,9 @@ export class LandingService {
       { body: { roomId: favoriteRoomId }
   });
   }
-  
+  getProfileDetails(id:string):Observable<IProfileRes>{
+    return this._HttpClient.get<IProfileRes>(`admin/users/${id}`)
+    
+  }
   
 }

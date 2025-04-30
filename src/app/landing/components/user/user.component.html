@@ -1,1 +1,73 @@
-<p>user works!</p>
+<app-landing-navbar></app-landing-navbar>
+<section class="userProfile">
+  <div class="mt-5">
+    <div class="container">
+      <div class="flex justify-between content-center">
+        <h1>{{ resourcePath + "title" | translate }}</h1>
+      
+      </div>
+      <form [formGroup]="userProfile">
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <img
+              formControlName="profileImage"
+              [src]="userProfile.get('profileImage')?.value"
+              alt="User Profile Picture"
+              class="rounded-[1rem] w-[100%] h-[100%]"
+            />
+          </div>
+
+          <div class="flex flex-col">
+            <div class="flex flex-col mb-2 gap-2">
+              <label for="username">{{ resourcePath + "userName" | translate }}</label>
+              <input
+                pInputText
+                id="username"
+                class="border border-blue-500 rounded p-2"
+                type="text"
+                aria-describedby="username-help"
+                formControlName="userName"
+              />
+            </div>
+            <div class="flex flex-col mb-2 gap-2">
+              <label for="username">{{ resourcePath + "email" | translate }}</label>
+              <input
+                pInputText
+                id="email"
+                class="border border-blue-300 rounded p-2"
+                type="text"
+                aria-describedby="email-help"
+                formControlName="email"
+              />
+            </div>
+            <div class="flex flex-col mb-2 gap-2">
+              <label for="username">{{ resourcePath + "phoneNumber" | translate }}</label>
+              <input
+                pInputText
+                id="phoneNumber"
+                class="border border-blue-300 rounded p-2"
+                type="text"
+                aria-describedby="email-help"
+                formControlName="phoneNumber"
+              />
+            </div>
+            <div class="flex flex-col mb-2 gap-2">
+              <label for="username">{{ resourcePath + "country" | translate }}</label>
+              <input
+                pInputText
+                id="country"
+                class="border border-blue-300 rounded p-2"
+                type="text"
+                aria-describedby="email-help"
+                formControlName="country"
+              />
+            </div>
+         
+          </div>
+        </div>
+       
+
+      </form>
+    </div>
+  </div>
+</section>

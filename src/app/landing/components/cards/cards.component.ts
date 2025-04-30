@@ -50,7 +50,7 @@ goToDetails(id: string) {
 }
 
   checkAuth(roomId : string) {
-    if (this.StorageService.isUser){
+    if (localStorage.getItem('isUser') == 'true'){
       this.addToFav(roomId);
       // this._Router.navigate(['/landing/fav-items'])
       return;

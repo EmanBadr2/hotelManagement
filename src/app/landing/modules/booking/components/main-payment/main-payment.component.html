@@ -1,12 +1,16 @@
 <div class="h-screen flex flex-col items-center px-4 py-4 overflow-hidden">
   <!-- Step Indicator -->
+
   <p-steps
     [model]="steps"
     [(activeIndex)]="activeIndex"
     [readonly]="true"
     class="mb-6"
   ></p-steps>
-  <div *ngIf="activeIndex === 0" class="w-full max-w-6xl flex flex-col flex-grow overflow-hidden">
+  <div
+    *ngIf="activeIndex === 0 || activeIndex === 1"
+    class="w-full max-w-6xl flex flex-col flex-grow overflow-hidden"
+  >
     <!-- Header -->
     <div class="text-center mb-4">
       <h2 class="text-3xl font-bold text-gray-800 mb-1">Payment</h2>
@@ -15,8 +19,12 @@
     <!-- Main Flex Layout -->
     <div class="flex-grow flex gap-6 overflow-hidden">
       <!-- Left Side -->
-      <div class="w-1/2 flex flex-col justify-between text-sm text-gray-700 p-4 overflow-auto">
-        <h2 class="text-lg font-semibold text-gray-800">Transfer Pembayaran:</h2>
+      <div
+        class="w-1/2 flex flex-col justify-between text-sm text-gray-700 p-4 overflow-auto"
+      >
+        <h2 class="text-lg font-semibold text-gray-800">
+          Transfer Pembayaran:
+        </h2>
         <div>
           <p><strong>Tax:</strong> 10%</p>
           <p><strong>Subtotal:</strong> $480 USD</p>
@@ -45,68 +53,22 @@
       <div class="w-px bg-gray-300"></div>
       <!-- Right Side -->
       <div class="w-50">
-        <app-payment></app-payment>
+        <app-payment
+          (nextStep)="goNext()"
+        ></app-payment>
       </div>
-
     </div>
     <div class="flex justify-center pt-4">
       <button
         pButton
         label="Continue to Book"
+        [disabled]="activeIndex === 0"
         class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
         (click)="payBooking()"
       ></button>
     </div>
-    <!-- Navigation Buttons -->
-    <!-- <div class="flex justify-between mt-4">
-      <button
-        (click)="goBack()"
-        class="px-5 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-100"
-      >
-        ⬅ Back
-      </button>
-
-      <button
-        (click)="goNext()"
-        class="px-5 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
-      >
-        Next ➡
-      </button>
-    </div> -->
+  </div>
+  <div *ngIf="activeIndex === 2">
+    <app-completed></app-completed>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div class=" flex m-5 p-5 gap-5">
-  <div>
-    style
-    <p>main-payment  works!</p>
-  </div>
-  <div>
-    stripe 
-    <app-payment ></app-payment> </div>
-</div>
-
-click in stripe to get token then click in in payBooking() -->

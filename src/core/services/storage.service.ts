@@ -1,57 +1,45 @@
-import { Injectable } from '@angular/core';
-import { jwtDecode } from 'jwt-decode';
+import { Injectable } from "@angular/core";
 
 @Injectable({
   providedIn: 'root',
 })
 export class StorageService {
-  userRole: any
-  token: any
-  userID: any
-  userName: any
-  
+  userRole: string | null = null;
+  token: string | null = null;
+  userID: string | null = null;
+  userName: string | null = null;
+
   isAdmin: boolean = false;
   isUser: boolean = false;
 
   constructor() {
-    this.userOrAdmin()
-    this.localStorageValues()
+    this.loadFromLocalStorage(); // Only initialize, don't assume permanent state
   }
 
-  localStorageValues(){
+  loadFromLocalStorage() {
     this.userRole = localStorage.getItem('userRole');
     this.token = localStorage.getItem('token');
     this.userID = localStorage.getItem('userID');
     this.userName = localStorage.getItem('userName');
+    this.setUserFlags();
   }
 
-  userOrAdmin(){
-    if (this.userRole === 'admin') {
-          this.isAdmin = true;
-        } else if (this.userRole === 'user') {
-          this.isUser = true;
-        }
+  setUserFlags() {
+    this.isAdmin = this.userRole === 'admin';
+    this.isUser = this.userRole === 'user';
   }
 
- // decodedToken: any = null;
+  logout() {
+    localStorage.clear();
+    this.resetState();
+  }
 
-  // loadUserRole(): void {
-  //   //call to check role user or admin
-  //   if (this.token) {
-  //     this.decodedToken = jwtDecode(this.token);
-  //     this.userRole = this.decodedToken.role; // Extract role from token
-  //     localStorage.setItem('userRole', this.userRole || ''); // Store role in localStorage
-  //   }
-  //   if (this.userRole === 'admin') {
-  //     this.isAdmin = true;
-  //   } else if (this.userRole === 'user') {
-  //     this.isUser = true;
-  //   }
-
-  // }
-
-
-
-
- 
+  resetState() {
+    this.userRole = null;
+    this.token = null;
+    this.userID = null;
+    this.userName = null;
+    this.isAdmin = false;
+    this.isUser = false;
+  }
 }

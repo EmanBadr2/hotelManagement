@@ -64,6 +64,7 @@ export class PaymentComponent {
   
   createToken() {
     const name = 'test';
+    // this.nextStep.emit();
     this.stripe.createToken(this.cardElement.element, { name })
       .subscribe((result) => {
         if (result.token) {
