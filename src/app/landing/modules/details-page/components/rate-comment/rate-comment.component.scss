@@ -1,6 +1,7 @@
 // / ------------------------------------
 // this will delete (shared)
-
+// -----------------------
+// btn
 .main-btn {
   @apply text-white text-center rounded-md transition disabled:opacity-80 ;
   &:hover {
@@ -13,6 +14,18 @@
     @apply  cursor-pointer transition  disabled:cursor-not-allowed;
   }
 }
+.pageDetails-btn {
+  @apply bg-blue-600 text-white py-2 px-8 rounded-md disabled:opacity-70
+   hover:bg-blue-700 shadow-md w-fit self-end ;
+  &:hover {
+    @apply  cursor-pointer transition  disabled:cursor-not-allowed;
+  }
+}
+.update-btn {
+  @apply main-btn bg-yellow-400 py-2 px-8 rounded-md shadow-md w-fit self-end ;
+
+}
+
 // ---------------------
 .h2-content {
   @apply font-bold text-4xl p-2 text-landingContent-h2;
@@ -31,17 +44,6 @@
 .text-area-style {
   @apply w-full border border-blue-400 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500
 }
-.pageDetails-btn {
-  @apply bg-blue-600 text-white py-2 px-8 rounded-md hover:bg-blue-700 shadow-md w-fit self-end ;
-  &:hover {
-    @apply  cursor-pointer transition  disabled:cursor-not-allowed;
-  }
-}
-.update-btn {
-  @apply main-btn bg-yellow-400 py-2 px-8 rounded-md shadow-md w-fit self-end ;
-
-}
-
 
 // ------------------------
 // date picker
