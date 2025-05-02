@@ -6,7 +6,8 @@ import { CommentRateService } from '../../services/comment-rate.service';
 import { roomComments } from '../../interfaces/comment';
 import { StorageService } from 'src/core/services/storage.service';
 import { roomReviews } from '../../interfaces/review';
-
+import { AuthDialogComponent } from 'src/app/landing/components/auth-dialog/auth-dialog.component';
+import { DialogService } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-rate-comment',
@@ -19,6 +20,7 @@ export class RateCommentComponent implements OnInit {
   userID : string| null=''
   userName : string| null=''
   isEditComment :boolean=false
+  isUser:boolean=false
 
   isShowAllComments :boolean=false
 
@@ -35,7 +37,8 @@ export class RateCommentComponent implements OnInit {
   constructor( private _CommentRateService:CommentRateService ,
     private _ActivatedRoute:ActivatedRoute ,
     private _StorageService:StorageService ,
-    private _ToastrService:ToastrService
+    private _ToastrService:ToastrService ,
+    private dialogService: DialogService
   ){
     // this.roomID = this._ActivatedRoute.snapshot.paramMap.get('id');
   }
@@ -43,6 +46,9 @@ export class RateCommentComponent implements OnInit {
     if(this.roomID){
        this.allRoomComments()
        this.allRoomReviews()
+    }
+    if (localStorage.getItem('isUser') == 'true'){
+      this.isUser =true
     }
     this.userID=this._StorageService.userID
     this.userName=this._StorageService.userName
@@ -116,7 +122,7 @@ export class RateCommentComponent implements OnInit {
   allRoomReviews(){
     this._CommentRateService.allRoomReviews(this.roomID).subscribe({
       next:(res)=> {
-        // console.log(res);
+        console.log(res);
         this.roomReviews = res.data.roomReviews
       },
       error(err) {
@@ -131,16 +137,31 @@ export class RateCommentComponent implements OnInit {
     next:(res)=> {
       // console.log(res);
       this._ToastrService.success(res.message)
+      this.review=''
       this.allRoomReviews()
     },
     error :(err) =>{
       console.log(err);
+       this.review=''
       // if(err.message =='User has already added a review for this room'){
       //   this._ToastrService.error('You have already added a review for this room.')
       // }
       this._ToastrService.error(err.error.message)
     },
   })
+  }
+
+
+  checkAuth() {
+    if (localStorage.getItem('isUser') == 'true'){
+      this.isUser =true
+      return;
+    } else {
+      this.dialogService.open(AuthDialogComponent, {
+        header: '',
+        width: '30vw',
+      });
+    }
   }
 
 }
