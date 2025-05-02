@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit{
   userName :string| null = this._StorageService.userName
   userData !:any
    constructor(private _Router: Router ,
-      private _ProfileService  :ProfileService  ,
+      private _ProfileService  : ProfileService  ,
        private _StorageService : StorageService ,
    ){}
    ngOnInit(): void {

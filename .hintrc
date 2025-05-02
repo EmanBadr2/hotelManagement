@@ -8,6 +8,7 @@
     "no-inline-styles": "off",
     "axe/text-alternatives": "off",
     "compat-api/css": "off",
-    "button-type": "off"
+    "button-type": "off",
+    "axe/structure": "off"
   }
 }
