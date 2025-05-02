@@ -16,11 +16,18 @@ import { roomReviews } from '../../interfaces/review';
 export class RateCommentComponent implements OnInit {
 
   @Input() roomID :any
- userID : string| null=''
+  userID : string| null=''
   userName : string| null=''
+  isEditComment :boolean=false
+
+  isShowAllComments :boolean=false
+
   comment :string=''
+  commentID:string =''
+
   review :string=''
   rating :number =0
+
   roomComments:roomComments[]=[]
   roomReviews:roomReviews[] =[]
   showAllCommentReview : boolean =false
@@ -39,17 +46,16 @@ export class RateCommentComponent implements OnInit {
     }
     this.userID=this._StorageService.userID
     this.userName=this._StorageService.userName
-
   }
 
   allRoomComments(){
     this._CommentRateService.allRoomComments(this.roomID).subscribe({
       next:(res)=> {
-        console.log(res);
+        // console.log(res);
         this.roomComments= res.data.roomComments
       },
       error(err) {
-        console.log(err);
+        // console.log(err);
       },
     })
   }
@@ -59,16 +65,16 @@ export class RateCommentComponent implements OnInit {
     let data ={ roomId: this.roomID, comment: this.comment }
     this._CommentRateService.createComment(data).subscribe({
       next:(res)=> {
-        console.log(res);
+        // console.log(res);
         this._ToastrService.success(res.message)
         this.allRoomComments()
       },
       error :(err) =>{
-        console.log(err);
+        // console.log(err);
         this._ToastrService.error('Error ')
       },
     })
-
+    this.comment=''
   }
 
   deleteComment(commentID:string){
@@ -83,27 +89,34 @@ export class RateCommentComponent implements OnInit {
         this._ToastrService.error(' Error ')
       },
     })
-
   }
-  updateComment(commentID:string){
+  editComment(comment :roomComments){
+    this.comment = comment.comment
+    this.isEditComment =true
+    this.commentID = comment._id
+  }
+  updateComment(){
     let data = {comment: this.comment}
+    let commentID=this.commentID
     this._CommentRateService.updateComment( commentID , data).subscribe({
       next:(res)=> {
-        console.log(res);
+        // console.log(res);
+        this.allRoomComments()
         this._ToastrService.success(res.message)
       },
       error:(err) =>{
-        console.log(err);
+        // console.log(err);
         this._ToastrService.error(' Error ')
       },
     })
-    this.allRoomComments()
+    this.comment=''
+    this.isEditComment =false
   }
   // --------------------
   allRoomReviews(){
     this._CommentRateService.allRoomReviews(this.roomID).subscribe({
       next:(res)=> {
-        console.log(res);
+        // console.log(res);
         this.roomReviews = res.data.roomReviews
       },
       error(err) {
@@ -116,7 +129,7 @@ export class RateCommentComponent implements OnInit {
     let data= { roomId: this.roomID, rating: this.rating, review: this.review }
    this._CommentRateService.createReview(data).subscribe({
     next:(res)=> {
-      console.log(res);
+      // console.log(res);
       this._ToastrService.success(res.message)
       this.allRoomReviews()
     },

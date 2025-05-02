@@ -7,6 +7,7 @@ import { LandingModule } from '../../landing.module';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { ContentComponent } from './components/content/content.component';
 import { RateCommentComponent } from './components/rate-comment/rate-comment.component';
+import { DialogShowCommentsComponent } from './components/dialog-show-comments/dialog-show-comments.component';
 
 
 
@@ -14,7 +15,8 @@ import { RateCommentComponent } from './components/rate-comment/rate-comment.com
   declarations: [
     DetailsPageComponent,
     ContentComponent,
-    RateCommentComponent
+    RateCommentComponent,
+    DialogShowCommentsComponent
   ],
   imports: [
     CommonModule,

@@ -37,6 +37,12 @@
     @apply  cursor-pointer transition  disabled:cursor-not-allowed;
   }
 }
+.update-btn {
+  @apply main-btn bg-yellow-400 py-2 px-8 rounded-md shadow-md w-fit self-end ;
+
+}
+
+
 // ------------------------
 // date picker
 ::ng-deep .p-calendar .p-inputtext {
