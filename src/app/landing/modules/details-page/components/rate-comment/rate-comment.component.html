@@ -1,77 +1,58 @@
-<div class="w-full max-w-6xl mx-auto p-6 space-y-10">
+<div class="w-full mx-auto grid sm:grid-cols-1  md:grid-cols-2 gap-8 p-5 border rounded   " >
+  <div class=" rate relative w-full p-3">
+   <p class=" span-content"> Rate </p>
+   <p-rating [cancel]="false" [(ngModel)]="rating" />
 
-  <!-- Review & Comment Input Section -->
-  <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-8">
-    <!-- Rate Form -->
-    <div class="bg-white shadow rounded-lg p-5 space-y-4">
-      <h2 class="text-lg font-semibold text-gray-800">Rate</h2>
-      <p-rating [cancel]="false" [(ngModel)]="rating"></p-rating>
-
-      <div>
-        <label class="text-sm font-medium text-gray-600">Message</label>
-        <textarea [(ngModel)]="review"
-          class="w-full mt-1 p-3 border border-gray-300 rounded-md resize-none focus:ring focus:ring-blue-100 text-gray-700"
-          rows="4" placeholder="Write your review..."></textarea>
-      </div>
-
-      <button (click)="createReview()" [disabled]="!rating || !review"
-        class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-md transition duration-200 disabled:opacity-50">
-        Submit Review
-      </button>
-    </div>
-
-    <!-- Comment Form -->
-    <div class="bg-white shadow rounded-lg p-5 space-y-4">
-      <h2 class="text-lg font-semibold text-gray-800">Add a Comment</h2>
-      <div>
-        <label class="text-sm font-medium text-gray-600">Message</label>
-        <textarea [(ngModel)]="comment"
-          class="w-full mt-1 p-3 border border-gray-300 rounded-md resize-none focus:ring focus:ring-blue-100 text-gray-700"
-          rows="4" placeholder="Write your comment..."></textarea>
-      </div>
-
-      <button (click)="createComment()" [disabled]="!comment"
-        class="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-2 rounded-md transition duration-200 disabled:opacity-50">
-        Send Comment
-      </button>
-    </div>
+   <div>
+     <p class=" span-content pt-3 pb-1"> Message </p>
+     <textarea  [(ngModel)]="review"
+     class="text-area-style" rows="4" placeholder="Write your message..."></textarea>
+   </div>
+   <button (click)="createReview()" [disabled]="!rating && !review"
+   class="pageDetails-btn ">Rate</button>
   </div>
 
-  <!-- Show All Reviews & Comments -->
-  <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-8">
+  <div  class="flex flex-col space-y-4">
+   <p class=" span-content mb-6"> Add Your Comment </p>
+   <div>
+     <p class=" span-content pt-3 pb-1"> Message </p>
+     <textarea   [(ngModel)]="comment"
+      class="text-area-style" rows="4" placeholder="Write your message..."></textarea>
+   </div>
+   <button (click)="createComment()" [disabled]="!comment"
+    class="pageDetails-btn ">Send</button>
+  </div>
+  </div>
+  <!-- ------------ -->
+   <!-- show all comment && Review  -->
+   
 
-    <!-- Reviews -->
-    <div class="space-y-4">
-      <h3 class="text-xl font-bold text-gray-800">All Reviews</h3>
-      <div *ngFor="let review of roomReviews"
-        class="bg-white p-5 rounded-lg shadow-sm border border-gray-200 transition duration-200 hover:shadow-md">
-        <p-rating [cancel]="false" [(ngModel)]="review.rating"></p-rating>
-        <p class="text-gray-800 mt-2 text-base">{{ review.review }}</p>
-        <p class="text-xs text-gray-500 mt-2">By <span class="font-medium">{{ review.user.userName }}</span></p>
-      </div>
+  <div class="py-5 my-5 w-full mx-auto grid sm:grid-cols-1  md:grid-cols-2 gap-8 p-5 border rounded  ">
+
+    <!-- review -->
+   <div class="">
+    <p class=" text-xl font-bold text-landingContent-h2 pt-3 pb-1">All Reviews </p>
+    <div class=" p-4 my-3 border shadow-sm rounded-md" *ngFor="let review of roomReviews">
+      <p-rating [cancel]="false" [(ngModel)]="review.rating" />
+      <p class=" text-landingContent-h2 text-2xl   "> {{review.review}}</p>
+      <p class="text-sm pt-3 w-1/2"> Create By : <span class=" p-content">{{review.user.userName}}</span> </p>
     </div>
+   </div>
 
-    <!-- Comments -->
-    <div class="space-y-4">
-      <h3 class="text-xl font-bold text-gray-800">All Comments</h3>
-      <div *ngFor="let comment of roomComments"
-        class="bg-white p-5 rounded-lg shadow-sm border border-gray-200 transition duration-200 hover:shadow-md">
-        <p class="text-gray-800 text-base">{{ comment.comment }}</p>
-        <p class="text-xs text-gray-500 mt-2">By <span class="font-medium">{{ comment.user.userName }}</span></p>
-
-        <!-- If user is the owner -->
-        <div class="flex space-x-2 mt-4" *ngIf="comment.user._id === userID || comment.user.userName === userName">
-          <button (click)="updateComment(comment._id)"
-            class="bg-yellow-400 hover:bg-yellow-500 text-sm font-semibold px-4 py-1 rounded-md text-white">
-            Update
-          </button>
-          <button (click)="deleteComment(comment._id)"
-            class="bg-red-600 hover:bg-red-700 text-sm font-semibold px-4 py-1 rounded-md text-white">
-            Delete
-          </button>
+   <!-- comment -->
+    <div class="">
+      <p class=" text-xl font-bold text-landingContent-h2 pt-3 pb-1">All Comments </p>
+      <div class=" p-4 my-3 border shadow-sm rounded-md" *ngFor="let comment of roomComments">
+        <p class=" text-landingContent-h2 text-2xl   "> {{comment.comment}}</p>
+        <p class="text-sm pt-3 w-1/2"> Create By : <span class=" p-content">{{comment.user.userName}}</span> </p>
+        <div class="flex justify-between items-center p-2"
+        *ngIf="comment.user._id == userID || comment.user.userName == userName ">
+          <button (click)="updateComment(comment._id)" [disabled]=""
+          class="main-btn p-2 bg-yellow-300 w-1/3">Update</button>
+          <button (click)="deleteComment(comment._id)" [disabled]=""
+          class="main-btn p-2 bg-red-700 w-1/3">Delete</button>
         </div>
       </div>
     </div>
 
   </div>
-</div>
