@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
   
   registerForm!: FormGroup;
   files: File[] = [];
+  imagePreviews: string[] = [];
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -36,15 +37,25 @@ export class RegisterComponent implements OnInit {
       const confirmPassword = form.get('confirmPassword')?.value;
       return password === confirmPassword ? null : { mismatch: true };
     }
-  onSelect(event:any) {
-    console.log(event);
-    this.files.push(...event.addedFiles);
-  }
+    onSelect(event: any) {
+      for (let file of event.addedFiles) {
+        this.files.push(file);
+    
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.imagePreviews.push(reader.result as string);
+        };
+        reader.readAsDataURL(file);
+      }
+    }
 
-  onRemove(event:any) {
-    console.log(event);
-    this.files.splice(this.files.indexOf(event), 1);
-  }
+    onRemove(file: File) {
+      const index = this.files.indexOf(file);
+      if (index >= 0) {
+        this.files.splice(index, 1);
+        this.imagePreviews.splice(index, 1);
+      }
+    }
   onSubmit(): void {
     if (this.registerForm.valid && this.files.length > 0) {
     // if (this.registerForm.valid) {

@@ -1,73 +1,90 @@
 <app-landing-navbar></app-landing-navbar>
-<section class="userProfile">
-  <div class="mt-5">
-    <div class="container">
-      <div class="flex justify-between content-center">
-        <h1>{{ resourcePath + "title" | translate }}</h1>
-      
+
+<div class="userProfile min-h-[calc(100vh-4.5rem)] d-flex justify-content-center align-items-center bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100">
+  <div class="container mx-auto flex justify-center">
+    <div class="bg-white/80 backdrop-blur-md border border-purple-200 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-2xl p-10 w-full max-w-4xl transition-all duration-300 hover:shadow-2xl">
+      <!-- العنوان -->
+      <div class="flex justify-center mb-8">
+        <h1 class="text-4xl font-bold text-purple-800 tracking-wide">
+          {{ resourcePath + "title" | translate }}
+        </h1>
       </div>
+
+      <!-- الفورم -->
       <form [formGroup]="userProfile">
-        <div class="grid grid-cols-2 gap-4">
-          <div>
-            <img
-              formControlName="profileImage"
-              [src]="userProfile.get('profileImage')?.value"
-              alt="User Profile Picture"
-              class="rounded-[1rem] w-[100%] h-[100%]"
-            />
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          <!-- صورة المستخدم -->
+          <div class="flex justify-center">
+            <div class="relative w-48 h-48">
+              <img
+                formControlName="profileImage"
+                [src]="userProfile.get('profileImage')?.value"
+                alt="User Profile"
+                class="w-full h-full rounded-full object-cover border-4 border-white shadow-xl transition-transform duration-300 hover:scale-105"
+              />
+            </div>
           </div>
 
-          <div class="flex flex-col">
-            <div class="flex flex-col mb-2 gap-2">
-              <label for="username">{{ resourcePath + "userName" | translate }}</label>
+          <!-- بيانات المستخدم -->
+          <div class="flex flex-col gap-5">
+            <!-- اسم المستخدم -->
+            <div>
+              <label for="username" class="text-gray-800 font-semibold mb-1 block">
+                {{ resourcePath + "userName" | translate }}
+              </label>
               <input
                 pInputText
                 id="username"
-                class="border border-blue-500 rounded p-2"
                 type="text"
-                aria-describedby="username-help"
                 formControlName="userName"
+                class="w-full px-4 py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-400 bg-white/90 shadow-sm"
               />
             </div>
-            <div class="flex flex-col mb-2 gap-2">
-              <label for="username">{{ resourcePath + "email" | translate }}</label>
+
+            <!-- الإيميل -->
+            <div>
+              <label for="email" class="text-gray-800 font-semibold mb-1 block">
+                {{ resourcePath + "email" | translate }}
+              </label>
               <input
                 pInputText
                 id="email"
-                class="border border-blue-300 rounded p-2"
-                type="text"
-                aria-describedby="email-help"
+                type="email"
                 formControlName="email"
+                class="w-full px-4 py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-400 bg-white/90 shadow-sm"
               />
             </div>
-            <div class="flex flex-col mb-2 gap-2">
-              <label for="username">{{ resourcePath + "phoneNumber" | translate }}</label>
+
+            <!-- رقم الهاتف -->
+            <div>
+              <label for="phoneNumber" class="text-gray-800 font-semibold mb-1 block">
+                {{ resourcePath + "phoneNumber" | translate }}
+              </label>
               <input
                 pInputText
                 id="phoneNumber"
-                class="border border-blue-300 rounded p-2"
                 type="text"
-                aria-describedby="email-help"
                 formControlName="phoneNumber"
+                class="w-full px-4 py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-400 bg-white/90 shadow-sm"
               />
             </div>
-            <div class="flex flex-col mb-2 gap-2">
-              <label for="username">{{ resourcePath + "country" | translate }}</label>
+
+            <!-- الدولة -->
+            <div>
+              <label for="country" class="text-gray-800 font-semibold mb-1 block">
+                {{ resourcePath + "country" | translate }}
+              </label>
               <input
                 pInputText
                 id="country"
-                class="border border-blue-300 rounded p-2"
                 type="text"
-                aria-describedby="email-help"
                 formControlName="country"
+                class="w-full px-4 py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-400 bg-white/90 shadow-sm"
               />
             </div>
-         
           </div>
         </div>
-       
-
       </form>
     </div>
   </div>
-</section>
+</div>
