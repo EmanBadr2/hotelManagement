@@ -8,6 +8,8 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { CalendarModule } from 'primeng/calendar';
 import { RatingModule } from 'primeng/rating';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+
 
 
 const primeNgComponents = [
@@ -20,6 +22,7 @@ const primeNgComponents = [
   MultiSelectModule ,
   CalendarModule ,
   RatingModule ,
+  ConfirmPopupModule
 ];
 
 @NgModule({

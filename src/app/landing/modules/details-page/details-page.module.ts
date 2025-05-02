@@ -14,7 +14,7 @@ import { RateCommentComponent } from './components/rate-comment/rate-comment.com
   declarations: [
     DetailsPageComponent,
     ContentComponent,
-    RateCommentComponent
+    RateCommentComponent,
   ],
   imports: [
     CommonModule,
