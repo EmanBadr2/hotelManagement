@@ -9,11 +9,17 @@
 
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
   <ngx-dropzone class="ml-48 mb-2 rounded-circle w-[27%] my-0" (change)="onSelect($event)">
-    <ngx-dropzone-label>Drop Your Photo !</ngx-dropzone-label>
-    <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
-      <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
-    </ngx-dropzone-preview>
+    <ngx-dropzone-label>Drop Your Photo!</ngx-dropzone-label>
+  
+    <ngx-dropzone-image-preview *ngFor="let img of imagePreviews; let i = index" [removable]="true" (removed)="onRemove(files[i])">
+      <img 
+        [src]="img"
+        class="rounded-full border-4 border-blue-500 shadow-lg hover:scale-105 transition duration-300 w-full h-full object-cover"
+      />
+    </ngx-dropzone-image-preview>
+    
   </ngx-dropzone>
+  
 
 
  <!-- User Name + Email -->

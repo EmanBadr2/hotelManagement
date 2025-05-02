@@ -1,10 +1,4 @@
 <p-toolbar class="navbar">
-    <div class="p-toolbar-group-left logo">
-    <a routerLink="/dashboard">
-        <img src="../../../../assets/img/profile.png" alt="Upskilling" />
-    </a>
-    </div>
-
     <div class="p-toolbar-group-right d-flex align-items-center">
     <button
         pButton
@@ -15,38 +9,15 @@
         value="1"
         badgeStyleClass="p-badge-danger"
     ></button>
-
-    <!-- <p-dropdown
-    [options]="languages"
-    [(ngModel)]="selectedLanguage"
-    [optionLabel]="'label'"
-    [optionValue]="'value'"
-    (onChange)="changeLanguage($event.value)"
-    placeholder="Select Language"
-    class="lang-dropdown">
-  </p-dropdown> -->
-  
-  
-
-
-    <!-- <div class="user-info d-flex align-items-center mx-3">
-        <img
-        [src]="user?.imagePath || defaultImage"
-        alt="User"
-        class="avatar"
-        />
-        <div class="user-details ms-2">
-        <span class="username">{{ user?.userName || 'Upskilling' }}</span>
-        <br />
-        <span class="email">{{ user?.email || 'upskilling@gmail.com' }}</span>
-        </div>
-    </div> -->
-
-    <!-- <p-splitButton
-        [model]="userMenuItems"
-        icon="pi pi-chevron-down"
-        class="p-button-text p-button-plain"
-        styleClass="user-menu-btn"
-    ></p-splitButton> -->
+    <div class="user-info d-flex align-items-center mx-3">
+        <div class="relative w-8 h-8">
+            <img
+              [src]="'../../../../assets/img/mohamed.jpeg'"
+              alt="User Profile"
+              class="w-full h-full rounded-full object-cover border-2 border-green-500 shadow-xl transition-transform duration-300 hover:scale-105"
+            />
+            <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-white rounded-full"></span>
+          </div>
+      </div>
     </div>
 </p-toolbar>

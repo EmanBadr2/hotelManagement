@@ -6,6 +6,8 @@ import { CommentRateService } from '../../services/comment-rate.service';
 import { roomComments } from '../../interfaces/comment';
 import { StorageService } from 'src/core/services/storage.service';
 import { roomReviews } from '../../interfaces/review';
+import { AuthDialogComponent } from 'src/app/landing/components/auth-dialog/auth-dialog.component';
+import { DialogService } from 'primeng/dynamicdialog';
 
 
 @Component({
@@ -28,7 +30,8 @@ export class RateCommentComponent implements OnInit {
   constructor( private _CommentRateService:CommentRateService ,
     private _ActivatedRoute:ActivatedRoute ,
     private _StorageService:StorageService ,
-    private _ToastrService:ToastrService
+    private _ToastrService:ToastrService,
+    private dialogService: DialogService
   ){
     // this.roomID = this._ActivatedRoute.snapshot.paramMap.get('id');
   }
@@ -64,8 +67,8 @@ export class RateCommentComponent implements OnInit {
         this.allRoomComments()
       },
       error :(err) =>{
+        this.checkAuth();
         console.log(err);
-        this._ToastrService.error('Error ')
       },
     })
 
@@ -122,12 +125,21 @@ export class RateCommentComponent implements OnInit {
     },
     error :(err) =>{
       console.log(err);
-      // if(err.message =='User has already added a review for this room'){
-      //   this._ToastrService.error('You have already added a review for this room.')
-      // }
-      this._ToastrService.error(err.error.message)
+      this.checkAuth();
     },
   })
   }
 
+
+
+  checkAuth() {
+    if (localStorage.getItem('isUser') == 'true'){
+      return;
+    } else {
+      this.dialogService.open(AuthDialogComponent, {
+        header: '',
+        width: '30vw',
+      });
+    }
+  }
 }
