@@ -1,4 +1,5 @@
 
+// btn
 .main-btn {
   @apply text-white text-center rounded-md transition disabled:opacity-80 ;
   &:hover {
@@ -6,9 +7,25 @@
   }
 }
 .capacity-btn{
-  @apply w-10 h-10 flex items-center justify-center  ;
+  @apply w-10 h-10 flex items-center justify-center ;
+  &:hover {
+    @apply  cursor-pointer transition  disabled:cursor-not-allowed;
+  }
 }
+.pageDetails-btn {
+  @apply bg-blue-600 text-white py-2 px-8 rounded-md disabled:opacity-70
+   hover:bg-blue-700 shadow-md w-fit self-end ;
+  &:hover {
+    @apply  cursor-pointer transition  disabled:cursor-not-allowed;
+  }
+}
+.update-btn {
+  @apply main-btn bg-yellow-400 py-2 px-8 rounded-md shadow-md w-fit self-end ;
+
+}
+
 // ---------------------
+// -  main color in page
 .h2-content {
   @apply font-bold text-4xl p-2 text-landingContent-h2;
 }
@@ -19,11 +36,9 @@
 .span-content {
   @apply text-base font-medium text-landingContent-h2 ;
 }
-// ---------------------------
-.capacity{
-  @apply w-3/4 flex  bg-[#F5F6F8]  rounded-md  items-center justify-between ;
-}
-// ------------------------
+
+// // ------------------------
+//       primeNg
 // date picker
 ::ng-deep .p-calendar .p-inputtext {
   background-color: #F5F6F8 !important;
@@ -41,4 +56,11 @@
   border-top-right-radius:.5rem;
   color: white;
 }
-// ---------------------
+// -------
+// rate
+:host ::ng-deep
+    .p-rating-icon:not(.p-rating-cancel){
+    color: #DFCB1D !important;
+}
+// -----------------------------------------------------------
+

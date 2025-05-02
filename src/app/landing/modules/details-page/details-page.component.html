@@ -1,7 +1,8 @@
 <app-landing-navbar></app-landing-navbar>
 
-<section class="container mx-auto w-4/5 mb-2 ">
-  <!-- title -->
+<section  >
+  <div class="container mx-auto w-4/5 my-2 pt-1" >
+    <!-- title -->
   <div class=" w-2/3 pt-3 pb-5 flex items-center justify-between  ">
     <!-- left side -->
     <div class="flex items-center justify-center ">
@@ -16,20 +17,14 @@
       </div>
 
   </div>
-  <!-- --------------------------------------------------------- -->
      <!--img && content -->
    <app-content [roomID]="roomID"  ></app-content>
-   <!-- --------------------------------------------------- -->
     <!-- rate  && comment  -->
     <app-rate-comment [roomID]="roomID"  ></app-rate-comment>
+  </div>
+
+  <app-landing-footer></app-landing-footer>
 
 </section>
-
-
-
-
-<!-- <div class=" relative">
-  <app-landing-footer></app-landing-footer>
-</div> -->
 
 
