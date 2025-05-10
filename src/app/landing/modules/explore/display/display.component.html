@@ -1,16 +1,20 @@
 <div class=" container m-auto w-4/5 mt-5 ">
   <div class=" w-2/3 pt-3 pb-5 flex items-center justify-between  ">
     <div class="flex items-center justify-center ">
-      <a routerLink="/landing"  class="p-content">Home</a>
+      <a routerLink="/landing"  class="p-content">  {{ 'explorePage.breadcrumbHome' | translate }}
+      </a>
       <p class="mx-7  p-content"> / </p>
-      <a routerLink="landing/pageDetails" routerLinkActive="span-content" class="span-content">Explore</a>
+      <a routerLink="landing/pageDetails" routerLinkActive="span-content" class="span-content">  {{ 'explorePage.breadcrumbExplore' | translate }}
+      </a>
       </div>
       <div class="text-center">
-        <h2 class="text-landingContent-h2 h2-content">Explore ALL Rooms</h2>
+        <h2 class="text-landingContent-h2 h2-content">    {{ 'explorePage.header' | translate }}
+        </h2>
       </div>
     </div>
     <div class=" pb-5">
-        <h1 class="text-xl font-bold mb-6">All Rooms</h1>
+        <h1 class="text-xl font-bold mb-6">  {{ 'explorePage.sectionTitle' | translate }}
+        </h1>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-[250px]">
             <ng-container *ngFor="let room of rooms">
                 <div class="card-wrapper">
@@ -20,7 +24,8 @@
                     class="card-img"
                   />
                   <div class="card-body">
-                    <p class="font-semibold">${{ room.price }} per night</p>
+                    <p class="font-semibold">  ${{ room.price }} {{ 'explorePage.perNight' | translate }}
+                    </p>
                   </div>
                   <div class="card-footer-in">
                     <h3 class="text-xl font-bold">Stark House</h3>

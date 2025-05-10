@@ -1,22 +1,27 @@
 <app-landing-navbar></app-landing-navbar>
 <div *ngIf="isLoading" class="text-center mt-5">
-  <p>Loading...</p>
+  <p>{{ 'loadingMessage' | translate }}</p>
 </div>
 <div class="container m-auto w-4/5 mt-5">
-    <h1 class="font-poppins text-3xl font-bold mb-6 text-center">Your Favorites</h1>
+    <h1 class="font-poppins text-3xl font-bold mb-6 text-center">  {{ 'favoritesPage.title' | translate }}
+    </h1>
     <div class=" w-2/3 pt-3 pb-5 flex items-center justify-between  ">
       <div class="flex items-center justify-center ">
-        <a routerLink="/landing"  class="p-content">Home</a>
+        <a routerLink="/landing"  class="p-content">  {{ 'favoritesPage.breadcrumbHome' | translate }}
+        </a>
         <p class="mx-7  p-content"> / </p>
-        <a routerLink="landing/fav-items" routerLinkActive="span-content" class="span-content">Favorite</a>
+        <a routerLink="landing/fav-items" routerLinkActive="span-content" class="span-content">  {{ 'favoritesPage.breadcrumbFavorites' | translate }}
+        </a>
         </div>
       </div>
-    <h1 class="font-poppins mb-3 font-medium text-2xl leading-none tracking-tight">Your rooms</h1>
+    <h1 class="font-poppins mb-3 font-medium text-2xl leading-none tracking-tight">  {{ 'favoritesPage.roomsTitle' | translate }}
+    </h1>
     
     <div *ngIf="!isLoading">
       <div *ngIf="isRoomsEmpty">
         <img src="../../../../assets/img/no-data.jfif" alt="No Data" class="m-auto" />
-        <p class="font-poppins text-center">No data available</p>
+        <p class="font-poppins text-center">  {{ 'favoritesPage.noData' | translate }}
+        </p>
       </div>
     <div *ngIf="!isRoomsEmpty">
       <div  class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[250px]">

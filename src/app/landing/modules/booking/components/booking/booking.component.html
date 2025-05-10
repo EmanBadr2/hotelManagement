@@ -1,21 +1,21 @@
 <div class="w-100 mx-auto p-6 space-y-6">
-  <h2 class="text-2xl font-bold text-gray-800 border-b pb-3 text-center">Booking Summary</h2>
+  <h2 class="text-2xl font-bold text-gray-800 border-b pb-3 text-center">{{ 'bookingSummary.header' | translate }}</h2>
 
   <div class="w-full space-y-3 text-gray-700 text-base">
     <div class="flex justify-between">
-      <span class="font-medium text-gray-600">📅 Start Date:</span>
+      <span class="font-medium text-gray-600">📅 {{ 'bookingSummary.startDate' | translate }}:</span>
       <span>{{ bookingData?.startDate | date }}</span>
     </div>
     <div class="flex justify-between">
-      <span class="font-medium text-gray-600">📆 End Date:</span>
+      <span class="font-medium text-gray-600">📆 {{ 'bookingSummary.endDate' | translate }}:</span>
       <span>{{ bookingData?.endDate | date }}</span>
     </div>
     <div class="flex justify-between">
-      <span class="font-medium text-gray-600">💰 Total Price:</span>
+      <span class="font-medium text-gray-600">💰 {{ 'bookingSummary.totalPrice' | translate }}:</span>
       <span class="font-semibold text-green-600">{{ bookingData?.totalPrice | currency }}</span>
     </div>
     <div class="flex justify-between">
-      <span class="font-medium text-gray-600">🛏️ Room ID:</span>
+      <span class="font-medium text-gray-600">🛏️ {{ 'bookingSummary.roomId' | translate }}:</span>
       <span>{{ bookingData?.room }}</span>
     </div>
   </div>
@@ -25,14 +25,14 @@
       (click)="ref.close()"
       class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition"
     >
-      Cancel
+      {{ 'bookingSummary.cancelButton' | translate }}
     </button>
     <button
       [disabled]="loading"
       (click)="createBooking()"
       class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition flex items-center"
     >
-      <span *ngIf="!loading">Confirm Booking</span>
+      <span *ngIf="!loading">{{ 'bookingSummary.confirmBooking' | translate }}</span>
       <span *ngIf="loading" class="flex items-center">
         <i class="pi pi-spin pi-spinner mr-2"></i> Processing...
       </span>

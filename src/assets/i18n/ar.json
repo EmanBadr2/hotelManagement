@@ -59,5 +59,106 @@
     "confirmPassword": "تأكيد كلمة المرور",
     "confirmPasswordDesc":"تأكيد كلمة المرور الخاصة بك",
     "save": "حفظ"
+  },
+  "favoritesPage": {
+  "title": "المفضلة الخاصة بك",
+  "breadcrumbHome": "الرئيسية",
+  "breadcrumbFavorites": "المفضلة",
+  "roomsTitle": "غرفك",
+  "noData": "لا توجد بيانات"
+}
+,
+"explorePage": {
+  "breadcrumbHome": "الرئيسية",
+  "breadcrumbExplore": "استكشف",
+  "header": "استكشف كل الغرف",
+  "sectionTitle": "كل الغرف",
+  "perNight": "لليلة"
+}
+,
+"roomDetailsPage": {
+  "breadcrumbHome": "الرئيسية",
+  "breadcrumbDetails": "تفاصيل الغرفة",
+  "roomName": "قرية أنقا",
+  "roomLocation": "بوقور، إندونيسيا"
+}
+,
+"rateSection": {
+  "rate": "التقييم",
+  "message": "الرسالة",
+  "rateButton": "قيّم",
+  "addComment": "أضف تعليقك",
+  "send": "إرسال",
+  "update": "تحديث",
+  "showAll": "عرض جميع التعليقات",
+  "hideAll": "إخفاء التعليقات",
+  "allReviews": "جميع التقييمات",
+  "allComments": "جميع التعليقات",
+  "edit": "تعديل",
+  "delete": "حذف",
+  "placeholder": "اكتب رسالتك..."
+}
+,
+"bookingSummary": {
+  "header": "ملخص الحجز",
+  "startDate": "تاريخ البدء",
+  "endDate": "تاريخ الانتهاء",
+  "totalPrice": "السعر الإجمالي",
+  "roomId": "رقم الغرفة",
+  "cancelButton": "إلغاء",
+  "confirmBooking": "تأكيد الحجز",
+  "processing": "جاري المعالجة..."
+}
+,
+
+ "description": {
+  "fullDescription": "استمتع بإقامة فاخرة ومريحة في مكان يجمع بين البساطة والرفاهية. تم تصميم كل غرفة بعناية لتوفر لك أقصى درجات الراحة والخصوصية. تحتوي الوحدة على غرف نوم واسعة، وغرفة معيشة أنيقة، بالإضافة إلى مطبخ مجهز بالكامل ومرافق متكاملة لراحتك. استفد من إنترنت سريع، وتلفزيونات حديثة، ووحدات تكييف موزعة في جميع أنحاء السكن، مع موقع مميز قريب من كافة الخدمات."
+},
+
+  "features": {
+    "bedroom": "5 غرف نوم",
+    "livingRoom": "1 غرفة معيشة",
+    "bathroom": "3 حمام",
+    "diningRoom": "1 غرفة طعام",
+    "wifi": "10 ميجابايت في الثانية",
+    "unitReady": "7 وحدات جاهزة",
+    "refrigerator": "2 ثلاجة",
+    "television": "3 تلفزيون"
+  },
+  "startBooking": {
+    "header": "ابدأ الحجز",
+    "pricePerNight": "لكل ليلة",
+    "discount": "خصم {{discount}}% ",
+    "pickDate": "اختار التاريخ",
+    "payInfo": "ستدفع ${{ price }} دولار أمريكي لكل {{ capacity }} شخص",
+    "continueBooking": "استمرار الحجز"
   }
+
+,
+"payment":
+{
+  "payment": "الدفع",
+  "follow_instructions": "يرجى اتباع التعليمات أدناه",
+  "transfer_payment": "نقل الدفع:",
+  "tax": "الضريبة: 10%",
+  "subtotal": "المجموع الفرعي: $480 USD",
+  "total": "الإجمالي: $580 USD",
+  "continue_to_book": "استمرار الحجز"
+},
+"checkout": {
+  "name": "الاسم",
+  "email": "البريد الإلكتروني",
+  "card_details": "تفاصيل البطاقة",
+  "full_name": "الاسم الكامل",
+  "email_placeholder": "example@email.com",
+  "continue": "استمرار"
+},
+"steps": {
+  "information": "المعلومات",
+  "payment": "الدفع",
+  "confirmation": "التأكيد"
+},
+
+  "loadingMessage": "جاري التحميل..."
+
 }

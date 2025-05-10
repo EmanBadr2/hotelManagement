@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { Router } from '@angular/router';
 import { BookingService } from '../../services/booking.service';
+import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-main-payment',
@@ -13,7 +15,7 @@ export class MainPaymentComponent implements OnInit {
   token!:string
   steps: MenuItem[] = [];
   activeIndex: number = 0;
-  constructor(private _Router: Router , private _BookingService:BookingService){
+  constructor(private _Router: Router , private _BookingService:BookingService, private translate: TranslateService) {
     const nav = this._Router.getCurrentNavigation();
     this.bookingID = nav?.extras?.state;
     this.bookingID=this.bookingID.bookingID
@@ -21,11 +23,13 @@ export class MainPaymentComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.steps = [
-      { label: 'Information', icon: 'pi pi-user' },
-      { label: 'Payment', icon: 'pi pi-credit-card' },
-      { label: 'Confirmation', icon: 'pi pi-check-circle' }
-    ];
+    this.translate.get(['steps.information', 'steps.payment', 'steps.confirmation']).subscribe(translations => {
+      this.steps = [
+        { label: translations['steps.information'], icon: 'pi pi-user' },
+        { label: translations['steps.payment'], icon: 'pi pi-credit-card' },
+        { label: translations['steps.confirmation'], icon: 'pi pi-check-circle' }
+      ];
+    });
   }
   goNext() {
     if (this.activeIndex < this.steps.length - 1) {
