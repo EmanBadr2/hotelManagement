@@ -61,5 +61,111 @@
     "confirmPassword": "Confirm Password",
     "confirmPasswordDesc":"Confirm your password to save changes",
     "save": "Save"
+  },
+  "favoritesPage": {
+  "title": "Your Favorites",
+  "breadcrumbHome": "Home",
+  "breadcrumbFavorites": "Favorite",
+  "roomsTitle": "Your rooms",
+  "noData": "No data available"
+},
+"explorePage": {
+  "breadcrumbHome": "Home",
+  "breadcrumbExplore": "Explore",
+  "header": "Explore ALL Rooms",
+  "sectionTitle": "All Rooms",
+  "perNight": "per night"
+}
+,
+"roomDetailsPage": {
+  "breadcrumbHome": "Home",
+  "breadcrumbDetails": "Room Details",
+  "roomName": "Village Angga",
+  "roomLocation": "Bogor, Indonesia"
+}
+,
+"rateSection": {
+  "rate": "Rate",
+  "message": "Message",
+  "rateButton": "Rate",
+  "addComment": "Add Your Comment",
+  "send": "Send",
+  "update": "Update",
+  "showAll": "Show All Comments",
+  "hideAll": "Hide All Comments",
+  "allReviews": "All Reviews",
+  "allComments": "All Comments",
+  "edit": "Edit",
+  "delete": "Delete",
+  "placeholder": "Write your message..."
+}
+,
+"bookingSummary": {
+  "header": "Booking Summary",
+  "startDate": "Start Date",
+  "endDate": "End Date",
+  "totalPrice": "Total Price",
+  "roomId": "Room ID",
+  "cancelButton": "Cancel",
+  "confirmBooking": "Confirm Booking",
+  "processing": "Processing..."
+}
+,
+
+"description": {
+  "fullDescription": "Enjoy a luxurious and comfortable stay in a place that combines simplicity and elegance. Each room is carefully designed to provide you with maximum comfort and privacy. The unit includes spacious bedrooms, a stylish living room, a fully equipped kitchen, and complete amenities for your convenience. Benefit from high-speed internet, modern televisions, air conditioning units distributed throughout the residence, and a prime location close to all services."
+}
+,
+  "features": {
+    "bedroom": "5 bedroom",
+    "livingRoom": "1 living room",
+    "bathroom": "3 bathroom",
+    "diningRoom": "1 dining room",
+    "wifi": "10 mbp/s",
+    "unitReady": "7 unit ready",
+    "refrigerator": "2 refrigerator",
+    "television": "3 television"
+  },
+  "startBooking": {
+    "header": "Start Booking",
+    "pricePerNight": "per night",
+    "discount": "Discount {{discount}}% Off",
+    "pickDate": "Pick a Date",
+    "payInfo": "You will pay ${{ price }} USD per {{ capacity }} Person",
+    "continueBooking": "continue Booking"
   }
+
+,
+"payment":
+{
+  "payment": "Payment",
+  "follow_instructions": "Kindly follow the instructions below",
+  "transfer_payment": "Transfer Payment:",
+  "tax": "Tax: 10%",
+  "subtotal": "Subtotal: $480 USD",
+  "total": "Total: $580 USD",
+  "continue_to_book": "Continue to Book"
+}
+,
+
+  "checkout": {
+    "name": "Name",
+    "email": "Email",
+    "card_details": "Card Details",
+    "full_name": "Full Name",
+    "email_placeholder": "example@email.com",
+    "continue": "Continue"
+  }
+,
+
+  "steps": {
+    "information": "Information",
+    "payment": "Payment",
+    "confirmation": "Confirmation"
+  }
+
+,
+
+  "loadingMessage": "Loading..."
+
 }

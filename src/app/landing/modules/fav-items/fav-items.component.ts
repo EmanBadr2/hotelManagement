@@ -13,7 +13,7 @@ favoriteRooms: FavoriteRoom[] = [];
 isLoading: boolean = true;
 isRoomsEmpty: boolean = false;
 constructor (private _LandingService:LandingService,
-  private toastr: ToastrService
+  private toastr: ToastrService,
 ){}
 ngOnInit(): void {
   this._LandingService.getAllFavRooms().subscribe((res) => {

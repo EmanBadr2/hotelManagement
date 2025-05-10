@@ -13,19 +13,20 @@
   >
     <!-- Header -->
     <div class="text-center mb-4">
-      <h2 class="text-3xl font-bold mb-1" style="color: #152C5B;">Payment</h2>
-      <p style="color: #B0B0B0;">Kindly follow the instructions below</p>
+      <h2 class="text-3xl font-bold mb-1" style="color: #152C5B;">{{ 'payment.payment' | translate }}
+      </h2>
+      <p style="color: #B0B0B0;"> {{ 'payment.follow_instructions' | translate }}</p>
     </div>
 
     <!-- Main Layout (Responsive) -->
     <div class="flex flex-col lg:flex-row gap-4">
       <!-- Left Side -->
       <div class="w-full lg:w-1/2 flex flex-col justify-evenly text-sm text-gray-700 p-4">
-        <h2 class="text-lg font-semibold text-gray-800">Transfer Pembayaran:</h2>
+        <h2 class="text-lg font-semibold text-gray-800">{{ 'payment.transfer_payment' | translate }}</h2>
         <div>
-          <p class="mb-2"><strong>Tax:</strong> 10%</p>
-          <p class="mb-2"><strong>Subtotal:</strong> $480 USD</p>
-          <p class="mb-2"><strong>Total:</strong> $580 USD</p>
+          <p class="mb-2"><strong>{{ 'payment.tax' | translate }}</strong></p>
+          <p class="mb-2"><strong>{{ 'payment.subtotal' | translate }}</strong></p>
+          <p class="mb-2"><strong>{{ 'payment.total' | translate }}</strong></p>
         </div>
         <div class="space-y-4">
           <div class="flex items-start space-x-4">
@@ -60,7 +61,7 @@
     <div class="flex justify-center pt-4">
       <button
         pButton
-        label="Continue to Book"
+        label="{{ 'payment.continue_to_book' | translate }}"
         [disabled]="activeIndex === 0"
         class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
         (click)="payBooking()"

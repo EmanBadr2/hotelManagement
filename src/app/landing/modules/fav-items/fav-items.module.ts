@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { FavItemsRoutingModule } from './fav-items-routing.module';
 import { FavItemsComponent } from './fav-items.component';
 import { LandingModule } from "../../landing.module";
+import { TranslateModule } from '@ngx-translate/core';
+
 
 
 @NgModule({
@@ -13,7 +15,8 @@ import { LandingModule } from "../../landing.module";
   imports: [
     CommonModule,
     FavItemsRoutingModule,
-    LandingModule
+    LandingModule,
+    TranslateModule
 ]
 })
 export class FavItemsModule { }

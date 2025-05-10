@@ -6,14 +6,18 @@
   <div class=" w-2/3 pt-3 pb-5 flex items-center justify-between  ">
     <!-- left side -->
     <div class="flex items-center justify-center ">
-      <a routerLink="/landing"  class="p-content">Home</a>
+      <a routerLink="/landing"  class="p-content">{{ 'roomDetailsPage.breadcrumbHome' | translate }}
+      </a>
       <p class="mx-7  p-content"> / </p>
-      <a routerLink="landing/pageDetails" routerLinkActive="span-content" class="span-content">Room Details</a>
+      <a routerLink="landing/pageDetails" routerLinkActive="span-content" class="span-content">{{ 'roomDetailsPage.breadcrumbDetails' | translate }}
+      </a>
       </div>
       <!-- main title -->
       <div class="text-center">
-        <h2 class="text-landingContent-h2 h2-content">Village Angga</h2>
-        <p class="text-landingContent-p p-content"> Bogor, Indonesia</p>
+        <h2 class="text-landingContent-h2 h2-content">{{ 'roomDetailsPage.roomName' | translate }}
+        </h2>
+        <p class="text-landingContent-p p-content">{{ 'roomDetailsPage.roomLocation' | translate }}
+        </p>
       </div>
 
   </div>

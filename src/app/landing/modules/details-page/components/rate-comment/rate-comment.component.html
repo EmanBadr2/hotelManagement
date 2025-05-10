@@ -3,27 +3,30 @@
 
 <div class="w-full mx-auto grid sm:grid-cols-1  md:grid-cols-2 gap-8 p-5 border rounded   " >
   <div class=" rate relative w-full p-3">
-   <p class=" span-content"> Rate </p>
+   <p class=" span-content"> {{ 'rateSection.rate' | translate }} </p>
    <p-rating [cancel]="false" [(ngModel)]="rating" [disabled]="!isUser"  />
 
    <div>
-     <p class=" span-content pt-3 pb-1"> Message </p>
+     <p class=" span-content pt-3 pb-1"> {{ 'rateSection.message' | translate }} </p>
      <textarea  [(ngModel)]="review" (click)="checkAuth()"
-     class="text-area-style" rows="4" placeholder="Write your message..."></textarea>
+     class="text-area-style" rows="4" [placeholder]="'rateSection.placeholder' | translate"></textarea>
    </div>
    <button (click)=" createReview()" [disabled]="!rating || review==''"
-   class="pageDetails-btn ">Rate</button>
+   class="pageDetails-btn ">  {{ 'rateSection.rateButton' | translate }}
+  </button>
   </div>
 <!-- ----------------------------------------- -->
   <div  class="flex flex-col space-y-4">
-   <p class=" span-content mb-6"> Add Your Comment </p>
+   <p class=" span-content mb-6"> {{ 'rateSection.addComment' | translate }} </p>
    <div>
-     <p class=" span-content pt-3 pb-1"> Message </p>
+     <p class=" span-content pt-3 pb-1"> {{ 'rateSection.message' | translate }} </p>
      <textarea   [(ngModel)]="comment" (click)="checkAuth()"
-      class="text-area-style" rows="4" placeholder="Write your message..."></textarea>
+      class="text-area-style" rows="4"  [placeholder]="'rateSection.placeholder' | translate"></textarea>
    </div>
    <button (click)=" isEditComment? updateComment() : createComment()" [disabled]="!comment"
-     [class]="isEditComment? ' update-btn' : 'pageDetails-btn' " >{{isEditComment?  'Update'  : 'Send'}}  </button>
+     [class]="isEditComment? ' update-btn' : 'pageDetails-btn' " >
+     {{ isEditComment ? ('rateSection.update' | translate) : ('rateSection.send' | translate) }}
+    </button>
 
     </div>
   </div>
@@ -34,7 +37,7 @@
   <div class=" ms-auto my-3  w-1/2 text-end ">
     <button class="pageDetails-btn "
      (click)="isShowAllComments = !isShowAllComments">
-      {{isEditComment? 'Hide' : 'Show'}} All Comments
+     {{ isEditComment ? ('rateSection.hideAll' | translate) : ('rateSection.showAll' | translate) }}
     </button>
     </div>
     <!-- ---- ------------------->
@@ -43,7 +46,8 @@
   class="py-5 my-5 w-full mx-auto grid sm:grid-cols-1  md:grid-cols-2 gap-8 p-5 border rounded  ">
     <!-- review -->
      <div class="review ">
-   <p class=" text-xl font-bold text-landingContent-h2 pt-3 pb-1">All Reviews </p>
+   <p class=" text-xl font-bold text-landingContent-h2 pt-3 pb-1">  {{ 'rateSection.allReviews' | translate }}
+  </p>
    <div class="flex items-start space-x-4 my-2 " *ngFor="let review of roomReviews">
     <div class="w-10 h-10 bg-purple-200 rounded-full text-center overflow-hidden">
       <img *ngIf="review.user.profileImage"
@@ -65,7 +69,8 @@
 
    <!-- comment -->
     <div class="comment">
-      <p class=" text-xl font-bold text-landingContent-h2 pt-3 pb-1">All Comments </p>
+      <p class=" text-xl font-bold text-landingContent-h2 pt-3 pb-1">  {{ 'rateSection.allComments' | translate }}
+      </p>
       <div class="flex items-start space-x-4 my-2 " *ngFor="let comment of roomComments">
         <div class="w-10 h-10 bg-purple-200 rounded-full text-center overflow-hidden">
           <img *ngIf="comment.user.profileImage"
@@ -84,9 +89,11 @@
           <div class="text-xs text-gray-500 mt-2 flex space-x-4"
           *ngIf="comment.user._id == userID || comment.user.userName == userName " >
             <button (click)="editComment(comment)" [disabled]="isEditComment"
-            class="hover:underline  disabled:opacity-10 ">Edit</button>
+            class="hover:underline  disabled:opacity-10 ">  {{ 'rateSection.edit' | translate }}
+          </button>
             <button (click)="deleteComment(comment._id)" [disabled]="isEditComment"
-            class="hover:underline disabled:opacity-10">Delete</button>
+            class="hover:underline disabled:opacity-10">  {{ 'rateSection.delete' | translate }}
+          </button>
           </div>
 
         </div>
